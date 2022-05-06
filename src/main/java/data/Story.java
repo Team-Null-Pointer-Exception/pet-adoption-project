@@ -24,4 +24,8 @@ public class Story {
     @Column
     private LocalDate createdAt;
 
+    @OneToOne
+    @JoinColumn(name = "listing-id")
+    private Listing listing;
+
 }
