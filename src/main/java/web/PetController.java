@@ -8,15 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
 @CrossOrigin
 @RestController
 public class PetController {
-    private final PetRepository petRepository;
+    private final PetsRepository petRepository;
     private final UsersRepository usersRepository;
-    private final ListingRepository listingRepository;
+    private final ListingsRepository listingRepository;
 
     @GetMapping
     public Collection<Pet> getPets() {
@@ -30,7 +31,6 @@ public class PetController {
 
     @PostMapping
     public void createPet(@RequestBody Pet pet) {
-// update with info that must be looked up
         petRepository.save(pet);
     }
 
@@ -40,8 +40,8 @@ public class PetController {
     }
 
     @GetMapping
-    public Pet getPetByAnimal(@RequestParam String animal){
-        return petRepository.findPetByAnimal(animal);
+    public List<Pet> getPetByAnimal(@RequestParam String animal){
+        return petRepository.getAllByAnimal(animal);
     }
 
 

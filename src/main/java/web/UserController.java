@@ -70,11 +70,9 @@ public class UserController {
     public void updateUser(@RequestBody User user, OAuth2Authentication auth){
         String userToUpdate = auth.getName();
         User updatedUser = usersRepository.findByEmail(userToUpdate);
-        //add pieces to be updated
-//        String encryptedPassword = passwordEncoder.encode(newPassword);
-//        updatedUser.setPassword(encryptedPassword);
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        updatedUser.setPassword(encryptedPassword);
         usersRepository.save(updatedUser);
-
     }
 }
 

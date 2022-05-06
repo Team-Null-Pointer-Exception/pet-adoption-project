@@ -12,14 +12,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import static data.User.Role.ADMIN;
+
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/listings", headers = "Accept=application/json")
 @AllArgsConstructor
 public class ListingController {
-    private final ListingRepository listingRepository;
+    private final ListingsRepository listingRepository;
     private final UsersRepository usersRepository;
-    private final PetRepository petRepository;
+    private final PetsRepository petRepository;
 
     @GetMapping
     public Collection<Listing> getListings() {
@@ -37,6 +39,8 @@ public class ListingController {
         String email = auth.getName();
         User user = usersRepository.findByEmail(email);
         listing.setUser(user);
+        Pet pet = listing.getPet();
+        petRepository.save(pet);
         listingRepository.save(listing);
     }
 
@@ -44,7 +48,7 @@ public class ListingController {
     public void updateListing(@PathVariable long id, @RequestBody Listing listing, OAuth2Authentication auth) {
         String email = auth.getName();
         Listing listingToUpdate = listingRepository.getById(id);
-        User user = usersRepository.findByEmail(email);
+
         // update with parts that are updatable from listing
 
         listingRepository.save(listingToUpdate);
@@ -61,10 +65,7 @@ public class ListingController {
         }
     }
 
-    @GetMapping("searchByAnimal")
-    public List<Listing> searchListingByAnimal(@RequestParam String animal){
-        return listingRepository.findAllByPet(petRepository.findPetByAnimal(animal));
-    }
+
 
 
 
