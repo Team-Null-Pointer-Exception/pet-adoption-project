@@ -1,7 +1,8 @@
 package security;
 
-import org.example.rest.errors.CustomAccessDeniedHandler;
-import org.example.rest.errors.CustomAuthenticationEntryPoint;
+import errors.CustomAccessDeniedHandler;
+
+import errors.CustomAuthenticationEntryPoint;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -37,7 +38,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .permitAll()
                 .antMatchers("/api/users/**")
                 .permitAll()
-                .antMatchers("/api/posts")
+                .antMatchers("/api/listings")
                 .hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/swagger-ui/**", "/v3/api-docs/**")
                 .permitAll()

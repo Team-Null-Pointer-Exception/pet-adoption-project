@@ -68,6 +68,7 @@ public class UserController {
     @PutMapping("/me/updateUser")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void updateUser(@RequestBody User user, OAuth2Authentication auth){
+        //needs to check for updated fields
         String userToUpdate = auth.getName();
         User updatedUser = usersRepository.findByEmail(userToUpdate);
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
