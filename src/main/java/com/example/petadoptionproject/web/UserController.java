@@ -1,8 +1,8 @@
-package web;
+package com.example.petadoptionproject.web;
 
 
-import data.User;
-import data.UsersRepository;
+import com.example.petadoptionproject.data.User;
+import com.example.petadoptionproject.data.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package data;
+package com.example.petadoptionproject.data;
 
 import lombok.*;
 
@@ -25,7 +25,7 @@ public class Story {
     private LocalDate createdAt;
 
     @OneToOne
-    @JoinColumn(name = "listing-id")
+    @JoinColumn(name = "listings_id")
     private Listing listing;
 
 }

@@ -1,4 +1,4 @@
-package data;
+package com.example.petadoptionproject.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

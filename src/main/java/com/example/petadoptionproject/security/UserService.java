@@ -1,9 +1,9 @@
-package security;
+package com.example.petadoptionproject.security;
 
 
 
-import data.User;
-import data.UsersRepository;
+import com.example.petadoptionproject.data.User;
+import com.example.petadoptionproject.data.UsersRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
