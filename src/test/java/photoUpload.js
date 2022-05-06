@@ -1,5 +1,5 @@
 // Set up the picker
-const client = filestack.init(yourAPIKey);
+const client = filestack.init(AB7agzxcuSbi0nrO2KsJVz);
 const options = {
     onUploadDone: updateForm,
     maxSize: 10 * 1024 * 1024,
