@@ -39,10 +39,6 @@ public class PetController {
         petRepository.deleteById(id);
     }
 
-    @GetMapping
-    public List<Pet> getPetByAnimal(@RequestParam String animal){
-        return petRepository.getAllByAnimal(animal);
-    }
 
 
 
