@@ -32,7 +32,7 @@ public class ListingController {
         return listingRepository.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void createListing(@RequestBody Listing listing, OAuth2Authentication auth) throws IOException {
         String email = auth.getName();
@@ -43,7 +43,7 @@ public class ListingController {
         listingRepository.save(listing);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/edit/{id}")
     public void updateListing(@PathVariable long id, @RequestBody Listing listing, OAuth2Authentication auth) {
         String email = auth.getName();
         Listing listingToUpdate = listingRepository.getById(id);
