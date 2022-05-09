@@ -59,10 +59,13 @@ function setTokens(responseData) {
     if (responseData.route['access_token']) {
         localStorage.setItem("access_token", responseData.route['access_token']);
         console.log("Access token set");
-    }
-    if (responseData.route['refresh_token']) {
-        localStorage.setItem("refresh_token", responseData.route['refresh_token']);
-        console.log("Refresh token set")
+        if (responseData.route['refresh_token']) {
+            localStorage.setItem("refresh_token", responseData.route['refresh_token']);
+            console.log("Refresh token set")
+            createView("/");
+        }
+    } else {
+        $("#login-response").css({display: "inline-block"});
     }
 }
 
