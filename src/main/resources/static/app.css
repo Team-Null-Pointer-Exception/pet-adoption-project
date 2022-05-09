@@ -10,9 +10,9 @@ body {
     margin-left: 5rem;
 }
 .card {
-    background-color: #818080!important;
+    background-color: #5e5e5e !important;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 1.5em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
