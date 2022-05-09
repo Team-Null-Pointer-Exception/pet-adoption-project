@@ -1,7 +1,5 @@
 package com.example.petadoptionproject.security;
 
-
-
 import com.example.petadoptionproject.data.User;
 import com.example.petadoptionproject.data.UsersRepository;
 import org.springframework.security.core.GrantedAuthority;

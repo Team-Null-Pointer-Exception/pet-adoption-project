@@ -5,6 +5,7 @@ import com.example.petadoptionproject.data.Pet;
 import com.example.petadoptionproject.data.PetsRepository;
 import com.example.petadoptionproject.data.UsersRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @CrossOrigin
+@RequestMapping(value = "/api/pets", headers = "Accept=application/json")
 @RestController
 public class PetController {
     private final PetsRepository petRepository;
