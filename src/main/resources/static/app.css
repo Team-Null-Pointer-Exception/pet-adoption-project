@@ -44,6 +44,7 @@ h1, label{
 }
 #register-btn {
     margin-left: 14.1rem;
+    margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
     background-color: #6579dc;
