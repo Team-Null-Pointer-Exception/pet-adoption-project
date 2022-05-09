@@ -28,10 +28,11 @@ h1 {
     text-align: center;
 }
 
-h1, label{
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>label{
     color: white;
     font-weight: bold;
 }
+
 .set-up-row, .log-in-row{
     align-items: center;
     justify-content: center;
