@@ -50,9 +50,10 @@ export default function Register(props) {
                     <br> 
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
-                    <br>                                                                                       
+                    <br>                                                                                
                     <button id="register-btn" type="button">Register</button>
-                    <p id="register-response">Passwords do not match. Please try again.</p>
+                    <p id="register-response">Passwords do not match. Please try again.</p>  
+
                 </form>
                 </div>
                 </div>
