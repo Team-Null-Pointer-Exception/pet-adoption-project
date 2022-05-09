@@ -62,7 +62,7 @@ function setTokens(responseData) {
             createView("/");
         }
     } else {
-        $("#login-response").css({display: "inline-block"});
+        $("#login-response").css({display: "block"});
     }
 }
 

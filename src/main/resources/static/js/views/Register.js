@@ -97,7 +97,7 @@ export function RegisterEvent(){
                 createView("/");
             });
         } else {
-            $("#register-response").css({display: "inline-block"});
+            $("#register-response").css({display: "block"});
         }
     })
 }
