@@ -8,6 +8,8 @@ import Register, {RegisterEvent} from "./views/Register.js";
 import ListingIndex, {ListingsEvent} from "./views/ListingIndex.js";
 import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
+import CreateListing, {CreateListingsEvent} from "./views/CreateListing.js";
+import EditListing, {EditListingsEvent} from "./views/EditListing.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -59,7 +61,21 @@ export default function router(URI) {
             },
             uri: '/listings',
             title: 'All Listings',
-            viewEvent: ListingsEvent //<-- Use PostsEvent as a callback here!
+            viewEvent: ListingsEvent
+        },
+        '/create': {
+            returnView: CreateListing,
+            state: {},
+            uri: '/create',
+            title: 'Create New Listing',
+            viewEvent: CreateListingsEvent
+        },
+        '/edit': {
+            returnView: EditListing,
+            state: {},
+            uri: '/edit',
+            title: 'Edit Listing',
+            viewEvent: EditListingsEvent
         },
         '/about': {
             returnView: About,

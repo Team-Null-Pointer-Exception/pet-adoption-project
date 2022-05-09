@@ -25,64 +25,22 @@ export default function UserIndex(props) {
                         <button type="submit" class="btn btn-primary" id="edit-password-btn" data-id="${props.user.id}">Submit</button>
                     </form>
                 </div>
+                <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
+                <button type="button" class="btn btn-primary btn-sm" id="edit-listing-btn">Edit An Existing Listing</button>
             </div>
         </main>
     `;
 }
 
-function submitListing() {
-    $('#add-post-btn').click(function () {
-
-        let title = $('#add-post-title').val();
-        let content = $('#add-post-content').val();
-        let post = {
-            title,
-            content
-        }
-
-        let request = {
-            method: "POST",
-            headers: getHeaders(),
-            body: JSON.stringify(post)
-        }
-
-        fetch("http://localhost:8080/api/posts", request)
-            .then(res => {
-                console.log(res.status);
-                createView("/posts")
-            }).catch(error => {
-            console.log(error);
-            createView("/posts");
-        });
+function newListingBtn(){
+    $('#new-listing-btn').click(function(){
+        createView("/create")
     })
 }
 
-function editListing() {
-    $('.edit-post-btn').click(function () {
-
-        let title = $('#add-post-title').val();
-        let content = $('#add-post-content').val();
-        let post = {
-            title,
-            content
-        }
-
-        let postId = this.getAttribute('data-id')
-
-        let request = {
-            method: "PUT",
-            headers: getHeaders(),
-            body: JSON.stringify(post)
-        }
-
-        fetch(`http://localhost:8080/api/posts/${postId}`, request)
-            .then(res => {
-                console.log(res.status);
-                createView("/posts")
-            }).catch(error => {
-            console.log(error);
-            createView("/posts");
-        });
+function editListingBtn(){
+    $('#edit-listing-btn').click(function(){
+        createView("/edit")
     })
 }
 
@@ -134,8 +92,7 @@ function editUser(){
 }
 
 export function UsersEvent(){
-    submitListing();
-    editListing();
+    newListingBtn();
     deleteListing();
     editPassword();
     editUser();
