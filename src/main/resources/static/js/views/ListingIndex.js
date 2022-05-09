@@ -11,7 +11,7 @@ export default function ListingIndex(props) {
             <div class="container-fluid">
                 <div id="posts-container">
                     ${props.posts.map(post => `<h3>${post.title}</h3>
-                    <p>Author: ${post.author.username}</p>
+                    <p>Author: ${post.user.username}</p>
                     <p>Categories: ${post.categories.map(category => category.name)}</p>
                     <p>${post.content}</p>
                     <button type="submit" class="btn btn-primary edit-post-btn" data-id="${post.id}">Edit Post</button>

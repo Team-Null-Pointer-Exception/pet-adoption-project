@@ -51,6 +51,7 @@ public class UserController {
     public void createUser(@RequestBody User user) {
         user.setCreatedAt(LocalDate.now());
         user.setRole(User.Role.USER);
+        user.setStatus(User.Status.ACTIVE);
         String unencryptedPassword = user.getPassword();
         System.out.println(unencryptedPassword);
         String encryptedPassword = passwordEncoder.encode(unencryptedPassword);
