@@ -1,8 +1,9 @@
-package data;
+package com.example.petadoptionproject.data;
 
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "stories")
 public class Story {
+
+    public enum Status {ACTIVE, PENDING, REJECTED}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +28,10 @@ public class Story {
     private LocalDate createdAt;
 
     @OneToOne
-    @JoinColumn(name = "listing-id")
+    @JoinColumn(name = "listings_id")
     private Listing listing;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

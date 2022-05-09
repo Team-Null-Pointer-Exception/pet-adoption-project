@@ -1,18 +1,20 @@
-package web;
+package com.example.petadoptionproject.web;
 
-import data.*;
+import com.example.petadoptionproject.data.ListingsRepository;
+import com.example.petadoptionproject.data.Pet;
+import com.example.petadoptionproject.data.PetsRepository;
+import com.example.petadoptionproject.data.UsersRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
 @CrossOrigin
+@RequestMapping(value = "/api/pets", headers = "Accept=application/json")
 @RestController
 public class PetController {
     private final PetsRepository petRepository;
@@ -39,10 +41,6 @@ public class PetController {
         petRepository.deleteById(id);
     }
 
-    @GetMapping
-    public List<Pet> getPetByAnimal(@RequestParam String animal){
-        return petRepository.getAllByAnimal(animal);
-    }
 
 
 

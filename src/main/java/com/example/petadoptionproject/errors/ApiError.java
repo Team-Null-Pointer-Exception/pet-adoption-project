@@ -1,4 +1,4 @@
-package errors;
+package com.example.petadoptionproject.errors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

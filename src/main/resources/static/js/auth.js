@@ -21,9 +21,9 @@ export default function addLoginEvent() {
             method: "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa('rest-blog-client:secret')
+                'Authorization': 'Basic ' + btoa('pet-adoption-project-client:secret')
             },
-            body: `grant_type=${obj.grant_type}&username=${obj.username}&password=${obj.password}&client_id=rest-blog-client`
+            body: `grant_type=${obj.grant_type}&username=${obj.username}&password=${obj.password}&client_id=pet-adoption-project-client`
         };
 
         fetchData(

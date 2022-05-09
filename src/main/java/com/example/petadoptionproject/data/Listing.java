@@ -1,4 +1,4 @@
-package data;
+package com.example.petadoptionproject.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -37,7 +37,7 @@ public class Listing {
     private User user;
 
     @OneToOne
-    @JoinColumn(name = "pet_id")
+    @JoinColumn(name = "pets_id")
     private Pet pet;
 
 

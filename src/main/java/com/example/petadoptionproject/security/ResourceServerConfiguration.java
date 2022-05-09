@@ -1,8 +1,7 @@
-package security;
+package com.example.petadoptionproject.security;
 
-import errors.CustomAccessDeniedHandler;
-
-import errors.CustomAuthenticationEntryPoint;
+import com.example.petadoptionproject.errors.CustomAccessDeniedHandler;
+import com.example.petadoptionproject.errors.CustomAuthenticationEntryPoint;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;

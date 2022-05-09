@@ -1,4 +1,4 @@
-package security;
+package com.example.petadoptionproject.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

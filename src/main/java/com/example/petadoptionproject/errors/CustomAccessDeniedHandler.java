@@ -1,4 +1,4 @@
-package errors;
+package com.example.petadoptionproject.errors;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

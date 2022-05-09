@@ -1,8 +1,8 @@
-package web;
+package com.example.petadoptionproject.web;
 
 
-import data.User;
-import data.UsersRepository;
+import com.example.petadoptionproject.data.User;
+import com.example.petadoptionproject.data.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -51,6 +51,7 @@ public class UserController {
     public void createUser(@RequestBody User user) {
         user.setCreatedAt(LocalDate.now());
         user.setRole(User.Role.USER);
+        user.setStatus(User.Status.ACTIVE);
         String unencryptedPassword = user.getPassword();
         System.out.println(unencryptedPassword);
         String encryptedPassword = passwordEncoder.encode(unencryptedPassword);
