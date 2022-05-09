@@ -11,9 +11,10 @@ export default function Register(props) {
                 <title>Register</title>
             </head>
             <body>
-                <h1>Register</h1>
-        
+            <div class="row set-up-row">
+            <div class="card set-up-card"> 
                 <form id="register-form">
+                    <h1>Register</h1>
                     <label for="username">Username</label>
                     <input id="username" name="username" type="text"/>
                     <br>
@@ -22,6 +23,9 @@ export default function Register(props) {
                     <br>
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password"/>
+                    <br>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input id="confirmPassword" name="confirmPassword" type="password"/>
                     <br>
                     <label for="firstName">First Name</label>
                     <input id="firstName" name="firstName" type="text"/>
@@ -48,7 +52,10 @@ export default function Register(props) {
                     <input id="phone" name="phone" type="text"/>
                     <br>                                                                                       
                     <button id="register-btn" type="button">Register</button>
+                    <p id="register-response">Passwords do not match. Please try again.</p>
                 </form>
+                </div>
+                </div>
             </body>
         </html>
 `;
@@ -56,26 +63,23 @@ export default function Register(props) {
 
 export function RegisterEvent(){
     $("#register-btn").click(function(){ // event listener
+        let password = $("#password").val()
+        let confirmPassword = $("#confirmPassword").val()
+        if(password === confirmPassword) {
+            let newUser = {
+                username: $("#username").val(),
+                email: $("#email").val(),
+                password: $("#password").val(),
+                firstName: $("#firstName").val(),
+                lastName: $("#lastName").val(),
+                organization: $("#organization").val(),
+                street: $("#street").val(),
+                city: $("#city").val(),
+                state: $("#state").val(),
+                zip: $("#zip").val(),
+                phone: $("#phone").val()
+            }
 
-        // create a new User object from the values of the input fields
-        let newUser = {
-            username: $("#username").val(),
-            email: $("#email").val(),
-            password: $("#password").val(),
-            firstName: $("#firstName").val(),
-            lastName: $("#lastName").val(),
-            organization: $("#organization").val(),
-            street: $("#street").val(),
-            city: $("#city").val(),
-            state: $("#state").val(),
-            zip: $("#zip").val(),
-            phone: $("#phone").val()
-        }
-
-        // logs the newly created user to verify
-        console.log(newUser);
-
-        // setup request
         let request = {
             method: "POST",
             headers: getHeaders(),
@@ -90,6 +94,9 @@ export function RegisterEvent(){
             }).catch(error => {
                 console.log(error);
                 createView("/");
-        });
+            });
+        } else {
+            $("#register-response").css({display: "inline-block"});
+        }
     })
 }

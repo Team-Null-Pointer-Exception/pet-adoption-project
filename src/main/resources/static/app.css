@@ -1,0 +1,61 @@
+body {
+    font-family: Avenir-Next;
+}
+#register-response {
+    display: none
+}
+#register-form {
+    padding-left: 16px;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+.card {
+    background-color: #818080!important;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.set-up-card {
+    width: 40rem;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    margin-top: 10rem;
+}
+h1 {
+    text-align: center;
+}
+
+h1, label{
+    color: white;
+    font-weight: bold;
+}
+.set-up-row{
+    align-items: center;
+    justify-content: center;
+}
+
+#register-form>input {
+    border: none!important;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+#register-btn {
+    margin-left: 14.1rem;
+    border-radius: 5px;
+    width: 6rem;
+    background-color: #6579dc;
+    border: none;
+    color: white;
+}
+
+
+#register-response {
+    color: red;
+    display: none;
+}
+#register-form > input, label {
+    width: 10rem;
+}
