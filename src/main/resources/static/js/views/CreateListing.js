@@ -32,6 +32,7 @@ export function CreateEvents(){
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let imageArray = []
 
 export function AddFileEvent(){
     $('#image_upload').click(function () {
@@ -39,7 +40,7 @@ export function AddFileEvent(){
         const options = {
             onFileUploadFinished: callback => {
                 const imgURL = callback.url
-                console.log(imgURL)
+                imageArray.push(imgURL)
             }
         }
         client.picker(options).open();
