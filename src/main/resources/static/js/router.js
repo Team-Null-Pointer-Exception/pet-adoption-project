@@ -8,7 +8,7 @@ import Register, {RegisterEvent} from "./views/Register.js";
 import ListingIndex, {ListingsEvent} from "./views/ListingIndex.js";
 import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
-import CreateListing, {CreateListingsEvent} from "./views/CreateListing.js";
+import CreateListing, {CreateEvents} from "./views/CreateListing.js";
 import EditListing, {EditListingsEvent} from "./views/EditListing.js";
 
 /**
@@ -51,7 +51,7 @@ export default function router(URI) {
                 user: '/api/users/me'
             },
             uri: '/users',
-            title: 'Users',
+            title: 'User Profile',
             viewEvent: UsersEvent
         },
         '/listings': {
@@ -68,7 +68,7 @@ export default function router(URI) {
             state: {},
             uri: '/create',
             title: 'Create New Listing',
-            viewEvent: CreateListingsEvent
+            viewEvent: CreateEvents
         },
         '/edit': {
             returnView: EditListing,

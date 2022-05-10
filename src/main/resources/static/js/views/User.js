@@ -1,8 +1,8 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 
-export default function UserIndex(props) {
 
+export default function UserIndex(props) {
 
     return `
         <header>
