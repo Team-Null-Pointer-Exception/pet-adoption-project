@@ -1,4 +1,19 @@
 
+.bg-image {
+    height: 450px;
+    background-position: bottom;
+    background-size: cover;
+}
+
+.jumbotron {
+    color: #ED6436;
+    text-shadow: 1px 1px dimgray;
+}
+
+.jumbo-message {
+    text-shadow: 1px 1px dimgray;
+}
+
 #register-response {
     display: none
 }
