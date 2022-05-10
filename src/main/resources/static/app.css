@@ -5,6 +5,7 @@
 }
 
 .jumbotron {
+    margin-top: 5rem;
     color: #ED6436;
     text-shadow: 1px 1px dimgray;
 }

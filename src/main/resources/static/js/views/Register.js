@@ -51,7 +51,7 @@ export default function Register(props) {
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
                     <br>   
-                    <a href="" id="profile_upload" data-link>Set Profile Picture</a>
+                    <a href="" id="profile_upload"  class="text-white" data-link>Set Profile Picture</a>
                     <br>                                                                             
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
