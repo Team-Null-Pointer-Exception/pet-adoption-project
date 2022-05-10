@@ -51,7 +51,6 @@ let testimage = "https://cdn.filestackcontent.com/GTR9A03TAu35zRjVYbgL"
 
 export function CreateListingsEvent(){
     $('#create-listing-btn').click(function () {
-
         let title = $('#add-post-title').val();
         let content = $('#add-post-content').val();
         let post = {
