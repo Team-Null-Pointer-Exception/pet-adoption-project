@@ -19,6 +19,9 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String name;
+
     @Column(nullable = false)
     private String animal;
 
@@ -29,7 +32,7 @@ public class Pet {
     private Pet.Sex sex;
 
     @Column
-    private Integer age;
+    private String age;
 
     @Column
     private String color;
