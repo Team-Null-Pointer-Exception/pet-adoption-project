@@ -1,4 +1,6 @@
 import {isLoggedIn} from "../../auth.js";
+import {getUserRole} from "../User.js";
+
 
 export default function Navbar(props) {
     const loggedIn = isLoggedIn();
@@ -44,11 +46,16 @@ export default function Navbar(props) {
                     <a href="/listings" class="nav-item nav-link" data-link>Listings</a>
                    
         `
+    if(loggedIn && getUserRole() === "ADMIN") {
+        html +=
+            '<a href="/admin" class="nav-item nav-link" data-link>Admin</a>'
+    }
 
 
     if (loggedIn){
         html += `
                 <a href="/users" class="nav-item nav-link" data-link>User Profile</a>
+                <a href="/messages" class="nav-item nav-link" data-link>Messages</a>
                             </div>
                 <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" onclick="window.localStorage.clear()" data-link>Logout</a>
             </div>
@@ -69,4 +76,6 @@ export default function Navbar(props) {
     }
     return html;
 }
+
+
 
