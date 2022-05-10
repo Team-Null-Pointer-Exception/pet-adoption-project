@@ -81,9 +81,8 @@ public class User {
     @ToString.Exclude
     Collection<Listing> listings;
 
-//    @OneToMany(mappedBy = "user")
-//    @JsonIgnoreProperties("user")
-//    @ToString.Exclude
-//    Collection<Listing> adoptions;
+    @Column
+    private String profileImg;
+
 
 }

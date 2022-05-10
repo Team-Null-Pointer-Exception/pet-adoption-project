@@ -1,5 +1,4 @@
 export default function Admin(props) {
-    console.log("The frontend did it. HER FAULT");
     return `
         <header>
             <h1>Admin Page</h1>
