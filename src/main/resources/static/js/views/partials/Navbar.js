@@ -42,19 +42,13 @@ export default function Navbar(props) {
                     <a href="/index" class="nav-item nav-link active" data-link>Home</a>
                     <a href="/about" class="nav-item nav-link" data-link>About</a>
                     <a href="/listings" class="nav-item nav-link" data-link>Listings</a>
-                    <a href="/register" class="nav-item nav-link flex-end" data-link>Register</a>
+                   
         `
 
 
     if (loggedIn){
         html += `
-                 <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="/users" class="dropdown-item" data-link>User Profile</a>
-                            <a href="/create" class="dropdown-item" data-link>New Listing</a>
-                        </div>
-                    </div
+                <a href="/users" class="nav-item nav-link" data-link>User Profile</a>
                             </div>
                 <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" onclick="window.localStorage.clear()" data-link>Logout</a>
             </div>
@@ -65,8 +59,7 @@ export default function Navbar(props) {
 
     if (!loggedIn){
         html += `
-                        </div>
-                    </div
+              <a href="/register" class="nav-item nav-link" data-link>Register</a>
                             </div>
                     <a href="/login" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Login</a>
             </div>
