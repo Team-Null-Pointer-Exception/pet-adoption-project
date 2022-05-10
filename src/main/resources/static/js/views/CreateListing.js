@@ -1,6 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import "../keys.js";
+
 
 export default function CreateListing(props) {
     return `
@@ -36,10 +36,17 @@ let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
 export function AddFileEvent(){
     $('#image_upload').click(function () {
         const client = filestack.init(apiKey);
-        client.picker().open();
+        const options = {
+            onFileUploadFinished: callback => {
+                const imgURL = callback.url
+                console.log(imgURL)
+            }
+        }
+        client.picker(options).open();
     })
 }
 
+let testimage = "https://cdn.filestackcontent.com/GTR9A03TAu35zRjVYbgL"
 
 export function CreateListingsEvent(){
     $('#create-listing-btn').click(function () {
