@@ -54,7 +54,7 @@ export default function CreateListing(props) {
             </div>
             </div>
             </body>
-        </main>
+        </html>
     `;
 }
 
@@ -67,7 +67,7 @@ export function CreateEvents(){
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
 let imageArray = []
 
-export function AddFileEvent(){
+function AddFileEvent(){
     $('#image_upload').click(function () {
         const client = filestack.init(apiKey);
         const options = {
