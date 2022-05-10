@@ -50,7 +50,7 @@
     margin-left: 19.2rem;
 }
 #login-btn {
-    margin-left: 14.9rem;
+    margin-left: 11.6rem;
 }
 
 #register-btn, #login-btn {
@@ -67,9 +67,13 @@
     color: white;
     display: none;
 }
-#register-form > label, #login-form > label {
+#register-form > label {
     width: 10rem;
 }
+#login-form > label {
+    width: 6rem;
+}
+
 
 #register-form > input {
     width: 15rem;
