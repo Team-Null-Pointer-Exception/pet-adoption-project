@@ -20,7 +20,6 @@ import static com.example.petadoptionproject.data.User.Role.ADMIN;
 public class ListingController {
     private final ListingsRepository listingRepository;
     private final UsersRepository usersRepository;
-    private final PetsRepository petRepository;
 
     @GetMapping
     public Collection<Listing> getListings() {
@@ -38,8 +37,6 @@ public class ListingController {
         String email = auth.getName();
         User user = usersRepository.findByEmail(email);
         listing.setUser(user);
-        Pet pet = listing.getPet();
-        petRepository.save(pet);
         listingRepository.save(listing);
     }
 

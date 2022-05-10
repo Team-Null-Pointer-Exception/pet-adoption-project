@@ -1,47 +1,56 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 
+
+
 export default function ListingIndex(props) {
-    // language=HTML
+    console.log(props);
+
+    //language=HTML
     return `
-        <header>
-            <h1>Posts Page</h1>
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Pet Listings</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Adopt a pet today!</p>
+                </div>
+            </div>
         </header>
         <main>
             <div class="container-fluid">
-                <div id="posts-container">
-                    ${props.posts.map(post => `<h3>${post.title}</h3>
-                    <p>Author: ${post.user.username}</p>
-                    <p>Categories: ${post.categories.map(category => category.name)}</p>
-                    <p>${post.content}</p>
-                    <button type="submit" class="btn btn-primary edit-post-btn" data-id="${post.id}">Edit Post</button>
-                    <button type="submit" class="btn btn-primary delete-post-btn" data-id="${post.id}">Delete Post</button>
-                    `).join('')}
-                </div>
+                <section class="py-5">
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                <div id="add-post-container">
-                    <form>
-                        <div class="form-group">
-                            <label for="add-post-title">Title</label>
-                            <input type="text" class="form-control" id="add-post-title" placeholder="Enter Title">
-                        </div>
-                        <div class="form-group">
-                            <label for="add-post-content">Content</label>
-                            <textarea class="form-control" id="add-post-content" rows="3" placeholder="Enter Content"></textarea>
-                        </div>
-                        <div>
-                            ${props.categories.map(category => `
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="category-${category.id}" value="${category.id}">
-                                <label class="form-check-label" for="category-${category.id}">${category.name}</label>
+                            ${props.listings.map(listing =>
+                            `<div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4 bg-light">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">${listing.name}</h5>
+                                    <!-- Product price-->
+                                    ${listing.breed}
+                                </div>
                             </div>
-                            `).join('')}
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-light">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-post-btn">Submit New Post</button>
-                    </form>
-                </div>
+                    </div>`).join('')}
+
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; TakeMyPig.com 2022</p></div>
     `;
 }
 

@@ -14,9 +14,7 @@ export default function addLoginEvent() {
             grant_type: 'password'
         }
         console.log("got to login event")
-        // TODO: these are the only request params /oauth/token accepts in Spring Security
-        // TODO: need to possibly implement a random bit handshake w/ SHA256 on the password before sending
-        //      -> Alternatively, encrypt the entire request body
+
         let request = {
             method: "POST",
             headers: {
@@ -32,7 +30,6 @@ export default function addLoginEvent() {
             },
             request).then((data) => {
             setTokens(data);
-            createView("/");
         });
     });
 }
@@ -59,10 +56,13 @@ function setTokens(responseData) {
     if (responseData.route['access_token']) {
         localStorage.setItem("access_token", responseData.route['access_token']);
         console.log("Access token set");
-    }
-    if (responseData.route['refresh_token']) {
-        localStorage.setItem("refresh_token", responseData.route['refresh_token']);
-        console.log("Refresh token set")
+        if (responseData.route['refresh_token']) {
+            localStorage.setItem("refresh_token", responseData.route['refresh_token']);
+            console.log("Refresh token set")
+            createView("/");
+        }
+    } else {
+        $("#login-response").css({display: "block"});
     }
 }
 
