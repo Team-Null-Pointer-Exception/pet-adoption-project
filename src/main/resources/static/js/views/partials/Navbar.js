@@ -56,7 +56,7 @@ export default function Navbar(props) {
                         </div>
                     </div
                             </div>
-                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>
+                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" onclick="window.localStorage.clear()" data-link>Logout</a>
             </div>
         </nav>
     </div>
