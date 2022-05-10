@@ -187,3 +187,9 @@ nav .nav-link.active {
     padding-left: 0!important;
 }
 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #fff;
+    background-color: #e3410c;
+    border-color: #ED6436; /*set the color you want here*/
+}
+
