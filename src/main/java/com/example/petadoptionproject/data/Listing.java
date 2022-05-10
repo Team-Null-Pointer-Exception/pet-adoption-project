@@ -16,6 +16,8 @@ import java.time.LocalDate;
 @Table(name = "listings")
 public class Listing {
 
+    public enum Sex {MALE, FEMALE}
+
     public enum Status {ACTIVE, EXPIRED, CLOSED, PENDING, REJECTED}
 
     @Id
@@ -32,13 +34,35 @@ public class Listing {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @Column
+    private String name;
+
+    @Column(nullable = false)
+    private String animal;
+
+    @Column
+    private String breed;
+
+    @Enumerated(EnumType.STRING)
+    private Listing.Sex sex;
+
+    @Column
+    private String age;
+
+    @Column
+    private String color;
+
+    @Column
+    private String description;
+
+    @Column
+    private boolean fixed;
+
+    @Column
+    private String health;
+
     @ManyToOne
     @JsonIgnoreProperties({"listings"})
     private User user;
-
-    @OneToOne
-    @JoinColumn(name = "pets_id")
-    private Pet pet;
-
 
 }
