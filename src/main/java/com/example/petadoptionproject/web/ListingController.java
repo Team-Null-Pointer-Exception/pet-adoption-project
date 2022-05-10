@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -31,12 +32,16 @@ public class ListingController {
         return listingRepository.findById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void createListing(@RequestBody Listing listing, OAuth2Authentication auth) throws IOException {
         String email = auth.getName();
         User user = usersRepository.findByEmail(email);
+        System.out.println(user);
         listing.setUser(user);
+        listing.setCreatedAt(LocalDate.now());
+        listing.setStatus(Listing.Status.PENDING);
+        System.out.println(listing);
         listingRepository.save(listing);
     }
 

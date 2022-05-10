@@ -11,7 +11,7 @@ export default function Navbar(props) {
                     <h1 class="m-0 display-5 text-black"><span class="text-primary">Pet</span>Adoptions</h1>
                 </a>
             </div>
-            <div class="col-lg-8 text-center text-lg-right align-items-center">
+            <div class="col-lg-8 text-lg-right">
                 <div class="d-inline-flex align-items-center text-grey">
                     <div class="d-inline-flex flex-column text-center px-3 border-right">
                         <i class="fab fa-facebook-f"></i>

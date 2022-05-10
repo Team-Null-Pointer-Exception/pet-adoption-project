@@ -12,7 +12,7 @@
 }
 .card {
     background-color: #181818;
-    border: none;
+    border: none!important;
     border-radius: 10px;
     margin-bottom: 1.5em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -32,7 +32,7 @@
 
 .log-in-card {
     width: 30rem;
-    height: 30rem;
+    height: 25rem;
 }
 
 
@@ -183,6 +183,9 @@ nav .nav-link.active {
 .pb-3, .py-3 {
     padding-bottom: 1rem !important;
 }
+.px-0 {
+    padding-left: 0 !important;
+}
 
 .d-inline-flex {
     display: inline-flex !important;
@@ -212,9 +215,73 @@ nav .nav-link.active {
     padding-left: 0!important;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
     color: #fff;
     background-color: #e3410c;
     border-color: #ED6436;
 }
 
+
+.team img {
+    position: relative;
+    z-index: 1;
+}
+
+.card-img, .card-img-top, .card-img-bottom {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.text-center {
+    text-align: center !important;
+}
+
+.bg-light {
+    background-color: #F2F2F4 !important;
+}
+
+.btn-outline-primary {
+    color: #ED6436;
+    border-color: #ED6436;
+}
+
+.aboutName {
+    margin-top: 1rem;
+}
+
+.rounded-circle {
+    margin-right: .5rem;
+}
+
+.rounded-circle>i {
+    margin-left: 1px;
+}
+
+.aboutUs {
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    height: 15rem;
+}
+
+.about{
+    margin-top: 4rem;
+}
+.meetUs {
+    margin-top: 3rem!important;
+}
+
+.aboutText {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

@@ -31,7 +31,10 @@ export default function CreateListing(props) {
                     <input id="age" name="age" type="text"/>
                     <br>
                     <label for="sex">Sex</label>
-                    <input id="sex" name="sex" type="text"/>
+                    <select class="form-control" id="sex">
+                      <option>MALE</option>
+                      <option>FEMALE</option>
+                    </select>
                     <br>
                     <label for="health">Health</label>
                     <input id="health" name="health" type="text"/>
@@ -48,7 +51,7 @@ export default function CreateListing(props) {
                     <label for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
                     <br>              
-                    <a href="" id="image_upload" data-link>Upload files</a>                                                                         
+                    <a href="" id="image_upload" class="text-white" data-link>Upload Image</a>                                                                         
                     <button id="create-listing-btn" type="button">Submit</button>
                 </form>
             </div>
@@ -74,43 +77,49 @@ function AddFileEvent(){
             onFileUploadFinished: callback => {
                 const imgURL = callback.url
                 imageArray.push(imgURL)
+                console.log(imageArray)
             }
         }
         client.picker(options).open();
     })
 }
 
-let testimage = "https://cdn.filestackcontent.com/GTR9A03TAu35zRjVYbgL"
 
 function CreateListingsEvent(){
     $('#create-listing-btn').click(function () {
-
+        let images = []
+        for (let image of imageArray) {
+            image = {"images": image}
+            images.push(image)
+        }
         let newListing = {
             summary: $("#summary").val(),
-            age: $("#age").val(),
+            name: $("#name").val(),
             animal: $("#animal").val(),
             breed: $("#breed").val(),
+            sex: $("#sex").val(),
+            age: $("#age").val(),
             color: $("#color").val(),
             description: $("#description").val(),
             fixed: $("#fixed").val(),
             health: $("#health").val(),
-            name: $("#name").val(),
-            sex: $("#sex").val(),
-            images: imageArray
+            images: images
         }
-
+        console.log(newListing)
         let request = {
             method: "POST",
             headers: getHeaders(),
             body: JSON.stringify(newListing)
         }
 
-        fetch("http://localhost:8080/api/listings/create", request)
+        fetch("http://localhost:8080/api/listings", request)
             .then(res => {
                 console.log(res.status);
+                imageArray = []
                 createView("/users")
             }).catch(error => {
             console.log(error);
+            imageArray = []
             createView("/users");
         });
     })
