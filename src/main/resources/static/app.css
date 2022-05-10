@@ -2,10 +2,13 @@
 #register-response {
     display: none
 }
-#register-form, #login-form {
+#register-form, #login-form, #create-listing-form {
     padding-left: 16px;
     margin-right: 5rem;
     margin-left: 5rem;
+}
+#create-listing-form {
+    width: 24.25rem;
 }
 .card {
     background-color: #777777 !important;
@@ -15,7 +18,7 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.set-up-card, .log-in-card {
+.set-up-card, .log-in-card, .create-listing-card {
     width: 45rem;
     align-items: center;
     justify-content: center;
@@ -24,26 +27,30 @@
 }
 
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>label{
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label{
     color: white;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
-#register-form>h1, #login-form>h1 {
+#register-form>h1, #login-form>h1, #create-listing-form>h1 {
     text-align: center;
 }
 
 
-.set-up-row, .log-in-row{
+.set-up-row, .log-in-row, .create-listing-row{
     align-items: center;
     justify-content: center;
 }
 
-#register-form>input, #login-form>input {
+#register-form>input, #login-form>input, #create-listing-form>input {
     border: none!important;
     border-radius: 5px;
     margin-bottom: 1rem;
+}
+
+#create-listing-form>textarea {
+    resize: none;
 }
 
 #register-btn {
@@ -52,8 +59,11 @@
 #login-btn {
     margin-left: 10.6rem;
 }
+#create-listing-btn {
+    margin-left: 18.2rem;
+}
 
-#register-btn, #login-btn {
+#register-btn, #login-btn, #create-listing-btn {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
@@ -73,9 +83,15 @@
 #login-form > label {
     width: 5rem;
 }
+#create-listing-form > label {
+    width: 9rem;
+}
 
 
 #register-form > input {
+    width: 15rem;
+}
+#create-listing-form {
     width: 15rem;
 }
 body {
