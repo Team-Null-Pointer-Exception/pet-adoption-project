@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import static com.example.petadoptionproject.data.User.Role.ADMIN;
+import static com.example.petadoptionproject.data.User.Role.USER;
 
 @CrossOrigin
 @RestController
@@ -40,7 +41,11 @@ public class ListingController {
         System.out.println(user);
         listing.setUser(user);
         listing.setCreatedAt(LocalDate.now());
-        listing.setStatus(Listing.Status.PENDING);
+        if(user.getRole().equals(USER)) {
+            listing.setStatus(Listing.Status.PENDING);
+        } else {
+            listing.setStatus(Listing.Status.ACTIVE);
+        }
         System.out.println(listing);
         listingRepository.save(listing);
     }
