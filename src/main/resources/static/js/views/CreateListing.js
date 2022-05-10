@@ -18,7 +18,7 @@ export default function CreateListing(props) {
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
                 </div>
                 <a href="" id="image_upload" data-link>Upload files</a>
-                
+              
                 <input id="create-listing-btn" type="submit" value="Submit"/>
             </form>
         </main>
@@ -34,7 +34,7 @@ export function CreateEvents(){
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
 let imageArray = []
 
-export function AddFileEvent(){
+function AddFileEvent(){
     $('#image_upload').click(function () {
         const client = filestack.init(apiKey);
         const options = {

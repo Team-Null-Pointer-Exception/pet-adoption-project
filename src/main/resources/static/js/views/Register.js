@@ -50,7 +50,9 @@ export default function Register(props) {
                     <br> 
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
-                    <br>                                                                                
+                    <br>   
+                    <a href="" id="profile_upload" data-link>Set Profile Picture</a>
+                    <br>                                                                             
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
 
@@ -62,7 +64,27 @@ export default function Register(props) {
 `;
 }
 
-export function RegisterEvent(){
+export function RegisterEvent() {
+    UploadEvent()
+    RegisterEventListener()
+}
+
+
+let imgURL = ""
+function UploadEvent() {
+    $('#profile_upload').click(function () {
+        const client = filestack.init(apiKey);
+        const options = {
+            onFileUploadFinished: callback => {
+                imgURL = callback.url
+            }
+        }
+        client.picker(options).open();
+    })
+}
+
+
+function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
         let password = $("#password").val()
         let confirmPassword = $("#confirmPassword").val()
@@ -78,7 +100,8 @@ export function RegisterEvent(){
                 city: $("#city").val(),
                 state: $("#state").val(),
                 zip: $("#zip").val(),
-                phone: $("#phone").val()
+                phone: $("#phone").val(),
+                profileImg: imgURL
             }
 
         let request = {
