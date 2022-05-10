@@ -37,7 +37,7 @@ export default function Navbar(props) {
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                     <a href="/index" class="nav-item nav-link active" data-link>Home</a>
                     <a href="/about" class="nav-item nav-link" data-link>About</a>
