@@ -1,8 +1,8 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import "../keys.js";
 
 export default function CreateListing(props) {
-    console.log("The frontend did it. HER FAULT");
     return `
         <header>
             <h1>Create Listing</h1>
@@ -17,11 +17,29 @@ export default function CreateListing(props) {
                     <label for="formGroupExampleInput2">Another label</label>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
                 </div>
+                <a href="" id="image_upload" data-link>Upload files</a>
+                
                 <input id="create-listing-btn" type="submit" value="Submit"/>
             </form>
         </main>
     `;
 }
+
+export function CreateEvents(){
+    CreateListing()
+    AddFileEvent()
+    CreateListingsEvent()
+}
+
+let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+
+export function AddFileEvent(){
+    $('#image_upload').click(function () {
+        const client = filestack.init(apiKey);
+        client.picker().open();
+    })
+}
+
 
 export function CreateListingsEvent(){
     $('#create-listing-btn').click(function () {
