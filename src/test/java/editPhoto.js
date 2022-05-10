@@ -33,6 +33,4 @@ $('#addPicture').click(function (event){
     // the picker method can take an argument of a options object
     // where you can specify what you want the picker to do
     client.picker(options).open();
-})
-
-;
+});
