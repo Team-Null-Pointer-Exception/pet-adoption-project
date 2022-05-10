@@ -10,6 +10,7 @@ import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
 import EditListing, {EditListingsEvent} from "./views/EditListing.js";
+import Admin, {AdminEvent} from "./views/Admin.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -53,6 +54,13 @@ export default function router(URI) {
             uri: '/users',
             title: 'User Profile',
             viewEvent: UsersEvent
+        },
+        '/admin': {
+            returnView: Admin,
+            state: {},
+            uri: '/admin',
+            title: 'Admin',
+            viewEvent: AdminEvent
         },
         '/listings': {
             returnView: ListingIndex,
