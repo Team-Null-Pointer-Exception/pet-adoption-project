@@ -7,11 +7,6 @@
 .jumbotron {
     margin-top: 5rem;
     color: #ED6436;
-    text-shadow: 1px 1px dimgray;
-}
-
-.jumbo-message {
-    text-shadow: 1px 1px dimgray;
 }
 
 #register-response {
@@ -169,7 +164,7 @@ nav .nav-link.active {
     }
 }
 .text-white {
-    color: #fff !important;
+    color: #fff;
 }
 
 @media (min-width: 992px) {
@@ -297,3 +292,34 @@ img {
     padding-left: 2rem;
     padding-right: 2rem;
 }
+
+.hero {
+    max-height:600px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.hero-text {
+    text-align: center;
+    margin-top: -20rem;
+    margin-bottom: 20rem;
+    z-index: 1;
+}
+
+
+.imageUploadToggle:hover,.imageUploadToggle:focus {
+    color: #ED6436!important;
+}
+
+textarea, select {
+    border-radius: 5px;
+}
+#create-listing-form>h1 {
+    margin-top: 2rem;
+}
+
+.browse-btn {
+    margin-left: 3rem;
+}
+

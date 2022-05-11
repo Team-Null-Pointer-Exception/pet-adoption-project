@@ -13,7 +13,7 @@ export default function CreateListing(props) {
             <body>
             <div class="row create-listing-row">
             <div class="card create-listing-card"> 
-                <form id="create-listing-form">
+                <form id="create-listing-form" name="create-listing-form">
                     <h1>Create A Listing</h1>
                     <label for="name">Name</label>
                     <input id="name" name="name" type="text"/>
@@ -51,7 +51,7 @@ export default function CreateListing(props) {
                     <label for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
                     <br>              
-                    <a href="" id="image_upload" class="text-white" data-link>Upload Image</a>                                                                         
+                    <p id="image_upload" class="text-white imageUploadToggle">Upload Image</p>                                                                      
                     <button id="create-listing-btn" type="button">Submit</button>
                 </form>
             </div>
@@ -61,18 +61,25 @@ export default function CreateListing(props) {
     `;
 }
 
-export function CreateEvents(){
+export function CreateEvents() {
     CreateListing();
+    fileStackSetUp()
     AddFileEvent();
     CreateListingsEvent()
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
 let imageArray = []
+let fileStackClient = null
+
+function fileStackSetUp() {
+    fileStackClient = filestack.init(apiKey);
+}
+
 
 function AddFileEvent(){
-    $('#image_upload').click(function () {
-        const client = filestack.init(apiKey);
+    $('#image_upload').click(function (event) {
+        event.preventDefault()
         const options = {
             onFileUploadFinished: callback => {
                 const imgURL = callback.url
@@ -80,7 +87,7 @@ function AddFileEvent(){
                 console.log(imageArray)
             }
         }
-        client.picker(options).open();
+        fileStackClient.picker(options).open();
     })
 }
 
