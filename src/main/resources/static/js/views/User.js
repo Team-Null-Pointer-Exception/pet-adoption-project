@@ -47,7 +47,7 @@ export default function UserIndex(props) {
                             </div>
                             <div class="col-lg-6">
                                 <div class="about-avatar">
-                                    <img id="profile_img" src="${props.user.profile_img}" title="" alt="">
+                                    <img id="profile_img" src="${props.user.profileImg}" title="" alt="">
                                 </div>
                             </div>
                         </div>
