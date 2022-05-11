@@ -37,7 +37,7 @@ export default function CreateListing(props) {
                     <input id="health" name="health" type="text"/>
                     <br>
                     <label for="fixed">Fixed</label>
-                    <select class="form-control" id="fixed">
+                    <select id="fixed">
                       <option>True</option>
                       <option>False</option>
                     </select>
