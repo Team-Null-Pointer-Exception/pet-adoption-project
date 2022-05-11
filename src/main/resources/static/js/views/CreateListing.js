@@ -31,7 +31,7 @@ export default function CreateListing(props) {
                     <input id="age" name="age" type="text"/>
                     <br>
                     <label for="sex">Sex</label>
-                    <select class="form-control" id="sex">
+                    <select id="sex">
                       <option>MALE</option>
                       <option>FEMALE</option>
                     </select>
