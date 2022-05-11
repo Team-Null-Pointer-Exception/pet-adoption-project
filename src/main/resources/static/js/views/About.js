@@ -6,7 +6,7 @@ export default function About(props) {
         </div>
         <div class="container-fluid bg-light aboutUs">
         <div class="container aboutText">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi incidunt nisi vitae! Eum iure praesentium sint vero. Cumque eius necessitatibus nobis tempora voluptate. Enim fugiat in inventore numquam Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto aspernatur, aut autem, commodi consequuntur earum illo ipsam iste labore libero modi nam numquam provident quis ratione, sapiente ullam Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet animi deleniti earum, inventore itaque iusto laudantium libero maiores molestiae, mollitia neque non rem repellat, repudiandae similique soluta ut veniam!</p>   
+            <p>Team Null Pointer Exception comprises four student programmers learning full stack web development in the Elixir cohort of Code Up. This website is our capstone project, which includes integrating chat, file hosting, and map APIs, writing our backend in Java, implementing Springboot, Spring Security, constructing our database,  design, and Agile methodology. Contact us below for more information and employment opportunities. We look forward to being the solution to your development needs.</p>   
             </div>
         </div>
 

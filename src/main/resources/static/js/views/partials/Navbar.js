@@ -12,7 +12,7 @@ export default function Navbar(props) {
                 </a>
             </div>
             <div class="col-lg-8 text-lg-right">
-                <div class="d-inline-flex align-items-center text-grey">
+                <div class="d-inline-flex align-items-center text-primary">
                     <div class="d-inline-flex flex-column text-center px-3 border-right">
                         <i class="fab fa-facebook-f"></i>
                     </div>
