@@ -1,3 +1,4 @@
+
 .bg-image {
     height: 450px;
     background-position: bottom;
@@ -7,11 +8,10 @@
 .jumbotron {
     margin-top: 5rem;
     color: #ED6436;
-    text-shadow: 1px 1px dimgray;
 }
 
 .jumbo-message {
-    text-shadow: 1px 1px dimgray;
+    text-shadow: 1px 1px gray;
 }
 
 #register-response {
