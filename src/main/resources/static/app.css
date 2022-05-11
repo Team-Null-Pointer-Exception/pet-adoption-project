@@ -84,7 +84,7 @@
     margin-left: 10.6rem;
 }
 #create-listing-btn {
-    margin-left: 18.2rem;
+    margin-left: 12.625rem;
 }
 
 #register-btn, #login-btn, #create-listing-btn {
@@ -112,11 +112,11 @@
 }
 
 
-#register-form > input {
+#register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select  {
     width: 15rem;
 }
 #create-listing-form {
-    width: 15rem;
+    width: 26rem;
 }
 body {
     margin: 0;
