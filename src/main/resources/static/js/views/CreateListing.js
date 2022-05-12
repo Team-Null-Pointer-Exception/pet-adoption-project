@@ -51,7 +51,7 @@ export default function CreateListing(props) {
                     <label for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
                     <br>              
-                    <p id="image_upload" class="text-white imageUploadToggle">Upload Image</p>                                                                      
+                    <button id="image_upload" type="button class="text-white imageUploadToggle">Uploads</button>                                                                      
                     <button id="create-listing-btn" type="button">Submit</button>
                 </form>
             </div>
@@ -94,11 +94,6 @@ function AddFileEvent(){
 
 function CreateListingsEvent(){
     $('#create-listing-btn').click(function () {
-        let images = []
-        for (let image of imageArray) {
-            image = {"images": image}
-            images.push(image)
-        }
         let newListing = {
             summary: $("#summary").val(),
             name: $("#name").val(),
@@ -110,7 +105,7 @@ function CreateListingsEvent(){
             description: $("#description").val(),
             fixed: $("#fixed").val(),
             health: $("#health").val(),
-            images: images
+            images: imageArray
         }
         console.log(newListing)
         let request = {

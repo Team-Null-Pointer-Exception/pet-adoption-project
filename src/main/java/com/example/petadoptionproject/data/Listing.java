@@ -70,7 +70,7 @@ public class Listing {
     private User user;
 
     @ElementCollection
-    private List<String> images;
+    private Collection<String> images;
 
 
 }

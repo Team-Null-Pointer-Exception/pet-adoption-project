@@ -15,6 +15,10 @@
 #register-response {
     display: none
 }
+#register-form {
+    display:inline;
+}
+
 #register-form, #login-form, #create-listing-form {
     padding-left: 16px;
     margin-right: 5rem;
@@ -85,7 +89,7 @@
     margin-left: 11.75rem;
 }
 
-#register-btn, #login-btn, #create-listing-btn, #profile_upload {
+#register-btn, #login-btn, #create-listing-btn, #profile_upload, #image_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
