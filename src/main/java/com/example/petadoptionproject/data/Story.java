@@ -1,5 +1,6 @@
 package com.example.petadoptionproject.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,8 +29,8 @@ public class Story {
     private LocalDate createdAt;
 
     @OneToOne
-    @JoinColumn(name = "listings_id")
-    private Listing listing;
+    @JsonIgnoreProperties({"stories"})
+    private User user;
 
     @NotNull
     @Enumerated(EnumType.STRING)

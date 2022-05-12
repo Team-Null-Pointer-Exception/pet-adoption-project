@@ -80,7 +80,7 @@
 }
 
 #register-btn {
-    margin-left: 18.2rem;
+    margin-left: 12rem;
 }
 #login-btn {
     margin-left: 10.6rem;
@@ -427,4 +427,17 @@ footer {
 
 .previewCard {
     width: 268px;
+}
+.newestpets, .testimonials {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.hiddenBrand {
+    margin-left: 1rem!important;
+}
+
+.storyCard{
+    height: 20rem;
+    width: 40rem;
 }

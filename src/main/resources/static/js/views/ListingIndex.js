@@ -118,7 +118,7 @@ function selectOther() {
 }
 
 
-function populateCards(animalListings) {
+ export function populateCards(animalListings) {
     //language=HTML
     return `
         ${animalListings.map(listing =>

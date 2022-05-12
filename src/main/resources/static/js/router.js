@@ -21,7 +21,10 @@ export default function router(URI) {
     const routes = {
         '/': {
             returnView: Home,
-            state: {},
+            state: {
+                listings: '/api/listings',
+                stories: '/api/users/story'
+            },
             uri: '/',
             title: 'Home',
         },

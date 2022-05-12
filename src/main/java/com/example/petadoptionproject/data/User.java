@@ -84,5 +84,10 @@ public class User {
     @Column
     private String profileImg;
 
+    @OneToOne(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    @ToString.Exclude
+    Story story;
+
 
 }

@@ -43,7 +43,62 @@ export default function Register(props) {
                     <input id="city" name="city" type="text"/>
                     <br>
                     <label for="state">State</label>
-                    <input id="state" name="state" type="text"/>
+                    <select id="state">
+                      <option>AL</option>
+                      <option>AS</option>
+                      <option>AR</option>
+                      <option>AZ</option>
+                      <option>CA</option>
+                      <option>CO</option>
+                      <option>DE</option>
+                      <option>DC</option>
+                      <option>FL</option>
+                      <option>GA</option>
+                      <option>GU</option>
+                      <option>HI</option>
+                      <option>IA</option>
+                      <option>ID</option>
+                      <option>IL</option>
+                      <option>IN</option>
+                      <option>KS</option>
+                      <option>KY</option>
+                      <option>LA</option>
+                      <option>MA</option>
+                      <option>MD</option>
+                      <option>ME</option>
+                      <option>MI</option>
+                      <option>MN</option>
+                      <option>MO</option>
+                      <option>MP</option>
+                      <option>MS</option>
+                      <option>MT</option>
+                      <option>NC</option>
+                      <option>ND</option>
+                      <option>NE</option>
+                      <option>NH</option>
+                      <option>NJ</option>
+                      <option>NM</option>
+                      <option>NV</option>
+                      <option>NY</option>
+                      <option>OH</option>
+                      <option>OK</option>
+                      <option>OR</option>
+                      <option>PA</option>
+                      <option>PR</option>
+                      <option>RI</option>
+                      <option>SC</option>
+                      <option>SD</option>
+                      <option>TN</option>
+                      <option>TX</option>
+                      <option>UT</option>
+                      <option>VA</option>
+                      <option>VI</option>
+                      <option>VT</option>
+                      <option>WA</option>
+                      <option>WI</option>
+                      <option>WV</option>
+                      <option>WY</option>
+                    </select>
                     <br>                      
                     <label for="zip">Zip Code</label>
                     <input id="zip" name="zip" type="text"/> 
@@ -51,8 +106,7 @@ export default function Register(props) {
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
                     <br>   
-                    <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>
-                    <br>                                                                             
+                    <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>                                                                        
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
 

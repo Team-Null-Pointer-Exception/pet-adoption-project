@@ -34,7 +34,7 @@ export default function Navbar(props) {
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Adoptions</h1>
+                <h1 class="m-0 display-5 text-capitalize text-white hiddenBrand"><span class="text-primary">Pet</span>Adoptions</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@ export default function Navbar(props) {
                 <li class="nav-item">
                 <a href="/messages" class="nav-link" data-link>Messages</a>
                 </ul>
-                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" onclick="window.localStorage.clear()" data-link>Logout</a>
+                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>
                 </div>
             </nav>
         </div>
