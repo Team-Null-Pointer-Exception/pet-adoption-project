@@ -20,10 +20,9 @@ function loadViewOnPageRequest() {
  */
 function addListenerToNavLinks() {
     document.addEventListener('click', e => {
-
-        // if((e.target).hasClass('allow')){
-        //     return;
-        // }
+        if (e.target.classList.contains('allow')) {
+            return
+        }
         if(e.target.matches('label')) {
             return;
         }
