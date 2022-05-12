@@ -9,5 +9,5 @@ export function LogoutEvents(){
     console.log("Calling LogoutEvent");
     window.localStorage.removeItem("access_token");
     window.localStorage.removeItem("refresh_token");
-    createView("/login");
+    createView("/home");
 }
