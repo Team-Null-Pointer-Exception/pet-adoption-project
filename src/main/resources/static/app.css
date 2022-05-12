@@ -1,12 +1,15 @@
 .bg-image {
-    height: 450px;
+    height: 400px;
     background-position: bottom;
     background-size: cover;
 }
 
 .jumbotron {
-    margin-top: 5rem;
     color: #ED6436;
+}
+
+#listings-heading {
+    font-size: 3em;
 }
 
 #register-response {
@@ -287,6 +290,13 @@ img {
 .about{
     margin-top: 4rem;
 }
+
+.card-img-top {
+    object-fit: cover;
+    height: 250px;
+    overflow: hidden;
+}
+
 .meetUs {
     margin-top: 3rem!important;
 }
