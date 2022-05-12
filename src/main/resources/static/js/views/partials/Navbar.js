@@ -42,7 +42,7 @@ export default function Navbar(props) {
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto py-0">
                 <li class="nav-item active">
-                    <a href="/" class="nav-link" data-link>Home</a>
+                    <a href="/" class="nav-link home" data-link>Home</a>
                     </li>
                     <li class="nav-item">
                     <a href="/about" class="nav-link" data-link>About</a>
