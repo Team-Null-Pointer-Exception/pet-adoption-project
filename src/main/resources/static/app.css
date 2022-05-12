@@ -153,7 +153,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     outline: none;
 }
 
-nav .nav-link.active {
+.navbar-toggler {
+    margin-right: 2rem;
+}
+
+nav .nav-link.active, .home {
     color: #181818;
     background: #ED6436;
 }
