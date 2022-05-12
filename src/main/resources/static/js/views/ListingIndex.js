@@ -132,11 +132,9 @@ function populateCards(animalListings) {
                                     <!-- Pet name-->
                                     <h5 class="fw-bolder">${listing.name}</h5>
                                     <!-- Breed-->
-                                    ${listing.breed}
+                                   <p>${listing.breed}</p>
+                                    <p>${listing.age}</p>
                                 </div>
-                            </div>
-                            <!-- View details-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-light">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                             </div>
                         </div>

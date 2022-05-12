@@ -301,7 +301,7 @@ img {
 
 .card-img-top {
     object-fit: cover;
-    height: 250px;
+    height: 275px;
     overflow: hidden;
 }
 
