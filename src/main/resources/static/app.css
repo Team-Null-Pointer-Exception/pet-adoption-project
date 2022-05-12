@@ -420,3 +420,7 @@ textarea, select {
 footer {
     margin-top: 4rem;
 }
+
+.previewCard {
+    width: 268px;
+}

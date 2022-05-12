@@ -71,7 +71,7 @@ export default function ListingIndex(props) {
                 <section class="py-0">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                             class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-s-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
                             ${populateCards(activeListings)}
                         </div>
                     </div>
@@ -123,7 +123,7 @@ function populateCards(animalListings) {
     return `
         ${animalListings.map(listing =>
                 `<div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card previewCard h-100">
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
