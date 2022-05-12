@@ -4,6 +4,13 @@ import {getHeaders} from "../auth.js";
 
 export default function UserIndex(props) {
 
+    // TODO: implement stories
+    // ${props.user.stories.map(story => `
+    //     <div class="user-stories row">
+    //         <div class="story-content col-8" data-id="${story.id}">Pet: ${story.content}</div>
+    // </div>
+    //     `).join('')}
+
     return `
     <!DOCTYPE html>
         <main>
@@ -59,15 +66,32 @@ export default function UserIndex(props) {
                     </div>
                 </section>
                 <section class="section listing-section" id="user-listing">
-                    <div>
-                        <h3 class="dark-color">Your Listings: </h3>
-                        ${props.user.listings.map(listing => `
-                            <p class="listings" data-id="${listing.id}">Pet: ${listing.name}</p>
-                        `).join('')}
+                    <div class="container">
+                        <div>
+                            <h3 class="dark-color">Your Listings: </h3>
+                            ${props.user.listings.map(listing => `
+                                <div class="user-listings row gray-bg">
+                                    <div class="listing-name col-8" data-id="${listing.id}">Pet: ${listing.name}</div>
+                                    <div class="listing-view col-1" data-id="${listing.id}">View</div>
+                                    <div class="listing-edit col-1" data-id="${listing.id}">Edit</div>
+                                    <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
+                        </div>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="edit-listing-btn">Edit An Existing Listing</button>
+                </section>
+                <section class="section story-section gray-bg" id="user-story">
+                    <div class="container">
+                        <div>
+                            <h3 class="dark-color">Your Stories: </h3>
+                        </div>
+                        <div>
+                            <textarea id="new-story" name="new-story" rows="4" placeholder="Tell your story"></textarea>
+                            <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -81,29 +105,37 @@ function newListingBtn(){
     })
 }
 
-function editListingBtn(){
-    $('#edit-listing-btn').click(function(){
+function viewListing(){
+    $('.listing-view').click(function(){
+        let id = this.getAttribute('data-id');
+        createView("/listings/{id}");
+    })
+}
+
+function editListing(){
+    $('.listing-edit').click(function(){
+        let id = this.getAttribute('data-id');
         createView("/edit")
     })
 }
 
 function deleteListing() {
-    $('.delete-post-btn').click(function () {
+    $('.listing-delete').click(function () {
 
-        let postId = this.getAttribute('data-id')
+        let id = this.getAttribute('data-id')
 
         let request = {
             method: "DELETE",
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/posts/${postId}`, request)
+        fetch(`http://localhost:8080/api/listings/${id}`, request)
             .then(res => {
                 console.log(res.status);
-                createView("/posts")
+                createView("/users")
             }).catch(error => {
-            console.log(error);
-            createView("/posts");
+                console.log(error);
+                createView("/users");
         });
 
     })
@@ -134,11 +166,37 @@ function editUser(){
 
 }
 
+function createStory() {
+    $('#new-story-btn').click(function () {
+
+        let newStory = $('#new-story').val();
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders(),
+            body: JSON.stringify(newStory)
+        }
+
+        fetch(`http://localhost:8080/api/users/story`, request)
+            .then(res => {
+                console.log(res.status);
+                createView("/users")
+            }).catch(error => {
+                console.log(error);
+                createView("/users");
+        });
+
+    })
+}
+
 export function UsersEvent(){
     newListingBtn();
+    viewListing();
+    editListing();
     deleteListing();
     editPassword();
     editUser();
+    createStory();
 }
 
 export function getUserRole() {
