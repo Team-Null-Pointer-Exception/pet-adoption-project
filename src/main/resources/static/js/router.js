@@ -1,5 +1,5 @@
 import Home from "./views/Home.js";
-import About, {AboutEvent} from "./views/About.js";
+import About from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
 import Login from "./views/Login.js";
@@ -11,6 +11,7 @@ import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateListingsEvent} from "./views/CreateListing.js";
 import EditListing, {EditListingsEvent} from "./views/EditListing.js";
 import Admin, {AdminEvent} from "./views/Admin.js";
+import {MessageEvent} from "./views/messeges.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -89,8 +90,7 @@ export default function router(URI) {
             returnView: About,
             state: {},
             uri: '/about',
-            title: 'About',
-            viewEvent: AboutEvent
+            title: 'About'
         },
         '/error': {
             returnView: Error404,
@@ -103,6 +103,15 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
+        },
+        '/messages': {
+            returnView: UserIndex,
+            state: {
+                user: '/api/users/me'
+            },
+            uri: location.pathname,
+            title: 'Loading...',
+            viewEvent: MessageEvent
         }
     };
 
