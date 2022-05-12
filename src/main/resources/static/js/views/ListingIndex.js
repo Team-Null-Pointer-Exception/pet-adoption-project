@@ -1,9 +1,10 @@
 import createView from "../createView.js";
-import {getHeaders} from "../auth.js";
+import {getHeaders, getUserRole} from "../auth.js";
 
 let allListings;
 
 export default function ListingIndex(props) {
+    console.log(getUserRole());
     allListings = props.listings;
     allListings.forEach(listing => {
         if (listing.breed === "") {
@@ -19,7 +20,7 @@ export default function ListingIndex(props) {
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
                 style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
         >
-            <h1 class="mb-3 h2 jumbotron">Available Adoptions</h1>
+            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>
 
             <p class="jumbo-message">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
@@ -28,6 +29,7 @@ export default function ListingIndex(props) {
             </p>
 
             <div class="py-5">
+                ${adminView()}
                 <div class="btn-group">
                     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Animal Type
@@ -56,11 +58,9 @@ export default function ListingIndex(props) {
                             aria-haspopup="true" aria-expanded="false">Distance from Me
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Within 10 Miles</a>
-                        <a class="dropdown-item" href="#">Within 50 Miles</a>
-                        <a class="dropdown-item" href="#">Over 50 Miles</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
+                        <a class="dropdown-item">Within 10 Miles</a>
+                        <a class="dropdown-item">Within 50 Miles</a>
+                        <a class="dropdown-item">Any Distance</a>
                     </div>
                 </div><!-- /btn-group -->
             </div>
@@ -86,13 +86,13 @@ export default function ListingIndex(props) {
 }
 
 export function ListingsEvent() {
-    selectAllAnimals();
+    selectAllListings();
     selectDogs();
     selectCats();
     selectOther();
 }
 
-function selectAllAnimals() {
+function selectAllListings() {
     $("#all-animals").click(function () {
         const activeListings = allListings.filter(listing => listing.status === "ACTIVE");
         return $("#listing-cards").html(populateCards(activeListings));
@@ -122,7 +122,6 @@ function selectOther() {
 
 
 function populateCards(animalListings) {
-    console.log(animalListings);
     //language=HTML
     return `
         ${animalListings.map(listing =>
@@ -145,4 +144,28 @@ function populateCards(animalListings) {
                             </div>
                         </div>
                     </div>`).join('')}`
+}
+
+function adminView() {
+    if (!getUserRole()) {
+        return "";
+    } else {
+        //language=HTML
+        return `
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Listing Status
+                </button>
+                <div class="dropdown-menu">
+                    <a id="all-listings" class="dropdown-item">All</a>
+                    <div class="dropdown-divider"></div>
+                    <a id="pending" class="dropdown-item">Pending</a>
+                    <a id="active" class="dropdown-item">Active</a>
+                    <a id="closed" class="dropdown-item">Closed</a>
+                    <a id="expired" class="dropdown-item">Expired</a>
+                </div>
+            </div>
+        `;
+    }
+
 }
