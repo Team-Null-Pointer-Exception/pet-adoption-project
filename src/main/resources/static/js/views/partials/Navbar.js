@@ -40,37 +40,49 @@ export default function Navbar(props) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a href="/" class="nav-item nav-link active" data-link>Home</a>
-                    <a href="/about" class="nav-item nav-link" data-link>About</a>
-                    <a href="/listings" class="nav-item nav-link" data-link>Listings</a>
+                <ul class="navbar-nav mr-auto py-0">
+                <li class="nav-item active">
+                    <a href="/" class="nav-link" data-link>Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="/about" class="nav-link" data-link>About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="/listings" class="nav-link" data-link>Listings</a>
+                    </li>
                    
         `
     if(loggedIn && getUserRole() === "ADMIN") {
         html +=
-            '<a href="/admin" class="nav-item nav-link" data-link>Admin</a>'
+            '<li class="nav-item"><a href="/admin" class="nav-link" data-link>Admin</a></li>'
     }
 
 
     if (loggedIn){
-        html += `
-                <a href="/users" class="nav-item nav-link" data-link>User Profile</a>
-                <a href="/messages" class="nav-item nav-link" data-link>Messages</a>
-                            </div>
+        html += `<li class="nav-item">
+                <a href="/users" class="nav-link" data-link>User Profile</a>
+                </li>
+                <li class="nav-item">
+                <a href="/messages" class="nav-link" data-link>Messages</a>
+                </ul>
                 <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" onclick="window.localStorage.clear()" data-link>Logout</a>
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </div>
     </div>
             `
     }
 
     if (!loggedIn){
         html += `
-              <a href="/register" class="nav-item nav-link" data-link>Register</a>
-                            </div>
-                    <a href="/login" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Login</a>
+            <li class="nav-item"> 
+              <a href="/register" class="nav-link" data-link>Register</a>
+              </li>
+              </ul> 
+            <a href="/login" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Login</a>                 
             </div>
         </nav>
+    </div>
     </div>
             `
     }
