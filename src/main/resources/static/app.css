@@ -85,7 +85,7 @@
     margin-left: 11.75rem;
 }
 
-#register-btn, #login-btn, #create-listing-btn {
+#register-btn, #login-btn, #create-listing-btn, #profile_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
@@ -95,7 +95,7 @@
     color: white;
 }
 
-#register-response,#login-response {
+#register-response, #login-response {
     color: white;
     display: none;
 }
@@ -325,10 +325,6 @@ img {
 }
 
 
-.imageUploadToggle:hover,.imageUploadToggle:focus {
-    color: #ED6436!important;
-}
-
 textarea, select {
     border-radius: 5px;
 }
@@ -405,6 +401,10 @@ textarea, select {
 .about-list p {
     margin: 0;
     font-size: 15px;
+}
+
+#register-form>h1 {
+    margin-top: 2rem;
 }
 
 @media (max-width: 991px) {
