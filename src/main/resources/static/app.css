@@ -428,7 +428,7 @@ footer {
 .previewCard {
     width: 268px;
 }
-.newestpets, .testimonials {
+.newestpets {
     margin-top: 2rem;
     text-align: center;
 }
@@ -439,5 +439,10 @@ footer {
 
 .storyCard{
     height: 20rem;
-    width: 40rem;
+    width: 25rem;
+}
+
+.storiesHeader {
+    text-align: center;
+    margin-bottom: 2rem;
 }

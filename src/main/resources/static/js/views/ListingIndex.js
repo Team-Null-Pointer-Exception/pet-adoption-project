@@ -160,7 +160,7 @@ export function populateCards(filteredListings) {
         `<div class="col mb-5">
                         <div class="card h-100">
                             <!-- Pet image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
                             <div class="card-body p-4 bg-light">
                                 <div class="text-center">

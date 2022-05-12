@@ -62,22 +62,6 @@ public class UserController {
         usersRepository.save(user);
     }
 
-    @PutMapping("/story")
-    public void createStory(@RequestBody Story story, OAuth2Authentication auth) {
-        String userToUpdate = auth.getName();
-        User updatedUser = usersRepository.findByEmail(userToUpdate);
-        story.setUser(updatedUser);
-        story.setCreatedAt(LocalDate.now());
-        if(updatedUser.getRole().equals(USER)) {
-            story.setStatus(Story.Status.PENDING);
-        } else {
-            story.setStatus(Story.Status.ACTIVE);
-        }
-        storiesRepository.save(story);
-    }
-
-
-
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable Long id){
         usersRepository.deleteById(id);

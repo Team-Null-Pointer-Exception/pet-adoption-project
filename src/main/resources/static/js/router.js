@@ -23,7 +23,7 @@ export default function router(URI) {
             returnView: Home,
             state: {
                 listings: '/api/listings',
-                stories: '/api/users/story'
+                stories: '/api/stories'
             },
             uri: '/',
             title: 'Home',
@@ -47,7 +47,7 @@ export default function router(URI) {
             state: {},
             uri: '/register',
             title: 'Register',
-            viewEvent: RegisterEvent // User Register callback
+            viewEvent: RegisterEvent
         },
         '/users': {
             returnView: UserIndex,
@@ -111,4 +111,4 @@ export default function router(URI) {
     return routes[URI];
 }
 
-// TODO: ADMIN & MESSAGING views
+// TODO: ADMIN

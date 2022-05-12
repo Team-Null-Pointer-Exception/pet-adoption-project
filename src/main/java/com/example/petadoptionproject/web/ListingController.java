@@ -54,7 +54,6 @@ public class ListingController {
     public void updateListing(@PathVariable long id, @RequestBody Listing listing, OAuth2Authentication auth) {
         String email = auth.getName();
         Listing listingToUpdate = listingRepository.getById(id);
-
         // update with parts that are updatable from listing
 
         listingRepository.save(listingToUpdate);

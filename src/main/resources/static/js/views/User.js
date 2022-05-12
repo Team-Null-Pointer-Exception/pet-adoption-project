@@ -172,12 +172,12 @@ function createStory() {
         let newStory = $('#new-story').val();
 
         let request = {
-            method: "PUT",
+            method: "POST",
             headers: getHeaders(),
             body: JSON.stringify(newStory)
         }
 
-        fetch(`http://localhost:8080/api/users/story`, request)
+        fetch(`http://localhost:8080/api/stories`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")

@@ -5,9 +5,10 @@ export default function Home(props) {
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
     let mostRecentListings = [recentListings[0],recentListings[1], recentListings[2], recentListings[3]]
-    let activeStories = props.stories.filter(listing => listing.status === "ACTIVE");
+    let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
     let mostRecentStories = [recentStories[0],recentStories[1], recentStories[2], recentStories[3]]
+    console.log(mostRecentStories)
     return `
 <div class="container-fluid p-0">
     <img class="d-block w-100 hero" src="images/IMG_0339.jpeg" alt="girl with horse">
@@ -30,11 +31,13 @@ export default function Home(props) {
                         </div>
                     </div>
 </div>
-<div>
-                        <h1 class="display-5 text-primary testimonials"><span class="text-black">Testim</span>onials</h1>
-                        <section class="testimonial-section gray-bg">
-                        <div id="testimonials" class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-s-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
-                        ${populateStoryCards(mostRecentStories)}
+<section class="story-section gray-bg">
+<div class="container px-4 px-lg-5 mt-5">
+                        <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
+                        
+                        <div id="stories" class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-lg-2 justify-content-center">
+                        ${populateStoryCards(mostRecentStories)}</div>
+                        
 </div>
 </section>
     `;
@@ -49,18 +52,22 @@ function changeHref(){
     }
 }
 
+
 function populateStoryCards(stories){
+    console.log(stories)
     return `
         ${stories.map(story =>
         `<div class="col mb-5">
-                        <div class="card storyCard">                         
-                            <img class="card-img-left" src=${story.user.profileImg} alt="user image" />
+                        <div class="card storyCard">
+                            <img class="card-img-left" src="" alt="user image" />
                             <div class="card-body p-4 bg-white">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">${story.user.username}</h5>
-                                   <p>${story.content}</p>
+                                    <h5 class="fw-bolder"></h5>
+                                   <p></p>
                                 </div>
                             </div>
                         </div>
                     </div>`).join('')}`
 }
+
+
