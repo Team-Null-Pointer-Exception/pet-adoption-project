@@ -340,8 +340,9 @@ textarea, select {
     margin-left: 3rem;
 }
 
+/*User View*/
 .section {
-    padding: 100px 0;
+    padding: 3rem 0;
     position: relative;
 }
 .gray-bg {
@@ -356,14 +357,17 @@ textarea, select {
 }
 /* About Me
 ---------------------*/
-.about-text h3 {
+.about-text h3, .listing-section h3, .story-section h3 {
     color: #ED6436;
     font-size: 45px;
     font-weight: 700;
     margin: 0 0 6px;
 }
 @media (max-width: 767px) {
-    .about-text h3 {
+    .section {
+        padding: 1rem 0;
+    }
+    .about-text h3, .listing-section h3, .story-section h3 {
         font-size: 35px;
     }
 }
@@ -385,23 +389,6 @@ textarea, select {
     margin: 0;
     position: relative;
 }
-.about-list label:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 11px;
-    width: 1px;
-    height: 12px;
-    background: #ED6436;
-    -moz-transform: rotate(15deg);
-    -o-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    -webkit-transform: rotate(15deg);
-    transform: rotate(15deg);
-    margin: auto;
-    opacity: 0.5;
-}
 .about-list p {
     margin: 0;
     font-size: 15px;
@@ -419,6 +406,23 @@ textarea, select {
 
 footer {
     margin-top: 4rem;
+}
+/*User Listings*/
+.user-listings {
+    padding-top: .25em;
+    padding-bottom: .25em;
+    margin-bottom: 0.5em;
+}
+.listing-view, .listing-edit, .listing-delete {
+    text-decoration: underline;
+}
+.listing-view:hover, .listing-edit:hover, .listing-delete:hover {
+    color: #ED6436;
+}
+/*User Stories*/
+#new-story {
+    width: 20rem;
+    resize: none;
 }
 
 .previewCard {
