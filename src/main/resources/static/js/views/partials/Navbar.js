@@ -36,10 +36,10 @@ export default function Navbar(props) {
             <a href="" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Adoptions</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="collapse navbar-collapse justify-content-between allow" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto py-0">
                 <li class="nav-item active">
                     <a href="/" class="nav-link home" data-link>Home</a>

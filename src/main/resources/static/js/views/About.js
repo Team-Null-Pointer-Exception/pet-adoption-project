@@ -1,6 +1,6 @@
 export default function About(props) {
     return `
-<div class="container mt-5 pt-5 pb-3">
+<div class="container mt-5 pb-3">
         <div class="d-flex flex-column text-center mb-5">
             <h1 class="display-4 m-0 text-black about">About <span class="text-primary">Us</span></h1>
         </div>
@@ -21,10 +21,10 @@ export default function About(props) {
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Patrick Quilty</h5>
                             <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>
                         </div>
                         </div>
                     </div>

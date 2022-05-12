@@ -10,7 +10,7 @@ export default function init() {
  */
 function loadViewOnPageRequest() {
     window.addEventListener('DOMContentLoaded', function() {
-        //TODO: Switched to location.pathname so the route would be accurate to current view
+
         createView(location.pathname);
     });
 }
@@ -22,7 +22,7 @@ function addListenerToNavLinks() {
     document.addEventListener('click', e => {
         // we want checkboxes and labels to keep their default behavior when clicked
         // and not prevent the default
-        if(e.target.type && e.target.type === "checkbox") {
+        if(e.target.hasClass('allow')){
             return;
         }
         if(e.target.matches('label')) {
