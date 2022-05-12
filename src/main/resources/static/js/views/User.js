@@ -5,11 +5,17 @@ import {getHeaders} from "../auth.js";
 export default function UserIndex(props) {
 
     return `
+    <!DOCTYPE html>
         <main>
             <div class="container-fluid">
                 <section class="section about-section gray-bg" id="about">
                     <div class="container">
                         <div class="row align-items-center flex-row-reverse">
+                            <div class="col-lg-6">
+                                <div class="about-avatar">
+                                    <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
+                                </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="about-text go-to">
                                     <h3 class="dark-color">User Profile</h3>
@@ -45,17 +51,25 @@ export default function UserIndex(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="about-avatar">
-                                    <img id="profile_img" src="${props.user.profileImg}" title="" alt="">
-                                </div>
-                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
                         </div>
                     </div>
                 </section>
-
-                <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
-                <button type="button" class="btn btn-primary btn-sm" id="edit-listing-btn">Edit An Existing Listing</button>
+                <section class="section listing-section" id="user-listing">
+                    <div>
+                        <h3 class="dark-color">Your Listings: </h3>
+                        ${props.user.listings.map(listing => `
+                            <p class="listings" data-id="${listing.id}">Pet: ${listing.name}</p>
+                        `).join('')}
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="edit-listing-btn">Edit An Existing Listing</button>
+                    </div>
+                </section>
             </div>
         </main>
     `;
