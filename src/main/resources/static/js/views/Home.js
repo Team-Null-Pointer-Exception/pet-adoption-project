@@ -60,11 +60,11 @@ function populateStoryCards(stories){
         ${stories.map(story =>
         `<div class="col mb-5">
                         <div class="card storyCard">
-                            <img class="card-img-left" src="" alt="user image" />
+                            <img class="card-img storyImg" src=${story.user.profileImg} alt="user image" />
                             <div class="card-body p-4 bg-white">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder"></h5>
-                                   <p></p>
+                                    <h5 class="fw-bolder storyName">${story.user.username} writes:</h5>
+                                   <p class="storyContent">${story.content}</p>
                                 </div>
                             </div>
                         </div>
