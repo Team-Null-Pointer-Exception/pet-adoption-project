@@ -7,8 +7,9 @@ export default function Home(props) {
     let mostRecentListings = [recentListings[0],recentListings[1], recentListings[2], recentListings[3]]
     let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
-    let mostRecentStories = [recentStories[0],recentStories[1], recentStories[2], recentStories[3]]
-    console.log(mostRecentStories)
+    if (recentStories.length >= 4) {
+        recentStories = [recentStories[0], recentStories[1], recentStories[2], recentStories[3]]
+    }
     return `
 <div class="container-fluid p-0">
     <img class="d-block w-100 hero" src="images/IMG_0339.jpeg" alt="girl with horse">
@@ -35,7 +36,7 @@ export default function Home(props) {
 <div class="container px-4 px-lg-5 mt-5">
                         <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
                         <div id="stories" class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-lg-2 justify-content-center">
-                        ${populateStoryCards(mostRecentStories)}
+                        ${populateStoryCards(recentStories)}
                         </div>
                         
 </div>
