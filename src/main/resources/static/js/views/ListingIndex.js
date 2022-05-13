@@ -73,7 +73,7 @@ export default function ListingIndex(props) {
 }
 
 function adminMenu() {
-    if (getUserRole()) {
+    if (!getUserRole()) {
         return "";
     } else {
         //language=HTML
@@ -97,13 +97,16 @@ export function ListingsEvent() {
 }
 
 function grabSelections() {
-    listingStatus = $("#listing-status").val().toLowerCase();
+    if (getUserRole()) {
+        listingStatus = $("#listing-status").val().toLowerCase();
+    }
     animalType = $("#animal-type").val().toLowerCase();
     gender = $("#gender").val().toLowerCase();
     distance = $("#distance").val().toLowerCase();
 }
 
 function filterSelections() {
+    let filteredListings;
 
     $("#listing-status, #animal-type, #gender, #distance").change(function () {
         grabSelections();
@@ -112,7 +115,6 @@ function filterSelections() {
         console.log(gender);
         console.log(distance);
 
-        let filteredListings;
         if (listingStatus === "active") {
             filteredListings = activeListings;
         } else if (listingStatus === "pending") {
@@ -164,12 +166,13 @@ export function populateCards(filteredListings) {
                                     <!-- Pet name-->
                                     <h5 class="fw-bolder">${listing.name}</h5>
                                     <!-- Breed-->
-                                    ${listing.breed}
+                                    ${listing.breed}<br>
+                                    ${listing.age} / ${listing.sex.toLowerCase()}
                                 </div>
                             </div>
                             <!-- View details-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a id="details-btn" class="btn btn-outline-dark mt-auto" data-id="${listing.id}" href="#">View Details</a></div>
                             </div>
                         </div>
                     </div>`).join('')}`
