@@ -56,6 +56,7 @@ public class ListingController {
     public void updateListing(@PathVariable long id, @RequestBody Listing newListing, OAuth2Authentication auth) {
         String email = auth.getName();
         Listing listingToUpdate = listingRepository.getById(id);
+<<<<<<< HEAD
         listingToUpdate.setSummary(newListing.getSummary());
         listingToUpdate.setName(newListing.getName());
         listingToUpdate.setAnimal(newListing.getAnimal());
@@ -67,6 +68,10 @@ public class ListingController {
         listingToUpdate.setFixed(newListing.isFixed());
         listingToUpdate.setHealth(newListing.getHealth());
         listingToUpdate.setImages(newListing.getImages());
+=======
+        // update with parts that are updatable from listing
+
+>>>>>>> b5986d3e14bd2c98e6cb1be9ac9b2302646852d8
         listingRepository.save(listingToUpdate);
         }
 

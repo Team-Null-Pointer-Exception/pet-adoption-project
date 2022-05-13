@@ -1,8 +1,7 @@
 package com.example.petadoptionproject.web;
 
 
-import com.example.petadoptionproject.data.User;
-import com.example.petadoptionproject.data.UsersRepository;
+import com.example.petadoptionproject.data.*;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +11,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
+import static com.example.petadoptionproject.data.User.Role.USER;
+
 @AllArgsConstructor
 @CrossOrigin
 @RestController
@@ -20,6 +21,7 @@ public class UserController {
 
     private UsersRepository usersRepository;
     private PasswordEncoder passwordEncoder;
+    private StoriesRepository storiesRepository;
 
     @GetMapping
     public Collection<User> getUsers() {
@@ -60,7 +62,6 @@ public class UserController {
         usersRepository.save(user);
     }
 
-
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable Long id){
         usersRepository.deleteById(id);
@@ -76,6 +77,11 @@ public class UserController {
         updatedUser.setPassword(encryptedPassword);
         usersRepository.save(updatedUser);
     }
+
+
+
+
+
 }
 
 

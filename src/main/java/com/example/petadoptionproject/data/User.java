@@ -1,5 +1,6 @@
 package com.example.petadoptionproject.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -61,7 +62,7 @@ public class User {
     @NotEmpty
     private String email;
 
-    //    @JsonIgnore
+    @JsonIgnore
     @ToString.Exclude
     private String password;
 
@@ -84,5 +85,8 @@ public class User {
     @Column
     private String profileImg;
 
-
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    @ToString.Exclude
+    Collection<Story> stories;
 }

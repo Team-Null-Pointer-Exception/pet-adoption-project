@@ -21,7 +21,10 @@ export default function router(URI) {
     const routes = {
         '/': {
             returnView: Home,
-            state: {},
+            state: {
+                listings: '/api/listings',
+                stories: '/api/stories'
+            },
             uri: '/',
             title: 'Home',
         },
@@ -44,7 +47,7 @@ export default function router(URI) {
             state: {},
             uri: '/register',
             title: 'Register',
-            viewEvent: RegisterEvent // User Register callback
+            viewEvent: RegisterEvent
         },
         '/users': {
             returnView: UserIndex,
@@ -108,4 +111,4 @@ export default function router(URI) {
     return routes[URI];
 }
 
-// TODO: ADMIN & MESSAGING views
+// TODO: ADMIN
