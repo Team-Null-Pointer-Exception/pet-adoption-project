@@ -9,7 +9,7 @@ import ListingIndex, {ListingsEvent} from "./views/ListingIndex.js";
 import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
-import EditListing, {EditListingsEvent} from "./views/EditListing.js";
+import EditListing, {EditEvents} from "./views/EditListing.js";
 import Admin, {AdminEvent} from "./views/Admin.js";
 
 /**
@@ -83,7 +83,7 @@ export default function router(URI) {
             state: {},
             uri: '/edit',
             title: 'Edit Listing',
-            viewEvent: EditListingsEvent
+            viewEvent: EditEvents
         },
         '/about': {
             returnView: About,

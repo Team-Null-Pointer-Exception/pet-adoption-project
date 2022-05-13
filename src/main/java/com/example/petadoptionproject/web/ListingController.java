@@ -50,13 +50,23 @@ public class ListingController {
         listingRepository.save(listing);
     }
 
+
     @PutMapping("/edit/{id}")
-    public void updateListing(@PathVariable long id, @RequestBody Listing listing, OAuth2Authentication auth) {
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
+    public void updateListing(@PathVariable long id, @RequestBody Listing newListing, OAuth2Authentication auth) {
         String email = auth.getName();
         Listing listingToUpdate = listingRepository.getById(id);
-
-        // update with parts that are updatable from listing
-
+        listingToUpdate.setSummary(newListing.getSummary());
+        listingToUpdate.setName(newListing.getName());
+        listingToUpdate.setAnimal(newListing.getAnimal());
+        listingToUpdate.setBreed(newListing.getBreed());
+        listingToUpdate.setSex(newListing.getSex());
+        listingToUpdate.setAge(newListing.getAge());
+        listingToUpdate.setColor(newListing.getColor());
+        listingToUpdate.setDescription(newListing.getDescription());
+        listingToUpdate.setFixed(newListing.isFixed());
+        listingToUpdate.setHealth(newListing.getHealth());
+        listingToUpdate.setImages(newListing.getImages());
         listingRepository.save(listingToUpdate);
         }
 

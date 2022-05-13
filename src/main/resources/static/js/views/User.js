@@ -137,6 +137,7 @@ function editUser(){
 export function UsersEvent(){
     newListingBtn();
     deleteListing();
+    editListingBtn()
     editPassword();
     editUser();
 }
