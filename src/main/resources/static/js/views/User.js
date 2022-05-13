@@ -59,6 +59,111 @@ export default function UserIndex(props) {
                                 </div>
                             </div>
                         </div>
+                        <div class="row" id="edit-profile-info">
+                            <form id="edit-profile-form">
+                                <div class="col-md-6 edit-profile-col" id="edit-profile-1">
+                                    <div class="media">
+                                        <label for="edit-firstName">First Name</label>
+                                        <input id="edit-firstName" name="edit-firstName" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-username">Username</label>
+                                        <input id="edit-username" name="edit-username" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-email">Email</label>
+                                        <input id="edit-email" name="edit-email" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-phone">Phone Number</label>
+                                        <input id="edit-phone" name="edit-phone" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-organization">Organization</label>
+                                        <input id="edit-organization" name="edit-organization" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 edit-profile-col" id="edit-profile-2">
+                                    <div class="media">
+                                        <label for="edit-lastName">Last Name</label>
+                                        <input id="edit-lastName" name="edit-lastName" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-street">Street Address</label>
+                                        <input id="edit-street" name="edit-street" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-city">City</label>
+                                        <input id="edit-city" name="edit-city" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-state">State</label>
+                                        <select id="edit-state">
+                                          <option>AL</option>
+                                          <option>AS</option>
+                                          <option>AR</option>
+                                          <option>AZ</option>
+                                          <option>CA</option>
+                                          <option>CO</option>
+                                          <option>DE</option>
+                                          <option>DC</option>
+                                          <option>FL</option>
+                                          <option>GA</option>
+                                          <option>GU</option>
+                                          <option>HI</option>
+                                          <option>IA</option>
+                                          <option>ID</option>
+                                          <option>IL</option>
+                                          <option>IN</option>
+                                          <option>KS</option>
+                                          <option>KY</option>
+                                          <option>LA</option>
+                                          <option>MA</option>
+                                          <option>MD</option>
+                                          <option>ME</option>
+                                          <option>MI</option>
+                                          <option>MN</option>
+                                          <option>MO</option>
+                                          <option>MP</option>
+                                          <option>MS</option>
+                                          <option>MT</option>
+                                          <option>NC</option>
+                                          <option>ND</option>
+                                          <option>NE</option>
+                                          <option>NH</option>
+                                          <option>NJ</option>
+                                          <option>NM</option>
+                                          <option>NV</option>
+                                          <option>NY</option>
+                                          <option>OH</option>
+                                          <option>OK</option>
+                                          <option>OR</option>
+                                          <option>PA</option>
+                                          <option>PR</option>
+                                          <option>RI</option>
+                                          <option>SC</option>
+                                          <option>SD</option>
+                                          <option>TN</option>
+                                          <option>TX</option>
+                                          <option>UT</option>
+                                          <option>VA</option>
+                                          <option>VI</option>
+                                          <option>VT</option>
+                                          <option>WA</option>
+                                          <option>WI</option>
+                                          <option>WV</option>
+                                          <option>WY</option>
+                                        </select>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-zip">Zip Code</label>
+                                        <input id="edit-zip" name="edit-zip" type="text"/>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
+                                <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
+                            </form>
+                        </div>
                         <div>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
