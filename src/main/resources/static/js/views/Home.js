@@ -4,7 +4,9 @@ import {populateCards} from "./ListingIndex.js";
 export default function Home(props) {
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
-    let mostRecentListings = [recentListings[0],recentListings[1], recentListings[2], recentListings[3]]
+    if (recentListings.length >= 3) {
+        recentListings = [recentListings[0], recentListings[1], recentListings[2], recentListings[3]]
+    }
     let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
     if (recentStories.length >= 3) {
@@ -24,7 +26,7 @@ export default function Home(props) {
                         <div class="container px-4 px-lg-5 mt-5">
                         <div id="recent-listing-cards"
                              class="row gx-5 row-cols-xs-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
-                            ${populateCards(mostRecentListings)}
+                            ${populateCards(recentListings)}
                         </div>
                     </div>
 </div>

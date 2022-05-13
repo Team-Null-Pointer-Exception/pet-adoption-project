@@ -170,11 +170,6 @@ export function populateCards(filteredListings) {
                                     ${listing.breed}
                                 </div>
                             </div>
-                            <!-- View details-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
                     </div>`).join('')}`
 }
 
