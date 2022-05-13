@@ -69,6 +69,7 @@ public class ListingController {
         listingToUpdate.setHealth(newListing.getHealth());
         listingToUpdate.setImages(newListing.getImages());
 
+
         // update with parts that are updatable from listing
 
 

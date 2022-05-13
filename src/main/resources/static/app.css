@@ -19,12 +19,12 @@
     display:inline;
 }
 
-#register-form, #login-form, #create-listing-form {
+#register-form, #login-form, #create-listing-form, #edit-listing-form {
     padding-left: 16px;
     margin-right: 5rem;
     margin-left: 5rem;
 }
-#create-listing-form {
+#create-listing-form, #edit-listing-form {
     width: 24.25rem;
 }
 .card {
@@ -35,7 +35,7 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.set-up-card, .log-in-card, .create-listing-card {
+.set-up-card, .log-in-card, .create-listing-card, .edit-listing-card {
     width: 45rem;
     align-items: center;
     justify-content: center;
@@ -53,29 +53,25 @@
 }
 
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label{
-    color: white;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
 
 #register-form>h1, #login-form>h1, #create-listing-form>h1 {
     text-align: center;
 }
 
 
-.set-up-row, .log-in-row, .create-listing-row{
+.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row{
     align-items: center;
     justify-content: center;
 }
 
-#register-form>input, #login-form>input, #create-listing-form>input {
+#register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input {
     border: none!important;
     border-radius: 5px;
     margin-bottom: 1rem;
 }
 
-#create-listing-form>textarea {
+#create-listing-form>textarea, #edit-listing-form>textarea {
     resize: none;
 }
 
@@ -88,8 +84,11 @@
 #create-listing-btn {
     margin-left: 11.75rem;
 }
+#edit-listing-btn {
+    margin-left: 11.75rem;
+}
 
-#register-btn, #login-btn, #create-listing-btn, #profile_upload, #image_upload {
+#register-btn, #login-btn, #create-listing-btn, #edit-listing-btn, #profile_upload, #image_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
@@ -117,11 +116,19 @@
     width: 9rem;
 }
 
+#edit-listing-form > label {
+    width: 9rem;
+}
+#edit-listing-form > p {
+    display:inline;
+    width: 9rem;
+}
 
-#register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select  {
+
+#register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
     width: 15rem;
 }
-#create-listing-form {
+#create-listing-form, #edit-listing-form {
     width: 26rem;
 }
 body {
@@ -333,6 +340,10 @@ textarea, select {
     border-radius: 5px;
 }
 #create-listing-form>h1 {
+    margin-top: 2rem;
+}
+
+#edit-listing-form>h1 {
     margin-top: 2rem;
 }
 
