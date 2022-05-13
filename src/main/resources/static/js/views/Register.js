@@ -14,7 +14,7 @@ export default function Register(props) {
             <div class="row set-up-row">
             <div class="card set-up-card"> 
                 <form id="register-form">
-                    <h1>Register</h1>
+                    <h1 class="text-white">Register</h1>
                     <label for="username">Username</label>
                     <input id="username" name="username" type="text"/>
                     <br>

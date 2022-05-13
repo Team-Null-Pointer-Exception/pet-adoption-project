@@ -10,7 +10,7 @@ export default function Login(props) {
 <div class="row log-in-row">
 <div class="card log-in-card"> 
 <form id="login-form">
-<h1>Log In</h1>
+<h1 class="text-white">Log In</h1>
     <label for="username">Email</label>
     <input id="username" name="username" type="text"/>
     <br>
