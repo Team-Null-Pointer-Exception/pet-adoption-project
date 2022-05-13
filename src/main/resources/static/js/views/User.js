@@ -59,6 +59,124 @@ export default function UserIndex(props) {
                                 </div>
                             </div>
                         </div>
+                        <div id="edit-profile-info">
+                            <form class="row" id="edit-profile-form">
+                                <div class="col-md-6 edit-profile-col" id="edit-profile-1">
+                                    <div class="media">
+                                        <label for="edit-firstName">First Name</label>
+                                        <input id="edit-firstName" name="edit-firstName" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-username">Username</label>
+                                        <input id="edit-username" name="edit-username" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-email">Email</label>
+                                        <input id="edit-email" name="edit-email" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-phone">Phone Number</label>
+                                        <input id="edit-phone" name="edit-phone" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-organization">Organization</label>
+                                        <input id="edit-organization" name="edit-organization" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 edit-profile-col" id="edit-profile-2">
+                                    <div class="media">
+                                        <label for="edit-lastName">Last Name</label>
+                                        <input id="edit-lastName" name="edit-lastName" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-street">Street Address</label>
+                                        <input id="edit-street" name="edit-street" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-city">City</label>
+                                        <input id="edit-city" name="edit-city" type="text"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-state">State</label>
+                                        <select id="edit-state">
+                                          <option>AL</option>
+                                          <option>AS</option>
+                                          <option>AR</option>
+                                          <option>AZ</option>
+                                          <option>CA</option>
+                                          <option>CO</option>
+                                          <option>DE</option>
+                                          <option>DC</option>
+                                          <option>FL</option>
+                                          <option>GA</option>
+                                          <option>GU</option>
+                                          <option>HI</option>
+                                          <option>IA</option>
+                                          <option>ID</option>
+                                          <option>IL</option>
+                                          <option>IN</option>
+                                          <option>KS</option>
+                                          <option>KY</option>
+                                          <option>LA</option>
+                                          <option>MA</option>
+                                          <option>MD</option>
+                                          <option>ME</option>
+                                          <option>MI</option>
+                                          <option>MN</option>
+                                          <option>MO</option>
+                                          <option>MP</option>
+                                          <option>MS</option>
+                                          <option>MT</option>
+                                          <option>NC</option>
+                                          <option>ND</option>
+                                          <option>NE</option>
+                                          <option>NH</option>
+                                          <option>NJ</option>
+                                          <option>NM</option>
+                                          <option>NV</option>
+                                          <option>NY</option>
+                                          <option>OH</option>
+                                          <option>OK</option>
+                                          <option>OR</option>
+                                          <option>PA</option>
+                                          <option>PR</option>
+                                          <option>RI</option>
+                                          <option>SC</option>
+                                          <option>SD</option>
+                                          <option>TN</option>
+                                          <option>TX</option>
+                                          <option>UT</option>
+                                          <option>VA</option>
+                                          <option>VI</option>
+                                          <option>VT</option>
+                                          <option>WA</option>
+                                          <option>WI</option>
+                                          <option>WV</option>
+                                          <option>WY</option>
+                                        </select>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-zip">Zip Code</label>
+                                        <input id="edit-zip" name="edit-zip" type="text"/>
+                                    </div>
+                                </div>
+                            </form>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
+                        </div>
+                        <div id="edit-password-info">
+                            <div class="media">
+                                <label for="edit-password">Password</label>
+                                <input id="edit-password" name="edit-password" type="password"/>
+                            </div>
+                            <div class="media">
+                                <label for="edit-confirmPassword">Confirm Password</label>
+                                <input id="edit-confirmPassword" name="edit-confirmPassword" type="password"/>
+                            </div>                        
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-password-cancel-btn">Cancel Changes</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-password-submit-btn">Submit Changes</button>
+                            <p id="register-response">Passwords do not match. Please try again.</p>  
+                        </div>
                         <div>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
@@ -90,8 +208,8 @@ export default function UserIndex(props) {
                         </div>
                         <div>
                             <textarea id="new-story" name="new-story" rows="4" placeholder="Tell your story"></textarea>
-                            <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>
                         </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>                        
                     </div>
                 </section>
             </div>
@@ -141,29 +259,69 @@ function deleteListing() {
     })
 }
 
-function editPassword(){
+function showEditPassword(){
     $('#edit-password-btn').click(function(){
+        $('#edit-password-info').css({display: "inline-block"});
+    })
+}
 
-        let id = this.getAttribute('data-id');
-        let newPassword = $('#edit-user-password').val();
+function hideEditPassword(){
+    $('#edit-password-cancel-btn').click(function(){
+        $('#edit-password-info').css({display: "none"});
+        $("#register-response").css({display: "none"});
+        $("#edit-password").val("");
+        $("#edit-confirmPassword").val("");
+    })
+}
 
-        let request = {
-            method: "PUT",
-            headers: getHeaders()
+function editPassword(){
+    $('#edit-password-submit-btn').click(function(){
+
+        let password = $("#edit-password").val()
+        let confirmPassword = $("#edit-confirmPassword").val()
+        let newPassword = ""
+        if(password === confirmPassword) {
+
+            newPassword = $('#edit-password').val();
+
+            let request = {
+                method: "PUT",
+                headers: getHeaders()
+            }
+
+            fetch(`http://localhost:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+                .then(res => {
+                    console.log(res.status);
+                    // $('#edit-password-info').css({display: "none"});
+                    createView("/users");
+                }).catch(error => {
+                    console.log(error);
+                    // $('#edit-password-info').css({display: "none"});
+                    createView("/users");
+            });
+        } else {
+            $("#register-response").css({display: "block"});
         }
-        fetch(`http://localhost:8080/api/users/${id}/updatePassword?newPassword=${newPassword}`, request)
-            .then(res => {
-                console.log(res.status);
-                createView("/users")
-            }).catch(error => {
-            console.log(error);
-            createView("/users");
-        });
+    })
+}
+
+function showEditUser(){
+    $('#edit-profile-btn').click(function(){
+        $('#edit-profile-info').css({display: "inline-block"});
+    })
+}
+
+function hideEditUser(){
+    $('#edit-profile-cancel-btn').click(function(){
+        $('#edit-profile-info').css({display: "none"});
     })
 }
 
 function editUser(){
-
+    $('#edit-profile-submit-btn').click(function(){
+        $('#edit-profile-info').css({display: "none"});
+        // TODO: PUT request
+    })
 }
 
 function createStory() {
@@ -194,7 +352,11 @@ export function UsersEvent(){
     viewListing();
     editListing();
     deleteListing();
+    showEditPassword();
+    hideEditPassword();
     editPassword();
+    showEditUser();
+    hideEditUser();
     editUser();
     createStory();
 }
