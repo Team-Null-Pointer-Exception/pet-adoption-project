@@ -440,6 +440,7 @@ footer {
 .storyCard{
     height: 20rem;
     width: 25rem;
+    border-radius: 5px;
 }
 
 .storiesHeader {

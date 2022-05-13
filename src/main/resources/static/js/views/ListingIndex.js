@@ -158,7 +158,7 @@ export function populateCards(filteredListings) {
     return `
         ${filteredListings.map(listing =>
         `<div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card previewCard h-100">
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->

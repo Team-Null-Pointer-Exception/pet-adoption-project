@@ -34,9 +34,9 @@ export default function Home(props) {
 <section class="story-section gray-bg">
 <div class="container px-4 px-lg-5 mt-5">
                         <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
-                        
                         <div id="stories" class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-lg-2 justify-content-center">
-                        ${populateStoryCards(mostRecentStories)}</div>
+                        ${populateStoryCards(mostRecentStories)}
+                        </div>
                         
 </div>
 </section>
