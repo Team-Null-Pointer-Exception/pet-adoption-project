@@ -69,9 +69,6 @@ export default function ListingIndex(props) {
                 </section>
             </div>
         </main>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; TakeMyPig.com 2022</p></div>
     `;
 }
 
@@ -162,7 +159,7 @@ export function populateCards(filteredListings) {
                             </div>
                             <!-- View details-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div id="view=btn" class="text-center"><a class="btn btn-outline-dark mt-auto" data-id="${listing.id}>View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                             </div>
                         </div>
                     </div>`).join('')}`
