@@ -164,6 +164,19 @@ export default function UserIndex(props) {
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
                         </div>
+                        <div id="edit-password-info">
+                            <div class="media">
+                                <label for="edit-password">Password</label>
+                                <input id="edit-password" name="edit-password" type="password"/>
+                            </div>
+                            <div class="media">
+                                <label for="edit-confirmPassword">Confirm Password</label>
+                                <input id="edit-confirmPassword" name="edit-confirmPassword" type="password"/>
+                            </div>                        
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-password-cancel-btn">Cancel Changes</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-password-submit-btn">Submit Changes</button>
+                            <p id="register-response">Passwords do not match. Please try again.</p>  
+                        </div>
                         <div>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
@@ -195,8 +208,8 @@ export default function UserIndex(props) {
                         </div>
                         <div>
                             <textarea id="new-story" name="new-story" rows="4" placeholder="Tell your story"></textarea>
-                            <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>
                         </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>                        
                     </div>
                 </section>
             </div>
@@ -246,24 +259,46 @@ function deleteListing() {
     })
 }
 
+function showEditPassword(){
+    $('#edit-password-btn').click(function(){
+        $('#edit-password-info').css({display: "inline-block"});
+    })
+}
+
+function hideEditPassword(){
+    $('#edit-password-cancel-btn').click(function(){
+        $('#edit-password-info').css({display: "none"});
+    })
+}
+
 function editPassword(){
     $('#edit-password-submit-btn').click(function(){
 
-        let id = this.getAttribute('data-id');
-        let newPassword = $('#edit-user-password').val();
+        let password = $("#edit-password").val()
+        let confirmPassword = $("#edit-confirmPassword").val()
+        let newPassword = ""
+        if(password === confirmPassword) {
 
-        let request = {
-            method: "PUT",
-            headers: getHeaders()
+            newPassword = $('#edit-password').val();
+
+            let request = {
+                method: "PUT",
+                headers: getHeaders()
+            }
+
+            fetch(`http://localhost:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+                .then(res => {
+                    console.log(res.status);
+                    // $('#edit-password-info').css({display: "none"});
+                    createView("/users");
+                }).catch(error => {
+                    console.log(error);
+                    // $('#edit-password-info').css({display: "none"});
+                    createView("/users");
+            });
+        } else {
+            $("#register-response").css({display: "block"});
         }
-        fetch(`http://localhost:8080/api/users/${id}/updatePassword?newPassword=${newPassword}`, request)
-            .then(res => {
-                console.log(res.status);
-                createView("/users")
-            }).catch(error => {
-            console.log(error);
-            createView("/users");
-        });
     })
 }
 
@@ -313,6 +348,8 @@ export function UsersEvent(){
     viewListing();
     editListing();
     deleteListing();
+    showEditPassword();
+    hideEditPassword();
     editPassword();
     showEditUser();
     hideEditUser();
