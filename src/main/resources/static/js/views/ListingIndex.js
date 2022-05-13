@@ -30,7 +30,7 @@ export default function ListingIndex(props) {
                 ${adminMenu()}
                 <div class="btn-group m-3">
                     <select id="animal-type" class="form-select-lg btn-primary" aria-label="Animal type">
-                        <option class="default">All</option>
+                        <option selected>All</option>
                         <option>Dogs</option>
                         <option>Cats</option>
                         <option>Other</option>
@@ -39,7 +39,7 @@ export default function ListingIndex(props) {
 
                 <div class="btn-group m-3">
                     <select id="gender" class="form-select-lg btn-primary" aria-label="Gender">
-                        <option class="default">Male or Female</option>
+                        <option selected>Male or Female</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -47,7 +47,7 @@ export default function ListingIndex(props) {
 
                 <div class="btn-group m-3">
                     <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
-                        <option class="default">Within 15 Miles</option>
+                        <option selected>Within 15 Miles</option>
                         <option>Within 50 Miles</option>
                         <option>Any Distance</option>
                     </select>
@@ -78,8 +78,8 @@ function adminMenu() {
         return `
             <div class="btn-group m-3">
                 <select id="listing-status" class="form-select-lg btn-primary" aria-label="Listing status">
-                    <option class="default">Status (All)</option>
-                    <option>Active</option>
+                    <option>Status (All)</option>
+                    <option selected>Active</option>
                     <option>Pending</option>
                     <option>Expired</option>
                     <option>Closed</option>
@@ -113,16 +113,20 @@ function filterSelections() {
         console.log(gender);
         console.log(distance);
 
-        if (listingStatus === "active") {
-            filteredListings = activeListings;
-        } else if (listingStatus === "pending") {
-            filteredListings = allListings.filter(listing => listing.status === "PENDING");
-        } else if (listingStatus === "expired") {
-            filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
-        } else if (listingStatus === "closed") {
-            filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        if (getUserRole()) {
+            if (listingStatus === "active") {
+                filteredListings = activeListings;
+            } else if (listingStatus === "pending") {
+                filteredListings = allListings.filter(listing => listing.status === "PENDING");
+            } else if (listingStatus === "expired") {
+                filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
+            } else if (listingStatus === "closed") {
+                filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+            } else {
+                filteredListings = allListings;
+            }
         } else {
-            filteredListings = allListings;
+            filteredListings = activeListings;
         }
 
         console.log(filteredListings);
