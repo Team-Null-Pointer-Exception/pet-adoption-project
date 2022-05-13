@@ -59,8 +59,8 @@ export default function UserIndex(props) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="edit-profile-info">
-                            <form id="edit-profile-form">
+                        <div id="edit-profile-info">
+                            <form class="row" id="edit-profile-form">
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
                                         <label for="edit-firstName">First Name</label>
@@ -160,9 +160,9 @@ export default function UserIndex(props) {
                                         <input id="edit-zip" name="edit-zip" type="text"/>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
-                                <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
                             </form>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
                         </div>
                         <div>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
@@ -247,7 +247,7 @@ function deleteListing() {
 }
 
 function editPassword(){
-    $('#edit-password-btn').click(function(){
+    $('#edit-password-submit-btn').click(function(){
 
         let id = this.getAttribute('data-id');
         let newPassword = $('#edit-user-password').val();
@@ -267,8 +267,22 @@ function editPassword(){
     })
 }
 
-function editUser(){
+function showEditUser(){
+    $('#edit-profile-btn').click(function(){
+        $('#edit-profile-info').css({display: "inline-block"});
+    })
+}
 
+function hideEditUser(){
+    $('#edit-profile-cancel-btn').click(function(){
+        $('#edit-profile-info').css({display: "none"});
+    })
+}
+
+function editUser(){
+    $('#edit-profile-submit-btn').click(function(){
+        $('#edit-profile-info').css({display: "none"});
+    })
 }
 
 function createStory() {
@@ -300,6 +314,8 @@ export function UsersEvent(){
     editListing();
     deleteListing();
     editPassword();
+    showEditUser();
+    hideEditUser();
     editUser();
     createStory();
 }
