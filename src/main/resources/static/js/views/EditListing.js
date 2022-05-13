@@ -15,17 +15,18 @@ export default function EditListing(props) {
             <div class="card edit-listing-card"> 
                 <form id="edit-listing-form" name="edit-listing-form">
                     <h1>Edit Listing</h1>
+                   
                     <label for="name">Name</label>
                     <input id="name" name="name" type="text"/>
                     <br>
                     <label for="animal">Animal</label>
-                    <input id="animal" name="animal" type="text"/>
+                    <input id="animal" name="animal"  type="text"/>
                     <br>
                     <label for="breed">Breed</label>
                     <input id="breed" name="breed" type="text"/>
                     <br>
                     <label for="color">Color</label>
-                    <input id="color" name="color" type="text"/>
+                    <input id="color" name="color"  type="text"/>
                     <br>
                     <label for="age">Age</label>
                     <input id="age" name="age" type="text"/>
@@ -59,6 +60,14 @@ export default function EditListing(props) {
             </body>
         </html>
     `;
+    // <input type="text" id="listing-id" value=${props.listing.id}/>
+    //         value=${props.listing.name}
+    //         value=${props.listing.animal}
+    //         value=${props.listing.breed}
+    //             value=${props.listing.color}
+    //                 value=${props.listing.age}
+    //                     value=${props.listing.health}
+    //                         value=${props.listing.summary}
 }
 
 export function EditEvents() {
@@ -133,8 +142,9 @@ export function EditListingsEvent(){
             headers: getHeaders(),
             body: JSON.stringify(editListing)
         }
+        let id = 13;
 
-        fetch("http://localhost:8080/api/listings/edit/${id}", request)
+        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

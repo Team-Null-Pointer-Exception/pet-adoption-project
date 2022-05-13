@@ -115,7 +115,7 @@ function viewListing(){
 function editListing(){
     $('.listing-edit').click(function(){
         let id = this.getAttribute('data-id');
-        createView("/edit")
+        createView("/edit/{id}") // set up id dynamically, data-id???
     })
 }
 
