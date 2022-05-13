@@ -20,18 +20,16 @@ export default function ListingIndex(props) {
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
                 style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
         >
-            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>
-
-            <p class="jumbo-message">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
-                labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum
-                neque maiores dolorem unde? Aut dolorum quod excepturi fugit.
-            </p>
+<!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
+            <h1 class="display-4 m-0 text-black jumbotron">Available <span class="text-primary">Adoptions</span></h1>
+            <h2 class="jumbo-message">
+                Find your new best friend today
+            </h2>
 
             <div class="py-5">
                 ${adminMenu()}
-                <div class="btn-group m-2">
-                    <select id="animal-type" class="form-select btn-secondary" aria-label="Animal type">
+                <div class="btn-group m-3">
+                    <select id="animal-type" class="form-select-lg btn-primary" aria-label="Animal type">
                         <option class="default">All</option>
                         <option>Dogs</option>
                         <option>Cats</option>
@@ -39,16 +37,16 @@ export default function ListingIndex(props) {
                     </select>
                 </div>
 
-                <div class="btn-group m-2">
-                    <select id="gender" class="form-select btn-secondary" aria-label="Gender">
+                <div class="btn-group m-3">
+                    <select id="gender" class="form-select-lg btn-primary" aria-label="Gender">
                         <option class="default">Male or Female</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                 </div>
 
-                <div class="btn-group m-2">
-                    <select id="distance" class="form-select btn-secondary" aria-label="Distance">
+                <div class="btn-group m-3">
+                    <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
                         <option class="default">Within 15 Miles</option>
                         <option>Within 50 Miles</option>
                         <option>Any Distance</option>
@@ -62,7 +60,7 @@ export default function ListingIndex(props) {
                 <section class="py-0">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start">
                             ${populateCards(activeListings)}
                         </div>
                     </div>
@@ -100,7 +98,7 @@ function grabSelections() {
     if (getUserRole()) {
         listingStatus = $("#listing-status").val().toLowerCase();
     }
-    animalType = $("#animal-type").val().toLowerCase();
+    animalType = $("#animal-type").val().toLowerCase().trim();
     gender = $("#gender").val().toLowerCase();
     distance = $("#distance").val().toLowerCase();
 }
