@@ -268,6 +268,9 @@ function showEditPassword(){
 function hideEditPassword(){
     $('#edit-password-cancel-btn').click(function(){
         $('#edit-password-info').css({display: "none"});
+        $("#register-response").css({display: "none"});
+        $("#edit-password").val("");
+        $("#edit-confirmPassword").val("");
     })
 }
 
@@ -317,6 +320,7 @@ function hideEditUser(){
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
+        // TODO: PUT request
     })
 }
 
