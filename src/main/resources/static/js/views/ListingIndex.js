@@ -57,7 +57,7 @@ export default function ListingIndex(props) {
 
         <main>
             <div class="container-fluid">
-                <section class="py-0">
+                <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
                              class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start">
@@ -76,8 +76,8 @@ function adminMenu() {
     } else {
         //language=HTML
         return `
-            <div class="btn-group m-2">
-                <select id="listing-status" class="form-select btn-secondary" aria-label="Listing status">
+            <div class="btn-group m-3">
+                <select id="listing-status" class="form-select-lg btn-primary" aria-label="Listing status">
                     <option class="default">Status (All)</option>
                     <option>Active</option>
                     <option>Pending</option>
