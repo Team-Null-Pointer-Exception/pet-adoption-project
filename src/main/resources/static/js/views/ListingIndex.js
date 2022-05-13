@@ -107,15 +107,10 @@ function grabSelections() {
 }
 
 function filterSelections() {
+    let filteredListings;
 
     $("#listing-status, #animal-type, #gender, #distance").change(function () {
         grabSelections();
-        console.log(listingStatus);
-        console.log(animalType);
-        console.log(gender);
-        console.log(distance);
-
-        let filteredListings;
         if (listingStatus === "active") {
             filteredListings = activeListings;
         } else if (listingStatus === "pending") {
@@ -128,8 +123,6 @@ function filterSelections() {
             filteredListings = allListings;
         }
 
-        console.log(filteredListings);
-
         if (animalType === "dogs") {
             filteredListings = filteredListings.filter(listing => listing.animal === "dog");
         } else if (animalType === "cats") {
@@ -138,15 +131,11 @@ function filterSelections() {
             filteredListings = filteredListings.filter(listing => listing.animal !== "dog" && listing.animal !== "cat");
         }
 
-        console.log(filteredListings)
-
         if (gender === "male") {
             filteredListings = filteredListings.filter(listing => listing.sex === "MALE");
         } else if (gender === "female") {
             filteredListings = filteredListings.filter(listing => listing.sex === "FEMALE");
         }
-
-        console.log(filteredListings)
 
         return $("#listing-cards").html(populateCards(filteredListings));
     })
@@ -162,17 +151,18 @@ export function populateCards(filteredListings) {
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
-                            <div class="card-body p-4 bg-light">
+                            <div class="card-body p-3 bg-light">
                                 <div class="text-center">
                                     <!-- Pet name-->
                                     <h5 class="fw-bolder">${listing.name}</h5>
                                     <!-- Breed-->
-                                    ${listing.breed}
+                                    ${listing.breed}<br>
+                                    ${listing.age} / ${listing.sex.toLowerCase()}
                                 </div>
                             </div>
                             <!-- View details-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div id="view=btn" class="text-center"><a class="btn btn-outline-dark mt-auto" data-id="${listing.id}>View options</a></div>
                             </div>
                         </div>
                     </div>`).join('')}`
