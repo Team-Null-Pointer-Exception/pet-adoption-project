@@ -194,7 +194,6 @@ export function UsersEvent(){
     viewListing();
     editListing();
     deleteListing();
-    editListingBtn()
     editPassword();
     editUser();
     createStory();
