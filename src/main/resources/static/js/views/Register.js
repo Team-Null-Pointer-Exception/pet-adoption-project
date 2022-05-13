@@ -21,8 +21,8 @@ export default function Register(props) {
                     <label for="email">Email</label>
                     <input id="email" name="email" type="email">
                     <br>
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password"/>
+                    <label for="initialPassword">Password</label>
+                    <input id="initialPassword" name="password" type="password"/>
                     <br>
                     <label for="confirmPassword">Confirm Password</label>
                     <input id="confirmPassword" name="confirmPassword" type="password"/>
@@ -140,13 +140,14 @@ function UploadEvent() {
 
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
-        let password = $("#password").val()
+        let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
         if(password === confirmPassword) {
+            console.log("confirmed")
             let newUser = {
                 username: $("#username").val(),
                 email: $("#email").val(),
-                password: $("#password").val(),
+                password: password,
                 firstName: $("#firstName").val(),
                 lastName: $("#lastName").val(),
                 organization: $("#organization").val(),
@@ -155,7 +156,8 @@ function RegisterEventListener(){
                 state: $("#state").val(),
                 zip: $("#zip").val(),
                 phone: $("#phone").val(),
-                profileImg: imgURL
+                profileImg: imgURL,
+                stories: []
             }
 
         let request = {
@@ -163,7 +165,7 @@ function RegisterEventListener(){
             headers: getHeaders(),
             body: JSON.stringify(newUser)
         }
-
+            console.log(request)
         // send request
         fetch("http://localhost:8080/api/users/create", request)
             .then(response => {

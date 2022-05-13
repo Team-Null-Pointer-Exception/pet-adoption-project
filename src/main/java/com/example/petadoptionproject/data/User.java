@@ -62,7 +62,6 @@ public class User {
     @NotEmpty
     private String email;
 
-    @JsonIgnore
     @ToString.Exclude
     private String password;
 

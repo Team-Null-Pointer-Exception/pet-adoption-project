@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -59,6 +60,8 @@ public class UserController {
         String encryptedPassword = passwordEncoder.encode(unencryptedPassword);
         System.out.println(encryptedPassword);
         user.setPassword(encryptedPassword);
+        ArrayList<Story> stories = new ArrayList<>();
+        user.setStories(stories);
         usersRepository.save(user);
     }
 
