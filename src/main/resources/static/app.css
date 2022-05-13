@@ -463,12 +463,12 @@ footer {
 
 .storyImg {
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    width: 120px;
+    height: auto;
     background-position: center;
     background-color: white;
     margin-top: 2rem;
-    margin-left: 7rem;
+    margin-left: 6.5rem;
     overflow:hidden
 }
 
@@ -477,7 +477,7 @@ footer {
     text-align: center;
 }
 #newPetDiv {
-    margin-top: 10rem;
+    margin-top: 12rem;
 }
 
 .storyContainer {
