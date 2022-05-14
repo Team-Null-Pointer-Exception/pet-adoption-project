@@ -20,7 +20,7 @@ export default function ListingIndex(props) {
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
                 style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
         >
-<!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
+            <!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
             <h1 class="display-4 m-0 text-black jumbotron">Available <span class="text-primary">Adoptions</span></h1>
             <h2 class="jumbo-message">
                 Find your new best friend today
@@ -60,11 +60,12 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-start">
-                            ${populateCards(activeListings)}
-                        </div>
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-start
+                        ">
+                        ${populateCards(activeListings)}
                     </div>
-                </section>
+            </div>
+            </section>
             </div>
         </main>
     `;
@@ -182,13 +183,13 @@ export function populateCards(filteredListings) {
                         </div>
                         <div id="overlay-${listing.id}" class="overlay">
                         <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-                        <div class="container overlay-contianer">
-                        <div class="row row-cols-1 row-cols-md-2">
-                        <div class="col-6">
-                        <h3 class="overlay-text text-center">Name: ${listing.name}</h3>
-                        <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
-                                                    </div>
-                                                    <div class="col-6">
+    <div class="container overlay-container">
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col-6">
+             <h3 class="overlay-text text-center">Name: ${listing.name}</h3>
+             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+             </div>
+                   <div class="col-6">
                         <h3 class="overlay-text text-center">${listing.animal}</h3>
                         <div class="row">
                         <div class="col-6">
@@ -209,11 +210,24 @@ export function populateCards(filteredListings) {
                         <p class="overlay-text more-info">Summary: ${listing.summary}</p>
                         <p class="overlay-text more-info">About: ${listing.description}</p>
                         </div>
-                        </div>
-                                                    
-                                                    </div>   
-                                                    </div>                 
-</div>
+                        </div>                                                  
+                  </div>   
+            </div>
+            <div class="row cols-2">
+           
+            <div class="col-6 listing-contact-details">
+            <img class="storyImg" src="${listing.user.profileImg}">
+                        <ul>
+                            <li class="overlay-text">Name: ${listing.user.firstName} ${listing.user.lastName}</li>
+                            <li class="overlay-text">Location: ${listing.user.city}, ${listing.user.city}, ${listing.user.zip}</li>
+                            <li class="overlay-text"></li>
+                        </ul>
+            
+                
+            
+                </div>          
+            </div>               
+    </div>
 </div>
                     </div>
 `).join('')}`

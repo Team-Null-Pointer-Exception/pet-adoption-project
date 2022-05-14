@@ -537,13 +537,13 @@ footer {
 .overlay-text{
     margin-top: 2rem;
 }
-.overlay-contianer {
+.overlay-container {
     background-color: white;
     color: black;
     position: fixed;
     top: 10%;
     right:10%;
-    height: 80%;
+    height: 90%;
     width: 80%;
     border-radius: 10px;
 }
@@ -581,4 +581,14 @@ ul {
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
+}
+.listing-contact-details {
+    margin-top: 2rem;
+    background-color: #bdbaba;
+    border-radius: 5px;
+}
+.location-map {
+    margin-top: 2rem;
+    background-color: #bdbaba;
+    border-radius: 5px;
 }
