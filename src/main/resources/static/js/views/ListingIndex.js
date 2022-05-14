@@ -177,7 +177,7 @@ export function populateCards(filteredListings) {
                             </div>
                             <!-- View details-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto details-btn" href="#" data-id="${listing.id}">View Details</a></div>
+                                <div class="text-center"><a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">View Details</a></div>
                             </div>
                         </div>
                         <div id="overlay-${listing.id}" class="overlay">
