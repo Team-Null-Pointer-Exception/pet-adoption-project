@@ -14,7 +14,7 @@ export default function EditListing(props) {
             <div class="row edit-listing-row">
             <div class="card edit-listing-card"> 
                 <form id="edit-listing-form" name="edit-listing-form">
-                    <h1>Edit Listing</h1>
+                    <h1 class="text-white">Edit Listing</h1>
                     <label for="name">Name</label>
                     <input id="name" name="name" type="text"/>
                     <br>
@@ -32,8 +32,8 @@ export default function EditListing(props) {
                     <br>
                     <label for="sex">Sex</label>
                     <select id="sex">
-                      <option>MALE</option>
-                      <option>FEMALE</option>
+                      <option>Male</option>
+                      <option>Female</option>
                     </select>
                     <br>
                     <label for="health">Health</label>
@@ -51,7 +51,7 @@ export default function EditListing(props) {
                     <label for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
                     <br>              
-                    <button id="image_upload" type="button class="text-white imageUploadToggle">Uploads</button>                                                                      
+                    <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
                     <button id="edit-listing-btn" type="button">Submit</button>
                 </form>
             </div>
@@ -91,26 +91,6 @@ function AddFileEvent(){
     })
 }
 
-//     console.log("The frontend did it. HER FAULT");
-//     return `
-//         <header>
-//             <h1>Edit Listing</h1>
-//         </header>
-//         <main>
-//             <form>
-//                 <div class="form-group">
-//                     <label for="formGroupExampleInput">Example label</label>
-//                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-//                 </div>
-//                 <div class="form-group">
-//                     <label for="formGroupExampleInput2">Another label</label>
-//                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-//                 </div>
-//                 <input id="edit-listing-btn" type="submit" value="Submit"/>
-//             </form>
-//         </main>
-//     `;
-// }
 
 export function EditListingsEvent(){
     $('#edit-listing-btn').click(function () {
@@ -134,7 +114,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
 
-        fetch("http://localhost:8080/api/listings/edit/${id}", request)
+        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

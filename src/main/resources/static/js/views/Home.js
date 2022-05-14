@@ -4,8 +4,8 @@ import {populateCards} from "./ListingIndex.js";
 export default function Home(props) {
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
-    if (recentListings.length >= 3) {
-        recentListings = [recentListings[0], recentListings[1], recentListings[2], recentListings[3]]
+    if (recentListings.length >= 2) {
+        recentListings = [recentListings[0], recentListings[1]]
     }
     let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
@@ -25,7 +25,7 @@ export default function Home(props) {
                         <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span>Pets</h1>
                         <div class="container px-4 px-lg-5 mt-5">
                         <div id="recent-listing-cards"
-                             class="row gx-5 row-cols-xs-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center">
+                             class="row gx-5 row-cols-xs-1  row-cols-lg-2justify-content-center">
                             ${populateCards(recentListings)}
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default function Home(props) {
 <section class="story-section gray-bg">
 <div class="container storyContainer px-4 px-lg-5 mt-5">
                         <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
-                        <div id="stories" class="row gx-4 gx-md-5 row-cols-xs-1 row-cols-lg-2 row-cols-xl-3 justify-content-center">
+                        <div id="stories" class="row gx-4 gx-md-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
                         ${populateStoryCards(recentStories)}
                         </div>
                         
@@ -42,9 +42,9 @@ export default function Home(props) {
     `;
 }
 
-function changeHref(){
+function changeHref() {
     const loggedIn = isLoggedIn();
-    if(loggedIn) {
+    if (loggedIn) {
         return `href='/create'`;
     } else {
         return `href='/login'`;
@@ -52,7 +52,7 @@ function changeHref(){
 }
 
 
-function populateStoryCards(stories){
+function populateStoryCards(stories) {
     console.log(stories)
     return `
         ${stories.map(story =>
@@ -65,6 +65,26 @@ function populateStoryCards(stories){
                             </div>
                         </div>
                     </div>`).join('')}`
+}
+
+function detailsListener() {
+    $(".details-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#overlay-" + id).css({display: "block"})
+    })
+}
+
+
+function closeOverlay() {
+    $(".close-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#overlay-" + id).css({display: "none"})
+    })
+}
+
+export function HomeEvents() {
+    detailsListener()
+    closeOverlay()
 }
 
 

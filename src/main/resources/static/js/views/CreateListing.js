@@ -14,7 +14,7 @@ export default function CreateListing(props) {
             <div class="row create-listing-row">
             <div class="card create-listing-card"> 
                 <form id="create-listing-form" name="create-listing-form">
-                    <h1>Create A Listing</h1>
+                    <h1 class="text-white">Create A Listing</h1>
                     <label for="name">Name</label>
                     <input id="name" name="name" type="text"/>
                     <br>
@@ -32,8 +32,8 @@ export default function CreateListing(props) {
                     <br>
                     <label for="sex">Sex</label>
                     <select id="sex">
-                      <option>MALE</option>
-                      <option>FEMALE</option>
+                      <option>Male</option>
+                      <option>Female</option>
                     </select>
                     <br>
                     <label for="health">Health</label>
@@ -77,7 +77,7 @@ function fileStackSetUp() {
 }
 
 
-function AddFileEvent(){
+function AddFileEvent() {
     $('#image_upload').click(function (event) {
         event.preventDefault()
         const options = {
@@ -92,7 +92,7 @@ function AddFileEvent(){
 }
 
 
-function CreateListingsEvent(){
+function CreateListingsEvent() {
     $('#create-listing-btn').click(function () {
         let newListing = {
             summary: $("#summary").val(),

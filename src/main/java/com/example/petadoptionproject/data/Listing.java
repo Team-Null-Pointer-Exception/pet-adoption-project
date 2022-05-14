@@ -20,7 +20,7 @@ import java.util.List;
 @Table(name = "listings")
 public class Listing {
 
-    public enum Sex {MALE, FEMALE}
+    public enum Sex {Male, Female}
 
     public enum Status {ACTIVE, EXPIRED, CLOSED, PENDING, REJECTED}
 

@@ -1,4 +1,4 @@
-import Home from "./views/Home.js";
+import Home, {HomeEvents} from "./views/Home.js";
 import About from "./views/About.js";
 import Error404 from "./views/Error404.js";
 import Loading from "./views/Loading.js";
@@ -10,7 +10,7 @@ import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
 import EditListing, {EditEvents} from "./views/EditListing.js";
-import Admin, {AdminEvent} from "./views/Admin.js";
+
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -27,6 +27,7 @@ export default function router(URI) {
             },
             uri: '/',
             title: 'Home',
+            viewEvent: HomeEvents
         },
         '/logout': {
             returnView: Logout,
@@ -57,13 +58,6 @@ export default function router(URI) {
             uri: '/users',
             title: 'User Profile',
             viewEvent: UsersEvent
-        },
-        '/admin': {
-            returnView: Admin,
-            state: {},
-            uri: '/admin',
-            title: 'Admin',
-            viewEvent: AdminEvent
         },
         '/listings': {
             returnView: ListingIndex,
@@ -105,10 +99,9 @@ export default function router(URI) {
             state: {},
             uri: location.pathname,
             title: 'Loading...',
-        }
+        },
     };
 
     return routes[URI];
 }
 
-// TODO: ADMIN
