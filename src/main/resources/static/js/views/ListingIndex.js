@@ -233,6 +233,7 @@ export function populateCards(filteredListings) {
 `).join('')}`
 }
 
+//TODO: mapview, contact information, favorites, share to social media
 
 function detailsListener() {
     $(".details-btn").click(function (e) {
