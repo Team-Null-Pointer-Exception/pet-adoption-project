@@ -16,58 +16,57 @@ export default function ListingIndex(props) {
     //language=HTML
     return `
         <!-- Jumbotron -->
-        <div id="allListings">
-            <div
-                    class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
-                    style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
-            >
-                <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>
+        <div
+                class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
+                style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
+        >
+<!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
+            <h1 class="display-4 m-0 text-black jumbotron">Available <span class="text-primary">Adoptions</span></h1>
+            <h2 class="jumbo-message">
+                Find your new best friend today
+            </h2>
 
-                <p class="jumbo-message">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
-                    labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum
-                    neque maiores dolorem unde? Aut dolorum quod excepturi fugit.
-                </p>
-
-                <div class="py-5">
-                    ${adminMenu()}
-                    <div class="btn-group m-2">
-                        <select id="animal-type" class="form-select btn-secondary" aria-label="Animal type">
-                            <option class="default">All</option>
-                            <option>Dogs</option>
-                            <option>Cats</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-
-                    <div class="btn-group m-2">
-                        <select id="gender" class="form-select btn-secondary" aria-label="Gender">
-                            <option class="default">Male or Female</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>
-
-                    <div class="btn-group m-2">
-                        <select id="distance" class="form-select btn-secondary" aria-label="Distance">
-                            <option class="default">Within 15 Miles</option>
-                            <option>Within 50 Miles</option>
-                            <option>Any Distance</option>
-                        </select>
-                    </div>
+            <div class="py-5">
+                ${adminMenu()}
+                <div class="btn-group m-3">
+                    <select id="animal-type" class="form-select-lg btn-primary" aria-label="Animal type">
+                        <option selected>All</option>
+                        <option>Dogs</option>
+                        <option>Cats</option>
+                        <option>Other</option>
+                    </select>
                 </div>
-            </div>
-            <div class="container listing-container">
-                <section class="py-0">
-                    <div id="listing-cards"
-                         class="row gx-md-3 gx-lg-4 gx-xl-5 row-cols-1 row-cols-lg-2">
-                        ${populateCards(activeListings)}
-                    </div>
 
-                </section>
+                <div class="btn-group m-3">
+                    <select id="gender" class="form-select-lg btn-primary" aria-label="Gender">
+                        <option selected>Male or Female</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+                <div class="btn-group m-3">
+                    <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
+                        <option selected>Within 15 Miles</option>
+                        <option>Within 50 Miles</option>
+                        <option>Any Distance</option>
+                    </select>
+                </div>
             </div>
         </div>
 
+        <main>
+            <div class="container-fluid listing-container">
+                <section class="py-5">
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <div id="listing-cards"
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-start">
+                            ${populateCards(activeListings)}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     `;
 }
 
@@ -77,10 +76,10 @@ function adminMenu() {
     } else {
         //language=HTML
         return `
-            <div class="btn-group m-2">
-                <select id="listing-status" class="form-select btn-secondary" aria-label="Listing status">
-                    <option class="default">Status (All)</option>
-                    <option>Active</option>
+            <div class="btn-group m-3">
+                <select id="listing-status" class="form-select-lg btn-primary" aria-label="Listing status">
+                    <option>Status (All)</option>
+                    <option selected>Active</option>
                     <option>Pending</option>
                     <option>Expired</option>
                     <option>Closed</option>
@@ -101,7 +100,7 @@ function grabSelections() {
     if (getUserRole()) {
         listingStatus = $("#listing-status").val().toLowerCase();
     }
-    animalType = $("#animal-type").val().toLowerCase();
+    animalType = $("#animal-type").val().toLowerCase().trim();
     gender = $("#gender").val().toLowerCase();
     distance = $("#distance").val().toLowerCase();
 }
@@ -116,16 +115,20 @@ function filterSelections() {
         console.log(gender);
         console.log(distance);
 
-        if (listingStatus === "active") {
-            filteredListings = activeListings;
-        } else if (listingStatus === "pending") {
-            filteredListings = allListings.filter(listing => listing.status === "PENDING");
-        } else if (listingStatus === "expired") {
-            filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
-        } else if (listingStatus === "closed") {
-            filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        if (getUserRole()) {
+            if (listingStatus === "active") {
+                filteredListings = activeListings;
+            } else if (listingStatus === "pending") {
+                filteredListings = allListings.filter(listing => listing.status === "PENDING");
+            } else if (listingStatus === "expired") {
+                filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
+            } else if (listingStatus === "closed") {
+                filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+            } else {
+                filteredListings = allListings;
+            }
         } else {
-            filteredListings = allListings;
+            filteredListings = activeListings;
         }
 
         console.log(filteredListings);

@@ -8,10 +8,6 @@
     color: #ED6436;
 }
 
-#listings-heading {
-    font-size: 3em;
-}
-
 #register-response {
     display: none
 }
@@ -417,6 +413,38 @@ textarea, select {
 
 footer {
     margin-top: 4rem;
+}
+/*Edit Profile*/
+#edit-profile-info {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    background-color: white;
+    display: none;
+}
+.edit-profile-col .media {
+    margin-bottom: .25rem;
+}
+.edit-profile-col label {
+    width: 10rem;
+}
+/*Edit Password*/
+#edit-password-info {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    background-color: white;
+    display: none;
+}
+#edit-password-info .media {
+    margin-bottom: .25rem;
+}
+#edit-password-info label {
+    width: 8.5rem;
+}
+#edit-password-info #register-response {
+    margin-top: .25rem;
+    color: #181818;
 }
 /*User Listings*/
 .user-listings {

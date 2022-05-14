@@ -7,6 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -81,7 +84,16 @@ public class UserController {
         usersRepository.save(updatedUser);
     }
 
-
+    @PutMapping("/me/updatePassword")
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
+    public void updatePassword(@RequestParam String newPassword, OAuth2Authentication auth){
+        String user = auth.getName();
+        User updatedUser = usersRepository.findByEmail(user);
+        String encryptedPassword = passwordEncoder.encode(newPassword);
+        updatedUser.setPassword(encryptedPassword);
+        usersRepository.save(updatedUser);
+        System.out.println("Updating password");
+    }
 
 
 

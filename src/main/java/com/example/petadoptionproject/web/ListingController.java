@@ -28,8 +28,8 @@ public class ListingController {
         return listingRepository.findAll();
     }
 
-    @GetMapping("{id}")
-    public Optional<Listing> getById(@PathVariable long id){
+    @GetMapping("{id}") // this needs to be made a request variable
+    public Optional<Listing> getById(@RequestParam long id){
         return listingRepository.findById(id);
     }
 
