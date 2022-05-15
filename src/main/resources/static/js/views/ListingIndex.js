@@ -187,7 +187,7 @@ export function populateCards(filteredListings) {
     <div class="container overlay-container">
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col-6">
-             <h3 class="overlay-text text-center">Name: ${listing.name}</h3>
+             <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
              <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
              </div>
                    <div class="col-6">

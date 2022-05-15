@@ -22,7 +22,7 @@ export default function Home(props) {
     </div>
 </div>
 <div id="newPetDiv">
-                        <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span>Pets</h1>
+                        <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span> Pets</h1>
                         <div class="container px-4 px-lg-5 mt-5">
                         <div id="recent-listing-cards"
                              class="row gx-5 row-cols-xs-1  row-cols-lg-2justify-content-center">
