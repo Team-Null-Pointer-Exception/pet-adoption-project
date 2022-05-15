@@ -95,6 +95,7 @@ export function ListingsEvent() {
     filterSelections();
     detailsListener();
     closeOverlay();
+    loadMap();
 }
 
 function grabSelections() {
@@ -194,37 +195,42 @@ export function populateCards(filteredListings) {
                         <div class="row">
                         <div class="col-6">
                         <ul>
-                            <li class="overlay-text">Breed: ${listing.breed}</li>
-                            <li class="overlay-text">Sex: ${listing.sex}</li>
-                            <li class="overlay-text">Age: ${listing.age}</li>
+                            <li>Breed: ${listing.breed}</li>
+                            <li>Sex: ${listing.sex}</li>
+                            <li>Age: ${listing.age}</li>
                         </ul>
                         </div>
                         <div class="col-6">
                         <ul>
-                            <li class="overlay-text">Color: ${listing.color}</li>
-                            <li class="overlay-text">Health: ${listing.health}</li>
-                            <li class="overlay-text">Fixed: ${listing.fixed}</li>
+                            <li>Color: ${listing.color}</li>
+                            <li>Health Issues: ${listing.health}</li>
+                            <li>Fixed: ${listing.fixed}</li>
                         </ul>
                         </div>
-                        <div class="col-12">
-                        <p class="overlay-text more-info">Summary: ${listing.summary}</p>
-                        <p class="overlay-text more-info">About: ${listing.description}</p>
+                        <div class="col-12 listing-details">
+                        <p>Summary: ${listing.summary}</p>
+                        <p>About: ${listing.description}</p>
                         </div>
                         </div>                                                  
                   </div>   
             </div>
-            <div class="row cols-2">
-           
-            <div class="col-6 listing-contact-details">
-            <img class="storyImg" src="${listing.user.profileImg}">
+            <div class="row cols-2"> 
+            <div class="col location-map" id="map">
+            
+</div>     
+            <div class="col listing-contact-details text-center">
+            <img class="storyImg mx-auto" src="${listing.user.profileImg}">
                         <ul>
-                            <li class="overlay-text">Name: ${listing.user.firstName} ${listing.user.lastName}</li>
-                            <li class="overlay-text">Location: ${listing.user.city}, ${listing.user.city}, ${listing.user.zip}</li>
-                            <li class="overlay-text"></li>
+                            <li>${listing.user.firstName} ${listing.user.lastName}</li>
+                            <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
+                            <li>Contact Options: </li>
                         </ul>
-            
-                
-            
+                        <div class="d-flex align-items-center justify-content-center user-contact-details">
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="iMessage://${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:${listing.user.email}" target="_blank"><i class="far fa-envelope"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:${listing.user.phone}" target="_blank"><i class="fas fa-phone"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 px-0 allow" style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}" target="_blank"><i class="fas fa-video"></i></a>
+                        </div>
                 </div>          
             </div>               
     </div>
@@ -249,5 +255,25 @@ function closeOverlay() {
         $("#overlay-" + id).css({display: "none"})
     })
 }
+
+// function loadMap() {
+//     mapkit.init({
+//         authorizationCallback: function(done) {
+//             var xhr = new XMLHttpRequest();
+//             xhr.open("GET", "/services/jwt");
+//             xhr.addEventListener("load", function() {
+//                 done(this.responseText);
+//             });
+//             xhr.send();
+//         }
+//     });
+//
+//     var Cupertino = new mapkit.CoordinateRegion(
+//         new mapkit.Coordinate(37.3316850890998, -122.030067374026),
+//         new mapkit.CoordinateSpan(0.167647972, 0.354985255)
+//     );
+//     var map = new mapkit.Map("map");
+//     map.region = Cupertino;
+// }
 
 

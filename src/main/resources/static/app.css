@@ -541,7 +541,7 @@ footer {
     background-color: white;
     color: black;
     position: fixed;
-    top: 10%;
+    top: 5%;
     right:10%;
     height: 90%;
     width: 80%;
@@ -549,25 +549,17 @@ footer {
 }
 
 .listing-image-large {
-    width: 500px;
+    max-width: 100%;
     height: auto;
     background-position: center;
     overflow:hidden;
     border-radius: 5px;
-}
-.listing-image-small {
-    width: 150px;
-    height: auto;
-    background-position: center;
-    overflow:hidden;
-    border-radius: 5px;
-    margin-right: 1rem;
 }
 
 
 ul {
     list-style: none;
-    margin-left: 2rem;
+    padding: 0!important;
 }
 .more-info {
     margin-left: 4rem;
@@ -575,20 +567,29 @@ ul {
 
 .close-btn {
     position: fixed;
-    top: 9%;
-    left: 9%;
-    z-index: 3;
+    top: 4.5%;
+    left: 9.5%;
+    z-index: 2;
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
 }
 .listing-contact-details {
     margin-top: 2rem;
-    background-color: #bdbaba;
+    background-color: #d5d0d0;
     border-radius: 5px;
+    max-height: 300px
 }
+/*.listing-details {*/
+/*    margin-left: 1rem;*/
+/*    padding: 0!important;*/
+/*}*/
 .location-map {
     margin-top: 2rem;
-    background-color: #bdbaba;
+    height: 300px;
+    width: auto;
     border-radius: 5px;
+}
+.user-contact-details {
+    margin-left: 1rem;
 }
