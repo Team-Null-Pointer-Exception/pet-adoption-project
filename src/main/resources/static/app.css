@@ -67,6 +67,18 @@
     margin-bottom: 1rem;
 }
 
+#edit-listing-form>select {
+    margin-bottom: 1rem;
+}
+
+#edit-listing-form>textarea {
+    margin-bottom: 1rem;
+}
+
+/*#descrip-label {*/
+/*    margin-top: -5em;*/
+/*}*/
+
 #create-listing-form>textarea, #edit-listing-form>textarea {
     resize: none;
 }
@@ -81,7 +93,7 @@
     margin-left: 11.75rem;
 }
 #edit-listing-btn {
-    margin-left: 11.75rem;
+    margin-left: 10.5rem;
 }
 
 #register-btn, #login-btn, #create-listing-btn, #edit-listing-btn, #profile_upload, #image_upload {
@@ -545,7 +557,21 @@ footer {
     width: 80%;
     border-radius: 10px;
     overflow: scroll;
-    margin: 0 auto;
+}
+
+.edit-overlay-container {
+    /*background-color: white;*/
+    color: black;
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    bottom: 50px;
+    right:50%;
+    height: 90%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: scroll;
+    margin: auto;
 }
 
 .view-overlay-container {
@@ -572,8 +598,8 @@ footer {
 
 .close-btn {
     position: fixed!important;
-    top: 4%;
-    left: 9%;
+    top: 15%;
+    left: 32%;
     z-index: 2;
     background-color: #ED6436;
     color: white;
@@ -632,5 +658,9 @@ ul {
 }
 .container-overlay-details {
     padding-left: 2rem;
+}
+
+#image_upload {
+    margin-left: 23px;
 }
 
