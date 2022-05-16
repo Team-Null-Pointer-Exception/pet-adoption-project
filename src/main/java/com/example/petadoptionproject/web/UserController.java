@@ -76,12 +76,20 @@ public class UserController {
     @PutMapping("/me/updateUser")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void updateUser(@RequestBody User user, OAuth2Authentication auth){
-        //needs to check for updated fields
         String userToUpdate = auth.getName();
         User updatedUser = usersRepository.findByEmail(userToUpdate);
-        String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        updatedUser.setPassword(encryptedPassword);
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setEmail(user.getEmail());
+        updatedUser.setFirstName(user.getFirstName());
+        updatedUser.setLastName(user.getLastName());
+        updatedUser.setOrganization(user.getOrganization());
+        updatedUser.setStreet(user.getStreet());
+        updatedUser.setCity(user.getCity());
+        updatedUser.setState(user.getState());
+        updatedUser.setZip(user.getZip());
+        updatedUser.setPhone(user.getPhone());
         usersRepository.save(updatedUser);
+        System.out.println("Updating user information");
     }
 
     @PutMapping("/me/updatePassword")
