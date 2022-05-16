@@ -203,12 +203,15 @@ export function populateCards(filteredListings) {
                             <li>Age: ${listing.age}</li>
                         </ul>
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
                         <ul>
                             <li>Color: ${listing.color}</li>
                             <li>Health Issues: ${listing.health}</li>
                             <li>Fixed: ${listing.fixed}</li>
                         </ul>
+                        </div>
+                        <div class="col-1 side-btn">
+                        <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
                         </div>
                         <div class="col-12 listing-details">
                         <p>Summary: ${listing.summary}</p>
