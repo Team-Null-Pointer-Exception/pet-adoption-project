@@ -94,7 +94,6 @@ function adminMenu() {
 }
 
 export function ListingsEvent() {
-    grabSelections();
     filterSelections();
     detailsListener();
     closeOverlay();
