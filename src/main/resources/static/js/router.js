@@ -10,6 +10,7 @@ import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
 import EditListing, {EditEvents} from "./views/EditListing.js";
+import AdminIndex, {AdminEvent} from "./views/Admin.js";
 
 
 /**
@@ -58,6 +59,15 @@ export default function router(URI) {
             uri: '/users',
             title: 'User Profile',
             viewEvent: UsersEvent
+        },
+        '/admin': {
+            returnView: AdminIndex,
+            state: {
+                user: '/api/users/'
+            },
+            uri: '/admin',
+            title: 'User Profile',
+            viewEvent: AdminEvent
         },
         '/listings': {
             returnView: ListingIndex,
