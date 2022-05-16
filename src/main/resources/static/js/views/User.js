@@ -320,7 +320,7 @@ function viewListing(){
     })
 }
 function closeViewOverlay() {
-    $(".close-btn").click(function (e) {
+    $(".view-close-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "none"})
     })
