@@ -1,5 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import CreateView from "../createView";
 
 
 export default function UserIndex(props) {
@@ -64,37 +65,37 @@ export default function UserIndex(props) {
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
                                         <label for="edit-firstName">First Name</label>
-                                        <input id="edit-firstName" name="edit-firstName" type="text"/>
+                                        <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-username">Username</label>
-                                        <input id="edit-username" name="edit-username" type="text"/>
+                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-email">Email</label>
-                                        <input id="edit-email" name="edit-email" type="text"/>
+                                        <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-phone">Phone Number</label>
-                                        <input id="edit-phone" name="edit-phone" type="text"/>
+                                        <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-organization">Organization</label>
-                                        <input id="edit-organization" name="edit-organization" type="text"/>
+                                        <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-2">
                                     <div class="media">
                                         <label for="edit-lastName">Last Name</label>
-                                        <input id="edit-lastName" name="edit-lastName" type="text"/>
+                                        <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-street">Street Address</label>
-                                        <input id="edit-street" name="edit-street" type="text"/>
+                                        <input id="edit-street" name="edit-street" type="text" value="${props.user.street}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-city">City</label>
-                                        <input id="edit-city" name="edit-city" type="text"/>
+                                        <input id="edit-city" name="edit-city" type="text" value="${props.user.city}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-state">State</label>
@@ -157,7 +158,7 @@ export default function UserIndex(props) {
                                     </div>
                                     <div class="media">
                                         <label for="edit-zip">Zip Code</label>
-                                        <input id="edit-zip" name="edit-zip" type="text"/>
+                                        <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>
                                 </div>
                             </form>
@@ -319,8 +320,34 @@ function hideEditUser(){
 
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
-        $('#edit-profile-info').css({display: "none"});
         // TODO: PUT request
+        let editUser = {
+            username: $("#edit-username").val(),
+            email: $("#edit-email").val(),
+            firstName: $("#edit-firstName").val(),
+            lastName: $("#edit-lastName").val(),
+            organization: $("#edit-organization").val(),
+            street: $("#edit-street").val(),
+            city: $("#edit-city").val(),
+            state: $("#edit-state").val(),
+            zip: $("#edit-zip").val(),
+            phone: $("#edit-phone").val()
+        }
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders(),
+            body: JSON.stringify(editUser)
+        }
+
+        fetch("http://localhost:8080/api/users/me/updateUser", request)
+            .then(response => {
+                console.log(response.status);
+                CreateView("/");
+            }).catch(error => {
+                console.log(error);
+                createView("/");
+        });
     })
 }
 
