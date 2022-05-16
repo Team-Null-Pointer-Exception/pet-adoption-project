@@ -1,5 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import EditListing from "./EditListing.js";
 
 
 export default function UserIndex(props) {
@@ -194,6 +195,56 @@ export default function UserIndex(props) {
                                     <div class="listing-edit col-1" data-id="${listing.id}">Edit</div>
                                     <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
                                 </div>
+                                       <div id="overlay-${listing.id}" class="overlay">
+             <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
+    <div class="container overlay-container">        
+            <div class="row edit-listing-row">
+            <div class="card edit-listing-card"> 
+                <form id="edit-listing-form" name="edit-listing-form">
+                    <h1 class="text-white">Edit Listing</h1>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text"/>
+                    <br>
+                    <label for="animal">Animal</label>
+                    <input id="animal" name="animal" type="text"/>
+                    <br>
+                    <label for="breed">Breed</label>
+                    <input id="breed" name="breed" type="text"/>
+                    <br>
+                    <label for="color">Color</label>
+                    <input id="color" name="color" type="text"/>
+                    <br>
+                    <label for="age">Age</label>
+                    <input id="age" name="age" type="text"/>
+                    <br>
+                    <label for="sex">Sex</label>
+                    <select id="sex">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <br>
+                    <label for="health">Health</label>
+                    <input id="health" name="health" type="text"/>
+                    <br>
+                    <label for="fixed">Fixed</label>
+                    <select id="fixed">
+                      <option>True</option>
+                      <option>False</option>
+                    </select>
+                    <br>
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="2" placeholder="Pet description"></textarea>
+                    <br>
+                    <label for="summary">Summary</label>
+                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
+                    <br>              
+                    <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
+                    <button id="edit-listing-btn" type="button">Submit</button>
+                </form>
+            </div>
+            </div>
+            </div>
+            </div>
                             `).join('')}
                         </div>
                         <div>
@@ -233,7 +284,13 @@ function viewListing(){
 function editListing(){
     $('.listing-edit').click(function(){
         let id = this.getAttribute('data-id');
-        createView("/edit/{id}") // set up id dynamically, data-id???
+        $("#overlay-" + id).css({display: "block"})
+    })
+}
+function closeOverlay() {
+    $(".close-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#overlay-" + id).css({display: "none"})
     })
 }
 
@@ -359,6 +416,9 @@ export function UsersEvent(){
     hideEditUser();
     editUser();
     createStory();
+    closeOverlay()
+    EditListingsEvent()
+    AddFileEvent()
 }
 
 export function getUserRole() {
@@ -383,6 +443,61 @@ export function getUser() {
     const decodedPayload = atob(payload);
     const payloadObject = JSON.parse(decodedPayload);
     return payloadObject.user_name;
+}
+
+
+let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let imageArray = []
+let fileStackClient = null
+
+function AddFileEvent(){
+    $('#image_upload').click(function (event) {
+        event.preventDefault()
+        const options = {
+            onFileUploadFinished: callback => {
+                const imgURL = callback.url
+                imageArray.push(imgURL)
+                console.log(imageArray)
+            }
+        }
+        fileStackClient.picker(options).open();
+    })
+}
+
+
+export function EditListingsEvent(){
+    $('#edit-listing-btn').click(function () {
+        let editListing = {
+            summary: $("#summary").val(),
+            name: $("#name").val(),
+            animal: $("#animal").val(),
+            breed: $("#breed").val(),
+            sex: $("#sex").val(),
+            age: $("#age").val(),
+            color: $("#color").val(),
+            description: $("#description").val(),
+            fixed: $("#fixed").val(),
+            health: $("#health").val(),
+            images: imageArray
+        }
+        console.log(editListing)
+        let request = {
+            method: "PUT",
+            headers: getHeaders(),
+            body: JSON.stringify(editListing)
+        }
+
+        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
+            .then(res => {
+                console.log(res.status);
+                imageArray = []
+                createView("/users")
+            }).catch(error => {
+            console.log(error);
+            imageArray = []
+            createView("/users");
+        });
+    })
 }
 
 
