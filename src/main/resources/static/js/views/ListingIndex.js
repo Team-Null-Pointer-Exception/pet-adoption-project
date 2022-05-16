@@ -1,13 +1,12 @@
+import createView from "../createView.js";
+import {getHeaders, getUserRole} from "../auth.js";
 
-import {getUserRole} from "../auth.js";
 
-
-let allListings, activeListings, listingStatus, animalType, gender, distance;
-let googleAPIKey='AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
+let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
+let googleAPIKey = 'AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
 
 export default function ListingIndex(props) {
 
-    console.log(getUserRole());
     allListings = props.listings;
     allListings.forEach(listing => {
         if (listing.breed === "") {
@@ -63,7 +62,8 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 justify-content-center">
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-center
+                        ">
                         ${populateCards(activeListings)}
                     </div>
             </div>
@@ -93,77 +93,74 @@ function adminMenu() {
 }
 
 export function ListingsEvent() {
-    grabSelections()
+    grabSelections();
     detailsListener();
-    filterSelections();
     closeOverlay();
+    newSelections()
 }
 
 function grabSelections() {
     if (getUserRole()) {
-        listingStatus = $("#listing-status").val().toLowerCase();
+        listingStatus = $("#listing-status").val();
     }
-    animalType = $("#animal-type").val().toLowerCase().trim();
-    gender = $("#gender").val().toLowerCase();
-    distance = $("#distance").val().toLowerCase();
+    animalType = $("#animal-type").val();
+    gender = $("#gender").val();
+    distance = $("#distance").val();
 }
 
-function filterSelections() {
-    let filteredListings;
 
+function newSelections() {
     $("#listing-status, #animal-type, #gender, #distance").change(function () {
-        grabSelections();
-        console.log(listingStatus);
-        console.log(animalType);
-        console.log(gender);
-        console.log(distance);
-
-        if (getUserRole()) {
-            if (listingStatus === "active") {
-                filteredListings = activeListings;
-            } else if (listingStatus === "pending") {
-                filteredListings = allListings.filter(listing => listing.status === "PENDING");
-            } else if (listingStatus === "expired") {
-                filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
-            } else if (listingStatus === "closed") {
-                filteredListings = allListings.filter(listing => listing.status === "CLOSED");
-            } else {
-                filteredListings = allListings;
-            }
-        } else {
-            filteredListings = activeListings;
-        }
-
-        console.log(filteredListings);
-
-        if (animalType === "dogs") {
-            filteredListings = filteredListings.filter(listing => listing.animal === "dog");
-        } else if (animalType === "cats") {
-            filteredListings = filteredListings.filter(listing => listing.animal === "cat");
-        } else if (animalType === "other") {
-            filteredListings = filteredListings.filter(listing => listing.animal !== "dog" && listing.animal !== "cat");
-        }
-
-        console.log(filteredListings)
-
-        if (gender === "male") {
-            filteredListings = filteredListings.filter(listing => listing.sex === "Male");
-        } else if (gender === "female") {
-            filteredListings = filteredListings.filter(listing => listing.sex === "Female");
-        }
-
-        console.log(filteredListings)
-
-        return $("#listing-cards").html(populateCards(filteredListings));
+        filterSelections()
     })
 }
 
 
+function filterSelections() {
+
+    grabSelections();
+
+    if (getUserRole()) {
+        if (listingStatus === "Active") {
+            filteredListings = activeListings;
+        } else if (listingStatus === "Pending") {
+            filteredListings = allListings.filter(listing => listing.status === "PENDING");
+        } else if (listingStatus === "Expired") {
+            filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
+        } else if (listingStatus === "Closed") {
+            filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        } else {
+            filteredListings = allListings;
+        }
+    } else {
+        filteredListings = activeListings;
+    }
+
+    if (animalType === "Dogs") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "dog");
+    } else if (animalType === "Cats") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "cat");
+    } else if (animalType === "Other") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() !== "dog" && listing.animal !== "cat");
+    }
+
+
+    if (gender === "Male") {
+        filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "male");
+    } else if (gender === "Female") {
+        filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "female");
+    }
+
+    return $("#listing-cards").html(populateCards(filteredListings));
+}
+
+
 export function populateCards(filteredListings) {
+    //language=HTML
     return `
         ${filteredListings.map(listing =>
                 ` 
-        <div class="col-xs-12 col-md-6 mb-5">
+        <div class="col mb-5">
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
                         ${addBadge(listing)}
@@ -221,14 +218,14 @@ export function populateCards(filteredListings) {
             <div class="row"> 
             <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
             <h3 class="overlay-text text-center">Contact the Owner:</h3>
-            <img class="storyImg mx-auto" src="${listing.user.profileImg}" alt="face">
+            <img class="storyImg mx-auto" src="${listing.user.profileImg}">
                         <ul>
                             <li>${listing.user.firstName} ${listing.user.lastName}</li>
                             <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
                             <li>Contact Options: </li>
                         </ul>
                         <div class="d-flex align-items-center justify-content-center user-contact-details">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="sms:${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:${listing.user.email}" target="_blank"><i class="far fa-envelope"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:${listing.user.phone}" target="_blank"><i class="fas fa-phone"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 px-0 allow" style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}" target="_blank"><i class="fas fa-video"></i></a>
@@ -247,16 +244,20 @@ export function populateCards(filteredListings) {
 
 
 export function addBadge(listing) {
-    let now = new Date();
-    let date = listing.createdAt;
-    console.log(date);
+    let listingDate = listing.createdAt;
+    let today = new Date();
+    let dateToBeChanged = new Date();
 
-    const oneDay = 60 * 60 * 24;
-    console.log(oneDay);
+    dateToBeChanged.setDate(today.getDate() - 3);
+    let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
 
-    let compareDatesBoolean = (now - date) > oneDay;
+    let listingDateArray = listingDate.split("-");
+    listingDate = listingDateArray.join("");
+    let yesterdayDateArray = threeDaysAgo.split("-");
+    threeDaysAgo = yesterdayDateArray.join("");
+
     //language=HTML
-    if (compareDatesBoolean) {
+    if (listingDate < threeDaysAgo) {
         return '';
     } else {
         return `
@@ -271,8 +272,6 @@ function detailsListener() {
         $("#overlay-" + id).css({display: "block"})
     })
 }
-
-
 
 
 function closeOverlay() {
