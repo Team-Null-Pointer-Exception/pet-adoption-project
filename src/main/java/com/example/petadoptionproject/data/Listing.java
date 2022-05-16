@@ -33,7 +33,7 @@ public class Listing {
     private String summary;
 
     @Column
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @NotNull
     @Enumerated(EnumType.STRING)

@@ -8,9 +8,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -42,7 +40,7 @@ public class ListingController {
         User user = usersRepository.findByEmail(email);
         System.out.println(user);
         listing.setUser(user);
-        listing.setCreatedAt(new Date(Calendar.getInstance().getTime().getTime()));
+        listing.setCreatedAt(LocalDate.now());
         if(user.getRole().equals(USER)) {
             listing.setStatus(Listing.Status.PENDING);
         } else {
