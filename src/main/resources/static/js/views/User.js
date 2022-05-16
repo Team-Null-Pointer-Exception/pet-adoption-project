@@ -6,12 +6,16 @@ import CreateView from "../createView.js";
 
 export default function UserIndex(props) {
 
-    // TODO: implement stories
-    // ${props.user.stories.map(story => `
-    //     <div class="user-stories row">
-    //         <div class="story-content col-8" data-id="${story.id}">Pet: ${story.content}</div>
-    // </div>
-    //     `).join('')}
+    let orgHTML = "";
+
+    if (props.user.organization !== ""){
+        orgHTML = `
+            <div className="media">
+            <label>Organization</label>
+            <p>${props.user.organization}</p>
+            </div>
+            `
+    }
 
     return `
     <!DOCTYPE html>
@@ -42,10 +46,7 @@ export default function UserIndex(props) {
                                                 <label>Address</label>
                                                 <p>${props.user.street}, ${props.user.city}, ${props.user.state} ${props.user.zip}</p>
                                             </div>
-                                            <div class="media">
-                                                <label>Organization</label>
-                                                <p>${props.user.organization}</p>
-                                            </div>
+                                            ${orgHTML}
                                         </div>
                                         <div class="col-md-6">
                                             <div class="media">
@@ -65,19 +66,19 @@ export default function UserIndex(props) {
                             <form class="row" id="edit-profile-form">
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
-                                        <label for="edit-firstName">First Name</label>
+                                        <label for="edit-firstName">First Name <span id="input-required">*</span></label>
                                         <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-username">Username</label>
+                                        <label for="edit-username">Username <span id="input-required">*</span></label>
                                         <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-email">Email</label>
+                                        <label for="edit-email">Email <span id="input-required">*</span></label>
                                         <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-phone">Phone Number</label>
+                                        <label for="edit-phone">Phone Number <span id="input-required">*</span></label>
                                         <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
                                     </div>
                                     <div class="media">
@@ -91,15 +92,15 @@ export default function UserIndex(props) {
                                         <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-street">Street Address</label>
+                                        <label for="edit-street">Street Address <span id="input-required">*</span></label>
                                         <input id="edit-street" name="edit-street" type="text" value="${props.user.street}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-city">City</label>
+                                        <label for="edit-city">City <span id="input-required">*</span></label>
                                         <input id="edit-city" name="edit-city" type="text" value="${props.user.city}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-state">State</label>
+                                        <label for="edit-state">State <span id="input-required">*</span></label>
                                         <select id="edit-state">
                                           <option>AL</option>
                                           <option>AS</option>
@@ -158,21 +159,22 @@ export default function UserIndex(props) {
                                         </select>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-zip">Zip Code</label>
+                                        <label for="edit-zip">Zip Code <span id="input-required">*</span></label>
                                         <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>
                                 </div>
                             </form>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
+                            <p id="edit-user-response">Form incomplete. Please try again.</p>  
                         </div>
                         <div id="edit-password-info">
                             <div class="media">
-                                <label for="edit-password">Password</label>
+                                <label for="edit-password">New Password <span id="input-required">*</span></label>
                                 <input id="edit-password" name="edit-password" type="password"/>
                             </div>
                             <div class="media">
-                                <label for="edit-confirmPassword">Confirm Password</label>
+                                <label for="edit-confirmPassword">Confirm Password <span id="input-required">*</span></label>
                                 <input id="edit-confirmPassword" name="edit-confirmPassword" type="password"/>
                             </div>                        
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-cancel-btn">Cancel Changes</button>
@@ -377,34 +379,50 @@ function hideEditUser(){
 
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
-        // TODO: input verification
-        let editUser = {
-            username: $("#edit-username").val(),
-            email: $("#edit-email").val(),
-            firstName: $("#edit-firstName").val(),
-            lastName: $("#edit-lastName").val(),
-            organization: $("#edit-organization").val(),
-            street: $("#edit-street").val(),
-            city: $("#edit-city").val(),
-            state: $("#edit-state").val(),
-            zip: $("#edit-zip").val(),
-            phone: $("#edit-phone").val()
-        }
 
-        let request = {
-            method: "PUT",
-            headers: getHeaders(),
-            body: JSON.stringify(editUser)
-        }
+        let username = $("#edit-username").val().trim();
+        let email = $("#edit-email").val().trim();
+        let firstName = $("#edit-firstName").val().trim();
+        let lastName = $("#edit-lastName").val().trim();
+        let organization = $("#edit-organization").val().trim();
+        let street = $("#edit-street").val().trim();
+        let city = $("#edit-city").val().trim();
+        let state = $("#edit-state").val();
+        let zip = $("#edit-zip").val().trim();
+        let phone = $("#edit-phone").val().trim();
 
-        fetch("http://localhost:8080/api/users/me/updateUser", request)
-            .then(response => {
-                console.log(response.status);
-                CreateView("/users");
-            }).catch(error => {
-                console.log(error);
-                createView("/users");
-        });
+        if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
+            city !== "" && state !== "" && zip !== "" && phone !== "") {
+            let editUser = {
+                username: username,
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                organization: organization,
+                street: street,
+                city: city,
+                state: state,
+                zip: zip,
+                phone: phone
+            }
+
+            let request = {
+                method: "PUT",
+                headers: getHeaders(),
+                body: JSON.stringify(editUser)
+            }
+
+            fetch("http://localhost:8080/api/users/me/updateUser", request)
+                .then(response => {
+                    console.log(response.status);
+                    CreateView("/users");
+                }).catch(error => {
+                    console.log(error);
+                    createView("/users");
+            });
+        } else {
+            $("#edit-user-response").css({display: "block"});
+        }
     })
 }
 

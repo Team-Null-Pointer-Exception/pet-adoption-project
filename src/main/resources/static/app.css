@@ -420,6 +420,11 @@ footer {
 .edit-profile-col label {
     width: 10rem;
 }
+#edit-profile-info #edit-user-response {
+    margin-top: .25rem;
+    color: #181818;
+    display: none;
+}
 /*Edit Password*/
 #edit-password-info {
     margin-top: 1rem;
@@ -432,7 +437,7 @@ footer {
     margin-bottom: .25rem;
 }
 #edit-password-info label {
-    width: 8.5rem;
+    width: 9rem;
 }
 #edit-password-info #register-response {
     margin-top: .25rem;
@@ -609,3 +614,6 @@ ul {
     padding-left: 2rem;
 }
 
+#input-required {
+    color: #e3410c;
+}
