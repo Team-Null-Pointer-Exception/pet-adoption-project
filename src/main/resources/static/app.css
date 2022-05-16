@@ -498,7 +498,7 @@ footer {
     margin-top: 12rem;
 }
 
-.storyContainer {
+.storyContainer, .listing-details {
     padding-top: 2rem;
 }
 
@@ -546,10 +546,13 @@ footer {
 
 .listing-image-large {
     max-width: 100%;
-    height: auto;
+    max-height: 300px;
     background-position: center;
     overflow:hidden;
     border-radius: 5px;
+}
+.listing-main {
+    max-height: 400px;
 }
 
 
@@ -572,17 +575,18 @@ ul {
 }
 .listing-contact-details {
     margin-top: 1rem;
-    background-color: #d5d0d0;
     border-radius: 5px;
     max-height: 300px
 }
 
 .location-map {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
     max-height: 300px;
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
+    object-fit: cover;
 }
 .user-contact-details {
     margin-left: 1rem;
