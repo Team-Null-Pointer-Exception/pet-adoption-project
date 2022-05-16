@@ -10,4 +10,5 @@ export function LogoutEvents(){
     window.localStorage.removeItem("access_token");
     window.localStorage.removeItem("refresh_token");
     createView("/home");
+    window.location.reload();
 }

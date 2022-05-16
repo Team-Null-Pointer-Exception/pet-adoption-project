@@ -25,7 +25,7 @@ export default function Home(props) {
                         <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span> Pets</h1>
                         <div class="container px-4 px-lg-5 mt-5">
                         <div id="recent-listing-cards"
-                             class="row gx-5 row-cols-xs-1  row-cols-lg-2 justify-content-center">
+                             class="row gx-5 justify-content-center">
                             ${populateCards(recentListings)}
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default function Home(props) {
 <section class="story-section gray-bg">
 <div class="container storyContainer px-4 px-lg-5 mt-5">
                         <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
-                        <div id="stories" class="row gx-4 gx-md-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
+                        <div id="stories" class="row gx-4 gx-md-5 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
                         ${populateStoryCards(recentStories)}
                         </div>
                         
@@ -67,7 +67,7 @@ function populateStoryCards(stories) {
                     </div>`).join('')}`
 }
 
-function detailsListener() {
+function homeDetailsListener() {
     $(".details-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "block"})
@@ -83,7 +83,7 @@ function closeOverlay() {
 }
 
 export function HomeEvents() {
-    detailsListener()
+    homeDetailsListener()
     closeOverlay()
 }
 

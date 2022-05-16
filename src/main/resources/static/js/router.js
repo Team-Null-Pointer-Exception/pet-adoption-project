@@ -77,7 +77,7 @@ export default function router(URI) {
         },
         '/edit': {
             returnView: EditListing,
-            state: {}, // this needs to be reconfigured raymond's example will go to the bottom of the router
+            state: {},
             uri: '/edit',
             title: 'Edit Listing',
             viewEvent: EditEvents

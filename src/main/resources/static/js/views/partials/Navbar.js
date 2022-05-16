@@ -49,6 +49,7 @@ export default function Navbar(props) {
                     </li>
                     <li class="nav-item">
                     <a href="/listings" class="nav-link" data-link>Listings</a>
+
                     </li>
                    
         `
@@ -57,7 +58,7 @@ export default function Navbar(props) {
                 <a href="/users" class="nav-link" data-link>User Profile</a>
                 </li>
                 </ul>
-                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>
+                <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>               
                 </div>
             </nav>
         </div>

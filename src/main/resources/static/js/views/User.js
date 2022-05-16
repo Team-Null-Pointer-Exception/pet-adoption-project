@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import EditListing from "./EditListing.js";
+import CreateView from "../createView.js";
 
 
 export default function UserIndex(props) {
@@ -65,37 +66,37 @@ export default function UserIndex(props) {
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
                                         <label for="edit-firstName">First Name</label>
-                                        <input id="edit-firstName" name="edit-firstName" type="text"/>
+                                        <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-username">Username</label>
-                                        <input id="edit-username" name="edit-username" type="text"/>
+                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-email">Email</label>
-                                        <input id="edit-email" name="edit-email" type="text"/>
+                                        <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-phone">Phone Number</label>
-                                        <input id="edit-phone" name="edit-phone" type="text"/>
+                                        <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-organization">Organization</label>
-                                        <input id="edit-organization" name="edit-organization" type="text"/>
+                                        <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-2">
                                     <div class="media">
                                         <label for="edit-lastName">Last Name</label>
-                                        <input id="edit-lastName" name="edit-lastName" type="text"/>
+                                        <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-street">Street Address</label>
-                                        <input id="edit-street" name="edit-street" type="text"/>
+                                        <input id="edit-street" name="edit-street" type="text" value="${props.user.street}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-city">City</label>
-                                        <input id="edit-city" name="edit-city" type="text"/>
+                                        <input id="edit-city" name="edit-city" type="text" value="${props.user.city}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-state">State</label>
@@ -158,7 +159,7 @@ export default function UserIndex(props) {
                                     </div>
                                     <div class="media">
                                         <label for="edit-zip">Zip Code</label>
-                                        <input id="edit-zip" name="edit-zip" type="text"/>
+                                        <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>
                                 </div>
                             </form>
@@ -195,7 +196,45 @@ export default function UserIndex(props) {
                                     <div class="listing-edit col-1" data-id="${listing.id}">Edit</div>
                                     <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
                                 </div>
-                                       <div id="overlay-${listing.id}" class="overlay">
+                                                        <div id="overlay-${listing.id}" class="overlay">
+                        <a class="btn rounded-circle text-center view-close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
+    <div class="container view-overlay-container">
+    <div class="sharethis-sticky-share-buttons"></div>
+    <div class="row">
+        <div class="col-xs-12 col-lg-6 listing-main">
+             <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
+             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+             </div>
+                   <div class="col-xs-12 col-lg-6 container container-overlay-details">
+                        <h3 class="overlay-text text-center">${listing.animal}</h3>
+                        <div class="row listing-details">
+                        <div class="col-6">
+                        <ul>
+                            <li>Breed: ${listing.breed}</li>
+                            <li>Sex: ${listing.sex}</li>
+                            <li>Age: ${listing.age}</li>
+                        </ul>
+                        </div>
+                        <div class="col-6">
+                        <ul>
+                            <li>Color: ${listing.color}</li>
+                            <li>Health Issues: ${listing.health}</li>
+                            <li>Fixed: ${listing.fixed}</li>
+                        </ul>
+                        </div>
+                        <div class="col-12 listing-details">
+                        <p>Summary: ${listing.summary}</p>
+                        <p>About: ${listing.description}</p>
+                        </div>
+                        </div>                                                  
+                  </div>
+
+            </div>              
+    </div>
+
+</div>
+                             
+                                       <div id="edit-overlay-${listing.id}" class="overlay">
              <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
     <div class="container overlay-container">        
             <div class="row edit-listing-row">
@@ -277,20 +316,27 @@ function newListingBtn(){
 function viewListing(){
     $('.listing-view').click(function(){
         let id = this.getAttribute('data-id');
-        createView("/listings/{id}");
+        $("#overlay-" + id).css({display: "block"})
     })
 }
+function closeViewOverlay() {
+    $(".view-close-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#overlay-" + id).css({display: "none"})
+    })
+}
+
 
 function editListing(){
     $('.listing-edit').click(function(){
         let id = this.getAttribute('data-id');
-        $("#overlay-" + id).css({display: "block"})
+        $("#edit-overlay-" + id).css({display: "block"})
     })
 }
-function closeOverlay() {
+function closeEditOverlay() {
     $(".close-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
-        $("#overlay-" + id).css({display: "none"})
+        $("#edit-overlay-" + id).css({display: "none"})
     })
 }
 
@@ -376,8 +422,34 @@ function hideEditUser(){
 
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
-        $('#edit-profile-info').css({display: "none"});
-        // TODO: PUT request
+        // TODO: input verification
+        let editUser = {
+            username: $("#edit-username").val(),
+            email: $("#edit-email").val(),
+            firstName: $("#edit-firstName").val(),
+            lastName: $("#edit-lastName").val(),
+            organization: $("#edit-organization").val(),
+            street: $("#edit-street").val(),
+            city: $("#edit-city").val(),
+            state: $("#edit-state").val(),
+            zip: $("#edit-zip").val(),
+            phone: $("#edit-phone").val()
+        }
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders(),
+            body: JSON.stringify(editUser)
+        }
+
+        fetch("http://localhost:8080/api/users/me/updateUser", request)
+            .then(response => {
+                console.log(response.status);
+                CreateView("/users");
+            }).catch(error => {
+                console.log(error);
+                createView("/users");
+        });
     })
 }
 
@@ -416,12 +488,13 @@ export function UsersEvent(){
     hideEditUser();
     editUser();
     createStory();
-    closeOverlay()
-    EditListingsEvent()
-    AddFileEvent()
-    fileStackSetUp()
-    getUserRole()
-    getUser()
+    closeEditOverlay();
+    EditListingsEvent();
+    AddFileEvent();
+    fileStackSetUp();
+    getUserRole();
+    getUser();
+    closeViewOverlay()
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';

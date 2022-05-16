@@ -1,5 +1,5 @@
-import createView from "../createView.js";
-import {getHeaders, getUserRole} from "../auth.js";
+
+import {getUserRole} from "../auth.js";
 
 
 let allListings, activeListings, listingStatus, animalType, gender, distance;
@@ -63,8 +63,7 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-center
-                        ">
+                             class="row gx-4 gx-lg-5 justify-content-center">
                         ${populateCards(activeListings)}
                     </div>
             </div>
@@ -94,9 +93,9 @@ function adminMenu() {
 }
 
 export function ListingsEvent() {
-    grabSelections();
-    filterSelections();
+    grabSelections()
     detailsListener();
+    filterSelections();
     closeOverlay();
 }
 
@@ -161,11 +160,10 @@ function filterSelections() {
 
 
 export function populateCards(filteredListings) {
-    //language=HTML
     return `
         ${filteredListings.map(listing =>
                 ` 
-        <div class="col mb-5">
+        <div class="col-xs-12 col-md-6 mb-5">
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
                         ${addBadge(listing)}
@@ -223,14 +221,14 @@ export function populateCards(filteredListings) {
             <div class="row"> 
             <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
             <h3 class="overlay-text text-center">Contact the Owner:</h3>
-            <img class="storyImg mx-auto" src="${listing.user.profileImg}">
+            <img class="storyImg mx-auto" src="${listing.user.profileImg}" alt="face">
                         <ul>
                             <li>${listing.user.firstName} ${listing.user.lastName}</li>
                             <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
                             <li>Contact Options: </li>
                         </ul>
                         <div class="d-flex align-items-center justify-content-center user-contact-details">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="iMessage://${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:${listing.user.email}" target="_blank"><i class="far fa-envelope"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:${listing.user.phone}" target="_blank"><i class="fas fa-phone"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 px-0 allow" style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}" target="_blank"><i class="fas fa-video"></i></a>
@@ -267,13 +265,14 @@ export function addBadge(listing) {
 }
 
 
-
 function detailsListener() {
     $(".details-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "block"})
     })
 }
+
+
 
 
 function closeOverlay() {
