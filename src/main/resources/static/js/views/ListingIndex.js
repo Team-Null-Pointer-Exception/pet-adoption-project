@@ -111,7 +111,7 @@ function grabSelections() {
 
 function newSelections() {
     $("#listing-status, #animal-type, #gender, #distance").change(function () {
-        filterSelections()
+        filterSelections();
     })
 }
 
@@ -122,7 +122,7 @@ function filterSelections() {
 
     if (getUserRole()) {
         if (listingStatus === "Active") {
-            filteredListings = activeListings;
+            filteredListings = allListings.filter(listing => listing.status === "ACTIVE");
         } else if (listingStatus === "Pending") {
             filteredListings = allListings.filter(listing => listing.status === "PENDING");
         } else if (listingStatus === "Expired") {
@@ -151,7 +151,10 @@ function filterSelections() {
         filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "female");
     }
 
-    return $("#listing-cards").html(populateCards(filteredListings));
+    console.log(filteredListings);
+    $("#listing-cards").html(populateCards(filteredListings));
+    detailsListener();
+    closeOverlay();
 }
 
 
@@ -268,7 +271,7 @@ export function addBadge(listing) {
 
 function detailsListener() {
     $(".details-btn").click(function (e) {
-        let id = e.target.getAttribute("data-id")
+        let id = $(this).data("id");
         $("#overlay-" + id).css({display: "block"})
     })
 }
@@ -276,7 +279,7 @@ function detailsListener() {
 
 function closeOverlay() {
     $(".close-btn").click(function (e) {
-        let id = e.target.getAttribute("data-id")
+        let id = $(this).data("id");
         $("#overlay-" + id).css({display: "none"})
     })
 }
