@@ -93,6 +93,7 @@ function adminMenu() {
 }
 
 export function ListingsEvent() {
+    grabSelections()
     detailsListener();
     filterSelections();
     closeOverlay();
