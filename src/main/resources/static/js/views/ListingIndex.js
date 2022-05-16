@@ -2,12 +2,11 @@ import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
 
 
-let allListings, activeListings, listingStatus, animalType, gender, distance;
-let googleAPIKey='AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
+let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
+let googleAPIKey = 'AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
 
 export default function ListingIndex(props) {
 
-    console.log(getUserRole());
     allListings = props.listings;
     allListings.forEach(listing => {
         if (listing.breed === "") {
@@ -94,68 +93,65 @@ function adminMenu() {
 }
 
 export function ListingsEvent() {
-    filterSelections();
+    grabSelections();
     detailsListener();
     closeOverlay();
+    newSelections()
 }
 
 function grabSelections() {
     if (getUserRole()) {
-        listingStatus = $("#listing-status").val().toLowerCase();
+        listingStatus = $("#listing-status").val();
     }
-    animalType = $("#animal-type").val().toLowerCase().trim();
-    gender = $("#gender").val().toLowerCase();
-    distance = $("#distance").val().toLowerCase();
+    animalType = $("#animal-type").val();
+    gender = $("#gender").val();
+    distance = $("#distance").val();
 }
 
-function filterSelections() {
-    let filteredListings;
 
+function newSelections() {
     $("#listing-status, #animal-type, #gender, #distance").change(function () {
-        grabSelections();
-        console.log(listingStatus);
-        console.log(animalType);
-        console.log(gender);
-        console.log(distance);
-
-        if (getUserRole()) {
-            if (listingStatus === "active") {
-                filteredListings = activeListings;
-            } else if (listingStatus === "pending") {
-                filteredListings = allListings.filter(listing => listing.status === "PENDING");
-            } else if (listingStatus === "expired") {
-                filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
-            } else if (listingStatus === "closed") {
-                filteredListings = allListings.filter(listing => listing.status === "CLOSED");
-            } else {
-                filteredListings = allListings;
-            }
-        } else {
-            filteredListings = activeListings;
-        }
-
-        console.log(filteredListings);
-
-        if (animalType === "dogs") {
-            filteredListings = filteredListings.filter(listing => listing.animal === "dog");
-        } else if (animalType === "cats") {
-            filteredListings = filteredListings.filter(listing => listing.animal === "cat");
-        } else if (animalType === "other") {
-            filteredListings = filteredListings.filter(listing => listing.animal !== "dog" && listing.animal !== "cat");
-        }
-
-        console.log(filteredListings)
-
-        if (gender === "male") {
-            filteredListings = filteredListings.filter(listing => listing.sex === "Male");
-        } else if (gender === "female") {
-            filteredListings = filteredListings.filter(listing => listing.sex === "Female");
-        }
-
-        console.log(filteredListings)
-
-        return $("#listing-cards").html(populateCards(filteredListings));
+        filterSelections()
     })
+}
+
+
+function filterSelections() {
+
+    grabSelections();
+
+    if (getUserRole()) {
+        if (listingStatus === "Active") {
+            filteredListings = activeListings;
+        } else if (listingStatus === "Pending") {
+            filteredListings = allListings.filter(listing => listing.status === "PENDING");
+        } else if (listingStatus === "Expired") {
+            filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
+        } else if (listingStatus === "Closed") {
+            filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        } else {
+            filteredListings = allListings;
+        }
+    } else {
+        filteredListings = activeListings;
+    }
+
+    if (animalType === "Dogs") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "dog");
+    } else if (animalType === "Cats") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "cat");
+    } else if (animalType === "Other") {
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() !== "dog" && listing.animal !== "cat");
+    }
+
+
+    if (gender === "Male") {
+        filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "male");
+    } else if (gender === "Female") {
+        filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "female");
+    }
+
+    return $("#listing-cards").html(populateCards(filteredListings));
 }
 
 
@@ -268,7 +264,6 @@ export function addBadge(listing) {
             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">New</div>`;
     }
 }
-
 
 
 function detailsListener() {
