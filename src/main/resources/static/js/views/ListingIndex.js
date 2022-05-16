@@ -218,7 +218,7 @@ export function populateCards(filteredListings) {
             </div>
             <div class="row cols-2"> 
             <div class="col location-map" id="map">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=300x300&key=${googleAPIKey}" alt="map"/>
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=400x400&key=${googleAPIKey}" alt="map"/>
             </div> 
 
             <div class="col listing-contact-details text-center">
