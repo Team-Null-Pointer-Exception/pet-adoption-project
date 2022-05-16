@@ -75,6 +75,13 @@ export default function router(URI) {
             title: 'Create New Listing',
             viewEvent: CreateEvents
         },
+        '/edit': {
+            returnView: EditListing,
+            state: {}, // this needs to be reconfigured raymond's example will go to the bottom of the router
+            uri: '/edit',
+            title: 'Edit Listing',
+            viewEvent: EditEvents
+        },
         '/about': {
             returnView: About,
             state: {},
@@ -95,7 +102,18 @@ export default function router(URI) {
         },
     };
 
-
+    // let split = URI.split("/")
+    // console.log(split)
+    // for (const key in routes) {
+    //     if (key.includes(URI)){
+    //         return routes[URI]
+    //     } else if(key.includes(`/${split[1]}`)) {
+    //         let stateBase = split[1]
+    //         console.log(stateBase)
+    //         routes[`/${split[1]}`].state[stateBase] = `${routes[`/${split[1]}`].state[stateBase]}/${split[2]}`
+    //         return routes[`/${split[1]}`]
+    //     }
+    // }
 
     return routes[URI];
 }
