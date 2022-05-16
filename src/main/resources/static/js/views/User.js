@@ -1,6 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import CreateView from "../createView";
+import CreateView from "../createView.js";
 
 
 export default function UserIndex(props) {
@@ -320,7 +320,7 @@ function hideEditUser(){
 
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
-        // TODO: PUT request
+        // TODO: input verification
         let editUser = {
             username: $("#edit-username").val(),
             email: $("#edit-email").val(),
@@ -343,10 +343,10 @@ function editUser(){
         fetch("http://localhost:8080/api/users/me/updateUser", request)
             .then(response => {
                 console.log(response.status);
-                CreateView("/");
+                CreateView("/users");
             }).catch(error => {
                 console.log(error);
-                createView("/");
+                createView("/users");
         });
     })
 }
