@@ -63,7 +63,7 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-start
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-center
                         ">
                         ${populateCards(activeListings)}
                     </div>
@@ -192,7 +192,7 @@ export function populateCards(filteredListings) {
              <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
              <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
              </div>
-                   <div class="col-6">
+                   <div class="col-5">
                         <h3 class="overlay-text text-center">${listing.animal}</h3>
                         <div class="row">
                         <div class="col-6">
@@ -214,11 +214,16 @@ export function populateCards(filteredListings) {
                         <p>About: ${listing.description}</p>
                         </div>
                         </div>                                                  
-                  </div>   
+                  </div>
+                  <div class="col-1 like-share">
+                  <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="#"><i class="fas fa-heart"></i></a>
+                  <br>
+                  <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="#"><i class="fas fa-share"></i></a>
+</div>
             </div>
             <div class="row cols-2"> 
-            <div class="col location-map" id="map">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=400x400&key=${googleAPIKey}" alt="map"/>
+            <div class="col" id="map">
+            <img class="location-map" src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x550&key=${googleAPIKey}" alt="map"/>
             </div> 
 
             <div class="col listing-contact-details text-center">
@@ -242,7 +247,7 @@ export function populateCards(filteredListings) {
 `).join('')}`
 }
 
-//TODO: mapview, contact information, favorites, share to social media
+
 
 function detailsListener() {
     $(".details-btn").click(function (e) {
@@ -259,7 +264,6 @@ function closeOverlay() {
     })
 }
 
-// https://maps.googleapis.com/maps/api/staticmap?center=78009&zoom=12&size=400x400&key=%20AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU
 
 
 
