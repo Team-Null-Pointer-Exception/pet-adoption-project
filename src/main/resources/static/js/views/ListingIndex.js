@@ -1,9 +1,12 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
 
+
 let allListings, activeListings, listingStatus, animalType, gender, distance;
+let googleAPIKey='AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
 
 export default function ListingIndex(props) {
+
     console.log(getUserRole());
     allListings = props.listings;
     allListings.forEach(listing => {
@@ -95,7 +98,6 @@ export function ListingsEvent() {
     filterSelections();
     detailsListener();
     closeOverlay();
-    loadMap();
 }
 
 function grabSelections() {
@@ -216,8 +218,9 @@ export function populateCards(filteredListings) {
             </div>
             <div class="row cols-2"> 
             <div class="col location-map" id="map">
-            
-</div>     
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=300x300&key=${googleAPIKey}" alt="map"/>
+            </div> 
+
             <div class="col listing-contact-details text-center">
             <img class="storyImg mx-auto" src="${listing.user.profileImg}">
                         <ul>
@@ -256,24 +259,7 @@ function closeOverlay() {
     })
 }
 
-// function loadMap() {
-//     mapkit.init({
-//         authorizationCallback: function(done) {
-//             var xhr = new XMLHttpRequest();
-//             xhr.open("GET", "/services/jwt");
-//             xhr.addEventListener("load", function() {
-//                 done(this.responseText);
-//             });
-//             xhr.send();
-//         }
-//     });
-//
-//     var Cupertino = new mapkit.CoordinateRegion(
-//         new mapkit.Coordinate(37.3316850890998, -122.030067374026),
-//         new mapkit.CoordinateSpan(0.167647972, 0.354985255)
-//     );
-//     var map = new mapkit.Map("map");
-//     map.region = Cupertino;
-// }
+// https://maps.googleapis.com/maps/api/staticmap?center=78009&zoom=12&size=400x400&key=%20AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU
+
 
 

@@ -176,20 +176,12 @@ nav .nav-link.active, .home, .nav-link:hover {
     background: #ED6436;
 }
 
-@media (max-width: 1200px) {
-    h1, .h1 {
-        font-size: calc(1.375rem + 1.5vw);
-    }
-}
+
 .text-white {
     color: #fff;
 }
 
-@media (min-width: 992px) {
-    .pl-lg-5, .px-lg-5 {
-        padding-left: 3rem !important;
-    }
-}
+
 .text-primary {
     color: #ED6436 !important;
 }
@@ -580,16 +572,15 @@ ul {
     border-radius: 5px;
     max-height: 300px
 }
-/*.listing-details {*/
-/*    margin-left: 1rem;*/
-/*    padding: 0!important;*/
-/*}*/
+
 .location-map {
     margin-top: 2rem;
-    height: 300px;
-    width: auto;
+    max-height: 300px;
     border-radius: 5px;
 }
 .user-contact-details {
     margin-left: 1rem;
+}
+#map {
+    height: 100%;
 }
