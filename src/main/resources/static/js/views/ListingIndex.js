@@ -160,6 +160,8 @@ export function populateCards(filteredListings) {
         ${filteredListings.map(listing =>
         `<div class="col mb-5">
                         <div class="card previewCard h-100">
+                        <!-- New badge-->
+                        ${addBadge(listing)}
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
@@ -180,4 +182,20 @@ export function populateCards(filteredListings) {
                     </div>`).join('')}`
 }
 
+export function addBadge(listing) {
+    let now = new Date();
+    let date = listing.dateCreated;
+    console.log(date);
 
+    const oneDay = 60 * 60 * 24;
+    console.log(oneDay);
+
+    let compareDatesBoolean = (now - date) > oneDay;
+    //language=HTML
+    if (compareDatesBoolean) {
+        return '';
+    } else {
+        return `
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">New</div>`;
+    }
+}
