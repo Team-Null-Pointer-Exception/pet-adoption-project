@@ -102,6 +102,7 @@ export default function UserIndex(props) {
                                     <div class="media">
                                         <label for="edit-state">State <span id="input-required">*</span></label>
                                         <select id="edit-state">
+                                          <option selected hidden>${props.user.state}</option>
                                           <option>AL</option>
                                           <option>AS</option>
                                           <option>AR</option>
