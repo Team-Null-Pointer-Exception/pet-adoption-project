@@ -196,45 +196,7 @@ export default function UserIndex(props) {
                                     <div class="listing-edit col-1" data-id="${listing.id}">Edit</div>
                                     <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
                                 </div>
-                                                        <div id="overlay-${listing.id}" class="overlay">
-                        <a class="btn rounded-circle text-center view-close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-    <div class="container view-overlay-container">
-    <div class="sharethis-sticky-share-buttons"></div>
-    <div class="row">
-        <div class="col-xs-12 col-lg-6 listing-main">
-             <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
-             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
-             </div>
-                   <div class="col-xs-12 col-lg-6 container container-overlay-details">
-                        <h3 class="overlay-text text-center">${listing.animal}</h3>
-                        <div class="row listing-details">
-                        <div class="col-6">
-                        <ul>
-                            <li>Breed: ${listing.breed}</li>
-                            <li>Sex: ${listing.sex}</li>
-                            <li>Age: ${listing.age}</li>
-                        </ul>
-                        </div>
-                        <div class="col-6">
-                        <ul>
-                            <li>Color: ${listing.color}</li>
-                            <li>Health Issues: ${listing.health}</li>
-                            <li>Fixed: ${listing.fixed}</li>
-                        </ul>
-                        </div>
-                        <div class="col-12 listing-details">
-                        <p>Summary: ${listing.summary}</p>
-                        <p>About: ${listing.description}</p>
-                        </div>
-                        </div>                                                  
-                  </div>
-
-            </div>              
-    </div>
-
-</div>
-                             
-                                       <div id="edit-overlay-${listing.id}" class="overlay">
+                                       <div id="overlay-${listing.id}" class="overlay">
              <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
     <div class="container overlay-container">        
             <div class="row edit-listing-row">
@@ -316,27 +278,20 @@ function newListingBtn(){
 function viewListing(){
     $('.listing-view').click(function(){
         let id = this.getAttribute('data-id');
-        $("#overlay-" + id).css({display: "block"})
+        createView("/listings/{id}");
     })
 }
-function closeViewOverlay() {
-    $(".view-close-btn").click(function (e) {
-        let id = e.target.getAttribute("data-id")
-        $("#overlay-" + id).css({display: "none"})
-    })
-}
-
 
 function editListing(){
     $('.listing-edit').click(function(){
         let id = this.getAttribute('data-id');
-        $("#edit-overlay-" + id).css({display: "block"})
+        $("#overlay-" + id).css({display: "block"})
     })
 }
-function closeEditOverlay() {
+function closeOverlay() {
     $(".close-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
-        $("#edit-overlay-" + id).css({display: "none"})
+        $("#overlay-" + id).css({display: "none"})
     })
 }
 
@@ -488,13 +443,12 @@ export function UsersEvent(){
     hideEditUser();
     editUser();
     createStory();
-    closeEditOverlay();
-    EditListingsEvent();
-    AddFileEvent();
-    fileStackSetUp();
-    getUserRole();
-    getUser();
-    closeViewOverlay()
+    closeOverlay()
+    EditListingsEvent()
+    AddFileEvent()
+    fileStackSetUp()
+    getUserRole()
+    getUser()
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
