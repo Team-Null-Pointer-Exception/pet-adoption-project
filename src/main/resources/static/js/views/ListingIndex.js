@@ -187,12 +187,13 @@ export function populateCards(filteredListings) {
                         <div id="overlay-${listing.id}" class="overlay">
                         <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
     <div class="container overlay-container">
+    <div class="sharethis-sticky-share-buttons"></div>
     <div class="row row-cols-1 row-cols-md-2">
         <div class="col-6">
              <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
              <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
              </div>
-                   <div class="col-5">
+                   <div class="col-6">
                         <h3 class="overlay-text text-center">${listing.animal}</h3>
                         <div class="row">
                         <div class="col-6">
@@ -215,11 +216,7 @@ export function populateCards(filteredListings) {
                         </div>
                         </div>                                                  
                   </div>
-                  <div class="col-1 like-share">
-                  <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="#"><i class="fas fa-heart"></i></a>
-                  <br>
-                  <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="#"><i class="fas fa-share"></i></a>
-</div>
+
             </div>
             <div class="row cols-2"> 
             <div class="col" id="map">
@@ -242,6 +239,7 @@ export function populateCards(filteredListings) {
                 </div>          
             </div>               
     </div>
+
 </div>
                     </div>
 `).join('')}`
