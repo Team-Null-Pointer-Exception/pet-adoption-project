@@ -249,16 +249,20 @@ export function populateCards(filteredListings) {
 
 
 export function addBadge(listing) {
-    let now = new Date();
-    let date = listing.createdAt;
-    console.log(date);
+    let listingDate = listing.createdAt;
+    let today = new Date();
+    let dateToBeChanged = new Date();
 
-    const oneDay = 60 * 60 * 24;
-    console.log(oneDay);
+    dateToBeChanged.setDate(today.getDate() - 3);
+    let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
 
-    let compareDatesBoolean = (now - date) > oneDay;
+    let listingDateArray = listingDate.split("-");
+    listingDate = listingDateArray.join("");
+    let yesterdayDateArray = threeDaysAgo.split("-");
+    threeDaysAgo = yesterdayDateArray.join("");
+
     //language=HTML
-    if (compareDatesBoolean) {
+    if (listingDate < threeDaysAgo) {
         return '';
     } else {
         return `
