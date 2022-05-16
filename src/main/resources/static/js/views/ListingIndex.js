@@ -141,7 +141,7 @@ function filterSelections() {
     } else if (animalType === "Cats") {
         filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "cat");
     } else if (animalType === "Other") {
-        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() !== "dog" && listing.animal !== "cat");
+        filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() !== "dog" && listing.animal.toLowerCase() !== "cat");
     }
 
 
