@@ -197,7 +197,7 @@ export default function UserIndex(props) {
                                     <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
                                 </div>
                                                         <div id="overlay-${listing.id}" class="overlay">
-                        <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
+                        <a class="btn rounded-circle text-center view-close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
     <div class="container view-overlay-container">
     <div class="sharethis-sticky-share-buttons"></div>
     <div class="row">

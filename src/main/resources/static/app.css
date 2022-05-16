@@ -549,12 +549,22 @@ footer {
     background-color: white;
     color: black;
     position: fixed!important;
-    top: 5%;
+    top: 15%;
     right:10%;
     height: 50%;
     width: 80%;
     border-radius: 10px;
     overflow: scroll;
+}
+
+.view-close-btn {
+    position: fixed!important;
+    top: 14%;
+    left: 9%;
+    z-index: 2;
+    background-color: #ED6436;
+    color: white;
+    border-color: #ED6436;
 }
 
 .close-btn {
