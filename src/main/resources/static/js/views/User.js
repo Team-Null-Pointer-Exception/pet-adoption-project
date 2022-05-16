@@ -419,36 +419,19 @@ export function UsersEvent(){
     closeOverlay()
     EditListingsEvent()
     AddFileEvent()
+    fileStackSetUp()
+    getUserRole()
+    getUser()
 }
-
-export function getUserRole() {
-    const accessToken = localStorage.getItem("access_token");
-    if(!accessToken) {
-        return false;
-    }
-    const parts = accessToken.split('.');
-    const payload = parts[1];
-    const decodedPayload = atob(payload);
-    const payloadObject = JSON.parse(decodedPayload);
-    return payloadObject.authorities[0];
-}
-
-export function getUser() {
-    const accessToken = localStorage.getItem("access_token");
-    if(!accessToken) {
-        return false;
-    }
-    const parts = accessToken.split('.');
-    const payload = parts[1];
-    const decodedPayload = atob(payload);
-    const payloadObject = JSON.parse(decodedPayload);
-    return payloadObject.user_name;
-}
-
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
 let imageArray = []
 let fileStackClient = null
+
+function fileStackSetUp() {
+    fileStackClient = filestack.init(apiKey);
+}
+
 
 function AddFileEvent(){
     $('#image_upload').click(function (event) {
@@ -498,6 +481,31 @@ export function EditListingsEvent(){
             createView("/users");
         });
     })
+}
+
+
+export function getUserRole() {
+    const accessToken = localStorage.getItem("access_token");
+    if(!accessToken) {
+        return false;
+    }
+    const parts = accessToken.split('.');
+    const payload = parts[1];
+    const decodedPayload = atob(payload);
+    const payloadObject = JSON.parse(decodedPayload);
+    return payloadObject.authorities[0];
+}
+
+export function getUser() {
+    const accessToken = localStorage.getItem("access_token");
+    if(!accessToken) {
+        return false;
+    }
+    const parts = accessToken.split('.');
+    const payload = parts[1];
+    const decodedPayload = atob(payload);
+    const payloadObject = JSON.parse(decodedPayload);
+    return payloadObject.user_name;
 }
 
 
