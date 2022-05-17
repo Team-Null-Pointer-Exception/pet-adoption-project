@@ -16,13 +16,15 @@ body {
 
 .bg-image {
     height: 400px;
-    background-position: bottom;
+    background-position: center;
     background-size: cover;
 }
 
 .jumbotron {
     color: #ED6436;
+
 }
+
 
 #register-response {
     display: none

@@ -195,9 +195,9 @@ export default function UserIndex(props) {
                             ${props.user.listings.map(listing => `
                                 <div class="user-listings row gray-bg">
                                     <div class="listing-name col-8" data-id="${listing.id}">Pet: ${listing.name}</div>
-                                    <div class="listing-view col-1" data-id="${listing.id}">View</div>
-                                    <div class="listing-edit col-1" data-id="${listing.id}">Edit</div>
-                                    <div class="listing-delete col-2" data-id="${listing.id}">Delete</div>
+                                    <div class="listing-view col-1" data-id="${listing.id}"><i class="fas fa-eye"> View</i></div>
+                                    <div class="listing-edit col-1" data-id="${listing.id}"><i class="fas fa-edit"> Edit</i></div>
+                                    <div class="listing-delete col-2" data-id="${listing.id}"><i class="fas fa-trash-alt"> Delete</i></div>
                                 </div>
      <div id="overlay-${listing.id}" class="overlay">
     <div class="container view-overlay-container">

@@ -20,7 +20,7 @@ export default function ListingIndex(props) {
         <!-- Jumbotron -->
         <div
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
-                style="background-image: url('../../images/pexels-munkhbayar-dambajav-11195868.jpg');"
+                style="background-image: url('../../images/pexels-cottonbro-6864010.jpg');"
         >
             <!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
             <h1 class="display-4 m-0 text-black jumbotron">Available <span class="text-primary">Adoptions</span></h1>
