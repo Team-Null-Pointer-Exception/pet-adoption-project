@@ -26,6 +26,9 @@ function addListenerToNavLinks() {
         if(e.target.matches('label')) {
             return;
         }
+        if(e.target.classList.contains('fsp-modal')) {
+            return
+        }
         e.preventDefault();
         if (e.target.dataset['link'] !== undefined) {
             const URI = e.target.href.substring(location.origin.length);
