@@ -67,6 +67,18 @@
     margin-bottom: 1rem;
 }
 
+#edit-listing-form>select {
+    margin-bottom: 1rem;
+}
+
+#edit-listing-form>textarea {
+    margin-bottom: 1rem;
+}
+
+/*#descrip-label {*/
+/*    margin-top: -5em;*/
+/*}*/
+
 #create-listing-form>textarea, #edit-listing-form>textarea {
     resize: none;
 }
@@ -114,6 +126,7 @@
 
 #edit-listing-form > label {
     width: 9rem;
+    color: #777777!important;
 }
 #edit-listing-form > p {
     display:inline;
@@ -333,6 +346,7 @@ textarea, select {
 
 #edit-listing-form>h1 {
     margin-top: 2rem;
+    text-align: center;
 }
 
 .browse-btn {
@@ -560,6 +574,21 @@ footer {
     border-color: #ED6436;
 }
 
+.edit-overlay-container {
+    /*background-color: white;*/
+    color: black;
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    bottom: 50px;
+    right:50%;
+    height: 90%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: scroll;
+    margin: auto;
+}
+
 .view-overlay-container {
     background-color: white;
     color: black;
@@ -640,6 +669,10 @@ ul {
 .side-btn {
     margin-top: -5rem;
 }
+#image_upload {
+    margin-left: 23px;
+}
+
 
 
 #input-required {

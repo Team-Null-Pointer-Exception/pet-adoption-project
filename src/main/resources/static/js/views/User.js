@@ -236,26 +236,26 @@ export default function UserIndex(props) {
 </div>
                              
                                        <div id="edit-overlay-${listing.id}" class="overlay">
-             <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-    <div class="container overlay-container">        
+             <a class="btn rounded-circle edit-close-button text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
+    <div class="container edit-overlay-container">        
             <div class="row edit-listing-row">
             <div class="card edit-listing-card"> 
                 <form id="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text"/>
+                    <input id="name" name="name" type="text" value=${listing.name} />
                     <br>
                     <label for="animal">Animal</label>
-                    <input id="animal" name="animal" type="text"/>
+                    <input id="animal" name="animal" type="text" value=${listing.animal} />
                     <br>
                     <label for="breed">Breed</label>
-                    <input id="breed" name="breed" type="text"/>
+                    <input id="breed" name="breed" type="text" value=${listing.breed} />
                     <br>
                     <label for="color">Color</label>
-                    <input id="color" name="color" type="text"/>
+                    <input id="color" name="color" type="text" value=${listing.color} />
                     <br>
                     <label for="age">Age</label>
-                    <input id="age" name="age" type="text"/>
+                    <input id="age" name="age" type="text" value=${listing.age} />
                     <br>
                     <label for="sex">Sex</label>
                     <select id="sex">
@@ -264,7 +264,7 @@ export default function UserIndex(props) {
                     </select>
                     <br>
                     <label for="health">Health</label>
-                    <input id="health" name="health" type="text"/>
+                    <input id="health" name="health" type="text" value=${listing.health} />
                     <br>
                     <label for="fixed">Fixed</label>
                     <select id="fixed">
@@ -272,14 +272,14 @@ export default function UserIndex(props) {
                       <option>False</option>
                     </select>
                     <br>
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="2" placeholder="Pet description"></textarea>
+                    <label class="align-top" id="descrip-label" for="description">Description</label>
+                    <textarea id="description" name="description" rows="2" placeholder="Pet description">${listing.description}</textarea>
                     <br>
-                    <label for="summary">Summary</label>
-                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
+                    <label class="align-top" for="summary">Summary</label>
+                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information">${listing.summary}</textarea>
                     <br>              
                     <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
-                    <button id="edit-listing-btn" type="button">Submit</button>
+                    <button id="edit-listing-btn" data-id="${listing.id}" type="button">Submit</button>
                 </form>
             </div>
             </div>
@@ -540,7 +540,8 @@ function AddFileEvent(){
 
 
 export function EditListingsEvent(){
-    $('#edit-listing-btn').click(function () {
+    $('#edit-listing-btn').click(function (e) {
+        let id = e.target.getAttribute("data-id");
         let editListing = {
             summary: $("#summary").val(),
             name: $("#name").val(),
@@ -560,7 +561,7 @@ export function EditListingsEvent(){
             headers: getHeaders(),
             body: JSON.stringify(editListing)
         }
-
+        console.log(id);
         fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
