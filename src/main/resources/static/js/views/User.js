@@ -236,10 +236,11 @@ export default function UserIndex(props) {
 </div>
                              
                                        <div id="edit-overlay-${listing.id}" class="overlay">
-             <a class="btn rounded-circle edit-close-button text-center px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-    <div class="container edit-overlay-container">        
+    <div class="container edit-overlay-container">       
             <div class="row edit-listing-row">
-            <div class="card edit-listing-card"> 
+            <div class="card edit-listing-card">
+            <a class="btn rounded-circle mt-2 ml-1 edit-close-button px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>  
+            <div class="d-flex justify-content-center align-items-center">
                 <form id="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
                     <label for="name">Name</label>
@@ -277,10 +278,13 @@ export default function UserIndex(props) {
                     <br>
                     <label class="align-top" for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information">${listing.summary}</textarea>
-                    <br>              
+                    <br> 
+                    <div class="d-inline text-center">             
                     <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
                     <button id="edit-listing-btn" data-id="${listing.id}" type="button">Submit</button>
+                    </div>
                 </form>
+                </div>
             </div>
             </div>
             </div>

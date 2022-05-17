@@ -47,10 +47,14 @@ body {
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.set-up-card, .log-in-card, .create-listing-card, .edit-listing-card {
+.set-up-card, .log-in-card, .create-listing-card {
     width: 45rem;
     align-items: center;
     justify-content: center;
+    margin-top: 5rem;
+}
+.edit-listing-card {
+    width: 45rem;
     margin-top: 5rem;
 }
 
@@ -125,10 +129,18 @@ body {
     margin-left: 10.6rem;
 }
 #edit-listing-btn {
-    margin-left: 11.75rem;
+    margin-left: 10rem;
+    background-color: #ED6436;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 6rem;
+    height: 2.5rem;
+    margin-bottom: 3rem;
+
 }
 
-#register-btn, #login-btn, #create-listing-btn, #edit-listing-btn, #profile_upload, #image_upload {
+#register-btn, #login-btn, #create-listing-btn, #profile_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
@@ -140,6 +152,18 @@ body {
 #profile_upload {
     margin-left: 23px;
 }
+
+#image_upload {
+    /*margin-bottom: 1rem;*/
+    border-radius: 5px;
+    width: 6rem;
+    height: 2.5rem;
+    background-color: #ED6436;
+    border: none;
+    color: white;
+    margin-left: 2rem;
+}
+
 
 #register-response, #login-response {
     color: white;
@@ -711,12 +735,14 @@ ul {
     margin-top: -5rem;
 }
 #image_upload {
-    margin-left: 23px;
+    /*margin-left: 23px;*/
 }
+
 .edit-close-button {
-    position: fixed!important;
-    top: 15%;
-    left: 32%;
+    /*position: relative;*/
+
+    /*top: 15%;*/
+    /*left: 32%;*/
     z-index: 2;
     background-color: #ED6436;
     color: white;
