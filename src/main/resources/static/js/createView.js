@@ -1,13 +1,15 @@
 import render from './render.js';
 import router from './router.js';
 import fetchData from "./fetchData.js";
-import {getHeaders} from "./auth.js";
+import {getHeaders, removeStaleTokens} from "./auth.js";
+
 
 /**
  * Finds the correct route for a given view, builds a loading view, fetches data and builds the final rendered view.
  * @param URI
  */
-export default function createView(URI) {
+export default async function createView(URI) {
+    await removeStaleTokens();
 
     let route = router(URI);
 
@@ -41,23 +43,3 @@ window.addEventListener('popstate', (e) => {
       render(props, router(lastUri))
     }
 });
-
-export async function removeStaleTokens() {
-    console.log("Removing stale tokens...");
-
-    // clear tokens from localStorage if backend tells us the tokens are invalid
-    // make the request
-    const request = {
-        method: 'GET',
-        headers: getHeaders()
-    };
-    await fetch(`/api/users/me`, request)
-        .then((response) => {
-            // if fetch error then you might be using stale tokens
-            if (response.status === 401) {
-                window.localStorage.clear();
-            }
-        }).catch(error => {
-            console.log("FETCH ERROR: " + error);
-        });
-}
