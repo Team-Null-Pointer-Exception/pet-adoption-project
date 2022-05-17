@@ -91,6 +91,22 @@ body {
     margin-bottom: 1rem;
 }
 
+#create-listing-form>select {
+    margin-bottom: 1rem;
+}
+
+#create-listing-form>#summary {
+    margin-top: 1rem;
+}
+
+#create-listing-form>button {
+    margin-top: 1rem;
+}
+
+#register-form>select {
+    margin-bottom: 1rem;
+}
+
 /*#descrip-label {*/
 /*    margin-top: -5em;*/
 /*}*/
@@ -100,13 +116,13 @@ body {
 }
 
 #register-btn {
-    margin-left: 12rem;
+    margin-left: 10.6rem;
 }
 #login-btn {
     margin-left: 10.6rem;
 }
 #create-listing-btn {
-    margin-left: 11.75rem;
+    margin-left: 10.6rem;
 }
 #edit-listing-btn {
     margin-left: 11.75rem;
@@ -120,6 +136,9 @@ body {
     background-color: #ED6436;
     border: none;
     color: white;
+}
+#profile_upload {
+    margin-left: 23px;
 }
 
 #register-response, #login-response {
