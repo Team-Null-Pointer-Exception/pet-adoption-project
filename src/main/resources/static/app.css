@@ -124,7 +124,7 @@ label {
     margin-left: 10.6rem;
 }
 #create-listing-btn {
-    margin-left: 10.6rem;
+    margin-left: 9.975rem;
 }
 #edit-listing-btn {
     margin-left: 10rem;
@@ -488,6 +488,7 @@ textarea, select {
 }
 .edit-profile-col label {
     width: 10rem;
+    color: #777777;
 }
 #edit-profile-info #edit-user-response {
     margin-top: .25rem;
@@ -507,6 +508,7 @@ textarea, select {
 }
 #edit-password-info label {
     width: 9rem;
+    color: #777777;
 }
 #edit-password-info #register-response {
     margin-top: .25rem;
