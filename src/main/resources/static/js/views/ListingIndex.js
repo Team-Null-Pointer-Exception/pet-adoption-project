@@ -62,8 +62,7 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-center
-                        ">
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2">
                         ${populateCards(activeListings)}
                     </div>
             </div>
@@ -166,7 +165,8 @@ export function populateCards(filteredListings) {
         <div class="col mb-5">
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
-                        ${addBadge(listing)}
+                        ${addNewBadge(listing)}
+                        ${addPendingBanner(listing)}
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
@@ -246,7 +246,7 @@ export function populateCards(filteredListings) {
 }
 
 
-export function addBadge(listing) {
+function addNewBadge(listing) {
     let listingDate = listing.createdAt;
     let today = new Date();
     let dateToBeChanged = new Date();
@@ -266,6 +266,12 @@ export function addBadge(listing) {
         return `
             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">New</div>`;
     }
+}
+
+function addPendingBanner() {
+return `
+<i class="fas fa-exclamation-triangle fa-fw fa-2x fa-beat-fade" style="color: red); --fa-animation-duration:2s;"></i>
+`
 }
 
 
