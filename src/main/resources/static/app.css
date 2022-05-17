@@ -518,10 +518,11 @@ textarea, select {
 }
 
 .storyCard{
-    height: 18rem;
-    width: 20rem;
+    height: 19rem;
+    width: 19rem;
     border-radius: 10px!important;
     background-color: white;
+    padding-bottom: 1rem;
 }
 
 .storiesHeader {
@@ -552,6 +553,10 @@ textarea, select {
 
 .storyContainer, .listing-details {
     padding-top: 2rem;
+}
+
+.listing-details {
+    padding-left: 1rem;
 }
 
 #singleListing {
