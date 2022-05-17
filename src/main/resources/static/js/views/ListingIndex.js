@@ -62,8 +62,7 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2" justify-content-center
-                        ">
+                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2 justify-content-center">
                         ${populateCards(activeListings)}
                     </div>
             </div>
