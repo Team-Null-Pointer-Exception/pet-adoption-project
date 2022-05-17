@@ -27,10 +27,7 @@ export default function createView(URI) {
         headers: getHeaders()
     }
     fetchData(route.state, request).then((props) => {
-        // Restore the title so that history entries are not all 'Loading...'
-        // I tried using route.uri here instead, but it seems there's an off-by-one bug (https://stackoverflow.com/a/38830794)
         document.title = currentTitle;
-        // Add the current page to the history stack
         history.pushState({...props, lastUri: route.uri }, null, route.uri)
         render(props, route);
     });
@@ -44,3 +41,23 @@ window.addEventListener('popstate', (e) => {
       render(props, router(lastUri))
     }
 });
+
+export async function removeStaleTokens() {
+    console.log("Removing stale tokens...");
+
+    // clear tokens from localStorage if backend tells us the tokens are invalid
+    // make the request
+    const request = {
+        method: 'GET',
+        headers: getHeaders()
+    };
+    await fetch(`/api/users/me`, request)
+        .then((response) => {
+            // if fetch error then you might be using stale tokens
+            if (response.status === 401) {
+                window.localStorage.clear();
+            }
+        }).catch(error => {
+            console.log("FETCH ERROR: " + error);
+        });
+}
