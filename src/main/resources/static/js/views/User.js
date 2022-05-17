@@ -336,7 +336,7 @@ function editListing(){
     })
 }
 function closeEditOverlay() {
-    $(".close-btn").click(function (e) {
+    $(".edit-close-button").click(function (e) {
         let id = e.target.getAttribute("data-id")
         $("#edit-overlay-" + id).css({display: "none"})
     })
