@@ -60,7 +60,7 @@ export default function Navbar(props) {
     }
     if (loggedIn){
         html += `<li class="nav-item">
-                <a href="/users" class="nav-link" data-link>User Profile</a>
+                <a href="/users" class="nav-link" data-link>Profile</a>
                 </li>
                 </ul>
                 <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>               
