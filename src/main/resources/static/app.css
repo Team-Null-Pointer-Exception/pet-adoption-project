@@ -683,10 +683,9 @@ ul {
 }
 
 .location-map {
-    margin-top: 2rem;
-    padding-top: 2rem;
+    padding: 4rem 1rem 0 3rem;
     max-height: 350px;
-    width: 90%;
+    width: 100%;
     border-radius: 5px;
     overflow: hidden;
     object-fit: cover;
@@ -698,6 +697,7 @@ ul {
 
 .user-contact-details {
     margin-left: 1rem;
+    padding-bottom: 4rem;
 }
 
 #st-2 {

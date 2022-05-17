@@ -165,7 +165,7 @@ export function populateCards(filteredListings) {
         <div class="col mb-5">
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
-                        ${addBadge(listing)}
+                        ${addNewBadge(listing)}
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
@@ -248,7 +248,7 @@ export function populateCards(filteredListings) {
 }
 
 
-export function addBadge(listing) {
+function addNewBadge(listing) {
     let listingDate = listing.createdAt;
     let today = new Date();
     let dateToBeChanged = new Date();
