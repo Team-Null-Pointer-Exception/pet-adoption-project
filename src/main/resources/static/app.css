@@ -575,7 +575,6 @@ footer {
 }
 
 .edit-overlay-container {
-    /*background-color: white;*/
     color: black;
     position: absolute;
     top: 50px;
@@ -672,7 +671,15 @@ ul {
 #image_upload {
     margin-left: 23px;
 }
-
+.edit-close-button {
+    position: fixed!important;
+    top: 15%;
+    left: 32%;
+    z-index: 2;
+    background-color: #ED6436;
+    color: white;
+    border-color: #ED6436;
+}
 
 
 #input-required {
