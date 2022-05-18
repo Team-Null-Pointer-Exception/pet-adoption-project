@@ -85,6 +85,7 @@ function adminMenu() {
                     <option>Pending</option>
                     <option>Expired</option>
                     <option>Closed</option>
+                    <option>Rejected</option>
                 </select>
             </div>
         `;
@@ -128,6 +129,8 @@ function filterSelections() {
             filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
         } else if (listingStatus === "Closed") {
             filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        } else if (listingStatus === "Rejected") {
+            filteredListings = allListings.filter(listing => listing.status === "REJECTED");
         } else {
             filteredListings = allListings;
         }
@@ -242,7 +245,6 @@ export function populateCards(filteredListings) {
             </div>          
             </div>               
     </div>
-
 </div>
                     </div>
 `).join('')}`
@@ -272,18 +274,28 @@ function addNewBadge(listing) {
 }
 
 function addPendingStatus(listing) {
-    console.log('looking at pending status');
     if (listing.status !== "PENDING") {
         return '';
     } else {
         //language=HTML
         return `
-            <p class="mb-0 bg-light text-center fw-bold" style='font-size:24px;color:#ED6436'>
+            <p class="mb-0 bg-light text-center fw-bold" style='font-size:27px;color:firebrick'>
                 <i class="fas fa-exclamation-triangle"></i>
                 Pending approval
                 <i class="fas fa-exclamation-triangle"></i>
             </p>
-            `
+        `
+    }
+}
+
+function addRejectedStamp(listing) {
+    if (listing.status === "REJECTED") {
+    return '';
+    } else {
+        console.log("adding rejected stamp");
+    //language=HTML
+        return `
+            <img class="card-img-overlay cover" src="../../images/rejected.jpeg" alt="rejected stamp">`
     }
 }
 
