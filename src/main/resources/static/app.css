@@ -472,10 +472,35 @@ textarea, select {
 
 @media (max-width: 991px) {
     .about-avatar {
-        margin-top: 30px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .about-avatar-btn>#profile_upload {
+        top: 222px;
+        right: 45px;
     }
 }
-
+.about-avatar {
+    display: flex;
+    justify-content: center;
+}
+#profile_img {
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    background-position: center;
+    overflow:hidden
+}
+.about-avatar-btn>#profile_upload {
+    width: 36px;
+    height: 36px;
+    font-size: 27px;
+    line-height: 22px;
+    position: absolute;
+    top: 240px;
+    right: 200px;
+}
 
 /*Edit Profile*/
 #edit-profile-info {

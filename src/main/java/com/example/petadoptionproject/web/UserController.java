@@ -103,7 +103,15 @@ public class UserController {
         System.out.println("Updating password");
     }
 
-
+    @PutMapping("/me/updateProfileImg")
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
+    public void updateProfileImg(@RequestParam String newProfileImg, OAuth2Authentication auth){
+        String user = auth.getName();
+        User updatedUser = usersRepository.findByEmail(user);
+        updatedUser.setProfileImg(newProfileImg);
+        usersRepository.save(updatedUser);
+        System.out.println("Updating profile image");
+    }
 
 }
 

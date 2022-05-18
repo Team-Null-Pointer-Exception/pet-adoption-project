@@ -28,6 +28,10 @@ export default function UserIndex(props) {
                                 <div class="about-avatar">
                                     <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
                                 </div>
+                                <div class="about-avatar-btn">
+                                    <a class="btn rounded-circle text-center view-close-btn px-0 imageUploadToggle" id="profile_upload" href="#">+</a>
+                                    <button type="button" class="btn btn-primary btn-sm" id="edit-profileImg-submit-btn">Submit Changes</button>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="about-text go-to">
@@ -517,6 +521,8 @@ export function UsersEvent(){
     fileStackSetUp()
     getUserRole()
     getUser()
+    uploadEvent();
+    editProfileImg();
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
@@ -604,8 +610,40 @@ export function getUser() {
     return payloadObject.user_name;
 }
 
+let imgURL = ""
+function uploadEvent() {
+    $('#profile_upload').click(function () {
+        const client = filestack.init(apiKey);
+        const options = {
+            onFileUploadFinished: callback => {
+                imgURL = callback.url
+            }
+        }
+        client.picker(options).open();
+    })
+}
 
+function editProfileImg(){
+    $('#edit-profileImg-submit-btn').click(function(){
 
+        let newProfileImg = imgURL;
 
+        let request = {
+            method: "PUT",
+            headers: getHeaders()
+        }
+
+        fetch(`http://localhost:8080/api/users/me/updateProfileImg?newProfileImg=${newProfileImg}`, request)
+            .then(res => {
+                console.log(res.status);
+                // $('#edit-password-info').css({display: "none"});
+                createView("/users");
+            }).catch(error => {
+                console.log(error);
+                // $('#edit-password-info').css({display: "none"});
+                createView("/users");
+        });
+    })
+}
 
 
