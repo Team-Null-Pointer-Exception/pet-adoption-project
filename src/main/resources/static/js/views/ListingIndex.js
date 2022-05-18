@@ -63,10 +63,10 @@ export default function ListingIndex(props) {
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
                              class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2 justify-content-center">
-                        ${populateCards(activeListings)}
+                            ${populateCards(activeListings)}
+                        </div>
                     </div>
-            </div>
-            </section>
+                </section>
             </div>
         </main>
     `;
@@ -166,6 +166,7 @@ export function populateCards(filteredListings) {
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
                         ${addNewBadge(listing)}
+                        ${addPendingStatus(listing)}
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
@@ -270,6 +271,21 @@ function addNewBadge(listing) {
     }
 }
 
+function addPendingStatus(listing) {
+    console.log('looking at pending status');
+    if (listing.status !== "PENDING") {
+        return '';
+    } else {
+        //language=HTML
+        return `
+            <p class="mb-0 bg-light text-center fw-bold" style='font-size:24px;color:#ED6436'>
+                <i class="fas fa-exclamation-triangle"></i>
+                Pending approval
+                <i class="fas fa-exclamation-triangle"></i>
+            </p>
+            `
+    }
+}
 
 function detailsListener() {
     $(".details-btn").click(function (e) {
