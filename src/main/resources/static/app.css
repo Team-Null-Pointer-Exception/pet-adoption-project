@@ -497,10 +497,9 @@ textarea, select {
     height: 36px;
     font-size: 27px;
     line-height: 22px;
-    position: absolute;
-    top: 240px;
-    right: 200px;
-    visibility: hidden;
+    margin-top: 195px;
+    margin-left: -60px;
+    display: none;
 }
 #edit-profile-btns {
     margin-top: 1rem;

@@ -418,14 +418,14 @@ function editPassword(){
 function showEditUser(){
     $('#edit-profile-btn').click(function(){
         $('#edit-profile-info').css({display: "inline-block"});
-        $('.about-avatar>#profile_upload').css({visibility: "visible"});
+        $('.about-avatar>#profile_upload').css({display: "inline-block"});
     })
 }
 
 function hideEditUser(){
     $('#edit-profile-cancel-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
-        $('.about-avatar>#profile_upload').css({visibility: "hidden"});
+        $('.about-avatar>#profile_upload').css({display: "none"});
     })
 }
 
@@ -542,7 +542,6 @@ export function UsersEvent(){
     getUserRole()
     getUser()
     uploadEvent();
-    // editProfileImg();
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
