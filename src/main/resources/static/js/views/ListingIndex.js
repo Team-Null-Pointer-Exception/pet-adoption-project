@@ -187,6 +187,9 @@ export function populateCards(filteredListings) {
                                 <div class="text-center"><a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">View Details</a></div>
                             </div>
                         </div>
+                        
+                        
+                        <!-- Overlay -->
                         <div id="overlay-${listing.id}" class="overlay">
     <div class="container overlay-container">
   <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
@@ -201,33 +204,33 @@ export function populateCards(filteredListings) {
                         <div class="row listing-details">
                         <div class="col-6">
                         <ul>
-                            <li>Breed: ${listing.breed}</li>
-                            <li>Sex: ${listing.sex}</li>
-                            <li>Age: ${listing.age}</li>
+                            <li><strong>Breed</strong>: ${listing.breed}</li>
+                            <li><strong>Sex</strong>: ${listing.sex}</li>
+                            <li><strong>Age</strong>: ${listing.age}</li>
                         </ul>
                         </div>
                         <div class="col-5">
                         <ul>
-                            <li>Color: ${listing.color}</li>
-                            <li>Health Issues: ${listing.health}</li>
-                            <li>Fixed: ${listing.fixed}</li>
+                            <li><strong>Color</strong>: ${listing.color}</li>
+                            <li><strong>Health Issues</strong>: ${listing.health}</li>
+                            <li><strong>Fixed</strong>: ${listing.fixed}</li>
                         </ul>
                         </div>
                         <div class="col-1 side-btn">
-                        <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
+                        <a if="report-btn" class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
                         </div>
                         <div class="col-12 listing-details">
-                        <p>Summary: ${listing.summary}</p>
-                        <p>About: ${listing.description}</p>
+                        <p><strong>Summary</strong>: ${listing.summary}</p>
+                        <p><strong>About</strong>: ${listing.description}</p>
                         </div>
                         </div>                                                  
                   </div>
 
             </div>
-            <div class="row"> 
-            <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
-            <h3 class="overlay-text text-center">Contact the Owner:</h3>
-            <img class="storyImg mx-auto" src="${listing.user.profileImg}">
+            <div id="under-pic" class="row mt-4"> 
+            <div class="col-xs-4 col-lg-2 listing-contact-details text-center">
+            <h3 class="overlay-text text-center my-3">Guardian info:</h3>
+            <img class="storyImg mx-auto m-0" src="${listing.user.profileImg}">
                         <ul>
                             <li>${listing.user.firstName} ${listing.user.lastName}</li>
                             <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
@@ -240,9 +243,10 @@ export function populateCards(filteredListings) {
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 px-0 allow" style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}" target="_blank"><i class="fas fa-video"></i></a>
                         </div>
                 </div>
-                            <div class="col-xs-12 col-lg-6" id="map">
+                            <div class="col-xs-8 col-lg-4" id="map">
             <img class="location-map" src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${googleAPIKey}" alt="map"/>
-            </div>          
+            </div>    
+            ${adminButtons(listing)}
             </div>               
     </div>
 </div>
@@ -290,12 +294,35 @@ function addPendingStatus(listing) {
 
 function addRejectedStamp(listing) {
     if (listing.status === "REJECTED") {
-    return '';
+        return '';
     } else {
         console.log("adding rejected stamp");
-    //language=HTML
+        //language=HTML
         return `
             <img class="card-img-overlay cover" src="../../images/rejected.jpeg" alt="rejected stamp">`
+    }
+}
+
+function adminButtons(listing) {
+
+    if (getUserRole()) {
+        //language=HTML
+        return `
+            <div class="text-center">
+                <div class="btn-group m-3">
+                    <select id="change-listing-status" class="form-select btn-primary " aria-label="Update listing status">
+                        <option>Change status</option>
+                        <option>Active</option>
+                        <option>Pending</option>
+                        <option>Expired</option>
+                        <option>Closed</option>
+                        <option>Rejected</option>
+                    </select>
+                </div>
+                <button class="btn-group="
+            </div>`
+    } else {
+        return '';
     }
 }
 
