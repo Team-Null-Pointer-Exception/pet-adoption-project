@@ -11,7 +11,11 @@ import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
 import EditListing, {EditEvents} from "./views/EditListing.js";
 import AdminIndex, {AdminEvent} from "./views/Admin.js";
+import ResetPassword, {ResetEvent} from "./views/ResetPassword.js"
+import ForgotPassword, {ForgotEvent} from "./views/ForgotPassword.js";
 
+let token;
+export { token }
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -110,21 +114,31 @@ export default function router(URI) {
             uri: location.pathname,
             title: 'Loading...',
         },
+        '/forgot': {
+            returnView: ForgotPassword,
+            state: {},
+            uri: '/forgot',
+            title: 'Forgot Password',
+            viewEvent: ForgotEvent
+        },
+        '/reset': {
+            returnView: ResetPassword,
+            state: {},
+            uri: '/reset',
+            title: 'Reset Password',
+            viewEvents: ResetEvent
+        }
     };
 
-    // let split = URI.split("/")
-    // console.log(split)
-    // for (const key in routes) {
-    //     if (key.includes(URI)){
-    //         return routes[URI]
-    //     } else if(key.includes(`/${split[1]}`)) {
-    //         let stateBase = split[1]
-    //         console.log(stateBase)
-    //         routes[`/${split[1]}`].state[stateBase] = `${routes[`/${split[1]}`].state[stateBase]}/${split[2]}`
-    //         return routes[`/${split[1]}`]
-    //     }
-    // }
+    if(URI.includes('?')) {
+        let splitURI = URI.split('?')
+        URI = splitURI[0]
+        console.log(URI)
+        token = splitURI[1]
+        console.log(token)
+    }
 
     return routes[URI];
+
 }
 

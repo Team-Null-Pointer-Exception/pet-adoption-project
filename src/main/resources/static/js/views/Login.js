@@ -19,9 +19,11 @@ export default function Login(props) {
     <br>
     <input id="login-btn" type="submit" value="Log In"/>
     <p id="login-response">Login failed. Please try again.</p>  
+    
+    <a href="/forgot" data-link>Forgot your password?</a>
 </form>
 </div>
-<div>
+</div>
 </body>
 </html>`;
 

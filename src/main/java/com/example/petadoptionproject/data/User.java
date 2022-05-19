@@ -88,4 +88,7 @@ public class User {
     @JsonIgnoreProperties("user")
     @ToString.Exclude
     Collection<Story> stories;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 }
