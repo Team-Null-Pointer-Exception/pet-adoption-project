@@ -290,6 +290,23 @@ export default function UserIndex(props) {
             </div>
             </div>
             </div>
+            
+            <div id="delete-overlay-${listing.id}" class="overlay">
+                <div class="container delete-overlay-container">       
+                    <div class="row delete-listing-row">
+                        <div class="card delete-listing-card">
+                            <div class="d-flex justify-content-center align-items-center delete-listing-content row">
+                                <p class="text-white col-12">Are you sure you want to delete this listing?</p>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary btn-sm delete-listing-cancel-btn" data-id="${listing.id}">Cancel</button>
+                                    <button type="button" class="btn btn-primary btn-sm delete-listing-submit-btn" data-id="${listing.id}">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                             `).join('')}
                         </div>
                         <div>
@@ -347,8 +364,21 @@ function closeEditOverlay() {
     })
 }
 
+function showDeleteListing(){
+    $('.listing-delete').click(function(){
+        let id = this.getAttribute('data-id');
+        $("#delete-overlay-" + id).css({display: "block"})
+    })
+}
+function closeDeleteOverlay() {
+    $(".delete-listing-cancel-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#delete-overlay-" + id).css({display: "none"})
+    })
+}
+
 function deleteListing() {
-    $('.listing-delete').click(function () {
+    $('.delete-listing-submit-btn').click(function () {
 
         let id = this.getAttribute('data-id')
 
@@ -542,6 +572,8 @@ export function UsersEvent(){
     getUserRole()
     getUser()
     uploadEvent();
+    showDeleteListing();
+    closeDeleteOverlay();
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';

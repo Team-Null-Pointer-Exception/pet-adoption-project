@@ -60,6 +60,11 @@ body {
     margin-top: 5rem;
 }
 
+.delete-listing-card {
+    width: 25rem;
+    margin-top: 15rem;
+}
+
 .set-up-card {
     height: 45rem;
     width: 45rem;
@@ -80,9 +85,13 @@ label {
 }
 
 
-.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row{
+.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .delete-listing-row{
     align-items: center;
     justify-content: center;
+}
+
+.delete-listing-row {
+    margin-top: 6.25rem;
 }
 
 #register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input {
@@ -198,6 +207,16 @@ label {
 }
 #create-listing-form, #edit-listing-form {
     width: 26rem;
+}
+.delete-listing-content>p {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.delete-listing-content>div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
 }
 body {
     margin: 0;
@@ -675,6 +694,11 @@ textarea, select {
     width: 80%;
     border-radius: 10px;
     overflow: scroll;
+    margin: auto;
+}
+
+.delete-overlay-container {
+    color: black;
     margin: auto;
 }
 
