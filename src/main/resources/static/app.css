@@ -365,7 +365,7 @@ img {
 }
 
 .rounded-circle {
-    margin-right: .5rem;
+    margin-top: 1rem;
 }
 
 .rounded-circle>i {
@@ -641,7 +641,7 @@ textarea, select {
     height: 90%;
     width: 80%;
     border-radius: 10px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .close-btn {
@@ -651,6 +651,8 @@ textarea, select {
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
+    position: fixed;
+
 }
 
 .edit-overlay-container {
@@ -663,7 +665,7 @@ textarea, select {
     height: 90%;
     width: 80%;
     border-radius: 10px;
-    overflow: scroll;
+    overflow: hidden;
     margin: auto;
 }
 
@@ -677,7 +679,7 @@ textarea, select {
     height: 70%;
     width: 80%;
     border-radius: 10px;
-    overflow: scroll;
+    overflow: auto;
 }
 .view-overlay-container > img {
     margin-bottom: 1rem;
@@ -693,12 +695,12 @@ textarea, select {
 
 .listing-image-large {
     max-width: 100%;
-    max-height: 350px;
+    max-height: 375px;
     background-position: center;
     overflow:hidden;
     border-radius: 5px;
     justify-self: center;
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
 }
 .listing-main {
     max-height: 400px;
@@ -721,7 +723,7 @@ ul {
 }
 
 .location-map {
-    padding: 4rem 1rem 0 3rem;
+    padding: 3rem 2rem 2rem 2rem;
     max-height: 350px;
     width: 100%;
     border-radius: 5px;
@@ -759,7 +761,11 @@ ul {
     border-color: #ED6436;
 }
 
-
 #input-required {
     color: #e3410c;
+}
+
+#under-pic {
+    position: relative;
+    z-index: 2;
 }
