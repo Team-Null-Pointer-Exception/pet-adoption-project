@@ -88,6 +88,7 @@ public class UserController {
         updatedUser.setState(user.getState());
         updatedUser.setZip(user.getZip());
         updatedUser.setPhone(user.getPhone());
+        updatedUser.setProfileImg(user.getProfileImg());
         usersRepository.save(updatedUser);
         System.out.println("Updating user information");
     }

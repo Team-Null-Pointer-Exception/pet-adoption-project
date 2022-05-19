@@ -27,10 +27,7 @@ export default function UserIndex(props) {
                             <div class="col-lg-6">
                                 <div class="about-avatar">
                                     <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
-                                </div>
-                                <div class="about-avatar-btn">
                                     <a class="btn rounded-circle text-center view-close-btn px-0 imageUploadToggle" id="profile_upload" href="#">+</a>
-                                    <button type="button" class="btn btn-primary btn-sm" id="edit-profileImg-submit-btn">Submit Changes</button>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -186,7 +183,7 @@ export default function UserIndex(props) {
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-submit-btn">Submit Changes</button>
                             <p id="register-response">Passwords do not match. Please try again.</p>  
                         </div>
-                        <div>
+                        <div id="edit-profile-btns">
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
                         </div>
@@ -421,12 +418,27 @@ function editPassword(){
 function showEditUser(){
     $('#edit-profile-btn').click(function(){
         $('#edit-profile-info').css({display: "inline-block"});
+        $('.about-avatar>#profile_upload').css({visibility: "visible"});
     })
 }
 
 function hideEditUser(){
     $('#edit-profile-cancel-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
+        $('.about-avatar>#profile_upload').css({visibility: "hidden"});
+    })
+}
+
+let imgURL = ""
+function uploadEvent() {
+    $('#profile_upload').click(function () {
+        const client = filestack.init(apiKey);
+        const options = {
+            onFileUploadFinished: callback => {
+                imgURL = callback.url
+            }
+        }
+        client.picker(options).open();
     })
 }
 
@@ -443,9 +455,16 @@ function editUser(){
         let state = $("#edit-state").val();
         let zip = $("#edit-zip").val().trim();
         let phone = $("#edit-phone").val().trim();
+        let profileImg
+        if (imgURL === "") {
+            profileImg = $("#profile_img").attr("src");
+        } else {
+            profileImg = imgURL;
+        }
 
         if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
             city !== "" && state !== "" && zip !== "" && phone !== "") {
+
             let editUser = {
                 username: username,
                 email: email,
@@ -456,7 +475,8 @@ function editUser(){
                 city: city,
                 state: state,
                 zip: zip,
-                phone: phone
+                phone: phone,
+                profileImg: profileImg
             }
 
             let request = {
@@ -522,7 +542,7 @@ export function UsersEvent(){
     getUserRole()
     getUser()
     uploadEvent();
-    editProfileImg();
+    // editProfileImg();
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
@@ -608,42 +628,6 @@ export function getUser() {
     const decodedPayload = atob(payload);
     const payloadObject = JSON.parse(decodedPayload);
     return payloadObject.user_name;
-}
-
-let imgURL = ""
-function uploadEvent() {
-    $('#profile_upload').click(function () {
-        const client = filestack.init(apiKey);
-        const options = {
-            onFileUploadFinished: callback => {
-                imgURL = callback.url
-            }
-        }
-        client.picker(options).open();
-    })
-}
-
-function editProfileImg(){
-    $('#edit-profileImg-submit-btn').click(function(){
-
-        let newProfileImg = imgURL;
-
-        let request = {
-            method: "PUT",
-            headers: getHeaders()
-        }
-
-        fetch(`http://localhost:8080/api/users/me/updateProfileImg?newProfileImg=${newProfileImg}`, request)
-            .then(res => {
-                console.log(res.status);
-                // $('#edit-password-info').css({display: "none"});
-                createView("/users");
-            }).catch(error => {
-                console.log(error);
-                // $('#edit-password-info').css({display: "none"});
-                createView("/users");
-        });
-    })
 }
 
 

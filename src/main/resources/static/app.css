@@ -475,7 +475,7 @@ textarea, select {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    .about-avatar-btn>#profile_upload {
+    .about-avatar>#profile_upload {
         top: 222px;
         right: 45px;
     }
@@ -492,7 +492,7 @@ textarea, select {
     background-position: center;
     overflow:hidden
 }
-.about-avatar-btn>#profile_upload {
+.about-avatar>#profile_upload {
     width: 36px;
     height: 36px;
     font-size: 27px;
@@ -500,8 +500,11 @@ textarea, select {
     position: absolute;
     top: 240px;
     right: 200px;
+    visibility: hidden;
 }
-
+#edit-profile-btns {
+    margin-top: 1rem;
+}
 /*Edit Profile*/
 #edit-profile-info {
     margin-top: 1rem;
