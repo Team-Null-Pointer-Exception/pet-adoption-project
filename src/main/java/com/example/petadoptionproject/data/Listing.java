@@ -29,7 +29,7 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(length = 100)
     private String summary;
 
     @Column
@@ -57,13 +57,13 @@ public class Listing {
     @Column
     private String color;
 
-    @Column
+    @Column(length = 200)
     private String description;
 
     @Column
     private boolean fixed;
 
-    @Column
+    @Column(length = 100)
     private String health;
 
     @ManyToOne

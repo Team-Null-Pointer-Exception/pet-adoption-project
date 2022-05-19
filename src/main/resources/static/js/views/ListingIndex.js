@@ -63,10 +63,10 @@ export default function ListingIndex(props) {
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
                              class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2 justify-content-center">
-                        ${populateCards(activeListings)}
+                            ${populateCards(activeListings)}
+                        </div>
                     </div>
-            </div>
-            </section>
+                </section>
             </div>
         </main>
     `;
@@ -85,6 +85,7 @@ function adminMenu() {
                     <option>Pending</option>
                     <option>Expired</option>
                     <option>Closed</option>
+                    <option>Rejected</option>
                 </select>
             </div>
         `;
@@ -128,6 +129,8 @@ function filterSelections() {
             filteredListings = allListings.filter(listing => listing.status === "EXPIRED");
         } else if (listingStatus === "Closed") {
             filteredListings = allListings.filter(listing => listing.status === "CLOSED");
+        } else if (listingStatus === "Rejected") {
+            filteredListings = allListings.filter(listing => listing.status === "REJECTED");
         } else {
             filteredListings = allListings;
         }
@@ -166,6 +169,7 @@ export function populateCards(filteredListings) {
                         <div id="previewCard-${listing.id}" class="card previewCard">
                         <!-- New badge-->
                         ${addNewBadge(listing)}
+                        ${addPendingStatus(listing)}
                             <!-- Pet image-->
                             <img class="card-img-top" src=${listing.images[0]} alt="..." />
                             <!-- Pet details-->
@@ -241,7 +245,6 @@ export function populateCards(filteredListings) {
             </div>          
             </div>               
     </div>
-
 </div>
                     </div>
 `).join('')}`
@@ -270,6 +273,31 @@ function addNewBadge(listing) {
     }
 }
 
+function addPendingStatus(listing) {
+    if (listing.status !== "PENDING") {
+        return '';
+    } else {
+        //language=HTML
+        return `
+            <p class="mb-0 bg-light text-center fw-bold" style='font-size:27px;color:firebrick'>
+                <i class="fas fa-exclamation-triangle"></i>
+                Pending approval
+                <i class="fas fa-exclamation-triangle"></i>
+            </p>
+        `
+    }
+}
+
+function addRejectedStamp(listing) {
+    if (listing.status === "REJECTED") {
+    return '';
+    } else {
+        console.log("adding rejected stamp");
+    //language=HTML
+        return `
+            <img class="card-img-overlay cover" src="../../images/rejected.jpeg" alt="rejected stamp">`
+    }
+}
 
 function detailsListener() {
     $(".details-btn").click(function (e) {

@@ -12,8 +12,6 @@ body {
     flex-shrink: 0;
 }
 
-
-
 .bg-image {
     height: 400px;
     background-position: center;
@@ -23,7 +21,6 @@ body {
 .jumbotron {
     color: #ED6436;
 }
-
 
 #register-response {
     display: none
