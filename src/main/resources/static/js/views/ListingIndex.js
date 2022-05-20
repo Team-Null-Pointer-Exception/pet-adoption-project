@@ -1,9 +1,10 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
+import {getUser} from "./User.js";
 
 
 let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
-let googleAPIKey = 'AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
+let googleAPIKey= "AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU"
 
 export default function ListingIndex(props) {
 
@@ -14,6 +15,16 @@ export default function ListingIndex(props) {
         }
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
+
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${user.zip}&destinations=78833`)
+        .then(function (response) {
+            response.json().then(function (res){
+                console.log(res);
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
     //language=HTML
     return `
@@ -286,6 +297,16 @@ function closeOverlay() {
     })
 }
 
+//
+// fetch("/gogglemap/maps/api/distancematrix/json?origins=78801&destinations=78833")
+//     .then(function (response) {
+//       response.json().then(function (res){
+//           console.log(res);
+//       })
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
 
 
 

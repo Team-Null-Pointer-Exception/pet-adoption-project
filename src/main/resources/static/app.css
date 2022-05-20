@@ -12,8 +12,6 @@ body {
     flex-shrink: 0;
 }
 
-
-
 .bg-image {
     height: 400px;
     background-position: bottom;
@@ -36,9 +34,11 @@ body {
     margin-right: 5rem;
     margin-left: 5rem;
 }
+
 #create-listing-form, #edit-listing-form {
     width: 24.25rem;
 }
+
 .card {
     background-color: #181818;
     border: none!important;
@@ -68,13 +68,11 @@ body {
     height: 25rem;
 }
 
-
 #register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
 
 #register-form>h1, #login-form>h1, #create-listing-form>h1 {
     text-align: center;
 }
-
 
 .set-up-row, .log-in-row, .create-listing-row, .edit-listing-row{
     align-items: center;
@@ -110,10 +108,6 @@ body {
 #register-form>select {
     margin-bottom: 1rem;
 }
-
-/*#descrip-label {*/
-/*    margin-top: -5em;*/
-/*}*/
 
 #create-listing-form>textarea, #edit-listing-form>textarea {
     resize: none;
@@ -164,7 +158,6 @@ body {
     margin-left: 2rem;
 }
 
-
 #register-response, #login-response {
     color: white;
     display: none;
@@ -191,7 +184,6 @@ body {
     display:inline;
     width: 9rem;
 }
-
 
 #register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
     width: 15rem;
@@ -248,11 +240,9 @@ nav .nav-link.active, .home, .nav-link:hover {
     background: #ED6436;
 }
 
-
 .text-white {
     color: #fff;
 }
-
 
 .text-primary {
     color: #ED6436 !important;
