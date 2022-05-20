@@ -4,7 +4,7 @@ import token from "../keys.js"
 
 let apiKey = token().googleKey
 
-let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
+let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings, zips;
 
 
 export default function ListingIndex(props) {
@@ -19,11 +19,16 @@ export default function ListingIndex(props) {
         }
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
-
-    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=78833`)
-        .then(function (response) {
-            response.json().then(function (res){
-                console.log(res);
+    let listingArray = []
+    activeListings.forEach(listing => {
+        listingArray.push(listing.user.zip)
+    })
+    console.log(listingArray)
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${listingArray}`)
+        .then(res => {
+            let promise = Promise.resolve(res.json());
+            promise.then(function(val){
+                console.log(val)
             })
         })
         .catch(function (error) {

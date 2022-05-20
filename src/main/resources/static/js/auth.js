@@ -87,17 +87,17 @@ export function getUserRole() {
     return payloadObject.authorities[0];
 }
 
-export async function removeStaleTokens() {
-    const request = {
-        method: "GET",
-        headers: getHeaders()
-    }
-    await fetch('api/users/me', request)
-        .then((response) => {
-            if (response.status === 401) {
-                window.localStorage.clear();
-            }
-        }).catch(error => {
-            console.log("FETCH ERROR: " + error);
-        })
-}
+// export async function removeStaleTokens() {
+//     const request = {
+//         method: "GET",
+//         headers: getHeaders()
+//     }
+//     await fetch('api/users/me', request)
+//         .then((response) => {
+//             if (response.status === 401) {
+//                 window.localStorage.clear();
+//             }
+//         }).catch(error => {
+//             console.log("FETCH ERROR: " + error);
+//         })
+// }
