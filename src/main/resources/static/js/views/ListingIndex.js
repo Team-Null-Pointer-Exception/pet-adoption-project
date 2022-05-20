@@ -8,6 +8,9 @@ let allListings, activeListings, listingStatus, animalType, gender, distance, fi
 
 
 export default function ListingIndex(props) {
+    let lat = sessionStorage.getItem('lat')
+    let lng = sessionStorage.getItem('lng')
+    let  origin = [lat, lng]
 
     allListings = props.listings;
     allListings.forEach(listing => {
@@ -17,7 +20,7 @@ export default function ListingIndex(props) {
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
 
-    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${user.zip}&destinations=78833`)
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=78833`)
         .then(function (response) {
             response.json().then(function (res){
                 console.log(res);
