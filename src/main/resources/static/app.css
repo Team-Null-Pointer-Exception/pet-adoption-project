@@ -385,6 +385,7 @@ img {
 
 .rounded-circle {
     margin-top: 1rem;
+    margin-left: 5px;
 }
 
 .rounded-circle>i {
