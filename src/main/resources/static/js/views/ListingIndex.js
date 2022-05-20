@@ -164,94 +164,123 @@ export function populateCards(filteredListings) {
     //language=HTML
     return `
         ${filteredListings.map(listing =>
-                ` 
+                `
         <div class="col mb-5">
-                        <div id="previewCard-${listing.id}" class="card previewCard">
-                        <!-- New badge-->
-                        ${addNewBadge(listing)}
-                        ${addPendingStatus(listing)}
-                            <!-- Pet image-->
-                            <img class="card-img-top" src=${listing.images[0]} alt="..." />
-                            <!-- Pet details-->
-                            <div class="card-body p-4 bg-light">
-                                <div class="text-center">
-                                    <!-- Pet name-->
-                                    <h5 class="fw-bolder">${listing.name}</h5>
-                                    <!-- Breed-->
-                                    ${listing.breed}<br>
-                                    ${listing.age} / ${listing.sex.toLowerCase()}
+            <div id="previewCard-${listing.id}" class="card previewCard">
+                <!-- New badge-->
+                ${addNewBadge(listing)}
+                ${addPendingStatus(listing)}
+                <!-- Pet image-->
+                <img class="card-img-top" src=${listing.images[0]} alt="..."/>
+                <!-- Pet details-->
+                <div class="card-body p-4 bg-light">
+                    <div class="text-center">
+                        <!-- Pet name-->
+                        <h5 class="fw-bolder">${listing.name}</h5>
+                        <!-- Breed-->
+                        ${listing.breed}<br>
+                        ${listing.age} / ${listing.sex.toLowerCase()}
+                    </div>
+                </div>
+                <!-- View details-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-light">
+                    <div class="text-center"><a class="btn btn-primary mt-auto details-btn" href="#"
+                                                data-id="${listing.id}">View
+                        Details</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Overlay -->
+            <div id="overlay-${listing.id}" class="overlay">
+                <div class="container overlay-container">
+                    <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}"
+                       style="width: 36px; height: 36px;" href="#">X</a>
+                    <div class="sharethis-sticky-share-buttons"></div>
+                    <div class="row">
+                    
+                    <!-- left side column -->
+                        <div class="col-xs-12 col-lg-6 listing-main">
+                            <h3 class="overlay-text text-center">${listing.name}</h3>
+                            <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+
+                            <!-- Contact info and map -->
+                            <div id="under-pic" class="row mt-5">
+                                <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
+                                    <h3 class="overlay-text text-center my-3">Guardian info:</h3>
+                                    <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
+                                    <ul>
+                                        <li>${listing.user.firstName} ${listing.user.lastName}</li>
+                                        <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
+                                        <li>Contact Options:</li>
+                                    </ul>
+                                    <div class="d-flex align-items-center justify-content-evenly user-contact-details ms-0">
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 ml-2 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-sms"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="mailto:${listing.user.email}"
+                                           target="_blank"><i class="far fa-envelope"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
+                                           style="width: 36px; height: 36px;"
+                                           href="facetime-audio:${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-phone"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-video"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-lg-6" id="map">
+                                    <img class="location-map"
+                                         src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${googleAPIKey}"
+                                         alt="map"/>
                                 </div>
                             </div>
-                            <!-- View details-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                                <div class="text-center"><a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">View Details</a></div>
+                        </div>
+
+
+                        <!-- Right Side Details Column -->
+                        <div class="col-xs-12 col-lg-6 container container-overlay-details">
+                            <h3 class="overlay-text text-center">${listing.animal}</h3>
+                            <div class="row listing-details">
+                                <div class="col-6">
+                                    <ul>
+                                        <li><strong>Breed</strong>: ${listing.breed}</li>
+                                        <li><strong>Sex</strong>: ${listing.sex}</li>
+                                        <li><strong>Age</strong>: ${listing.age}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-5">
+                                    <ul>
+                                        <li><strong>Color</strong>: ${listing.color}</li>
+                                        <li><strong>Health Issues</strong>: ${listing.health}</li>
+                                        <li><strong>Fixed</strong>: ${listing.fixed}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-1 side-btn">
+                                    <a id="report-btn"
+                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                       style="width: 36px; height: 36px;"
+                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
+                                       target="_blank"><i class="fas fa-flag"></i></a>
+                                </div>
+                                <div class="col-12 listing-details">
+                                    <p><strong>Summary</strong>: ${listing.summary}</p>
+                                    <p><strong>About</strong>: ${listing.description}</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        
-                        <!-- Overlay -->
-                        <div id="overlay-${listing.id}" class="overlay">
-    <div class="container overlay-container">
-  <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-    <div class="sharethis-sticky-share-buttons"></div>
-    <div class="row">
-        <div class="col-xs-12 col-lg-6 listing-main">
-             <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
-             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
-             </div>
-                   <div class="col-xs-12 col-lg-6 container container-overlay-details">
-                        <h3 class="overlay-text text-center">${listing.animal}</h3>
-                        <div class="row listing-details">
-                        <div class="col-6">
-                        <ul>
-                            <li><strong>Breed</strong>: ${listing.breed}</li>
-                            <li><strong>Sex</strong>: ${listing.sex}</li>
-                            <li><strong>Age</strong>: ${listing.age}</li>
-                        </ul>
-                        </div>
-                        <div class="col-5">
-                        <ul>
-                            <li><strong>Color</strong>: ${listing.color}</li>
-                            <li><strong>Health Issues</strong>: ${listing.health}</li>
-                            <li><strong>Fixed</strong>: ${listing.fixed}</li>
-                        </ul>
-                        </div>
-                        <div class="col-1 side-btn">
-                        <a id="report-btn" class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
-                        </div>
-                        <div class="col-12 listing-details">
-                        <p><strong>Summary</strong>: ${listing.summary}</p>
-                        <p><strong>About</strong>: ${listing.description}</p>
-                        </div>
-                        </div>                                                  
-                  </div>
-
-            </div>
-            <div id="under-pic" class="row mt-4"> 
-            <div class="col-xs-4 col-lg-2 listing-contact-details text-center">
-            <h3 class="overlay-text text-center my-3">Guardian info:</h3>
-            <img class="storyImg mx-auto m-0" src="${listing.user.profileImg}">
-                        <ul>
-                            <li>${listing.user.firstName} ${listing.user.lastName}</li>
-                            <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
-                            <li>Contact Options: </li>
-                        </ul>
-                        <div class="d-flex align-items-center justify-content-center user-contact-details">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}" target="_blank"><i class="fas fa-sms"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:${listing.user.email}" target="_blank"><i class="far fa-envelope"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:${listing.user.phone}" target="_blank"><i class="fas fa-phone"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 px-0 allow" style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}" target="_blank"><i class="fas fa-video"></i></a>
-                        </div>
-                </div>
-                            <div class="col-xs-8 col-lg-4" id="map">
-            <img class="location-map" src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${googleAPIKey}" alt="map"/>
-            </div>    
-            ${adminButtons(listing)}
-            </div>               
-    </div>
-</div>
                     </div>
-`).join('')}`
+
+                </div>
+            </div>
+        </div>
+    `
+        ).join('')
+        }
+
+    `
 }
 
 
@@ -268,12 +297,13 @@ function addNewBadge(listing) {
     let yesterdayDateArray = threeDaysAgo.split("-");
     threeDaysAgo = yesterdayDateArray.join("");
 
-    //language=HTML
+
     if (listingDate < threeDaysAgo) {
         return '';
     } else {
+        //language=HTML
         return `
-            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">New</div>`;
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> New</div>`;
     }
 }
 
@@ -310,7 +340,8 @@ function adminButtons(listing) {
         return `
             <div class="text-center">
                 <div class="btn-group m-3">
-                    <select id="change-listing-status" class="form-select btn-primary " aria-label="Update listing status">
+                    <select id="change-listing-status" class="form-select btn-primary "
+                            aria-label="Update listing status">
                         <option>Change status</option>
                         <option>Active</option>
                         <option>Pending</option>

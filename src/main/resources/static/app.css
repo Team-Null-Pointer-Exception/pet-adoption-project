@@ -696,7 +696,7 @@ textarea, select {
 
 .close-btn {
     margin-top: 1rem;
-    margin-left: -2rem;
+    margin-left: -1rem;
     z-index: 2;
     background-color: #ED6436;
     color: white;
@@ -778,7 +778,8 @@ ul {
 }
 
 .location-map {
-    padding: 3rem 2rem 2rem 2rem;
+    margin-top: 2rem;
+    padding: 2rem 2rem 0 0;
     max-height: 350px;
     width: 100%;
     border-radius: 5px;
@@ -818,9 +819,4 @@ ul {
 
 #input-required {
     color: #e3410c;
-}
-
-#under-pic {
-    position: relative;
-    z-index: 2;
 }
