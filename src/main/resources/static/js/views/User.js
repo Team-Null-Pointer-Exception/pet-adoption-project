@@ -1,6 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import EditListing from "./EditListing.js";
+import token from "../keys.js"
 import CreateView from "../createView.js";
 
 
@@ -576,7 +576,7 @@ export function UsersEvent(){
     closeDeleteOverlay();
 }
 
-let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let apiKey = token().fileKey
 let imageArray = []
 let fileStackClient = null
 

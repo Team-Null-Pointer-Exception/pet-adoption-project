@@ -1,5 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import token from "../keys.js";
 
 
 export default function EditListing(props) {
@@ -65,7 +66,7 @@ export function EditEvents() {
     EditListingsEvent()
 }
 
-let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let apiKey = token().fileKey
 let imageArray = []
 let fileStackClient = null
 
@@ -123,28 +124,3 @@ export function EditListingsEvent(){
         });
     })
 }
-        // let title = $('#add-post-title').val();
-        // let content = $('#add-post-content').val();
-        // let post = {
-        //     title,
-        //     content
-        // }
-        //
-        // let postId = this.getAttribute('data-id')
-        //
-        // let request = {
-        //     method: "PUT",
-        //     headers: getHeaders(),
-        //     body: JSON.stringify(post)
-        // }
-        //
-        // fetch(`http://localhost:8080/api/listings/edit/${postId}`, request)
-        //     .then(res => {
-        //         console.log(res.status);
-        //         createView("/users")
-        //     }).catch(error => {
-        //     console.log(error);
-        //     createView("/users");
-        // });
-    // })
-// }

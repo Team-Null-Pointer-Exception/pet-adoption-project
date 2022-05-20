@@ -1,11 +1,5 @@
 export default function Login(props) {
-    return `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>Log In</title>
-</head>
-<body>
+    return `
 
 <div class="row log-in-row">
 <div class="card log-in-card"> 
@@ -24,8 +18,7 @@ export default function Login(props) {
 </form>
 </div>
 </div>
-</body>
-</html>`;
+`;
 
 }
 

@@ -4,5 +4,15 @@
       "name": "spring.mail.from",
       "type": "java.lang.String",
       "description": "Description for spring.mail.from."
-  }
-] }
+    },
+    {
+      "name": "FileStackAPIKEY",
+      "type": "java.lang.String",
+      "description": "Description for FileStackAPIKEY."
+    },
+    {
+      "name": "googleAPIKey",
+      "type": "java.lang.String",
+      "description": "Description for googleAPIKey."
+    }
+  ] }

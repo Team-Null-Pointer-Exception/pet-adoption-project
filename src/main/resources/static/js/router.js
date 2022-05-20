@@ -32,6 +32,7 @@ export default function router(URI) {
         sessionStorage.setItem('token', token)
     }
 
+
     const routes = {
         '/': {
             returnView: Home,

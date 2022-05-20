@@ -1,5 +1,6 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import token from "../keys.js"
 
 
 export default function CreateListing(props) {
@@ -68,7 +69,7 @@ export function CreateEvents() {
     CreateListingsEvent()
 }
 
-let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let apiKey = token().fileKey
 let imageArray = []
 let fileStackClient = null
 

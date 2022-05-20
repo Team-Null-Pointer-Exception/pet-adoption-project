@@ -40,6 +40,7 @@ export function ResetEvent() {
             fetch(`http://localhost:8080/api/users/reset?password=${newPassword}&token=${token}`, request)
                 .then(res => {
                     console.log(res.status);
+                    sessionStorage.clear();
                     createView("/home");
                 }).catch(error => {
                 console.log(error);

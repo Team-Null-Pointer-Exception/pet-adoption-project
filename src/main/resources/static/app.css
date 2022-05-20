@@ -729,9 +729,9 @@ textarea, select {
     color: black;
     position: fixed!important;
     padding-top: 1rem;
-    top: 15%;
+    top: 10%;
     right:10%;
-    height: 70%;
+    height: 80%;
     width: 80%;
     border-radius: 10px;
     overflow: auto;
@@ -757,9 +757,7 @@ textarea, select {
     justify-self: center;
     /*margin-left: 2rem;*/
 }
-.listing-main {
-    max-height: 400px;
-}
+
 
 
 ul {
@@ -778,8 +776,7 @@ ul {
 }
 
 .location-map {
-    margin-top: 2rem;
-    padding: 2rem 2rem 0 0;
+    padding-top: 5rem;
     max-height: 350px;
     width: 100%;
     border-radius: 5px;

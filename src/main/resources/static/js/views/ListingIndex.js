@@ -1,9 +1,11 @@
-import createView from "../createView.js";
-import {getHeaders, getUserRole} from "../auth.js";
 
+import  {getUserRole} from "../auth.js";
+import token from "../keys.js"
+
+let apiKey = token().googleKey
 
 let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
-let googleAPIKey = 'AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU'
+
 
 export default function ListingIndex(props) {
 
@@ -117,7 +119,6 @@ function newSelections() {
 
 
 function filterSelections() {
-
     grabSelections();
 
     if (getUserRole()) {
@@ -206,7 +207,7 @@ export function populateCards(filteredListings) {
                             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
 
                             <!-- Contact info and map -->
-                            <div id="under-pic" class="row mt-5">
+                            <div id="under-pic" class="row">
                                 <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
                                     <h3 class="overlay-text text-center my-3">Guardian info:</h3>
                                     <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
@@ -233,7 +234,7 @@ export function populateCards(filteredListings) {
                                 </div>
                                 <div class="col-xs-12 col-lg-6" id="map">
                                     <img class="location-map"
-                                         src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${googleAPIKey}"
+                                         src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
                                          alt="map"/>
                                 </div>
                             </div>

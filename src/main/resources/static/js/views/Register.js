@@ -1,16 +1,10 @@
 import CreateView from "../createView.js"
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
+import token from "../keys.js"
 
 export default function Register(props) {
     return `
-    <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="UTF-8"/>
-                <title>Register</title>
-            </head>
-            <body>
             <div class="row set-up-row">
             <div class="card set-up-card"> 
                 <form id="register-form">
@@ -113,8 +107,6 @@ export default function Register(props) {
                 </form>
                 </div>
                 </div>
-            </body>
-        </html>
 `;
 }
 
@@ -123,7 +115,8 @@ export function RegisterEvent() {
     RegisterEventListener()
 }
 
-let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
+let apiKey = token().fileKey
+
 let imgURL = ""
 function UploadEvent() {
     $('#profile_upload').click(function () {
