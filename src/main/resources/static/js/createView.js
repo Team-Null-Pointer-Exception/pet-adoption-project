@@ -1,7 +1,7 @@
 import render from './render.js';
 import router from './router.js';
 import fetchData from "./fetchData.js";
-import {getHeaders} from "./auth.js";
+import {getHeaders, removeStaleTokens} from "./auth.js";
 
 
 /**
@@ -9,7 +9,7 @@ import {getHeaders} from "./auth.js";
  * @param URI
  */
 export default async function createView(URI) {
-    // await removeStaleTokens();
+    await removeStaleTokens();
 
     let route = router(URI);
 

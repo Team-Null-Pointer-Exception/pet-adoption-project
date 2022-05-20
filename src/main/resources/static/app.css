@@ -1,13 +1,16 @@
 html, body {
     height: 100%;
 }
+
 body {
     display: flex;
     flex-direction: column;
 }
+
 .content {
     flex: 1 0 auto;
 }
+
 .footer {
     flex-shrink: 0;
 }
@@ -25,8 +28,9 @@ body {
 #register-response {
     display: none
 }
+
 #register-form {
-    display:inline;
+    display: inline;
 }
 
 #register-form, #login-form, #create-listing-form, #edit-listing-form, #reset-form, #forgot-form {
@@ -34,12 +38,14 @@ body {
     margin-right: 5rem;
     margin-left: 5rem;
 }
+
 #create-listing-form, #edit-listing-form {
     width: 24.25rem;
 }
+
 .card {
     background-color: #181818;
-    border: none!important;
+    border: none !important;
     border-radius: 10px;
     margin-bottom: 1.5em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -67,6 +73,7 @@ body {
     height: 45rem;
     width: 45rem;
 }
+
 #forgot-password-response, #error-response {
     display: none;
 }
@@ -76,21 +83,22 @@ body {
     width: 45rem;
 }
 
-.log-in-card{
+.log-in-card {
     width: 30rem;
     height: 25rem;
 }
-label, #login-form>a, #forgot-form>a, #reset-form>a {
+
+label, #login-form > a, #forgot-form > a, #reset-form > a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #login-form>a, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
-#register-form>h1, #login-form>h1, #forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1, #create-listing-form>h1 {
+#register-form > h1, #register-form > label, #login-form > h1, #login-form > label, #login-form > a, #create-listing-form > h1, #create-listing-form > label, #edit-listing-form > label,
+#register-form > h1, #login-form > h1, #forgot-form > h1, #forgot-form > label, #reset-form > label, #reset-form > h1, #create-listing-form > h1 {
     text-align: center;
 }
 
 
-.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .forgot-row, .reset-row, .delete-listing-row{
+.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .forgot-row, .reset-row, .delete-listing-row {
     align-items: center;
     justify-content: center;
 }
@@ -99,50 +107,53 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-top: 6.25rem;
 }
 
-#register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input, #login-form>input, #reset-form>input {
-    border: none!important;
+#register-form > input, #login-form > input, #create-listing-form > input, #edit-listing-form > input, #login-form > input, #reset-form > input {
+    border: none !important;
     border-radius: 5px;
     margin-bottom: 1rem;
 }
 
-#edit-listing-form>select {
+#edit-listing-form > select {
     margin-bottom: 1rem;
 }
 
-#edit-listing-form>textarea {
+#edit-listing-form > textarea {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>select {
+#create-listing-form > select {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>#summary {
+#create-listing-form > #summary {
     margin-top: 1rem;
 }
 
-#create-listing-form>button {
+#create-listing-form > button {
     margin-top: 1rem;
 }
 
-#register-form>select {
+#register-form > select {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>textarea, #edit-listing-form>textarea {
+#create-listing-form > textarea, #edit-listing-form > textarea {
     resize: none;
 }
 
 #register-btn {
     margin-left: 10.6rem;
 }
+
 #login-btn {
     margin-left: 10.6rem;
 }
+
 #forgot-btn {
     margin-left: 13.4rem;
     margin-top: 1rem;
 }
+
 #password-response {
     display: none;
 }
@@ -151,6 +162,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #create-listing-btn {
     margin-left: 9.975rem;
 }
+
 #edit-listing-btn {
     margin-left: 10rem;
     background-color: #ED6436;
@@ -172,6 +184,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     border: none;
     color: white;
 }
+
 #profile_upload {
     margin-left: 23px;
 }
@@ -192,17 +205,21 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
     display: none;
 }
+
 #register-form > label {
     width: 9rem;
 }
+
 #login-form > label {
     width: 5rem;
 }
+
 #create-listing-form > label {
     width: 9rem;
 }
+
 #create-listing-form > p {
-    display:inline;
+    display: inline;
     width: 9rem;
 }
 
@@ -210,28 +227,33 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 9rem;
     color: white;
 }
+
 #edit-listing-form > p {
-    display:inline;
+    display: inline;
     width: 9rem;
 }
 
 
-#register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
+#register-form > input, #create-listing-form > input, #create-listing-form > textarea, #create-listing-form > select, #edit-listing-form > input, #edit-listing-form > textarea, #create-listing-form > select {
     width: 15rem;
 }
+
 #create-listing-form, #edit-listing-form {
     width: 26rem;
 }
-.delete-listing-content>p {
+
+.delete-listing-content > p {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
-.delete-listing-content>div {
+
+.delete-listing-content > div {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 1rem;
 }
+
 body {
     margin: 0;
     font-family: "Nunito Sans", sans-serif;
@@ -264,6 +286,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     flex-grow: 1;
     align-items: center;
 }
+
 .navbar-dark .navbar-nav .nav-link {
     padding: 30px 20px;
     font-size: 18px;
@@ -290,9 +313,11 @@ nav .nav-link.active, .home, .nav-link:hover {
 .text-primary {
     color: #ED6436 !important;
 }
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
 .pt-3, .py-3 {
     padding-top: 1rem !important;
 }
@@ -300,11 +325,13 @@ nav .nav-link.active, .home, .nav-link:hover {
 .align-items-center {
     align-items: center !important;
 }
+
 .row {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
 }
+
 .pb-3, .py-3 {
     padding-bottom: 1rem !important;
 }
@@ -312,6 +339,7 @@ nav .nav-link.active, .home, .nav-link:hover {
 .d-inline-flex {
     display: inline-flex !important;
 }
+
 .border-right {
     border-right: 1px solid #dee2e6 !important;
 }
@@ -319,6 +347,7 @@ nav .nav-link.active, .home, .nav-link:hover {
 .text-black {
     color: #181818;
 }
+
 .text-grey {
     color: #777777;
 }
@@ -333,8 +362,8 @@ nav .nav-link.active, .home, .nav-link:hover {
 }
 
 .container-fluid {
-    padding-right: 0!important;
-    padding-left: 0!important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
@@ -342,7 +371,8 @@ nav .nav-link.active, .home, .nav-link:hover {
     background-color: #e3410c;
     border-color: #ED6436;
 }
-#login-form>a:hover {
+
+#login-form > a:hover {
     color: #ED6436;
 }
 
@@ -366,6 +396,7 @@ img {
     min-height: 1px;
     padding: 1.25rem;
 }
+
 .text-center {
     text-align: center !important;
 }
@@ -388,7 +419,7 @@ img {
     margin-left: 5px;
 }
 
-.rounded-circle>i {
+.rounded-circle > i {
     margin-left: 1px;
 }
 
@@ -398,7 +429,7 @@ img {
 
 }
 
-.about{
+.about {
     margin-top: 2rem;
 }
 
@@ -407,12 +438,13 @@ img {
     height: 275px;
     overflow: hidden;
 }
+
 #report-btn {
     margin-top: -9px;
 }
 
 .meetUs {
-    margin-top: 3rem!important;
+    margin-top: 3rem !important;
 }
 
 .aboutText {
@@ -420,7 +452,7 @@ img {
 }
 
 .hero {
-    max-height:600px;
+    max-height: 600px;
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -438,11 +470,12 @@ img {
 textarea, select {
     border-radius: 5px;
 }
-#create-listing-form>h1 {
+
+#create-listing-form > h1 {
     margin-top: 2rem;
 }
 
-#edit-listing-form>h1 {
+#edit-listing-form > h1 {
     margin-top: 2rem;
     text-align: center;
 }
@@ -456,16 +489,20 @@ textarea, select {
     padding: 3rem 0;
     position: relative;
 }
+
 .gray-bg {
     background-color: #f5f5f5;
 }
+
 #profile_img {
     max-width: 100%;
 }
+
 #profile_img {
     vertical-align: middle;
     border-style: none;
 }
+
 /* About Me
 ---------------------*/
 .about-text h3, .listing-section h3, .story-section h3 {
@@ -474,14 +511,17 @@ textarea, select {
     font-weight: 700;
     margin: 0 0 6px;
 }
+
 @media (max-width: 767px) {
     .section {
         padding: 1rem 0;
     }
+
     .about-text h3, .listing-section h3, .story-section h3 {
         font-size: 35px;
     }
 }
+
 .about-text p {
     font-size: 18px;
     max-width: 450px;
@@ -490,9 +530,11 @@ textarea, select {
 .about-list {
     padding-top: 10px;
 }
+
 .about-list .media {
     padding: 5px 0;
 }
+
 .about-list label {
     color: #ED6436;
     font-weight: 600;
@@ -500,12 +542,13 @@ textarea, select {
     margin: 0;
     position: relative;
 }
+
 .about-list p {
     margin: 0;
     font-size: 15px;
 }
 
-#register-form>h1 {
+#register-form > h1 {
     margin-top: 2rem;
 }
 
@@ -514,24 +557,28 @@ textarea, select {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    .about-avatar>#profile_upload {
+
+    .about-avatar > #profile_upload {
         top: 222px;
         right: 45px;
     }
 }
+
 .about-avatar {
     display: flex;
     justify-content: center;
 }
+
 #profile_img {
     border-radius: 50%;
     width: 240px;
     height: 240px;
     object-fit: cover;
     background-position: center;
-    overflow:hidden
+    overflow: hidden
 }
-.about-avatar>#profile_upload {
+
+.about-avatar > #profile_upload {
     width: 36px;
     height: 36px;
     font-size: 27px;
@@ -540,9 +587,11 @@ textarea, select {
     margin-left: -60px;
     display: none;
 }
+
 #edit-profile-btns {
     margin-top: 1rem;
 }
+
 /*Edit Profile*/
 #edit-profile-info {
     margin-top: 1rem;
@@ -551,18 +600,22 @@ textarea, select {
     background-color: white;
     display: none;
 }
+
 .edit-profile-col .media {
     margin-bottom: .25rem;
 }
+
 .edit-profile-col label {
     width: 10rem;
     color: #777777;
 }
+
 #edit-profile-info #edit-user-response {
     margin-top: .25rem;
     color: #181818;
     display: none;
 }
+
 /*Edit Password*/
 #edit-password-info {
     margin-top: 1rem;
@@ -571,29 +624,36 @@ textarea, select {
     background-color: white;
     display: none;
 }
+
 #edit-password-info .media {
     margin-bottom: .25rem;
 }
+
 #edit-password-info label {
     width: 9rem;
     color: #777777;
 }
+
 #edit-password-info #register-response {
     margin-top: .25rem;
     color: #181818;
 }
+
 /*User Listings*/
 .user-listings {
     padding-top: .25em;
     padding-bottom: .25em;
     margin-bottom: 0.5em;
 }
+
 .listing-view, .listing-edit, .listing-delete {
     text-decoration: underline;
 }
+
 .listing-view:hover, .listing-edit:hover, .listing-delete:hover {
     color: #ED6436;
 }
+
 /*User Stories*/
 #new-story {
     width: 20rem;
@@ -606,13 +666,13 @@ textarea, select {
 }
 
 .hiddenBrand {
-    margin-left: 1rem!important;
+    margin-left: 1rem !important;
 }
 
-.storyCard{
+.storyCard {
     height: 19rem;
     width: 19rem;
-    border-radius: 10px!important;
+    border-radius: 10px !important;
     background-color: white;
     padding-bottom: 1rem;
 }
@@ -632,13 +692,14 @@ textarea, select {
     background-color: white;
     margin-top: 2rem;
     margin-left: 6.5rem;
-    overflow:hidden
+    overflow: hidden
 }
 
 .buttonRow {
     margin-top: -15rem;
     text-align: center;
 }
+
 #newPetDiv {
     margin-top: 12rem;
 }
@@ -682,12 +743,13 @@ textarea, select {
 .like-share {
     margin-top: 4rem;
 }
+
 .overlay-container {
     background-color: white;
     color: black;
     position: fixed;
     top: 5%;
-    right:10%;
+    right: 10%;
     height: 90%;
     width: 80%;
     border-radius: 10px;
@@ -711,7 +773,7 @@ textarea, select {
     top: 50px;
     left: 300px;
     bottom: 50px;
-    right:50%;
+    right: 50%;
     height: 90%;
     width: 80%;
     border-radius: 10px;
@@ -727,15 +789,16 @@ textarea, select {
 .view-overlay-container {
     background-color: white;
     color: black;
-    position: fixed!important;
+    position: fixed !important;
     padding-top: 1rem;
     top: 15%;
-    right:10%;
+    right: 10%;
     height: 70%;
     width: 80%;
     border-radius: 10px;
     overflow: auto;
 }
+
 .view-overlay-container > img {
     margin-bottom: 1rem;
 }
@@ -752,10 +815,11 @@ textarea, select {
     max-width: 100%;
     max-height: 375px;
     background-position: center;
-    overflow:hidden;
+    overflow: hidden;
     border-radius: 5px;
     justify-self: center;
 }
+
 .listing-main {
     max-height: 400px;
 }
@@ -763,8 +827,9 @@ textarea, select {
 
 ul {
     list-style: none;
-    padding: 0!important;
+    padding: 0 !important;
 }
+
 .more-info {
     margin-left: 4rem;
 }
@@ -777,8 +842,6 @@ ul {
 }
 
 .location-map {
-    margin-top: 1rem;
-    padding: 2rem;
     max-height: 350px;
     width: 100%;
     border-radius: 5px;
@@ -786,6 +849,7 @@ ul {
     object-fit: cover;
     justify-content: center;
 }
+
 #map {
     border-radius: 5px;
 }
@@ -796,8 +860,9 @@ ul {
 }
 
 #st-2 {
-    top:50%!important;
+    top: 50% !important;
 }
+
 .container-overlay-details {
     padding-left: 2rem;
 }
@@ -805,6 +870,7 @@ ul {
 .side-btn {
     margin-top: -5rem;
 }
+
 #image_upload {
     /*margin-left: 23px;*/
 }
