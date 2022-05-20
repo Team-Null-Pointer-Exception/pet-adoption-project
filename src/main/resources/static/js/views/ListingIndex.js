@@ -207,7 +207,7 @@ export function populateCards(filteredListings) {
 
                             <!-- Contact info and map -->
                             <div id="under-pic" class="row mt-5">
-                                <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
+                                <div class="col-xs-12 col-lg-5 listing-contact-details text-center">
                                     <h3 class="overlay-text text-center my-3">Guardian info:</h3>
                                     <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
                                     <ul>
@@ -231,7 +231,7 @@ export function populateCards(filteredListings) {
                                            target="_blank"><i class="fas fa-video"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-lg-6" id="map">
+                                <div class="col-xs-12 col-lg-7" id="map">
                                     <img class="location-map"
                                          src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=12&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${googleAPIKey}"
                                          alt="map"/>
