@@ -820,3 +820,7 @@ ul {
     position: relative;
     z-index: 2;
 }
+
+.admin-user-more-info {
+    display: none;
+}
