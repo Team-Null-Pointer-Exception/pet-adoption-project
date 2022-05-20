@@ -31,7 +31,7 @@ import static com.example.petadoptionproject.data.User.Role.USER;
 @AllArgsConstructor
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/", headers = "Accept=application/json")
+@RequestMapping(value = "/api/users", headers = "Accept=application/json")
 public class UserController {
 
     private UsersRepository usersRepository;
@@ -39,33 +39,33 @@ public class UserController {
     private JavaMailSender mailSender;
     private EmailService emailService;
 
-    @GetMapping("api/users")
+    @GetMapping
     public Collection<User> getUsers() {
         System.out.println(usersRepository);
         return usersRepository.findAll();
     }
 
-    @GetMapping("api/users/{id}")
+    @GetMapping("/{id}")
     public Optional<User> getById(@PathVariable long id){
         return usersRepository.findById(id);
     }
 
-    @GetMapping("api/users/email")
+    @GetMapping("/email")
     public User getByEmail(@RequestParam String email){
         return usersRepository.findByEmail(email);
     }
-    @GetMapping("api/users/username")
+    @GetMapping("/username")
     public User getByUsername(@RequestParam String username) {
         return usersRepository.findByUsername(username);
     }
 
-    @GetMapping("api/users/me")
+    @GetMapping("/me")
     public User getCurrentUser(OAuth2Authentication auth) {
         String email = auth.getName();
         return usersRepository.findByEmail(email);
     }
 
-    @PostMapping("api/users/create")
+    @PostMapping("/create")
     public void createUser(@RequestBody User user) {
         user.setCreatedAt(LocalDate.now());
         user.setRole(User.Role.USER);
@@ -80,12 +80,12 @@ public class UserController {
         usersRepository.save(user);
     }
 
-    @DeleteMapping("api/users/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id){
         usersRepository.deleteById(id);
     }
 
-    @PutMapping("api/users/me/updateUser")
+    @PutMapping("/me/updateUser")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void updateUser(@RequestBody User user, OAuth2Authentication auth){
         String userToUpdate = auth.getName();
@@ -105,7 +105,7 @@ public class UserController {
         System.out.println("Updating user information");
     }
 
-    @PutMapping("api/users/me/updatePassword")
+    @PutMapping("/me/updatePassword")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void updatePassword(@RequestParam String newPassword, OAuth2Authentication auth){
         String user = auth.getName();
@@ -129,7 +129,7 @@ public class UserController {
         mailSender.send(message);
     }
 
-    @PutMapping("api/users/send")
+    @PutMapping("/send")
     public void processForgotPassword(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
         String token = RandomString.make(30);
         emailService.updateResetPasswordToken(token, email);
@@ -138,9 +138,10 @@ public class UserController {
     }
 
 
-    @PutMapping("reset")
+    @PutMapping("/reset")
     public void resetPasswordFromToken(@RequestParam String password, @RequestParam String token) {
         User user = emailService.getByResetPasswordToken(token);
+        System.out.println(user.getUsername());
         String encryptedPassword = passwordEncoder.encode(password);
         user.setPassword(encryptedPassword);
         user.setResetPasswordToken(null);

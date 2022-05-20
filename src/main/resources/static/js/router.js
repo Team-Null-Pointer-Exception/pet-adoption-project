@@ -14,15 +14,24 @@ import AdminIndex, {AdminEvent} from "./views/Admin.js";
 import ResetPassword, {ResetEvent} from "./views/ResetPassword.js"
 import ForgotPassword, {ForgotEvent} from "./views/ForgotPassword.js";
 
-let token;
-export { token }
-
 /**
  * Returns the route object for a specific route based on the given URI
  * @param URI
  * @returns {*}
  */
+
+
+
 export default function router(URI) {
+    if(URI.includes('/reset')){
+        let href = location.href
+        href = href.split("?")
+        let splitOne = href[1]
+        let splitTwo = splitOne.split("=")
+        let token = splitTwo[1]
+        sessionStorage.setItem('token', token)
+    }
+
     const routes = {
         '/': {
             returnView: Home,
@@ -123,22 +132,13 @@ export default function router(URI) {
         },
         '/reset': {
             returnView: ResetPassword,
-            state: {},
+            state: {
+            },
             uri: '/reset',
             title: 'Reset Password',
-            viewEvents: ResetEvent
+            viewEvent: ResetEvent
         }
     };
 
-    if(URI.includes('?')) {
-        let splitURI = URI.split('?')
-        URI = splitURI[0]
-        console.log(URI)
-        token = splitURI[1]
-        console.log(token)
-    }
-
-    return routes[URI];
-
+    return routes[URI]
 }
-

@@ -1,9 +1,10 @@
 import {getHeaders} from "../auth.js";
 import createView from "../createView.js";
-import {token} from "../router.js";
 
 
-export default function ResetPassword() {
+
+export default function ResetPassword(props) {
+
         return`      
                     <div class="row reset-row">
                     <div class="card reset-card"> 
@@ -24,10 +25,9 @@ export default function ResetPassword() {
 
 
 export function ResetEvent() {
-    console.log("forgot event called")
-    $("#reset-btn").click(function() {
-        console.log("button has been pressed")
-        console.log(token)
+    console.log("reset event called")
+    let token = sessionStorage.getItem('token')
+    $('#reset-btn').click(function () {
         let password = $("#new-password").val()
         let confirmPassword = $("#confirm-new-password").val()
         let newPassword = ""
@@ -37,7 +37,7 @@ export function ResetEvent() {
                 method: "PUT",
                 headers: getHeaders()
             }
-            fetch(`http://localhost:8080/reset?password=${newPassword}&token=${token}`, request)
+            fetch(`http://localhost:8080/api/users/reset?password=${newPassword}&token=${token}`, request)
                 .then(res => {
                     console.log(res.status);
                     createView("/home");
@@ -48,5 +48,4 @@ export function ResetEvent() {
             $("#password-response").css({display: "block"});
         }
     })
-
 }
