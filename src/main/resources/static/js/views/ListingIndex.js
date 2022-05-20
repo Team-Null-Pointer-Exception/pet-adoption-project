@@ -17,6 +17,16 @@ export default function ListingIndex(props) {
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
 
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${user.zip}&destinations=78833`)
+        .then(function (response) {
+            response.json().then(function (res){
+                console.log(res);
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
     //language=HTML
     return `
         <!-- Jumbotron -->
