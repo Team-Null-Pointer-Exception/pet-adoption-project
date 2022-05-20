@@ -23,6 +23,7 @@ public class GoogleMapsController {
     @Value("${googleAPIKey}")
     private String googleAPIKey;
 
+
 // this is concantenated because the google api key will be its own variable and not part of the URL variable
     //   private String myUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=78801&destinations=78254&key=AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU"
 

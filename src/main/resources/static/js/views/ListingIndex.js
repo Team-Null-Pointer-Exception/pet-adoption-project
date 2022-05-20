@@ -1,11 +1,11 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
 import {getUser} from "./User.js";
-
+import token from "../js/keys.js"
 
 let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings;
-let googleAPIKey= "AIzaSyCQekvuf0nOxzwr7LBbS-voOZmKtHp7jMU"
 
+console.log(token());
 export default function ListingIndex(props) {
 
     allListings = props.listings;
@@ -296,17 +296,6 @@ function closeOverlay() {
         $("#overlay-" + id).css({display: "none"})
     })
 }
-
-//
-// fetch("/gogglemap/maps/api/distancematrix/json?origins=78801&destinations=78833")
-//     .then(function (response) {
-//       response.json().then(function (res){
-//           console.log(res);
-//       })
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
 
 
 
