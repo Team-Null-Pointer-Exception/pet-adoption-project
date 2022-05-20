@@ -1,3 +1,5 @@
+import createView from "../createView.js";
+import {getHeaders, getUserRole} from "../auth.js";
 
 import  {getUserRole} from "../auth.js";
 import token from "../keys.js"
@@ -116,7 +118,8 @@ export function ListingsEvent() {
     grabSelections();
     detailsListener();
     closeOverlay();
-    newSelections()
+    newSelections();
+    changeStatus();
 }
 
 function grabSelections() {
@@ -225,8 +228,8 @@ export function populateCards(filteredListings) {
                             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
 
                             <!-- Contact info and map -->
-                            <div id="under-pic" class="row">
-                                <div class="col-xs-12 col-lg-6 listing-contact-details text-center">
+                            <div id="under-pic" class="row mt-5">
+                                <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
                                     <h3 class="overlay-text text-center my-3">Guardian info:</h3>
                                     <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
                                     <ul>
@@ -250,7 +253,8 @@ export function populateCards(filteredListings) {
                                            target="_blank"><i class="fas fa-video"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-lg-6" id="map">
+                                <div class="col-xs-12 col-lg-7" id="map">
+                                <p class="text-center">(Approx. location)</p>
                                     <img class="location-map"
                                          src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
                                          alt="map"/>
@@ -268,6 +272,7 @@ export function populateCards(filteredListings) {
                                         <li><strong>Breed</strong>: ${listing.breed}</li>
                                         <li><strong>Sex</strong>: ${listing.sex}</li>
                                         <li><strong>Age</strong>: ${listing.age}</li>
+                                        ${changeStatusMenu(listing)}
                                     </ul>
                                 </div>
                                 <div class="col-5">
@@ -298,7 +303,6 @@ export function populateCards(filteredListings) {
     `
         ).join('')
         }
-
     `
 }
 
@@ -352,28 +356,82 @@ function addRejectedStamp(listing) {
     }
 }
 
-function adminButtons(listing) {
+function changeStatusMenu(listing) {
 
-    if (getUserRole()) {
+    if (getUserRole(listing)) {
         //language=HTML
         return `
-            <div class="text-center">
-                <div class="btn-group m-3">
-                    <select id="change-listing-status" class="form-select btn-primary "
-                            aria-label="Update listing status">
-                        <option>Change status</option>
-                        <option>Active</option>
-                        <option>Pending</option>
-                        <option>Expired</option>
-                        <option>Closed</option>
-                        <option>Rejected</option>
-                    </select>
-                </div>
-                <button class="btn-group="
-            </div>`
+            <li class="mt-1">
+                <select id="change-listing-status" class="form-select btn-primary btn-sm"
+                        data-id="${listing.id}" aria-label="Update listing status">
+                    ${selectedOption(listing)}
+                </select>
+            </li>`
     } else {
         return '';
     }
+}
+
+function selectedOption(listing) {
+    if (listing.status === "ACTIVE") {
+        return `
+        <option selected>Active</option>
+        <option>Pending</option>
+        <option>Expired</option>
+        <option>Closed</option>
+        <option>Rejected</option>`
+    } else if (listing.status === "PENDING") {
+        return `
+        <option>Active</option>
+        <option selected>Pending</option>
+        <option>Expired</option>
+        <option>Closed</option>
+        <option>Rejected</option>`
+    } else if (listing.status === "EXPIRED") {
+        return `
+        <option>Active</option>
+        <option>Pending</option>
+        <option selected>Expired</option>
+        <option>Closed</option>
+        <option>Rejected</option>`
+    } else if (listing.status === "CLOSED") {
+        return `
+        <option>Active</option>
+        <option>Pending</option>
+        <option>Expired</option>
+        <option selected>Closed</option>
+        <option>Rejected</option>`
+    } else if (listing.status === "REJECTED") {
+        return `
+        <option>Active</option>
+        <option>Pending</option>
+        <option>Expired</option>
+        <option>Closed</option>
+        <option selected>Rejected</option>`
+    }
+    changeStatus();
+}
+
+function changeStatus() {
+    $("#change-listing-status").change(function() {
+        let listingId = $(this).data("id");
+        let newStatus = $("#change-listing-status").val().toUpperCase();
+        console.log(newStatus);
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders()
+        }
+
+        fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+            .then(res => {
+                console.log(res.status);
+                createView("/listings");
+            }).catch(error => {
+            console.log(error);
+            createView("/listings");
+        });
+    });
 }
 
 function detailsListener() {
