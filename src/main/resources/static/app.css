@@ -58,6 +58,11 @@ body {
     margin-top: 5rem;
 }
 
+.delete-listing-card {
+    width: 25rem;
+    margin-top: 15rem;
+}
+
 .set-up-card {
     height: 45rem;
     width: 45rem;
@@ -85,9 +90,13 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 
-.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .forgot-row, .reset-row{
+.set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .forgot-row, .reset-row, .delete-listing-row{
     align-items: center;
     justify-content: center;
+}
+
+.delete-listing-row {
+    margin-top: 6.25rem;
 }
 
 #register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input, #login-form>input, #reset-form>input {
@@ -212,6 +221,16 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 #create-listing-form, #edit-listing-form {
     width: 26rem;
+}
+.delete-listing-content>p {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.delete-listing-content>div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
 }
 body {
     margin: 0;
@@ -488,11 +507,38 @@ textarea, select {
 
 @media (max-width: 991px) {
     .about-avatar {
-        margin-top: 30px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .about-avatar>#profile_upload {
+        top: 222px;
+        right: 45px;
     }
 }
-
-
+.about-avatar {
+    display: flex;
+    justify-content: center;
+}
+#profile_img {
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    background-position: center;
+    overflow:hidden
+}
+.about-avatar>#profile_upload {
+    width: 36px;
+    height: 36px;
+    font-size: 27px;
+    line-height: 22px;
+    margin-top: 195px;
+    margin-left: -60px;
+    display: none;
+}
+#edit-profile-btns {
+    margin-top: 1rem;
+}
 /*Edit Profile*/
 #edit-profile-info {
     margin-top: 1rem;
@@ -666,6 +712,11 @@ textarea, select {
     width: 80%;
     border-radius: 10px;
     overflow: hidden;
+    margin: auto;
+}
+
+.delete-overlay-container {
+    color: black;
     margin: auto;
 }
 

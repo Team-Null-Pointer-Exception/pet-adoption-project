@@ -27,6 +27,7 @@ export default function UserIndex(props) {
                             <div class="col-lg-6">
                                 <div class="about-avatar">
                                     <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
+                                    <a class="btn rounded-circle text-center view-close-btn px-0 imageUploadToggle" id="profile_upload" href="#">+</a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -182,7 +183,7 @@ export default function UserIndex(props) {
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-submit-btn">Submit Changes</button>
                             <p id="register-response">Passwords do not match. Please try again.</p>  
                         </div>
-                        <div>
+                        <div id="edit-profile-btns">
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
                         </div>
@@ -289,6 +290,23 @@ export default function UserIndex(props) {
             </div>
             </div>
             </div>
+            
+            <div id="delete-overlay-${listing.id}" class="overlay">
+                <div class="container delete-overlay-container">       
+                    <div class="row delete-listing-row">
+                        <div class="card delete-listing-card">
+                            <div class="d-flex justify-content-center align-items-center delete-listing-content row">
+                                <p class="text-white col-12">Are you sure you want to delete this listing?</p>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary btn-sm delete-listing-cancel-btn" data-id="${listing.id}">Cancel</button>
+                                    <button type="button" class="btn btn-primary btn-sm delete-listing-submit-btn" data-id="${listing.id}">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                             `).join('')}
                         </div>
                         <div>
@@ -346,8 +364,21 @@ function closeEditOverlay() {
     })
 }
 
+function showDeleteListing(){
+    $('.listing-delete').click(function(){
+        let id = this.getAttribute('data-id');
+        $("#delete-overlay-" + id).css({display: "block"})
+    })
+}
+function closeDeleteOverlay() {
+    $(".delete-listing-cancel-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#delete-overlay-" + id).css({display: "none"})
+    })
+}
+
 function deleteListing() {
-    $('.listing-delete').click(function () {
+    $('.delete-listing-submit-btn').click(function () {
 
         let id = this.getAttribute('data-id')
 
@@ -417,12 +448,27 @@ function editPassword(){
 function showEditUser(){
     $('#edit-profile-btn').click(function(){
         $('#edit-profile-info').css({display: "inline-block"});
+        $('.about-avatar>#profile_upload').css({display: "inline-block"});
     })
 }
 
 function hideEditUser(){
     $('#edit-profile-cancel-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
+        $('.about-avatar>#profile_upload').css({display: "none"});
+    })
+}
+
+let imgURL = ""
+function uploadEvent() {
+    $('#profile_upload').click(function () {
+        const client = filestack.init(apiKey);
+        const options = {
+            onFileUploadFinished: callback => {
+                imgURL = callback.url
+            }
+        }
+        client.picker(options).open();
     })
 }
 
@@ -439,9 +485,16 @@ function editUser(){
         let state = $("#edit-state").val();
         let zip = $("#edit-zip").val().trim();
         let phone = $("#edit-phone").val().trim();
+        let profileImg
+        if (imgURL === "") {
+            profileImg = $("#profile_img").attr("src");
+        } else {
+            profileImg = imgURL;
+        }
 
         if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
             city !== "" && state !== "" && zip !== "" && phone !== "") {
+
             let editUser = {
                 username: username,
                 email: email,
@@ -452,7 +505,8 @@ function editUser(){
                 city: city,
                 state: state,
                 zip: zip,
-                phone: phone
+                phone: phone,
+                profileImg: profileImg
             }
 
             let request = {
@@ -517,6 +571,9 @@ export function UsersEvent(){
     fileStackSetUp()
     getUserRole()
     getUser()
+    uploadEvent();
+    showDeleteListing();
+    closeDeleteOverlay();
 }
 
 let apiKey = 'Ai0nLPbgkSYqoCCgE4Sn0z';
@@ -603,9 +660,5 @@ export function getUser() {
     const payloadObject = JSON.parse(decodedPayload);
     return payloadObject.user_name;
 }
-
-
-
-
 
 
