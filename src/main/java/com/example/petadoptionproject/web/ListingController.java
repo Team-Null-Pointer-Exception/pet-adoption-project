@@ -88,6 +88,16 @@ public class ListingController {
     }
 
 
+    @PutMapping("{listingId}/updateStatus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateStatus(@PathVariable Long listingId, @RequestParam String newStatus) {
+        Listing listToUpdate = listingRepository.getById(listingId);
+        listToUpdate.setStatus(Listing.Status.valueOf(newStatus));
+        listingRepository.save(listToUpdate);
+        System.out.println("Updating post number: " + listingId + " with: " + newStatus);
+    }
+
+
 
 
 
