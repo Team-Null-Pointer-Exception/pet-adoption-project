@@ -217,7 +217,7 @@ export function populateCards(filteredListings) {
                         </ul>
                         </div>
                         <div class="col-1 side-btn">
-                        <a if="report-btn" class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
+                        <a id="report-btn" class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing" target="_blank"><i class="fas fa-flag"></i></a>
                         </div>
                         <div class="col-12 listing-details">
                         <p><strong>Summary</strong>: ${listing.summary}</p>

@@ -407,6 +407,9 @@ img {
     height: 275px;
     overflow: hidden;
 }
+#report-btn {
+    margin-top: -9px;
+}
 
 .meetUs {
     margin-top: 3rem!important;
