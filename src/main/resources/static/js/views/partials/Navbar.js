@@ -76,6 +76,9 @@ export default function Navbar(props) {
             <li class="nav-item"> 
               <a href="/register" class="nav-link" data-link>Register</a>
               </li>
+              <li class="nav-item"> 
+              <a href="/login" class="nav-link" id="login-collapse" data-link>Login</a>
+              </li>
               </ul> 
             <a href="/login" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Login</a>                 
             </div>

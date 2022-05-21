@@ -82,7 +82,7 @@ export default function ListingIndex(props) {
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
-                             class="row gx-4 gx-lg-5 row-cols-1 row-cols-lg-2 justify-content-center">
+                             class="row">
                             ${populateCards(activeListings)}
                         </div>
                     </div>
@@ -185,7 +185,7 @@ export function populateCards(filteredListings) {
     return `
         ${filteredListings.map(listing =>
                 `
-        <div class="col mb-5">
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
             <div id="previewCard-${listing.id}" class="card previewCard">
                 <!-- New badge-->
                 ${addNewBadge(listing)}
@@ -235,7 +235,7 @@ export function populateCards(filteredListings) {
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
                                         <li>Contact Options:</li>
                                     </ul>
-                                    <div class="d-flex align-items-center justify-content-evenly user-contact-details ms-0">
+                                    <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
                                         <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 ml-2 px-0 allow"
                                            style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}"
                                            target="_blank"><i class="fas fa-sms"></i></a>
@@ -252,10 +252,10 @@ export function populateCards(filteredListings) {
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-lg-7" id="map">
-                                <p class="text-center">(Approx. location)</p>
                                     <img class="location-map"
                                          src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
                                          alt="map"/>
+                                    <p class="text-center">(Approx. location)</p>
                                 </div>
                             </div>
                         </div>
@@ -264,6 +264,11 @@ export function populateCards(filteredListings) {
                         <!-- Right Side Details Column -->
                         <div class="col-xs-12 col-lg-6 container container-overlay-details">
                             <h3 class="overlay-text text-center">${listing.animal}</h3>
+                            <a id="report-btn"
+                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                       style="width: 36px; height: 36px;"
+                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
+                                       target="_blank"><i class="fas fa-flag"></i></a>
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
@@ -273,20 +278,16 @@ export function populateCards(filteredListings) {
                                         ${changeStatusMenu(listing)}
                                     </ul>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-6">
                                     <ul>
                                         <li><strong>Color</strong>: ${listing.color}</li>
                                         <li><strong>Health Issues</strong>: ${listing.health}</li>
                                         <li><strong>Fixed</strong>: ${listing.fixed}</li>
                                     </ul>
                                 </div>
-                                <div class="col-1 side-btn">
-                                    <a id="report-btn"
-                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
-                                       style="width: 36px; height: 36px;"
-                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>
-                                </div>
+                                
+
+                        
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
                                     <p><strong>About</strong>: ${listing.description}</p>

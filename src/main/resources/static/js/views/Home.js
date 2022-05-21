@@ -4,8 +4,8 @@ import {populateCards} from "./ListingIndex.js";
 export default function Home(props) {
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
-    if (recentListings.length >= 2) {
-        recentListings = [recentListings[0], recentListings[1]]
+    if (recentListings.length >= 4) {
+        recentListings = [recentListings[0], recentListings[1], recentListings[2],recentListings[3], ]
     }
     let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
@@ -25,7 +25,7 @@ export default function Home(props) {
                         <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span> Pets</h1>
                         <div class="container px-4 px-lg-5 mt-5">
                         <div id="recent-listing-cards"
-                             class="row gx-5 row-cols-xs-1  row-cols-lg-2 justify-content-center">
+                             class="row">
                             ${populateCards(recentListings)}
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default function Home(props) {
 <section class="story-section gray-bg">
 <div class="container storyContainer px-4 px-lg-5 mt-5">
                         <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
-                        <div id="stories" class="row gx-4 gx-md-5 row-cols-1 row-cols-md-2 row-cols-lg-3">
+                        <div id="stories" class="row">
                         ${populateStoryCards(recentStories)}
                         </div>
                         
@@ -56,7 +56,7 @@ function populateStoryCards(stories) {
     console.log(stories)
     return `
         ${stories.map(story =>
-        `<div class="col mb-5">
+        `<div class="col col-xs-12 col-md-6 col-xl-3 mb-5 mx-auto">
                         <div class="card storyCard">
                             <img class="card-img storyImg" src=${story.user.profileImg} alt="user image" />
                             <div class="card-body p-4 bg-white">

@@ -381,6 +381,7 @@ img {
 
 .aboutName {
     margin-top: 1rem;
+    margin-bottom: 0!important;
 }
 
 .rounded-circle {
@@ -406,10 +407,9 @@ img {
     object-fit: cover;
     height: 275px;
     overflow: hidden;
+    background-position: center;
 }
-#report-btn {
-    margin-top: -9px;
-}
+
 
 .meetUs {
     margin-top: 3rem!important;
@@ -622,6 +622,10 @@ textarea, select {
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
+#stories {
+    justify-content: space-around;
+}
+
 
 .storyImg {
     border-radius: 50%;
@@ -655,10 +659,6 @@ textarea, select {
     display: none;
 }
 
-.previewCard {
-    width: 450px;
-    margin-left: 2rem;
-}
 
 
 .overlay {
@@ -695,14 +695,17 @@ textarea, select {
 }
 
 .close-btn {
-    margin-top: 1rem;
     margin-left: -1rem;
     z-index: 2;
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
     position: fixed;
+}
 
+#report-btn {
+    margin-top: -5rem;
+    margin-left: 22.8rem;
 }
 
 .edit-overlay-container {
@@ -746,7 +749,15 @@ textarea, select {
     color: white;
     border-color: #ED6436;
 }
+#login-collapse{
+ display: none;
+}
 
+@media (max-width: 991px) {
+    #login-collapse{
+        display: block;
+    }
+}
 
 .listing-image-large {
     max-width: 100%;
@@ -771,7 +782,6 @@ ul {
 .listing-contact-details {
     margin-top: 1rem;
     border-radius: 5px;
-    max-height: 300px
 }
 
 .location-map {
@@ -801,9 +811,7 @@ ul {
 .side-btn {
     margin-top: -5rem;
 }
-#image_upload {
-    /*margin-left: 23px;*/
-}
+
 
 .edit-close-button {
     z-index: 2;
