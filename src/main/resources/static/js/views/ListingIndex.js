@@ -1,7 +1,5 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
-
-import  {getUserRole} from "../auth.js";
 import token from "../keys.js"
 
 let apiKey = token().googleKey
@@ -21,12 +19,12 @@ export default function ListingIndex(props) {
         }
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
-    let listingArray = []
+    let destinations = []
     activeListings.forEach(listing => {
-        listingArray.push(listing.user.zip)
+        destinations.push(listing.user.zip)
     })
-    console.log(listingArray)
-    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${listingArray}`)
+    console.log(destinations)
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}$units=imperial`)
         .then(res => {
             let promise = Promise.resolve(res.json());
             promise.then(function(val){
