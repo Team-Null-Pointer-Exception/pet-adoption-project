@@ -19,21 +19,23 @@ export default function ListingIndex(props) {
         }
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
-    let destinations = []
+    let destinations = ''
+
     activeListings.forEach(listing => {
-        destinations.push(listing.user.zip)
+        destinations = destinations + `${listing.user.zip}%7c`
     })
-    console.log(destinations)
-    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}$units=imperial`)
+    destinations = destinations.slice(0, -3)
+    fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&units=imperial`)
         .then(res => {
             let promise = Promise.resolve(res.json());
             promise.then(function(val){
-                console.log(val)
+                getListingDistances(val)
             })
         })
         .catch(function (error) {
             console.log(error);
         });
+
 
     //language=HTML
     return `
@@ -69,9 +71,9 @@ export default function ListingIndex(props) {
 
                 <div class="btn-group m-3">
                     <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
-                        <option selected>Within 15 Miles</option>
+                        <option selected>Any Distance</option>
                         <option>Within 50 Miles</option>
-                        <option>Any Distance</option>
+                        <option>Within 15 Miles</option>
                     </select>
                 </div>
             </div>
@@ -90,6 +92,15 @@ export default function ListingIndex(props) {
             </div>
         </main>
     `;
+}
+let distances = []
+function getListingDistances(val) {
+    distances = []
+    let destinations = val.rows[0].elements
+    destinations.forEach(destination => {
+        distances.push(parseFloat(destination.distance.text.slice(0,-3)))
+    } )
+    return distances
 }
 
 function adminMenu() {
@@ -172,8 +183,30 @@ function filterSelections() {
     } else if (gender === "Female") {
         filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "female");
     }
+    function sortDistance(selectedDistance) {
+        filteredListings = []
+        for(let i = 0; i < distances.length; i++) {
+                if(distances[i] <= selectedDistance) {
+                    filteredListings.push(activeListings[i])
+                }
+        }
+    }
 
-    console.log(filteredListings);
+    console.log(activeListings)
+    console.log(distances)
+    if (distance === "Any Distance") {
+        filteredListings = activeListings
+        console.log("all distances")
+    } else if (distance === "Within 50 Miles") {
+        console.log("within 50 miles")
+        sortDistance(50)
+    } else if (distance === "Within 15 Miles") {
+        console.log("within 15 miles")
+        sortDistance(15)
+    }
+
+
+        console.log(filteredListings);
     $("#listing-cards").html(populateCards(filteredListings));
     detailsListener();
     closeOverlay();

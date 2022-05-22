@@ -53,7 +53,6 @@ function changeHref() {
 
 
 function populateStoryCards(stories) {
-    console.log(stories)
     return `
         ${stories.map(story =>
         `<div class="col col-xs-12 col-md-6 col-xl-3 mb-5 mx-auto">
