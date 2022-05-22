@@ -31,8 +31,8 @@ export default function Home(props) {
                     </div>
 </div>
 <section class="story-section gray-bg">
-<div class="container storyContainer px-4 px-lg-5 mt-5">
-                        <h1 class="display-5 text-primary storiesHeader"><span class="text-black">Testim</span>onials</h1>
+<div class="container story-container px-4 px-lg-5 mt-5">
+                        <h1 class="display-5 text-primary stories-header"><span class="text-black">Testim</span>onials</h1>
                         <div id="stories" class="row">
                         ${populateStoryCards(recentStories)}
                         </div>
@@ -56,11 +56,11 @@ function populateStoryCards(stories) {
     return `
         ${stories.map(story =>
         `<div class="col col-xs-12 col-md-6 col-xl-3 mb-5 mx-auto">
-                        <div class="card storyCard">
-                            <img class="card-img storyImg" src=${story.user.profileImg} alt="user image" />
+                        <div class="card story-card">
+                            <img class="card-img story-img mx-auto" src=${story.user.profileImg} alt="user image" />
                             <div class="card-body p-4 bg-white">
-                                    <p class="storyName">${story.user.firstName} wrote:</p>
-                                   <p class="storyContent">${story.content}</p>
+                                    <p class="story-name">${story.user.firstName} wrote:</p>
+                                   <p class="story-content">${story.content}</p>
                             </div>
                         </div>
                     </div>`).join('')}`

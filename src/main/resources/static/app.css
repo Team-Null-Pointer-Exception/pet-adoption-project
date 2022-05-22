@@ -356,6 +356,10 @@ nav .nav-link.active, .home, .nav-link:hover {
     width: 100%;
 }
 
+.card-img-top {
+    height: 100%;
+}
+
 img {
     vertical-align: middle;
     border-style: none;
@@ -609,25 +613,24 @@ textarea, select {
     margin-left: 1rem!important;
 }
 
-.storyCard{
-    height: 19rem;
-    width: 19rem;
+.story-card{
+    min-width: 270px;
     border-radius: 10px!important;
     background-color: white;
     padding-bottom: 1rem;
 }
 
-.storiesHeader {
+.stories-header {
     text-align: center;
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
 #stories {
-    justify-content: space-around;
+    justify-content: center;
 }
 
 
-.storyImg {
+.story-img {
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -635,8 +638,10 @@ textarea, select {
     background-position: center;
     background-color: white;
     margin-top: 2rem;
-    margin-left: 6.5rem;
     overflow:hidden
+}
+.previewCard {
+    min-width: 260px;
 }
 
 .buttonRow {
@@ -647,7 +652,7 @@ textarea, select {
     margin-top: 12rem;
 }
 
-.storyContainer, .listing-details {
+.story-container, .listing-details {
     padding-top: 2rem;
 }
 

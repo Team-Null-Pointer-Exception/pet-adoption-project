@@ -78,7 +78,7 @@ export default function ListingIndex(props) {
                 </div>
             </div>
         </div>
-
+        <div class="sharethis-sticky-share-buttons"></div>
         <main>
             <div class="container-fluid listing-container">
                 <section class="py-5">
@@ -232,14 +232,10 @@ export function populateCards(filteredListings) {
                         <h5 class="fw-bolder">${listing.name}</h5>
                         <!-- Breed-->
                         ${listing.breed}<br>
-                        ${listing.age} / ${listing.sex.toLowerCase()}
+                        ${listing.age} / ${listing.sex.toLowerCase()} 
                     </div>
-                </div>
-                <!-- View details-->
-                <div class="card-footer p-4 pt-0 border-top-0 bg-light">
-                    <div class="text-center"><a class="btn btn-primary mt-auto details-btn" href="#"
-                                                data-id="${listing.id}">View
-                        Details</a>
+                    <div class="text-center mt-3">
+                        <a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">ViewDetails</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +246,6 @@ export function populateCards(filteredListings) {
                 <div class="container overlay-container">
                     <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}"
                        style="width: 36px; height: 36px;" href="#">X</a>
-                    <div class="sharethis-sticky-share-buttons"></div>
                     <div class="row">
                     
                     <!-- left side column -->
