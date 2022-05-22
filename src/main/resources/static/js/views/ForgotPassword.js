@@ -7,10 +7,10 @@ export default function ForgotPassword() {
          <div class="row forgot-row">
              <div class="card forgot-card"> 
                 <form id="forgot-form">
-                    <h2 class="text-white">Forgot Your Password?</h2>
-                    <label for="email">Enter your email:</label>
+                    <h2 class="text-white">Forgot Password?</h2>
+                    <label for="email"id="forgot-email-label">Enter your email</label>
                     <br>
-                    <input id="email" name="email" type="text"/>
+                    <input id="forgot-email" name="email" type="text"/>
                     <br>
                     <input id="forgot-btn" class="allow mt-2" type="button" value="Send Reset"/>
                     <p id="forgot-password-response">Please check your email for a password reset link.</p>  
@@ -35,7 +35,7 @@ export function ForgotEvent(){
             .then(response => {
                 console.log(response.status);
                 $("#forgot-password-response").css({display: "block"})
-                createView("/")
+                // createView("/")
             }).catch(error => {
             console.log(error);
             $("#error-response").css({display: "block"})

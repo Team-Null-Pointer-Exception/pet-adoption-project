@@ -29,7 +29,7 @@ body {
     display: inline;
 }
 
-#register-form, #create-listing-form, #edit-listing-form, #reset-form, #forgot-form {
+#register-form, #create-listing-form, #edit-listing-form, #reset-form {
     justify-content: center;
 }
 #create-listing-form, #edit-listing-form {
@@ -86,7 +86,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
-#forgot-form>h2, #reset-form>label, #reset-form>h1 {
+#forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h1 {
     text-align: center;
 }
 
@@ -828,4 +828,7 @@ ul {
 
 #input-required {
     color: #e3410c;
+}
+#forgot-email, #forgot-email-label {
+    margin-left: 2rem;
 }
