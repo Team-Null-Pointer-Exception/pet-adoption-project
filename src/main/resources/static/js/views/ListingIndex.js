@@ -78,7 +78,6 @@ export default function ListingIndex(props) {
                 </div>
             </div>
         </div>
-        <div class="sharethis-sticky-share-buttons"></div>
         <main>
             <div class="container-fluid listing-container">
                 <section class="py-5">
@@ -90,6 +89,7 @@ export default function ListingIndex(props) {
                     </div>
                 </section>
             </div>
+            <div class="sharethis-sticky-share-buttons"></div>
         </main>
     `;
 }

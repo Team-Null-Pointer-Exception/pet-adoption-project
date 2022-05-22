@@ -54,6 +54,12 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
+.set-up-card {
+    max-width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
 
 .edit-listing-card {
     width: 45rem;
@@ -65,10 +71,7 @@ body {
     margin-top: 15rem;
 }
 
-.set-up-card {
-    height: 45rem;
-    width: 45rem;
-}
+
 #forgot-password-response, #error-response {
     display: none;
 }
@@ -83,7 +86,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
-#register-form>h1, #forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1, #create-listing-form>h1 {
+#forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1 {
     text-align: center;
 }
 
@@ -131,7 +134,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #register-btn {
-    margin-left: 10.6rem;
+    margin-left: 6.9rem;
 }
 #login-btn {
     display: block;
@@ -211,8 +214,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 9rem;
 }
 
-
-#register-form>input, #create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
+#create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
     width: 15rem;
 }
 #create-listing-form, #edit-listing-form {
@@ -481,6 +483,9 @@ textarea, select {
     .about-text h3, .listing-section h3, .story-section h3 {
         font-size: 35px;
     }
+    .set-up-card {
+        max-width: 90%;
+    }
 }
 .about-text p {
     font-size: 18px;
@@ -522,6 +527,10 @@ textarea, select {
 
     .log-in-card, .forgot-card, .reset-card {
         max-width: 60%;
+    }
+
+    #login-collapse{
+        display: block;
     }
 }
 .about-avatar {
@@ -685,9 +694,6 @@ textarea, select {
     margin-top: 2rem;
 }
 
-.like-share {
-    margin-top: 4rem;
-}
 .overlay-container {
     background-color: white;
     color: black;
@@ -759,11 +765,7 @@ textarea, select {
  display: none;
 }
 
-@media (max-width: 991px) {
-    #login-collapse{
-        display: block;
-    }
-}
+
 
 .listing-image-large {
     max-width: 100%;

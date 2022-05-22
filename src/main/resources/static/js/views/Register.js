@@ -5,7 +5,8 @@ import token from "../keys.js"
 
 export default function Register(props) {
     return `
-            <div class="row set-up-row">
+    <div class="container-fluid">
+        <div class="row set-up-row">
             <div class="card set-up-card"> 
                 <form id="register-form">
                     <h1 class="text-white">Register</h1>
@@ -103,10 +104,10 @@ export default function Register(props) {
                     <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>                                                                        
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
-
                 </form>
-                </div>
-                </div>
+            </div>
+        </div>
+    </div>            
 `;
 }
 
