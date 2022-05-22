@@ -188,6 +188,8 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
     display: none;
 }
+
+
 #register-form > label {
     width: 9rem;
 }
