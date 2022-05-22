@@ -30,9 +30,7 @@ body {
 }
 
 #register-form, #login-form, #create-listing-form, #edit-listing-form, #reset-form, #forgot-form {
-    padding-left: 16px;
-    margin-right: 5rem;
-    margin-left: 5rem;
+    justify-content: center;
 }
 #create-listing-form, #edit-listing-form {
     width: 24.25rem;
@@ -46,7 +44,7 @@ body {
 }
 
 .set-up-card, .log-in-card, .create-listing-card, .forgot-card, .reset-card {
-    width: 45rem;
+    max-width:70%;
     align-items: center;
     justify-content: center;
     margin-top: 5rem;
@@ -77,21 +75,20 @@ body {
 }
 
 .log-in-card{
-    width: 30rem;
-    height: 25rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #login-form>a, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
 #register-form>h1, #login-form>h1, #forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1, #create-listing-form>h1 {
     text-align: center;
 }
 
 
 .set-up-row, .log-in-row, .create-listing-row, .edit-listing-row, .forgot-row, .reset-row, .delete-listing-row{
-    align-items: center;
     justify-content: center;
 }
 
@@ -137,7 +134,8 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-left: 10.6rem;
 }
 #login-btn {
-    margin-left: 10.6rem;
+    display: block;
+    margin : 0 auto;
 }
 #forgot-btn {
     margin-left: 13.4rem;
@@ -160,14 +158,13 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 6rem;
     height: 2.5rem;
     margin-bottom: 3rem;
-
 }
 
 #register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
-    height: 2.5rem;
+    height: 2rem;
     background-color: #ED6436;
     border: none;
     color: white;
@@ -177,7 +174,6 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #image_upload {
-    /*margin-bottom: 1rem;*/
     border-radius: 5px;
     width: 6rem;
     height: 2.5rem;
@@ -195,9 +191,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #register-form > label {
     width: 9rem;
 }
-#login-form > label {
-    width: 5rem;
-}
+
 #create-listing-form > label {
     width: 9rem;
 }
