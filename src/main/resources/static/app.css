@@ -525,10 +525,15 @@ textarea, select {
     .log-in-card, .forgot-card, .reset-card {
         max-width: 60%;
     }
+}
+
+@media (min-width: 992px) {
     #login-collapse {
-        display: block;
+        display: none;
     }
 }
+
+
 
 .about-avatar {
     display: flex;
@@ -758,11 +763,6 @@ textarea, select {
     color: white;
     border-color: #ED6436;
 }
-
-#login-collapse {
- display: none;
-}
-
 
 
 .listing-image-large {
