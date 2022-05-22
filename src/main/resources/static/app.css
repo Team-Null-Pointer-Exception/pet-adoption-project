@@ -86,7 +86,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
-#forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1 {
+#forgot-form>h2, #reset-form>label, #reset-form>h1 {
     text-align: center;
 }
 
@@ -99,7 +99,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-top: 6.25rem;
 }
 
-#register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input, #login-form>input, #reset-form>input {
+#register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input, #reset-form>input, #forgot-form>input {
     border: none!important;
     border-radius: 5px;
     margin-bottom: 1rem;
@@ -136,14 +136,11 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #register-btn {
     margin-left: 6.9rem;
 }
-#login-btn {
+#login-btn, #forgot-btn {
     display: block;
     margin : 0 auto;
 }
-#forgot-btn {
-    margin-left: 13.4rem;
-    margin-top: 1rem;
-}
+
 #password-response {
     display: none;
 }
@@ -528,11 +525,11 @@ textarea, select {
     .log-in-card, .forgot-card, .reset-card {
         max-width: 60%;
     }
-
-    #login-collapse{
+    #login-collapse {
         display: block;
     }
 }
+
 .about-avatar {
     display: flex;
     justify-content: center;
@@ -761,7 +758,8 @@ textarea, select {
     color: white;
     border-color: #ED6436;
 }
-#login-collapse{
+
+#login-collapse {
  display: none;
 }
 

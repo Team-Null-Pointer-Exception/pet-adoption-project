@@ -4,19 +4,20 @@ import createView from "../createView.js";
 
 export default function ForgotPassword() {
      return`      
-                    <div class="row forgot-row">
-                    <div class="card forgot-card"> 
-                    <form id="forgot-form">
-                    <h1 class="text-white">Forgot Your Password?</h1>
-                        <label for="email">Enter your email:</label>
-                        <input id="email" name="email" type="text"/>
-                        <br>
-                        <input id="forgot-btn" class="allow" type="button" value="Send Reset"/>
-                        <p id="forgot-password-response">Please check your email for a password reset link.</p>  
-                        <p id="error-response">Error. No account found.</p>  
-                    </form>
-                    </div>
-                    </div>`;
+         <div class="row forgot-row">
+             <div class="card forgot-card"> 
+                <form id="forgot-form">
+                    <h2 class="text-white">Forgot Your Password?</h2>
+                    <label for="email">Enter your email:</label>
+                    <br>
+                    <input id="email" name="email" type="text"/>
+                    <br>
+                    <input id="forgot-btn" class="allow mt-2" type="button" value="Send Reset"/>
+                    <p id="forgot-password-response">Please check your email for a password reset link.</p>  
+                    <p id="error-response">Error. No account found.</p>  
+                </form>
+             </div>
+         </div>`;
     }
 
 export function ForgotEvent(){
