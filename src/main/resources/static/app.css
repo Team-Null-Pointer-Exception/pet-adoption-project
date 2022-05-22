@@ -29,7 +29,7 @@ body {
     display: inline;
 }
 
-#register-form, #login-form, #create-listing-form, #edit-listing-form, #reset-form, #forgot-form {
+#register-form, #create-listing-form, #edit-listing-form, #reset-form, #forgot-form {
     justify-content: center;
 }
 #create-listing-form, #edit-listing-form {
@@ -43,12 +43,16 @@ body {
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.set-up-card, .log-in-card, .create-listing-card, .forgot-card, .reset-card {
-    max-width:70%;
+.set-up-card, .create-listing-card, .forgot-card, .reset-card, .log-in-card {
     align-items: center;
     justify-content: center;
     margin-top: 5rem;
     border: none;
+}
+.log-in-card, .forgot-card, .reset-card {
+    max-width: 40%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .edit-listing-card {
@@ -69,21 +73,17 @@ body {
     display: none;
 }
 
-.forgot-card, .reset-card {
-    height: 25rem;
-    width: 45rem;
+#forgot-link {
+    margin-left: .5rem;
 }
 
-.log-in-card{
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
+
 label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>label, #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
-#register-form>h1, #login-form>h1, #forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1, #create-listing-form>h1 {
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
+#register-form>h1, #forgot-form>h1, #forgot-form>label, #reset-form>label, #reset-form>h1, #create-listing-form>h1 {
     text-align: center;
 }
 
@@ -514,9 +514,14 @@ textarea, select {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    .about-avatar>#profile_upload {
+
+    .about-avatar > #profile_upload {
         top: 222px;
         right: 45px;
+    }
+
+    .log-in-card, .forgot-card, .reset-card {
+        max-width: 60%;
     }
 }
 .about-avatar {
