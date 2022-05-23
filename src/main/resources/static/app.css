@@ -13,7 +13,8 @@ body {
 }
 
 .bg-image {
-    height: 400px;
+    max-height: 600px;
+    height: auto;
     background-position: center;
     background-size: cover;
 }
@@ -447,7 +448,7 @@ textarea, select {
 }
 
 .browse-btn {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
 }
 
 /*User View*/
@@ -527,9 +528,6 @@ textarea, select {
     .log-in-card, .forgot-card, .reset-card {
         max-width: 80%;
     }
-    .sharethis-sticky-share-buttons {
-        display: none!important;
-    }
 }
 @media (min-width: 576px) {
     #forgot-email, #forgot-email-label, #reset-form>input, #reset-form>label {
@@ -552,6 +550,10 @@ textarea, select {
         top: 222px;
         right: 45px;
     }
+    .overlay-container {
+        overflow: auto;
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -727,26 +729,35 @@ textarea, select {
     background-color: white;
     color: black;
     position: fixed;
-    top: 5%;
-    right:10%;
-    height: 90%;
-    width: 80%;
+    top: 3.5%;
+    right: 7.5%;
+    height: 93%;
+    width: 85%;
     border-radius: 10px;
-    overflow: auto;
 }
 
 .close-btn {
-    margin-left: -1rem;
+    margin-top: -6.5rem;
+    margin-left: -0.5rem;
     z-index: 2;
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 #report-btn {
-    margin-top: -5rem;
-    margin-left: 22.8rem;
+    margin-top: -5.5rem;
+    margin-left: -1rem;
+    background-color: #ED6436;
+    color: white;
+    border-color: #ED6436;
+}
+
+#report-label {
+    margin-left: 1.75rem;
+    margin-top: -4.6rem;
+    color:#ED6436;
 }
 
 .edit-overlay-container {
@@ -793,7 +804,7 @@ textarea, select {
 
 
 .listing-image-large {
-    max-width: 100%;
+    width: 100%;
     max-height: 375px;
     background-position: center;
     overflow:hidden;
@@ -855,5 +866,23 @@ ul {
 
 #input-required {
     color: #e3410c;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+@keyframes rotate { to {  transform: rotate(1turn) }}
+.loading__anim {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border: 5px solid rgba(189,189,189 ,0.25);
+    border-left-color: #ED6436;
+    border-top-color: #ED6436;
+    border-radius: 50%;
+    animation: rotate 600ms infinite linear;
 }
 

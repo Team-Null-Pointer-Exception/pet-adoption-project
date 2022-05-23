@@ -80,7 +80,7 @@ export default function ListingIndex(props) {
         </div>
         <main>
             <div class="container-fluid listing-container">
-                <section class="py-5">
+                <section class="py-4">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div id="listing-cards"
                              class="row">
@@ -89,7 +89,6 @@ export default function ListingIndex(props) {
                     </div>
                 </section>
             </div>
-            <div class="sharethis-sticky-share-buttons"></div>
         </main>
     `;
 }
@@ -258,20 +257,20 @@ export function populateCards(filteredListings) {
             <!-- Overlay -->
             <div id="overlay-${listing.id}" class="overlay">
                 <div class="container overlay-container">
-                    <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}"
-                       style="width: 36px; height: 36px;" href="#">X</a>
+
                     <div class="row">
                     
                     <!-- left side column -->
                         <div class="col-xs-12 col-lg-6 listing-main">
                             <h3 class="overlay-text text-center">${listing.name}</h3>
+                            <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
                             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
 
                             <!-- Contact info and map -->
                             <div id="under-pic" class="row mt-5">
                                 <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
                                     <h3 class="overlay-text text-center my-3">Guardian info:</h3>
-                                    <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
+                                    <img class="story-img mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
@@ -311,6 +310,7 @@ export function populateCards(filteredListings) {
                                        style="width: 36px; height: 36px;"
                                        href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
                                        target="_blank"><i class="fas fa-flag"></i></a>
+                            <p id="report-label">Report</p>           
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
