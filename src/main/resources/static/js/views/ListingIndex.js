@@ -386,16 +386,6 @@ function addPendingStatus(listing) {
     }
 }
 
-function addRejectedStamp(listing) {
-    if (listing.status === "REJECTED") {
-        return '';
-    } else {
-        console.log("adding rejected stamp");
-        //language=HTML
-        return `
-            <img class="card-img-overlay cover" src="../../images/rejected.jpeg" alt="rejected stamp">`
-    }
-}
 
 function changeStatusMenu(listing) {
 
