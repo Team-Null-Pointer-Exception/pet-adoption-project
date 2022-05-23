@@ -136,6 +136,12 @@ function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
         let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
+        let profileImg
+        if (imgURL === "") {
+            profileImg = 'images/default-profle-pic.png';
+        } else {
+            profileImg = imgURL;
+        }
         if(password === confirmPassword) {
             console.log("confirmed")
             let newUser = {
@@ -150,7 +156,7 @@ function RegisterEventListener(){
                 state: $("#state").val(),
                 zip: $("#zip").val(),
                 phone: $("#phone").val(),
-                profileImg: imgURL,
+                profileImg: profileImg,
                 stories: []
             }
 

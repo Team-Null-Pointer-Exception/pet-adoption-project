@@ -257,7 +257,7 @@ export function populateCards(filteredListings) {
                             <div id="under-pic" class="row mt-5">
                                 <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
                                     <h3 class="overlay-text text-center my-3">Guardian info:</h3>
-                                    <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
+                                    <img class="storyImg mx-auto mt-0 mb-2" src="${listing.user.profileImg.trim().length === 0 ? 'images/default-profle-pic.png' : listing.user.profileImg}" alt="user profile image"
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>

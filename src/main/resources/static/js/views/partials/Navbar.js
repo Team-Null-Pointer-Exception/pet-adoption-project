@@ -6,6 +6,7 @@ import {getUserRole} from "../User.js";
 export default function Navbar(props) {
     const loggedIn = isLoggedIn();
     let html =  `
+<!--<body id="home">-->
 <div class="row py-3 px-lg-5 align-items-center">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
@@ -59,7 +60,7 @@ export default function Navbar(props) {
             <li class="nav-item"> 
               <a href="/register" class="nav-link" data-link>Register</a>
             </li>
-            <li class="nav-item"> 
+            <li class="nav-item active"> 
               <a href="/login" class="nav-link" id="login-collapse" data-link>Login</a>
             </li>
           </ul> 
@@ -75,7 +76,7 @@ export default function Navbar(props) {
             '<li class="nav-item"><a href="/admin" class="nav-link" data-link>Admin</a></li>'
     }
     if (loggedIn){
-        html += `<li class="nav-item">
+        html += `<li class="nav-item active">
                 <a href="/users" class="nav-link" data-link>Profile</a>
                 </li>
                 </ul>
@@ -84,11 +85,13 @@ export default function Navbar(props) {
             </nav>
         </div>
     </div>
+<!--    </body>-->
             `
     }
 
     return html;
 }
 
+$("")
 
 

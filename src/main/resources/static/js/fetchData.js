@@ -8,7 +8,7 @@
 export default function fetchData(state, request) {
     const promises = [];
 
-    const baseUri = "http://3.138.142.117:8080";
+    const baseUri = "http://localhost:8080";
 
     console.log("got to fetch data");
     for (let pieceOfState of Object.keys(state)) {

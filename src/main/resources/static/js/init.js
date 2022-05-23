@@ -50,7 +50,7 @@ function addListenerToNavLinks() {
         if(e.target.matches('label')) {
             return;
         }
-        if(e.target.classList.contains('fsp-modal')) {
+        if(e.target.classList.contains('nav-item')) {
             return
         }
         e.preventDefault();
