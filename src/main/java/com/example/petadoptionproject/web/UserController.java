@@ -46,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("api/users/{id}")
-    public Optional<User> getById(@PathVariable long id){
+    public User getById(@PathVariable long id){
         return usersRepository.findById(id);
     }
 
@@ -147,10 +147,23 @@ public class UserController {
         usersRepository.save(user);
     }
 
+    @PutMapping("api/users/{id}/updateRole")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateRole(@RequestParam String newRole, @PathVariable long id) {
+        User updatedUser = usersRepository.findById(id);
+        updatedUser.setRole(User.Role.valueOf(newRole));
+        usersRepository.save(updatedUser);
+        System.out.println("Updating user role");
+    }
 
-
-
-
+    @PutMapping("api/users/{id}/updateStatus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateStatus(@RequestParam String newStatus, @PathVariable long id) {
+        User updatedUser = usersRepository.findById(id);
+        updatedUser.setStatus(User.Status.valueOf(newStatus));
+        usersRepository.save(updatedUser);
+        System.out.println("Updating user status");
+    }
 }
 
 

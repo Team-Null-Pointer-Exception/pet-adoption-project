@@ -851,3 +851,21 @@ ul {
     margin-left: 0;
     margin-right: 0;
 }
+
+.admin-user-info label {
+    width: 3.25rem;
+    color: #777777;
+    margin-right: .25rem;
+}
+
+.admin-user-info-name>div {
+    margin-bottom: .5rem;
+}
+@media (max-width: 767px) {
+    .admin-user-info-name>div {
+        margin-left: .5rem;
+    }
+    .admin-user-info-name>p {
+        margin-bottom: .5rem;
+    }
+}

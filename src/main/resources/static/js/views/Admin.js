@@ -14,10 +14,24 @@ export default function AdminIndex(props){
                 ${props.user.map(user => `
                     <div class="admin-user-info gray-bg">
                         <div class="admin-user-info-name row">
-                            <p class="col-4">Name: ${user.firstName} ${user.lastName}</p>
-                            <p class="col-2">ID: ${user.id}</p>
-                            <p class="col-3">Role: ${user.role}</p>
-                            <p class="col-3">Status: ${user.status}</p>
+                            <p class="col-9 col-md-4">Name: ${user.firstName} ${user.lastName}</p>
+                            <p class="col-3 col-md-2">ID: ${user.id}</p>
+                            <div class="col-12 col-md-3">
+                                <label for="admin-update-role-${user.id}">Role: </label>
+                                <select id="admin-update-role-${user.id}">
+                                    <option selected hidden>${user.role}</option>
+                                    <option>USER</option>
+                                    <option>ADMIN</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <label for="admin-update-status-${user.id}">Status: </label>
+                                <select id="admin-update-status-${user.id}">
+                                    <option selected hidden>${user.status}</option>
+                                    <option>USER</option>
+                                    <option>ADMIN</option>
+                                </select>
+                            </div>
                         </div>
                         <p class="admin-user-info-show" id="admin-user-info-show-${user.id}" data-id="${user.id}">Show more info:</p>
                         <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show less info:</p>
