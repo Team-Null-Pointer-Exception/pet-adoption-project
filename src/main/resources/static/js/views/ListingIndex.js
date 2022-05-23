@@ -269,7 +269,7 @@ export function populateCards(filteredListings) {
                             <!-- Contact info and map -->
                             <div id="under-pic" class="row mt-5">
                                 <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
-                                    <h3 class="overlay-text text-center my-3">Guardian info:</h3>
+                                    <h3 class="overlay-text text-center my-2">Guardian info:</h3>
                                     <img class="story-img mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
