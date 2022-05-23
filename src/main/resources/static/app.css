@@ -13,7 +13,8 @@ body {
 }
 
 .bg-image {
-    height: 400px;
+    max-height: 600px;
+    height: auto;
     background-position: center;
     background-size: cover;
 }
@@ -447,7 +448,7 @@ textarea, select {
 }
 
 .browse-btn {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
 }
 
 /*User View*/
@@ -526,9 +527,6 @@ textarea, select {
 @media (max-width:576px) {
     .log-in-card, .forgot-card, .reset-card {
         max-width: 80%;
-    }
-    .sharethis-sticky-share-buttons {
-        display: none!important;
     }
 }
 @media (min-width: 576px) {
@@ -727,26 +725,36 @@ textarea, select {
     background-color: white;
     color: black;
     position: fixed;
-    top: 5%;
-    right:10%;
-    height: 90%;
+    top: 3.5%;
+    right: 10%;
+    height: 93%;
     width: 80%;
     border-radius: 10px;
     overflow: auto;
 }
 
 .close-btn {
-    margin-left: -1rem;
+    margin-top: -6.5rem;
+    margin-left: -0.5rem;
     z-index: 2;
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 #report-btn {
-    margin-top: -5rem;
-    margin-left: 22.8rem;
+    margin-top: -5.5rem;
+    margin-left: -1rem;
+    background-color: #ED6436;
+    color: white;
+    border-color: #ED6436;
+}
+
+#report-label {
+    margin-left: 1.75rem;
+    margin-top: -4.6rem;
+    color:#ED6436;
 }
 
 .edit-overlay-container {
@@ -793,7 +801,7 @@ textarea, select {
 
 
 .listing-image-large {
-    max-width: 100%;
+    width: 100%;
     max-height: 375px;
     background-position: center;
     overflow:hidden;
