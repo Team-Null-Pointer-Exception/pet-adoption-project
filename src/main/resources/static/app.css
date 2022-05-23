@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-right: 2rem;
 }
 
-nav .nav-link.active, .home, .nav-link:hover {
+nav .nav-link:active, .home, .nav-link:hover {
     color: #181818;
     background: #ED6436;
 }
@@ -510,6 +510,19 @@ textarea, select {
 #register-form>h1 {
     margin-top: 2rem;
 }
+@media (max-width: 365px) {
+    #register-form > label {
+        width: 18rem;
+    }
+    #register-form > input, #register-form > select {
+        margin-left: 3.5rem;
+    }
+    #register-btn {
+        margin-left: 2.9rem;
+    }
+}
+
+
 @media (max-width:576px) {
     .log-in-card, .forgot-card, .reset-card {
         max-width: 80%;
