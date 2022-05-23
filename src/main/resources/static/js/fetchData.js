@@ -1,4 +1,3 @@
-
 /**
  * Given an object containing all the required data for a given page, fetch all the needed data and return it as properties to pass to a view.
  * @param state
@@ -8,7 +7,8 @@
 export default function fetchData(state, request) {
     const promises = [];
 
-    const baseUri = "http://3.138.142.117:8080";
+    // const baseUri = "http://3.138.142.117:8080";
+    const baseUri = "http://localhost:8080";
 
     console.log("got to fetch data");
     for (let pieceOfState of Object.keys(state)) {

@@ -183,19 +183,12 @@ function filterSelections() {
     } else if (gender === "Female") {
         filteredListings = filteredListings.filter(listing => listing.sex.toLowerCase() === "female");
     }
-    function sortDistance(selectedDistance) {
-        filteredListings = []
-        for(let i = 0; i < distances.length; i++) {
-                if(distances[i] <= selectedDistance) {
-                    filteredListings.push(activeListings[i])
-                }
-        }
-    }
 
-    console.log(activeListings)
+
+    console.log(filteredListings)
     console.log(distances)
     if (distance === "Any Distance") {
-        filteredListings = activeListings
+        // filteredListings = activeListings
         console.log("all distances")
     } else if (distance === "Within 50 Miles") {
         console.log("within 50 miles")
@@ -210,8 +203,17 @@ function filterSelections() {
     $("#listing-cards").html(populateCards(filteredListings));
     detailsListener();
     closeOverlay();
+    changeStatus();
 }
 
+function sortDistance(selectedDistance) {
+    filteredListings = []
+    for(let i = 0; i < distances.length; i++) {
+        if(distances[i] <= selectedDistance) {
+            filteredListings.push(activeListings[i])
+        }
+    }
+}
 
 export function populateCards(filteredListings) {
     //language=HTML
@@ -389,7 +391,7 @@ function changeStatusMenu(listing) {
         //language=HTML
         return `
             <li class="mt-1">
-                <select id="change-listing-status" class="form-select btn-primary btn-sm"
+                <select id="change-listing-status-${listing.id}" class="status-dropdown form-select btn-primary btn-sm"
                         data-id="${listing.id}" aria-label="Update listing status">
                     ${selectedOption(listing)}
                 </select>
@@ -440,9 +442,10 @@ function selectedOption(listing) {
 }
 
 function changeStatus() {
-    $("#change-listing-status").change(function() {
+    console.log("changing status");
+    $(".status-dropdown").change(function() {
         let listingId = $(this).data("id");
-        let newStatus = $("#change-listing-status").val().toUpperCase();
+        let newStatus = $(this).val().toUpperCase();
         console.log(newStatus);
 
         let request = {
