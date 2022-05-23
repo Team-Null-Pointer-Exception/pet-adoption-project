@@ -821,6 +821,33 @@ ul {
     z-index: 2;
 }
 
+/*Admin View*/
 .admin-user-more-info {
     display: none;
+}
+
+.admin-user-info-hide {
+    display: none;
+}
+
+.admin-user-info {
+    margin-bottom: 2rem;
+    padding: .5rem
+}
+
+.admin-user-more-info {
+    margin-left: 1rem;
+}
+
+.admin-user-listings {
+    display: none;
+}
+
+.admin-user-listings-hide {
+    display: none;
+}
+
+.admin-user-listings>.user-listings {
+    margin-left: 0;
+    margin-right: 0;
 }
