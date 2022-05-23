@@ -10,7 +10,7 @@ let allListings, activeListings, listingStatus, animalType, gender, distance, fi
 export default function ListingIndex(props) {
     let lat = sessionStorage.getItem('lat')
     let lng = sessionStorage.getItem('lng')
-    let  origin = [lat, lng]
+    let origin = [lat, lng]
 
     allListings = props.listings;
     allListings.forEach(listing => {
@@ -28,7 +28,7 @@ export default function ListingIndex(props) {
     fetch(`/gogglemap/maps/api/distancematrix/json?origins=${origin}&destinations=${destinations}&units=imperial`)
         .then(res => {
             let promise = Promise.resolve(res.json());
-            promise.then(function(val){
+            promise.then(function (val) {
                 getListingDistances(val)
             })
         })
@@ -94,12 +94,13 @@ export default function ListingIndex(props) {
     `;
 }
 let distances = []
+
 function getListingDistances(val) {
     distances = []
     let destinations = val.rows[0].elements
     destinations.forEach(destination => {
-        distances.push(parseFloat(destination.distance.text.slice(0,-3)))
-    } )
+        distances.push(parseFloat(destination.distance.text.slice(0, -3)))
+    })
     return distances
 }
 
@@ -199,20 +200,31 @@ function filterSelections() {
     }
 
 
-        console.log(filteredListings);
+    console.log(filteredListings);
     $("#listing-cards").html(populateCards(filteredListings));
+    grayImages();
     detailsListener();
     closeOverlay();
     changeStatus();
+
 }
 
 function sortDistance(selectedDistance) {
     filteredListings = []
-    for(let i = 0; i < distances.length; i++) {
-        if(distances[i] <= selectedDistance) {
+    for (let i = 0; i < distances.length; i++) {
+        if (distances[i] <= selectedDistance) {
             filteredListings.push(activeListings[i])
         }
     }
+}
+
+function grayImages() {
+    let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
+    console.log(listingToGray);
+    listingToGray.forEach(listing => {
+        let imageId = "#image-" + listing.id;
+        $(imageId).css({filter: "grayscale(100%)"});
+    });
 }
 
 export function populateCards(filteredListings) {
@@ -226,7 +238,7 @@ export function populateCards(filteredListings) {
                 ${addNewBadge(listing)}
                 ${addPendingStatus(listing)}
                 <!-- Pet image-->
-                <img class="card-img-top" src=${listing.images[0]} alt="..."/>
+                <img id="image-${listing.id}" class="card-img-top" src=${listing.images[0]} alt="..."/>
                 <!-- Pet details-->
                 <div class="card-body p-4 bg-light">
                     <div class="text-center">
@@ -443,7 +455,7 @@ function selectedOption(listing) {
 
 function changeStatus() {
     console.log("changing status");
-    $(".status-dropdown").change(function() {
+    $(".status-dropdown").change(function () {
         let listingId = $(this).data("id");
         let newStatus = $(this).val().toUpperCase();
         console.log(newStatus);
