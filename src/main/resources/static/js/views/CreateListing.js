@@ -5,60 +5,53 @@ import token from "../keys.js"
 
 export default function CreateListing(props) {
     return `
-    <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="UTF-8"/>
-                <title>Create A Listing</title>
-            </head>
-            <body>
-            <div class="row create-listing-row">
-            <div class="card create-listing-card"> 
-                <form id="create-listing-form" name="create-listing-form">
-                    <h1 class="text-white">Create A Listing</h1>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text"/>
-                    <br>
-                    <label for="animal">Animal</label>
-                    <input id="animal" name="animal" type="text"/>
-                    <br>
-                    <label for="breed">Breed</label>
-                    <input id="breed" name="breed" type="text"/>
-                    <br>
-                    <label for="color">Color</label>
-                    <input id="color" name="color" type="text"/>
-                    <br>
-                    <label for="age">Age</label>
-                    <input id="age" name="age" type="text"/>
-                    <br>
-                    <label for="sex">Sex</label>
-                    <select id="sex">
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                    <br>
-                    <label for="health">Health</label>
-                    <input id="health" name="health" type="text"/>
-                    <br>
-                    <label for="fixed">Fixed</label>
-                    <select id="fixed">
-                      <option>True</option>
-                      <option>False</option>
-                    </select>
-                    <br>
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="2" placeholder="Pet description"></textarea>
-                    <br>
-                    <label for="summary">Summary</label>
-                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information"></textarea>
-                    <br>              
-                    <button id="image_upload" type="button class="text-white imageUploadToggle">Uploads</button>                                                                      
-                    <button id="create-listing-btn" type="button">Submit</button>
-                </form>
+            <div class="container-fluid">
+                 <div class="row create-listing-row">
+                      <div class="card create-listing-card"> 
+                           <form id="create-listing-form" name="create-listing-form">
+                                <h1 class="text-white">Create A Listing</h1>
+                                <label for="name">Name</label>
+                                <input id="name" name="name" type="text"/>
+                                <br>
+                                <label for="animal">Animal</label>
+                                <input id="animal" name="animal" type="text"/>
+                                <br>
+                                <label for="breed">Breed</label>
+                                <input id="breed" name="breed" type="text"/>
+                                <br>
+                                <label for="color">Color</label>
+                                <input id="color" name="color" type="text"/>
+                                <br>
+                                <label for="age">Age</label>
+                                <input id="age" name="age" type="text"/>
+                                <br>
+                                <label for="sex">Sex</label>
+                                <select id="sex">
+                                  <option>Male</option>
+                                  <option>Female</option>
+                                </select>
+                                <br>
+                                <label for="health">Health</label>
+                                <input id="health" name="health" type="text"/>
+                                <br>
+                                <label for="fixed">Fixed</label>
+                                <select id="fixed">
+                                  <option>True</option>
+                                  <option>False</option>
+                                </select>
+                                <br>
+                                <label for="description">Description</label>
+                                <textarea id="description" class="align-top" name="description" rows="2" placeholder="Pet description"></textarea>
+                                <br>
+                                <label for="summary" id="create-summary-label">Summary</label>
+                                <textarea id="summary" class="align-top" name="summary" rows="3" placeholder="Listing information"></textarea>
+                                <br>              
+                                <button id="image_upload" type="button class="text-white imageUploadToggle">Uploads</button>                                                                      
+                                <button id="create-listing-btn" type="button">Submit</button>
+                            </form>
+                      </div>
+                 </div>
             </div>
-            </div>
-            </body>
-        </html>
     `;
 }
 

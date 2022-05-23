@@ -26,16 +26,14 @@ body {
 #register-response {
     display: none
 }
-#register-form {
+#register-form, #create-listing-form, #edit-listing-form {
     display: inline;
 }
 
 #register-form, #create-listing-form, #edit-listing-form, #reset-form {
     justify-content: center;
 }
-#create-listing-form, #edit-listing-form {
-    width: 24.25rem;
-}
+
 .card {
     background-color: #181818;
     border: none!important;
@@ -50,28 +48,29 @@ body {
     margin-top: 5rem;
     border: none;
 }
+
+.edit-listing-card {
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+
 .log-in-card, .forgot-card, .reset-card {
     max-width: 40%;
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
-.set-up-card {
+.set-up-card, .create-listing-card,.edit-listing-card  {
     max-width: 50%;
     padding-top: 2rem;
     padding-bottom: 3rem;
-}
-
-
-.edit-listing-card {
-    width: 45rem;
-    margin-top: 5rem;
 }
 
 .delete-listing-card {
     width: 25rem;
     margin-top: 15rem;
 }
-
 
 #forgot-password-response, #error-response {
     display: none;
@@ -86,7 +85,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label,
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label, #edit-listing-form>h1
 #forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2 {
     text-align: center;
 }
@@ -106,7 +105,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-bottom: 1rem;
 }
 
-#edit-listing-form>select {
+#edit-listing-form>select  {
     margin-bottom: 1rem;
 }
 
@@ -146,19 +145,19 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     display: none;
 }
 
-
 #create-listing-btn {
-    margin-left: 9.975rem;
+    margin-left: 6.1rem;
 }
+
 #edit-listing-btn {
-    margin-left: 10rem;
+    margin-left: 6.1rem;
     background-color: #ED6436;
     border: none;
     color: white;
     border-radius: 5px;
     width: 6rem;
-    height: 2.5rem;
-    margin-bottom: 3rem;
+    height: 2rem;
+    margin-bottom: 1rem;
 }
 
 #register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn {
@@ -177,11 +176,11 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #image_upload {
     border-radius: 5px;
     width: 6rem;
-    height: 2.5rem;
+    height: 2rem;
     background-color: #ED6436;
     border: none;
     color: white;
-    margin-left: 2rem;
+    margin-left: .75rem;
 }
 
 
@@ -190,34 +189,30 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     display: none;
 }
 
-
 #register-form > label {
     width: 9rem;
 }
 
 #create-listing-form > label {
-    width: 9rem;
+    width: 7rem;
 }
+
 #create-listing-form > p {
     display:inline;
     width: 9rem;
 }
 
 #edit-listing-form > label {
-    width: 9rem;
+    width: 7rem;
     color: white;
 }
+
 #edit-listing-form > p {
     display:inline;
     width: 9rem;
 }
 
-#create-listing-form>input, #create-listing-form>textarea, #create-listing-form>select, #edit-listing-form>input, #edit-listing-form>textarea, #create-listing-form>select  {
-    width: 15rem;
-}
-#create-listing-form, #edit-listing-form {
-    width: 26rem;
-}
+
 .delete-listing-content>p {
     display: flex;
     justify-content: center;
@@ -272,9 +267,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-right: 2rem;
 }
 
-nav .nav-link:active, .home, .nav-link:hover {
+nav .nav-link.active, .home, .nav-link:hover {
     color: #181818;
-    background: #ED6436;
+    background: #ED6436!important;
 }
 
 
@@ -434,16 +429,17 @@ img {
     z-index: 1;
 }
 
-
 textarea, select {
     border-radius: 5px;
+    border: none;
 }
+
 #create-listing-form>h1 {
     margin-top: 2rem;
+    margin-left: .5rem;
 }
 
 #edit-listing-form>h1 {
-    margin-top: 2rem;
     text-align: center;
 }
 
@@ -511,6 +507,14 @@ textarea, select {
 #register-form>h1 {
     margin-top: 2rem;
 }
+@media (min-width: 376px) {
+   .edit-overlay-container {
+       left: 5%;
+       width: 90%;
+   }
+}
+
+
 @media (max-width: 365px) {
     #register-form > label {
         width: 18rem;
@@ -519,7 +523,37 @@ textarea, select {
         margin-left: 3.5rem;
     }
     #register-btn {
+        margin-left: .5rem;
+    }
+    #image_upload {
+        margin-left: .3rem;
+    }
+}
+@media (max-width: 376px) {
+    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, #edit-listing-form > input, #edit-listing-form > select, #edit-listing-form > textarea {
+        margin-left: 3.5rem;
+    }
+    #create-listing-btn {
         margin-left: 2.9rem;
+    }
+}
+
+@media (max-width: 396px) {
+    #edit-listing-btn {
+        margin-left: 2.9rem;
+    }
+}
+
+
+@media (max-width: 626px) {
+    .create-listing-card {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-listing-card {
+        max-width: 80%;
     }
 }
 
@@ -557,7 +591,7 @@ textarea, select {
 }
 
 @media (min-width: 992px) {
-    #login-collapse {
+    #login-collapse, #logout-collapse {
         display: none;
     }
 }
@@ -743,7 +777,6 @@ textarea, select {
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
-    /*position: fixed;*/
 }
 
 #report-btn {
@@ -762,16 +795,10 @@ textarea, select {
 
 .edit-overlay-container {
     color: black;
-    position: absolute;
-    top: 50px;
-    left: 300px;
-    bottom: 50px;
-    right:50%;
-    height: 90%;
-    width: 80%;
+    position: fixed!important;
+    padding-top: 1rem;
     border-radius: 10px;
     overflow: hidden;
-    margin: auto;
 }
 
 .delete-overlay-container {
@@ -811,8 +838,6 @@ textarea, select {
     border-radius: 5px;
     justify-self: center;
 }
-
-
 
 ul {
     list-style: none;
@@ -862,6 +887,9 @@ ul {
     background-color: #ED6436;
     color: white;
     border-color: #ED6436;
+    position: relative;
+    top: -3%;
+    left: -46%;
 }
 
 #input-required {
@@ -884,5 +912,9 @@ ul {
     border-top-color: #ED6436;
     border-radius: 50%;
     animation: rotate 600ms infinite linear;
+}
+
+#create-summary-label {
+    margin-top: 1em;
 }
 

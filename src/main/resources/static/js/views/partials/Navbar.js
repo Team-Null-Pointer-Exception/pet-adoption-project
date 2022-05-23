@@ -78,6 +78,9 @@ export default function Navbar(props) {
         html += `<li class="nav-item">
                 <a href="/users" class="nav-link" data-link>Profile</a>
                 </li>
+                <li class="nav-item"> 
+                <a href="/logout" class="nav-link" id="logout-collapse" data-link>Logout</a>
+                </li>
                 </ul>
                 <a href="/logout" class="btn btn-lg btn-primary px-3 d-none d-lg-block" data-link>Logout</a>               
                 </div>
