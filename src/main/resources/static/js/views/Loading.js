@@ -1,3 +1,5 @@
 export default function Loading(props) {
-    return `<h1>Loading...</h1>`;
-}
+    return `<section class="loading">
+                <span class="loading__anim"></span>
+            </section>
+             `;}

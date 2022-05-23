@@ -550,6 +550,10 @@ textarea, select {
         top: 222px;
         right: 45px;
     }
+    .overlay-container {
+        overflow: auto;
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -726,11 +730,10 @@ textarea, select {
     color: black;
     position: fixed;
     top: 3.5%;
-    right: 10%;
+    right: 7.5%;
     height: 93%;
-    width: 80%;
+    width: 85%;
     border-radius: 10px;
-    overflow: auto;
 }
 
 .close-btn {
@@ -863,5 +866,23 @@ ul {
 
 #input-required {
     color: #e3410c;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+@keyframes rotate { to {  transform: rotate(1turn) }}
+.loading__anim {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border: 5px solid rgba(189,189,189 ,0.25);
+    border-left-color: #ED6436;
+    border-top-color: #ED6436;
+    border-radius: 50%;
+    animation: rotate 600ms infinite linear;
 }
 
