@@ -19,6 +19,9 @@ export default function ListingIndex(props) {
         }
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
+    autoExpire();
+
+
     let destinations = ''
 
     activeListings.forEach(listing => {
@@ -206,7 +209,6 @@ function filterSelections() {
     detailsListener();
     closeOverlay();
     changeStatus();
-
 }
 
 function sortDistance(selectedDistance) {
@@ -249,7 +251,7 @@ export function populateCards(filteredListings) {
                         ${listing.age} / ${listing.sex.toLowerCase()} 
                     </div>
                     <div class="text-center mt-3">
-                        <a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">ViewDetails</a>
+                        <a class="btn btn-primary mt-auto details-btn" href="#" data-id="${listing.id}">View Details</a>
                     </div>
                 </div>
             </div>
@@ -347,6 +349,46 @@ export function populateCards(filteredListings) {
     `
 }
 
+function autoExpire() {
+    console.log("changing status");
+
+    activeListings.forEach(listing => {
+        let listingDate = listing.createdAt;
+        let today = new Date();
+        let dateToBeChanged = new Date();
+
+        dateToBeChanged.setDate(today.getDate() - 30);
+        let thirtyDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
+
+        let listingDateArray = listingDate.split("-");
+        listingDate = listingDateArray.join("");
+        let thirtyDaysAgoArray = thirtyDaysAgo.split("-");
+        thirtyDaysAgo = thirtyDaysAgoArray.join("");
+
+        console.log(listingDate);
+        console.log(thirtyDaysAgo);
+
+        if (listingDate < thirtyDaysAgo) {
+            let listingId = listing.id;
+            console.log(listingId);
+            let newStatus = "EXPIRED";
+            let request = {
+                method: "PUT",
+                headers: getHeaders()
+            }
+
+            fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+                .then(res => {
+                    console.log(res.status);
+                    createView("/listings");
+                }).catch(error => {
+                console.log(error);
+                createView("/listings");
+            });
+        }
+    });
+}
+
 
 function addNewBadge(listing) {
     let listingDate = listing.createdAt;
@@ -358,8 +400,8 @@ function addNewBadge(listing) {
 
     let listingDateArray = listingDate.split("-");
     listingDate = listingDateArray.join("");
-    let yesterdayDateArray = threeDaysAgo.split("-");
-    threeDaysAgo = yesterdayDateArray.join("");
+    let threeDaysAgoArray = threeDaysAgo.split("-");
+    threeDaysAgo = threeDaysAgoArray.join("");
 
 
     if (listingDate < threeDaysAgo) {
@@ -444,7 +486,6 @@ function selectedOption(listing) {
 }
 
 function changeStatus() {
-    console.log("changing status");
     $(".status-dropdown").change(function () {
         let listingId = $(this).data("id");
         let newStatus = $(this).val().toUpperCase();
