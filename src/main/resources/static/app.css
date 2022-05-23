@@ -61,10 +61,14 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
-.set-up-card, .create-listing-card,.edit-listing-card  {
+.set-up-card, .create-listing-card  {
     max-width: 50%;
     padding-top: 2rem;
     padding-bottom: 3rem;
+}
+
+.edit-listing-card  {
+    max-width: 60%;
 }
 
 .delete-listing-card {
@@ -158,6 +162,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 6rem;
     height: 2rem;
     margin-bottom: 1rem;
+    display: block;
 }
 
 #register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn {
@@ -203,7 +208,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #edit-listing-form > label {
-    width: 7rem;
+    width: 6rem;
     color: white;
 }
 
@@ -888,7 +893,6 @@ ul {
     color: white;
     border-color: #ED6436;
     position: relative;
-    top: -3%;
     left: -46%;
 }
 
