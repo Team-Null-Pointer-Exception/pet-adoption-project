@@ -15,7 +15,7 @@ public class ViewController {
     @Value("${FileStackAPIKEY}")
     private String FileStackAPIKEY;
 
-    @RequestMapping({"/", "/about", "/login", "/logout","/home", "/user", "/admin", "/error", "/loading", "/listings", "/create", "/edit", "/register", "/reset", "/admin", "/forgot"})
+    @RequestMapping({"/", "/about", "/login", "/logout","/home", "/users", "/admin", "/error", "/loading", "/listings", "/create", "/edit", "/register", "/reset", "/admin", "/forgot"})
     public String showView(){
         return "forward:/index.html";
     }
