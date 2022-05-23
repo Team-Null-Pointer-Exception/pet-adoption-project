@@ -6,21 +6,23 @@ import createView from "../createView.js";
 export default function ResetPassword(props) {
 
         return`      
-                    <div class="row reset-row">
-                    <div class="card reset-card"> 
-                    <form id="reset-form">
-                    <h1 class="text-white">Reset Your Password</h1>
-                        <label for="new-password">Enter new password:</label>
+        <div class="row reset-row">
+           <div class="card reset-card"> 
+               <form id="reset-form">
+                    <h2 class="text-white">Reset Password</h2>
+                        <label for="new-password">Enter new password</label>
+                        <br>
                         <input id="new-password" name="new-password" type="password"/>
                         <br>
-                        <label for="confirm-new-password">Enter new password:</label>
+                        <label for="confirm-new-password">Enter new password</label>
+                        <br>
                         <input id="confirm-new-password" name="confirm-new-password" type="password"/>
                         <br>
                         <input id="reset-btn" class="allow" type="button" value="Save"/>
                         <p id="password-response">Passwords do not match</p>  
-                    </form>
-                    </div>
-                    </div>`;
+               </form>
+           </div>
+        </div>`;
 }
 
 
