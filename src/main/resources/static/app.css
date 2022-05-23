@@ -510,6 +510,16 @@ textarea, select {
 #register-form>h1 {
     margin-top: 2rem;
 }
+@media screen and (max-width:576px) {
+    .log-in-card, .forgot-card, .reset-card {
+        max-width: 80%;
+    }
+}
+@media only screen and (min-width: 577px) and (max-width: 992px){
+    .log-in-card, .forgot-card, .reset-card {
+        max-width: 60%;
+    }
+}
 
 @media (max-width: 991px) {
     .about-avatar {
@@ -520,10 +530,6 @@ textarea, select {
     .about-avatar > #profile_upload {
         top: 222px;
         right: 45px;
-    }
-
-    .log-in-card, .forgot-card, .reset-card {
-        max-width: 60%;
     }
 }
 
