@@ -2,6 +2,7 @@ import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import token from "../keys.js"
 import CreateView from "../createView.js";
+import {baseUri} from "../fetchData.js";
 
 
 export default function UserIndex(props) {
@@ -385,7 +386,7 @@ function deleteListing() {
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/listings/${id}`, request)
+        fetch(`${baseUri}/api/listings/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -427,7 +428,7 @@ function editPassword(){
                 headers: getHeaders()
             }
 
-            fetch(`http://localhost:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+            fetch(`${baseUri}/api/users/me/updatePassword?newPassword=${newPassword}`, request)
                 .then(res => {
                     console.log(res.status);
                     // $('#edit-password-info').css({display: "none"});
@@ -513,7 +514,7 @@ function editUser(){
                 body: JSON.stringify(editUser)
             }
 
-            fetch("http://localhost:8080/api/users/me/updateUser", request)
+            fetch("${baseUri}/api/users/me/updateUser", request)
                 .then(response => {
                     console.log(response.status);
                     CreateView("/users");
@@ -538,7 +539,7 @@ function createStory() {
             body: JSON.stringify(newStory)
         }
 
-        fetch(`http://localhost:8080/api/stories`, request)
+        fetch(`${baseUri}/api/stories`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -621,7 +622,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
         console.log(id);
-        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
+        fetch(`${baseUri}/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

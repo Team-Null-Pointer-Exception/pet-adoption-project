@@ -1,7 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import EditListing from "./EditListing.js";
 import {populateOverlay} from "./ListingIndex.js";
+import {baseUri} from "../fetchData.js";
 
 
 export default function AdminIndex(props){
@@ -125,7 +125,7 @@ function updateUserRole(){
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/users/${id}/updateRole?newRole=${newRole}`, request)
+        fetch(`${baseUri}/api/users/${id}/updateRole?newRole=${newRole}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/admin");
@@ -148,7 +148,7 @@ function updateUserStatus(){
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/users/${id}/updateStatus?newStatus=${newStatus}`, request)
+        fetch(`${baseUri}/api/users/${id}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/admin");

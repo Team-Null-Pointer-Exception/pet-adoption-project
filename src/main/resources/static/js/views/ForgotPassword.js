@@ -1,5 +1,5 @@
 import {getHeaders} from "../auth.js";
-import createView from "../createView.js";
+import {baseUri} from "../fetchData.js";
 
 
 export default function ForgotPassword() {
@@ -31,7 +31,7 @@ export function ForgotEvent(){
         }
         console.log(request)
         // send request
-        fetch(`http://localhost:8080/api/users/send?email=${email}`, request)
+        fetch(`${baseUri}/api/users/send?email=${email}`, request)
             .then(response => {
                 console.log(response.status);
                 $("#forgot-password-response").css({display: "block"})

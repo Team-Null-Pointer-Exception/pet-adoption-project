@@ -1,7 +1,8 @@
 import CreateView from "../createView.js"
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js"
+import token from "../keys.js";
+import {baseUri} from "../fetchData.js";
 
 export default function Register(props) {
     return `
@@ -161,7 +162,7 @@ function RegisterEventListener(){
         }
             console.log(request)
         // send request
-        fetch("http://localhost:8080/api/users/create", request)
+        fetch(`${baseUri}/api/users/create`, request)
             .then(response => {
                 console.log(response.status);
                 CreateView("/");

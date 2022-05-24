@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js"
+import token from "../keys.js";
+import {baseUri} from "../fetchData.js";
 
 
 export default function CreateListing(props) {
@@ -108,7 +109,7 @@ function CreateListingsEvent() {
             body: JSON.stringify(newListing)
         }
 
-        fetch("http://localhost:8080/api/listings", request)
+        fetch(`${baseUri}/api/listings`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

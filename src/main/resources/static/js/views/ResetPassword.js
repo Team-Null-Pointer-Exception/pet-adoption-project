@@ -1,6 +1,6 @@
 import {getHeaders} from "../auth.js";
 import createView from "../createView.js";
-
+import {baseUri} from "../fetchData.js";
 
 
 export default function ResetPassword(props) {
@@ -39,7 +39,7 @@ export function ResetEvent() {
                 method: "PUT",
                 headers: getHeaders()
             }
-            fetch(`http://localhost:8080/api/users/reset?password=${newPassword}&token=${token}`, request)
+            fetch(`${baseUri}/api/users/reset?password=${newPassword}&token=${token}`, request)
                 .then(res => {
                     console.log(res.status);
                     sessionStorage.clear();

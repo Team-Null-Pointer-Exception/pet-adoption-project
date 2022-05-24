@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
-import token from "../keys.js"
+import token from "../keys.js";
+import {baseUri} from "../fetchData.js";
 
 let apiKey = token().googleKey
 
@@ -280,7 +281,7 @@ function autoExpire() {
                 headers: getHeaders()
             }
 
-            fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+            fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
                 .then(res => {
                     console.log(res.status);
                     createView("/listings");
@@ -520,7 +521,7 @@ function changeStatus() {
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+        fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/listings");
