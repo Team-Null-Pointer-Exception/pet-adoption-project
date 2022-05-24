@@ -107,7 +107,7 @@ function getListingDistances(val) {
 }
 
 function adminMenu() {
-    if (!getUserRole()) {
+    if (getUserRole() !== "ADMIN") {
         return "";
     } else {
         //language=HTML
@@ -135,7 +135,7 @@ export function ListingsEvent() {
 }
 
 function grabSelections() {
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         listingStatus = $("#listing-status").val();
     }
     animalType = $("#animal-type").val();
@@ -154,7 +154,7 @@ function newSelections() {
 function filterSelections() {
     grabSelections();
 
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         if (listingStatus === "Active") {
             filteredListings = allListings.filter(listing => listing.status === "ACTIVE");
         } else if (listingStatus === "Pending") {
@@ -421,8 +421,7 @@ export function populateOverlay(listing) {
                                        class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
                                        style="width: 36px; height: 36px;"
                                        href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>
-                            <p id="report-label">Report</p>           
+                                       target="_blank"><i class="fas fa-flag"></i></a>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
@@ -439,9 +438,7 @@ export function populateOverlay(listing) {
                                         <li><strong>Fixed</strong>: ${listing.fixed}</li>
                                     </ul>
                                 </div>
-                                
-
-                        
+                               
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
                                     <p><strong>About</strong>: ${listing.description}</p>
@@ -458,7 +455,7 @@ export function populateOverlay(listing) {
 
 function changeStatusMenu(listing) {
 
-    if (getUserRole(listing)) {
+    if (getUserRole() === "ADMIN") {
         //language=HTML
         return `
             <li class="mt-1">

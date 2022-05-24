@@ -7,9 +7,8 @@ export default function CreateListing(props) {
     return `
             <div class="container-fluid">
                  <div class="row create-listing-row">
-                      <div class="card create-listing-card"> 
+                      <div class="card create-listing-card">
                            <form id="create-listing-form" name="create-listing-form">
-                           <a class="btn rounded-circle mt-2 ml-1 edit-close-button px-0" data-id="18" style="width: 36px; height: 36px;" href="#">X</a>
                                 <h1 class="text-white">Create A Listing</h1>
                                 <label for="name">Name</label>
                                 <input id="name" name="name" type="text"/>
