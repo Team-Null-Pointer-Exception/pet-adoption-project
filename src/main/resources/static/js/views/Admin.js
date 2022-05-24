@@ -1,7 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import EditListing from "./EditListing.js";
-import CreateView from "../createView.js";
+
 
 export default function AdminIndex(props){
     //language=HTML

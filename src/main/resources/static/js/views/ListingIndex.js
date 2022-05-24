@@ -246,94 +246,8 @@ export function populateCards(filteredListings) {
                     </div>
                 </div>
             </div>
+            ${populateOverlay(listing)}
 
-
-            <!-- Overlay -->
-            <div id="overlay-${listing.id}" class="overlay">
-                <div class="container overlay-container">
-
-                    <div class="row">
-                    
-                    <!-- left side column -->
-                        <div class="col-xs-12 col-lg-6 listing-main">
-                            <h3 class="overlay-text text-center">${listing.name}</h3>
-                            <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-                            <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
-
-                            <!-- Contact info and map -->
-                            <div id="under-pic" class="row mt-5">
-                                <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
-                                    <h3 class="overlay-text text-center my-2">Guardian info:</h3>
-                                    <img class="story-img mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
-                                    <ul>
-                                        <li>${listing.user.firstName} ${listing.user.lastName}</li>
-                                        <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
-                                        <li>Contact Options:</li>
-                                    </ul>
-                                    <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 ml-2 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-sms"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="mailto:${listing.user.email}"
-                                           target="_blank"><i class="far fa-envelope"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
-                                           style="width: 36px; height: 36px;"
-                                           href="facetime-audio:${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-phone"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-video"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-lg-7" id="map">
-                                    <img class="location-map"
-                                         src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
-                                         alt="map"/>
-                                    <p class="text-center">(Approx. location)</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Right Side Details Column -->
-                        <div class="col-xs-12 col-lg-6 container container-overlay-details">
-                            <h3 class="overlay-text text-center">${listing.animal}</h3>
-                            <a id="report-btn"
-                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
-                                       style="width: 36px; height: 36px;"
-                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>
-                            <p id="report-label">Report</p>           
-                            <div class="row listing-details">
-                                <div class="col-6">
-                                    <ul>
-                                        <li><strong>Breed</strong>: ${listing.breed}</li>
-                                        <li><strong>Sex</strong>: ${listing.sex}</li>
-                                        <li><strong>Age</strong>: ${listing.age}</li>
-                                        ${changeStatusMenu(listing)}
-                                    </ul>
-                                </div>
-                                <div class="col-6">
-                                    <ul>
-                                        <li><strong>Color</strong>: ${listing.color}</li>
-                                        <li><strong>Health Issues</strong>: ${listing.health}</li>
-                                        <li><strong>Fixed</strong>: ${listing.fixed}</li>
-                                    </ul>
-                                </div>
-                                
-
-                        
-                                <div class="col-12 listing-details">
-                                    <p><strong>Summary</strong>: ${listing.summary}</p>
-                                    <p><strong>About</strong>: ${listing.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     `
         ).join('')
@@ -448,6 +362,97 @@ function addPendingStatus(listing) {
             </p>
         `
     }
+}
+
+export function populateOverlay(listing) {
+    return `
+    <!-- Overlay -->
+            <div id="overlay-${listing.id}" class="overlay">
+                <div class="container overlay-container">
+
+                    <div class="row">
+                    
+                    <!-- left side column -->
+                        <div class="col-xs-12 col-lg-6 listing-main">
+                            <h3 class="overlay-text text-center">${listing.name}</h3>
+                            <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
+                            <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+
+                            <!-- Contact info and map -->
+                            <div id="under-pic" class="row mt-5">
+                                <div class="col-xs-12 col-lg-5 listing-contact-details text-center mt-0">
+                                    <h3 class="overlay-text text-center my-2">Guardian info:</h3>
+                                    <img class="story-img mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
+                                    <ul>
+                                        <li>${listing.user.firstName} ${listing.user.lastName}</li>
+                                        <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
+                                        <li>Contact Options:</li>
+                                    </ul>
+                                    <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 ml-2 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-sms"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="mailto:${listing.user.email}"
+                                           target="_blank"><i class="far fa-envelope"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
+                                           style="width: 36px; height: 36px;"
+                                           href="facetime-audio:${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-phone"></i></a>
+                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 px-0 allow"
+                                           style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}"
+                                           target="_blank"><i class="fas fa-video"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-lg-7" id="map">
+                                    <img class="location-map"
+                                         src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
+                                         alt="map"/>
+                                    <p class="text-center">(Approx. location)</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Right Side Details Column -->
+                        <div class="col-xs-12 col-lg-6 container container-overlay-details">
+                            <h3 class="overlay-text text-center">${listing.animal}</h3>
+                            <a id="report-btn"
+                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                       style="width: 36px; height: 36px;"
+                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
+                                       target="_blank"><i class="fas fa-flag"></i></a>
+                            <p id="report-label">Report</p>           
+                            <div class="row listing-details">
+                                <div class="col-6">
+                                    <ul>
+                                        <li><strong>Breed</strong>: ${listing.breed}</li>
+                                        <li><strong>Sex</strong>: ${listing.sex}</li>
+                                        <li><strong>Age</strong>: ${listing.age}</li>
+                                        ${changeStatusMenu(listing)}
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul>
+                                        <li><strong>Color</strong>: ${listing.color}</li>
+                                        <li><strong>Health Issues</strong>: ${listing.health}</li>
+                                        <li><strong>Fixed</strong>: ${listing.fixed}</li>
+                                    </ul>
+                                </div>
+                                
+
+                        
+                                <div class="col-12 listing-details">
+                                    <p><strong>Summary</strong>: ${listing.summary}</p>
+                                    <p><strong>About</strong>: ${listing.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    `
 }
 
 

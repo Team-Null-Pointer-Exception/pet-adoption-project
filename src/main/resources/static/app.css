@@ -775,9 +775,9 @@ textarea, select {
     background-color: white;
     color: black;
     position: fixed;
-    top: 3.5%;
+    top: 1.5%;
     right: 7.5%;
-    height: 95%;
+    height: 97%;
     width: 85%;
     border-radius: 10px;
 }
