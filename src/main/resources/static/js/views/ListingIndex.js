@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
-import token from "../keys.js"
+import token from "../keys.js";
+import {baseUri} from "../fetchData.js";
 
 let apiKey = token().googleKey
 
@@ -20,7 +21,7 @@ export default function ListingIndex(props) {
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
     autoExpire();
-
+    activeListings.sort();
 
     let destinations = ''
 
@@ -84,7 +85,7 @@ export default function ListingIndex(props) {
         <main>
             <div class="container-fluid listing-container">
                 <section class="py-4">
-                    <div class="container px-4 px-lg-5 mt-5">
+                    <div class="container px-2 mt-5">
                         <div id="listing-cards"
                              class="row">
                             ${populateCards(activeListings)}
@@ -107,7 +108,7 @@ function getListingDistances(val) {
 }
 
 function adminMenu() {
-    if (!getUserRole()) {
+    if (getUserRole() !== "ADMIN") {
         return "";
     } else {
         //language=HTML
@@ -135,7 +136,7 @@ export function ListingsEvent() {
 }
 
 function grabSelections() {
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         listingStatus = $("#listing-status").val();
     }
     animalType = $("#animal-type").val();
@@ -154,7 +155,7 @@ function newSelections() {
 function filterSelections() {
     grabSelections();
 
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         if (listingStatus === "Active") {
             filteredListings = allListings.filter(listing => listing.status === "ACTIVE");
         } else if (listingStatus === "Pending") {
@@ -191,7 +192,6 @@ function filterSelections() {
     console.log(filteredListings)
     console.log(distances)
     if (distance === "Any Distance") {
-        // filteredListings = activeListings
         console.log("all distances")
     } else if (distance === "Within 50 Miles") {
         console.log("within 50 miles")
@@ -201,8 +201,7 @@ function filterSelections() {
         sortDistance(15)
     }
 
-
-    console.log(filteredListings);
+    filteredListings.sort();
     $("#listing-cards").html(populateCards(filteredListings));
     grayImages();
     detailsListener();
@@ -219,14 +218,6 @@ function sortDistance(selectedDistance) {
     }
 }
 
-function grayImages() {
-    let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
-    console.log(listingToGray);
-    listingToGray.forEach(listing => {
-        let imageId = "#image-" + listing.id;
-        $(imageId).css({filter: "grayscale(100%)"});
-    });
-}
 
 export function populateCards(filteredListings) {
     //language=HTML
@@ -245,6 +236,8 @@ export function populateCards(filteredListings) {
                     <div class="text-center">
                         <!-- Pet name-->
                         <h5 class="fw-bolder">${listing.name}</h5>
+                        <!-- Days Remaining -->
+                        ${daysLeftWarning(listing)}
                         <!-- Breed-->
                         ${listing.breed}<br>
                         ${listing.age} / ${listing.sex.toLowerCase()} 
@@ -254,9 +247,127 @@ export function populateCards(filteredListings) {
                     </div>
                 </div>
             </div>
+            ${populateOverlay(listing)}
+
+        </div>
+    `
+        ).join('')
+        }
+    `
+}
+
+function autoExpire() {
+    console.log("changing status");
+
+    activeListings.forEach(listing => {
+        let listingDate = listing.createdAt;
+        let today = new Date();
+        let dateToBeChanged = new Date();
+
+        dateToBeChanged.setDate(today.getDate() - 30);
+        let thirtyDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
+
+        let listingDateArray = listingDate.split("-");
+        listingDate = listingDateArray.join("");
+        let thirtyDaysAgoArray = thirtyDaysAgo.split("-");
+        thirtyDaysAgo = thirtyDaysAgoArray.join("");
+
+        if (listingDate < thirtyDaysAgo) {
+            let listingId = listing.id;
+            console.log(listingId);
+            let newStatus = "EXPIRED";
+            let request = {
+                method: "PUT",
+                headers: getHeaders()
+            }
+
+            fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+                .then(res => {
+                    console.log(res.status);
+                    createView("/listings");
+                }).catch(error => {
+                console.log(error);
+                createView("/listings");
+            });
+        }
+    });
+}
 
 
-            <!-- Overlay -->
+function addNewBadge(listing) {
+    let listingDate = listing.createdAt;
+    let today = new Date();
+    let dateToBeChanged = new Date();
+
+    dateToBeChanged.setDate(today.getDate() - 3);
+    let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
+
+    let listingDateArray = listingDate.split("-");
+    listingDate = listingDateArray.join("");
+    let threeDaysAgoArray = threeDaysAgo.split("-");
+    threeDaysAgo = threeDaysAgoArray.join("");
+
+
+    if (listingDate < threeDaysAgo) {
+        return '';
+    } else {
+        //language=HTML
+        return `
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> New</div>`;
+    }
+}
+
+function grayImages() {
+    let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
+    console.log(listingToGray);
+    listingToGray.forEach(listing => {
+        let imageId = "#image-" + listing.id;
+        $(imageId).css({filter: "grayscale(100%)"});
+    });
+}
+
+function daysLeftWarning(listing) {
+    let listingDate = new Date(listing.createdAt);
+    let expirationDate = new Date();
+    expirationDate.setDate(listingDate.getDate() + 30);
+    let today = new Date();
+
+    let oneDay = 1000 * 60 * 60 * 24;
+    let daysRemaining = expirationDate - today;
+    daysRemaining /= oneDay;
+    console.log(daysRemaining);
+
+    if (daysRemaining <= 20) {
+        console.log("This post is about to expire!");
+        //language=HTML
+        return `
+            <div class="d-flex justify-content-center small text-danger mb-2">
+                Only ${daysRemaining} days remaining!
+            </div>
+        `
+    } else {
+        return ``;
+    }
+}
+
+function addPendingStatus(listing) {
+    if (listing.status !== "PENDING") {
+        return '';
+    } else {
+        //language=HTML
+        return `
+            <p class="mb-0 bg-light text-center fw-bold" style='font-size:27px;color:firebrick'>
+                <i class="fas fa-exclamation-triangle"></i>
+                Pending approval
+                <i class="fas fa-exclamation-triangle"></i>
+            </p>
+        `
+    }
+}
+
+export function populateOverlay(listing) {
+    return `
+    <!-- Overlay -->
             <div id="overlay-${listing.id}" class="overlay">
                 <div class="container overlay-container">
 
@@ -311,8 +422,7 @@ export function populateCards(filteredListings) {
                                        class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
                                        style="width: 36px; height: 36px;"
                                        href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>
-                            <p id="report-label">Report</p>           
+                                       target="_blank"><i class="fas fa-flag"></i></a>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
@@ -329,9 +439,7 @@ export function populateCards(filteredListings) {
                                         <li><strong>Fixed</strong>: ${listing.fixed}</li>
                                     </ul>
                                 </div>
-                                
-
-                        
+                               
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
                                     <p><strong>About</strong>: ${listing.description}</p>
@@ -339,99 +447,16 @@ export function populateCards(filteredListings) {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>
+
     `
-        ).join('')
-        }
-    `
-}
-
-function autoExpire() {
-    console.log("changing status");
-
-    activeListings.forEach(listing => {
-        let listingDate = listing.createdAt;
-        let today = new Date();
-        let dateToBeChanged = new Date();
-
-        dateToBeChanged.setDate(today.getDate() - 30);
-        let thirtyDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
-
-        let listingDateArray = listingDate.split("-");
-        listingDate = listingDateArray.join("");
-        let thirtyDaysAgoArray = thirtyDaysAgo.split("-");
-        thirtyDaysAgo = thirtyDaysAgoArray.join("");
-
-        console.log(listingDate);
-        console.log(thirtyDaysAgo);
-
-        if (listingDate < thirtyDaysAgo) {
-            let listingId = listing.id;
-            console.log(listingId);
-            let newStatus = "EXPIRED";
-            let request = {
-                method: "PUT",
-                headers: getHeaders()
-            }
-
-            fetch(`http://3.138.142.117:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
-                .then(res => {
-                    console.log(res.status);
-                    createView("/listings");
-                }).catch(error => {
-                console.log(error);
-                createView("/listings");
-            });
-        }
-    });
-}
-
-
-function addNewBadge(listing) {
-    let listingDate = listing.createdAt;
-    let today = new Date();
-    let dateToBeChanged = new Date();
-
-    dateToBeChanged.setDate(today.getDate() - 3);
-    let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
-
-    let listingDateArray = listingDate.split("-");
-    listingDate = listingDateArray.join("");
-    let threeDaysAgoArray = threeDaysAgo.split("-");
-    threeDaysAgo = threeDaysAgoArray.join("");
-
-
-    if (listingDate < threeDaysAgo) {
-        return '';
-    } else {
-        //language=HTML
-        return `
-            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> New</div>`;
-    }
-}
-
-function addPendingStatus(listing) {
-    if (listing.status !== "PENDING") {
-        return '';
-    } else {
-        //language=HTML
-        return `
-            <p class="mb-0 bg-light text-center fw-bold" style='font-size:27px;color:firebrick'>
-                <i class="fas fa-exclamation-triangle"></i>
-                Pending approval
-                <i class="fas fa-exclamation-triangle"></i>
-            </p>
-        `
-    }
 }
 
 
 function changeStatusMenu(listing) {
 
-    if (getUserRole(listing)) {
+    if (getUserRole() === "ADMIN") {
         //language=HTML
         return `
             <li class="mt-1">
@@ -496,7 +521,7 @@ function changeStatus() {
             headers: getHeaders()
         }
 
-        fetch(`http://3.138.142.117:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+        fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/listings");

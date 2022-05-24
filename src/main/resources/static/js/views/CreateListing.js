@@ -1,13 +1,14 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js"
+import token from "../keys.js";
+import {baseUri} from "../fetchData.js";
 
 
 export default function CreateListing(props) {
     return `
             <div class="container-fluid">
                  <div class="row create-listing-row">
-                      <div class="card create-listing-card"> 
+                      <div class="card create-listing-card">
                            <form id="create-listing-form" name="create-listing-form">
                                 <h1 class="text-white">Create A Listing</h1>
                                 <label for="name">Name</label>
@@ -31,7 +32,7 @@ export default function CreateListing(props) {
                                   <option>Female</option>
                                 </select>
                                 <br>
-                                <label for="health">Health</label>
+                                <label for="health">Health Issues</label>
                                 <input id="health" name="health" type="text"/>
                                 <br>
                                 <label for="fixed">Fixed</label>
@@ -108,7 +109,7 @@ function CreateListingsEvent() {
             body: JSON.stringify(newListing)
         }
 
-        fetch("http://3.138.142.117:8080/api/listings", request)
+        fetch(`${baseUri}/api/listings`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []
