@@ -148,10 +148,23 @@ public class UserController {
         usersRepository.save(user);
     }
 
+    @PutMapping("/{id}/updateRole")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateRole(@RequestParam String newRole, @PathVariable long id) {
+        User updatedUser = usersRepository.findById(id);
+        updatedUser.setRole(User.Role.valueOf(newRole));
+        usersRepository.save(updatedUser);
+        System.out.println("Updating user role");
+    }
 
-
-
-
+    @PutMapping("/{id}/updateStatus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateStatus(@RequestParam String newStatus, @PathVariable long id) {
+        User updatedUser = usersRepository.findById(id);
+        updatedUser.setStatus(User.Status.valueOf(newStatus));
+        usersRepository.save(updatedUser);
+        System.out.println("Updating user status");
+    }
 }
 
 
