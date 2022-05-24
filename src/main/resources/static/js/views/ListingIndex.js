@@ -377,7 +377,7 @@ function autoExpire() {
                 headers: getHeaders()
             }
 
-            fetch(`http://3.138.142.117:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+            fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
                 .then(res => {
                     console.log(res.status);
                     createView("/listings");
@@ -496,7 +496,7 @@ function changeStatus() {
             headers: getHeaders()
         }
 
-        fetch(`http://3.138.142.117:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+        fetch(`http://localhost:8080/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/listings");

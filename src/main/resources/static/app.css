@@ -52,6 +52,7 @@ body {
 .edit-listing-card {
     align-items: center;
     justify-content: center;
+    margin-top: 5rem;
     border: none;
 }
 
@@ -113,10 +114,6 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-bottom: 1rem;
 }
 
-#edit-listing-form>textarea {
-    margin-bottom: 1rem;
-}
-
 #create-listing-form>select {
     margin-bottom: 1rem;
 }
@@ -154,18 +151,10 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #edit-listing-btn {
-    margin-left: 6.1rem;
-    background-color: #ED6436;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    width: 6rem;
-    height: 2rem;
-    margin-bottom: 1rem;
-    display: block;
+    margin-left: 5.1rem;
 }
 
-#register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn {
+#register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn, #edit-listing-btn, #image_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6rem;
@@ -179,12 +168,6 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 #image_upload {
-    border-radius: 5px;
-    width: 6rem;
-    height: 2rem;
-    background-color: #ED6436;
-    border: none;
-    color: white;
     margin-left: .75rem;
 }
 
@@ -230,7 +213,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 body {
     margin: 0;
-    font-family: "Nunito Sans", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -519,7 +502,6 @@ textarea, select {
    }
 }
 
-
 @media (max-width: 365px) {
     #register-form > label {
         width: 18rem;
@@ -541,11 +523,19 @@ textarea, select {
     #create-listing-btn {
         margin-left: 2.9rem;
     }
+    .view-overlay-container {
+        width:90%;
+        right: 5%;
+    }
 }
 
 @media (max-width: 396px) {
     #edit-listing-btn {
-        margin-left: 2.9rem;
+        margin-left: 2.3rem;
+    }
+    .edit-listing-card {
+        margin-top: 0rem!important;
+        max-width: 100%!important;
     }
 }
 
@@ -556,9 +546,14 @@ textarea, select {
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 508px) and (max-width: 768px) {
     .edit-listing-card {
-        max-width: 80%;
+        max-width: 80%!important;
+    }
+}
+@media (max-width: 507px) {
+    .edit-listing-card {
+        max-width: 100%!important;
     }
 }
 
@@ -579,6 +574,7 @@ textarea, select {
     }
 }
 
+
 @media (max-width: 991px) {
     .about-avatar {
         margin-top: 15px;
@@ -591,6 +587,9 @@ textarea, select {
     }
     .overlay-container {
         overflow: auto;
+    }
+    .user-listings {
+        width: 100%!important;
     }
 
 }
@@ -670,7 +669,10 @@ textarea, select {
 .user-listings {
     padding-top: .25em;
     padding-bottom: .25em;
+    padding-left: .25em;
     margin-bottom: 0.5em;
+    --bs-gutter-x: 0!important;
+    width: 50%;
 }
 .listing-view, .listing-edit, .listing-delete {
     text-decoration: underline;
@@ -770,7 +772,7 @@ textarea, select {
     position: fixed;
     top: 3.5%;
     right: 7.5%;
-    height: 93%;
+    height: 95%;
     width: 85%;
     border-radius: 10px;
 }
@@ -838,7 +840,7 @@ textarea, select {
 .listing-image-large {
     width: 100%;
     max-height: 375px;
-    background-position: center;
+    object-fit: contain;
     overflow:hidden;
     border-radius: 5px;
     justify-self: center;
@@ -863,7 +865,7 @@ ul {
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
-    object-fit: cover;
+    object-fit: contain;
     justify-content: center;
 }
 #map {
@@ -877,9 +879,6 @@ ul {
 
 #st-2 {
     top:50%!important;
-}
-.container-overlay-details {
-    padding-left: 2rem;
 }
 
 .side-btn {

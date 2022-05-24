@@ -31,7 +31,7 @@ export default function CreateListing(props) {
                                   <option>Female</option>
                                 </select>
                                 <br>
-                                <label for="health">Health</label>
+                                <label for="health">Health Issues</label>
                                 <input id="health" name="health" type="text"/>
                                 <br>
                                 <label for="fixed">Fixed</label>
@@ -108,7 +108,7 @@ function CreateListingsEvent() {
             body: JSON.stringify(newListing)
         }
 
-        fetch("http://3.138.142.117:8080/api/listings", request)
+        fetch("http://localhost:8080/api/listings", request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []
