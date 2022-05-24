@@ -33,7 +33,7 @@ export default function EditListing(props) {
                               <option>Female</option>
                             </select>
                             <br>
-                            <label for="health">Health</label>
+                            <label for="health">Health Issues</label>
                             <input id="health" name="health" type="text"/>
                             <br>
                             <label for="fixed">Fixed</label>
@@ -112,7 +112,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
 
-        fetch(`http://3.138.142.117:8080/api/listings/edit/${id}`, request)
+        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

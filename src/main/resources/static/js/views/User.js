@@ -195,10 +195,10 @@ export default function UserIndex(props) {
                             <h3 class="dark-color">Your Listings: </h3>
                             ${props.user.listings.map(listing => `
                                 <div class="user-listings row gray-bg">
-                                    <div class="listing-name col-8" data-id="${listing.id}">Pet: ${listing.name}</div>
-                                    <div class="listing-view col-1" data-id="${listing.id}"><i class="fas fa-eye"> View</i></div>
-                                    <div class="listing-edit col-1" data-id="${listing.id}"><i class="fas fa-edit"> Edit</i></div>
-                                    <div class="listing-delete col-2" data-id="${listing.id}"><i class="fas fa-trash-alt"> Delete</i></div>
+                                    <div class="listing-name col-3" data-id="${listing.id}">${listing.name}</div>
+                                    <div class="listing-view col-3" data-id="${listing.id}"><i class="fas fa-eye"> View</i></div>
+                                    <div class="listing-edit col-3" data-id="${listing.id}"><i class="fas fa-edit"> Edit</i></div>
+                                    <div class="listing-delete col-3" data-id="${listing.id}"><i class="fas fa-trash-alt"> Delete</i></div>
                                 </div>
      <div id="overlay-${listing.id}" class="overlay">
     <div class="container view-overlay-container">
@@ -279,11 +279,9 @@ export default function UserIndex(props) {
                     <br>
                     <label class="align-top" for="summary">Summary</label>
                     <textarea id="summary" name="summary" rows="3" placeholder="Listing information">${listing.summary}</textarea>
-                    <br> 
-                    <div class="d-inline text-center">             
+                    <br>           
                     <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
                     <button id="edit-listing-btn" data-id="${listing.id}" type="button">Submit</button>
-                    </div>
                 </form>
                 </div>
             </div>
@@ -320,7 +318,7 @@ export default function UserIndex(props) {
                             <h3 class="dark-color">Your Stories: </h3>
                         </div>
                         <div>
-                            <textarea id="new-story" name="new-story" rows="4" placeholder="Tell your story"></textarea>
+                            <textarea id="new-story" name="new-story" rows="4" placeholder="Love PetAdoptions? Share your story."></textarea>
                         </div>
                         <button type="button" class="btn btn-primary btn-sm" id="new-story-btn">Submit</button>                        
                     </div>
@@ -387,7 +385,7 @@ function deleteListing() {
             headers: getHeaders()
         }
 
-        fetch(`http://3.138.142.117:8080/api/listings/${id}`, request)
+        fetch(`http://localhost:8080/api/listings/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -429,7 +427,7 @@ function editPassword(){
                 headers: getHeaders()
             }
 
-            fetch(`http://3.138.142.117:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+            fetch(`http://localhost:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
                 .then(res => {
                     console.log(res.status);
                     // $('#edit-password-info').css({display: "none"});
@@ -515,7 +513,7 @@ function editUser(){
                 body: JSON.stringify(editUser)
             }
 
-            fetch("http://3.138.142.117:8080/api/users/me/updateUser", request)
+            fetch("http://localhost:8080/api/users/me/updateUser", request)
                 .then(response => {
                     console.log(response.status);
                     CreateView("/users");
@@ -540,7 +538,7 @@ function createStory() {
             body: JSON.stringify(newStory)
         }
 
-        fetch(`http://3.138.142.117:8080/api/stories`, request)
+        fetch(`http://localhost:8080/api/stories`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -623,7 +621,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
         console.log(id);
-        fetch(`http://3.138.142.117:8080/api/listings/edit/${id}`, request)
+        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []
