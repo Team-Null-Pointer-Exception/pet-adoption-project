@@ -18,7 +18,7 @@ export default function AdminIndex(props){
                             <p class="col-3 col-md-2">ID: ${user.id}</p>
                             <div class="col-12 col-md-3">
                                 <label for="admin-update-role-${user.id}">Role: </label>
-                                <select id="admin-update-role-${user.id}">
+                                <select id="admin-update-role-${user.id}" class="admin-user-role" data-id="${user.id}">
                                     <option selected hidden>${user.role}</option>
                                     <option>USER</option>
                                     <option>ADMIN</option>
@@ -26,22 +26,22 @@ export default function AdminIndex(props){
                             </div>
                             <div class="col-12 col-md-3">
                                 <label for="admin-update-status-${user.id}">Status: </label>
-                                <select id="admin-update-status-${user.id}">
+                                <select id="admin-update-status-${user.id}" class="admin-user-status" data-id="${user.id}">
                                     <option selected hidden>${user.status}</option>
-                                    <option>USER</option>
-                                    <option>ADMIN</option>
+                                    <option>ACTIVE</option>
+                                    <option>SUSPENDED</option>
                                 </select>
                             </div>
                         </div>
-                        <p class="admin-user-info-show" id="admin-user-info-show-${user.id}" data-id="${user.id}">Show more info:</p>
-                        <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show less info:</p>
+                        <p class="admin-user-info-show" id="admin-user-info-show-${user.id}" data-id="${user.id}">Show More Info:</p>
+                        <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show Less Info:</p>
                         <div class="admin-user-more-info" id="admin-user-more-info-${user.id}">
-                            <p>Username: ${user.username}</p>
-                            <p>Address: ${user.street}, ${user.city}, ${user.state} ${user.zip}</p>
-                            <p>Phone: ${user.phone}</p>
-                            <p>Email: ${user.email}</p>
-                            <p>Created: ${user.createdAt}</p>
-                            <p>Organization: ${user.organization}</p>
+                            <p><span>Username:</span> ${user.username}</p>
+                            <p><span>Address:</span> ${user.street}, ${user.city}, ${user.state} ${user.zip}</p>
+                            <p><span>Phone:</span> ${user.phone}</p>
+                            <p><span>Email:</span> ${user.email}</p>
+                            <p><span>Created:</span> ${user.createdAt}</p>
+                            <p><span>Organization:</span> ${user.organization}</p>
                         </div>
                         <div>
                             <p class="admin-user-listings-show" id="admin-user-listings-show-${user.id}" data-id="${user.id}">Show Listings:</p>
@@ -49,9 +49,9 @@ export default function AdminIndex(props){
                             <div class="admin-user-listings admin-user-listings-${user.id}">
                             ${user.listings.map(listing => `
                                 <div class="user-listings row gray-bg" id="admin-user-listings-${user.id}">
-                                    <div class="listing-name col-4" data-id="${listing.id}">Pet: ${listing.name}</div>
+                                    <div class="listing-name col-6 col-md-4" data-id="${listing.id}">Pet: ${listing.name}</div>
                                     <div class="listing-id col-2" data-id="${listing.id}">ID: ${listing.id}</div>
-                                    <div class="listing-status col-4" data-id="${listing.id}">Status: ${listing.status}</div>
+                                    <div class="listing-status col-3" data-id="${listing.id}">Status: ${listing.status}</div>
                                 </div>
                             `).join('')}
                             </div>
@@ -70,6 +70,8 @@ export function AdminEvent() {
     hideMoreInfo();
     showUserListings();
     hideUserListings();
+    updateUserRole();
+    updateUserStatus();
 }
 
 function showMoreInfo(){
@@ -105,5 +107,51 @@ function hideUserListings(){
         $(".admin-user-listings-" + id).css({display: "none"})
         $("#admin-user-listings-hide-" + id).css({display: "none"})
         $("#admin-user-listings-show-" + id).css({display: "block"})
+    })
+}
+
+function updateUserRole(){
+    $('.admin-user-role').change(function(){
+
+        let id = this.getAttribute("data-id");
+        let newRole = $('#admin-update-role-' + id).val();
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders()
+        }
+
+        fetch(`http://localhost:8080/api/users/${id}/updateRole?newRole=${newRole}`, request)
+            .then(res => {
+                console.log(res.status);
+                createView("/admin");
+            }).catch(error => {
+                console.log(error);
+                createView("/admin");
+        });
+
+    })
+}
+
+function updateUserStatus(){
+    $('.admin-user-status').change(function(){
+
+        let id = this.getAttribute("data-id");
+        let newStatus = $('#admin-update-status-' + id).val();
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders()
+        }
+
+        fetch(`http://localhost:8080/api/users/${id}/updateStatus?newStatus=${newStatus}`, request)
+            .then(res => {
+                console.log(res.status);
+                createView("/admin");
+            }).catch(error => {
+                console.log(error);
+                createView("/admin");
+        });
+
     })
 }

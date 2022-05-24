@@ -589,6 +589,7 @@ textarea, select {
 }
 .listing-view:hover, .listing-edit:hover, .listing-delete:hover {
     color: #ED6436;
+    cursor: pointer;
 }
 /*User Stories*/
 #new-story {
@@ -868,4 +869,18 @@ ul {
     .admin-user-info-name>p {
         margin-bottom: .5rem;
     }
+}
+
+.admin-user-info-show:hover, .admin-user-info-hide:hover, .admin-user-listings-show:hover, .admin-user-listings-hide:hover {
+    color: #ED6436;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.admin-user-more-info span {
+    color: #ED6436;
+}
+
+.admin-user-listings .listing-id {
+    padding-left: 8px;
 }
