@@ -31,7 +31,7 @@ export function ForgotEvent(){
         }
         console.log(request)
         // send request
-        fetch(`http://3.138.142.117:8080/api/users/send?email=${email}`, request)
+        fetch(`http://localhost:8080/api/users/send?email=${email}`, request)
             .then(response => {
                 console.log(response.status);
                 $("#forgot-password-response").css({display: "block"})
