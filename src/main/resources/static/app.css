@@ -390,7 +390,7 @@ img {
     object-fit: cover;
     height: 275px;
     overflow: hidden;
-    background-position: center;
+    object-position: top;
 }
 
 
@@ -415,6 +415,10 @@ img {
     margin-top: -20rem;
     margin-bottom: 20rem;
     z-index: 1;
+}
+
+.text-danger {
+    color: #ED6436!important;
 }
 
 textarea, select {

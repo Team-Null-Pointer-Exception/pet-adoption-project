@@ -84,7 +84,7 @@ export default function ListingIndex(props) {
         <main>
             <div class="container-fluid listing-container">
                 <section class="py-4">
-                    <div class="container px-4 px-lg-5 mt-5">
+                    <div class="container px-2 mt-5">
                         <div id="listing-cards"
                              class="row">
                             ${populateCards(activeListings)}

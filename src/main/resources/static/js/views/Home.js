@@ -23,7 +23,7 @@ export default function Home(props) {
 </div>
 <div id="newPetDiv">
                         <h1 class="display-5 text-primary newestpets"><span class="text-black">Newest</span> Pets</h1>
-                        <div class="container px-4 px-lg-5 mt-5">
+                        <div class="container px-1 mt-5">
                         <div id="recent-listing-cards"
                              class="row">
                             ${populateCards(recentListings)}
@@ -31,7 +31,7 @@ export default function Home(props) {
                     </div>
 </div>
 <section class="story-section gray-bg">
-<div class="container story-container px-4 px-lg-5 mt-5">
+<div class="container story-container px-2 mt-5">
                         <h1 class="display-5 text-primary stories-header"><span class="text-black">Testim</span>onials</h1>
                         <div id="stories" class="row">
                         ${populateStoryCards(recentStories)}
