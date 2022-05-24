@@ -74,6 +74,8 @@ export function AdminEvent() {
     hideUserListings();
     updateUserRole();
     updateUserStatus();
+    populateListener();
+    closeOverlay();
 }
 
 function showMoreInfo(){
@@ -155,5 +157,20 @@ function updateUserStatus(){
                 createView("/admin");
         });
 
+    })
+}
+
+function populateListener(){
+    $('.listing-name').click(function(){
+        console.log('pop listener')
+        let id = $(this).data("id");
+        $("#overlay-" + id).css({display: "block"})
+    })
+}
+
+function closeOverlay() {
+    $(".close-btn").click(function (e) {
+        let id = $(this).data("id");
+        $("#overlay-" + id).css({display: "none"})
     })
 }
