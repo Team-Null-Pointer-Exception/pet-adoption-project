@@ -77,7 +77,6 @@ public class User {
     private Status status;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
     @ToString.Exclude
     Collection<Listing> listings;
 

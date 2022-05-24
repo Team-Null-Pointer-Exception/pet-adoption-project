@@ -236,7 +236,7 @@ export default function UserIndex(props) {
     </div>
 </div>
                              
-                                       <div id="edit-overlay-${listing.id}" class="overlay">
+<div id="edit-overlay-${listing.id}" class="overlay">
     <div class="container edit-overlay-container">       
             <div class="row edit-listing-row">
             <div class="card edit-listing-card">

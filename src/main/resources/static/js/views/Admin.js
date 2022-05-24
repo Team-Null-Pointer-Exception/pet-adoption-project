@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import EditListing from "./EditListing.js";
+import {populateOverlay} from "./ListingIndex.js";
 
 
 export default function AdminIndex(props){
@@ -48,6 +49,7 @@ export default function AdminIndex(props){
                             <p class="admin-user-listings-hide" id="admin-user-listings-hide-${user.id}" data-id="${user.id}">Hide Listings:</p>
                             <div class="admin-user-listings admin-user-listings-${user.id}">
                             ${user.listings.map(listing => `
+                                ${populateOverlay(listing)}
                                 <div class="user-listings row gray-bg" id="admin-user-listings-${user.id}">
                                     <div class="listing-name col-6 col-md-4" data-id="${listing.id}">Pet: ${listing.name}</div>
                                     <div class="listing-id col-2" data-id="${listing.id}">ID: ${listing.id}</div>

@@ -62,8 +62,13 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
-.set-up-card, .create-listing-card  {
+.set-up-card {
     max-width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+.create-listing-card {
+    max-width: 40%;
     padding-top: 2rem;
     padding-bottom: 3rem;
 }
@@ -541,6 +546,10 @@ textarea, select {
         margin-top: 0!important;
         max-width: 100%!important;
     }
+    #create-listing-form > .edit-close-button {
+        left: -1%;
+        top: -2.6%;
+    }
 }
 
 
@@ -897,7 +906,13 @@ ul {
     color: white;
     border-color: #ED6436;
     position: relative;
-    left: -46%;
+}
+.edit-listing-card > .edit-close-button {
+    left:-46%
+}
+#create-listing-form > .edit-close-button {
+    left:-10%;
+    top: -2.5%;
 }
 
 #input-required {
