@@ -20,7 +20,7 @@ export default function ListingIndex(props) {
     })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
     autoExpire();
-
+    activeListings.sort();
 
     let destinations = ''
 
@@ -191,7 +191,6 @@ function filterSelections() {
     console.log(filteredListings)
     console.log(distances)
     if (distance === "Any Distance") {
-        // filteredListings = activeListings
         console.log("all distances")
     } else if (distance === "Within 50 Miles") {
         console.log("within 50 miles")
@@ -201,8 +200,7 @@ function filterSelections() {
         sortDistance(15)
     }
 
-
-    console.log(filteredListings);
+    filteredListings.sort();
     $("#listing-cards").html(populateCards(filteredListings));
     grayImages();
     detailsListener();
@@ -219,14 +217,6 @@ function sortDistance(selectedDistance) {
     }
 }
 
-function grayImages() {
-    let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
-    console.log(listingToGray);
-    listingToGray.forEach(listing => {
-        let imageId = "#image-" + listing.id;
-        $(imageId).css({filter: "grayscale(100%)"});
-    });
-}
 
 export function populateCards(filteredListings) {
     //language=HTML
@@ -245,6 +235,8 @@ export function populateCards(filteredListings) {
                     <div class="text-center">
                         <!-- Pet name-->
                         <h5 class="fw-bolder">${listing.name}</h5>
+                        <!-- Days Remaining -->
+                        ${daysLeftWarning(listing)}
                         <!-- Breed-->
                         ${listing.breed}<br>
                         ${listing.age} / ${listing.sex.toLowerCase()} 
@@ -365,9 +357,6 @@ function autoExpire() {
         let thirtyDaysAgoArray = thirtyDaysAgo.split("-");
         thirtyDaysAgo = thirtyDaysAgoArray.join("");
 
-        console.log(listingDate);
-        console.log(thirtyDaysAgo);
-
         if (listingDate < thirtyDaysAgo) {
             let listingId = listing.id;
             console.log(listingId);
@@ -410,6 +399,39 @@ function addNewBadge(listing) {
         //language=HTML
         return `
             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> New</div>`;
+    }
+}
+
+function grayImages() {
+    let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
+    console.log(listingToGray);
+    listingToGray.forEach(listing => {
+        let imageId = "#image-" + listing.id;
+        $(imageId).css({filter: "grayscale(100%)"});
+    });
+}
+
+function daysLeftWarning(listing) {
+    let listingDate = new Date(listing.createdAt);
+    let expirationDate = new Date();
+    expirationDate.setDate(listingDate.getDate() + 30);
+    let today = new Date();
+
+    let oneDay = 1000 * 60 * 60 * 24;
+    let daysRemaining = expirationDate - today;
+    daysRemaining /= oneDay;
+    console.log(daysRemaining);
+
+    if (daysRemaining <= 20) {
+        console.log("This post is about to expire!");
+        //language=HTML
+        return `
+            <div class="d-flex justify-content-center small text-danger mb-2">
+                Only ${daysRemaining} days remaining!
+            </div>
+        `
+    } else {
+        return ``;
     }
 }
 
