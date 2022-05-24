@@ -107,7 +107,7 @@ function getListingDistances(val) {
 }
 
 function adminMenu() {
-    if (!getUserRole()) {
+    if (getUserRole() !== "ADMIN") {
         return "";
     } else {
         //language=HTML
@@ -135,7 +135,7 @@ export function ListingsEvent() {
 }
 
 function grabSelections() {
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         listingStatus = $("#listing-status").val();
     }
     animalType = $("#animal-type").val();
@@ -154,7 +154,7 @@ function newSelections() {
 function filterSelections() {
     grabSelections();
 
-    if (getUserRole()) {
+    if (getUserRole() === "ADMIN") {
         if (listingStatus === "Active") {
             filteredListings = allListings.filter(listing => listing.status === "ACTIVE");
         } else if (listingStatus === "Pending") {
@@ -455,7 +455,7 @@ export function populateOverlay(listing) {
 
 function changeStatusMenu(listing) {
 
-    if (getUserRole(listing)) {
+    if (getUserRole() === "ADMIN") {
         //language=HTML
         return `
             <li class="mt-1">
