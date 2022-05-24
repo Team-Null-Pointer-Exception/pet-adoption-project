@@ -112,7 +112,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
 
-        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
+        fetch(`http://3.138.142.117:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

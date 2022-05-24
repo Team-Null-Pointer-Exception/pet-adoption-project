@@ -387,7 +387,7 @@ function deleteListing() {
             headers: getHeaders()
         }
 
-        fetch(`http://localhost:8080/api/listings/${id}`, request)
+        fetch(`http://3.138.142.117:8080/api/listings/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -429,7 +429,7 @@ function editPassword(){
                 headers: getHeaders()
             }
 
-            fetch(`http://localhost:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+            fetch(`http://3.138.142.117:8080/api/users/me/updatePassword?newPassword=${newPassword}`, request)
                 .then(res => {
                     console.log(res.status);
                     // $('#edit-password-info').css({display: "none"});
@@ -515,7 +515,7 @@ function editUser(){
                 body: JSON.stringify(editUser)
             }
 
-            fetch("http://localhost:8080/api/users/me/updateUser", request)
+            fetch("http://3.138.142.117:8080/api/users/me/updateUser", request)
                 .then(response => {
                     console.log(response.status);
                     CreateView("/users");
@@ -540,7 +540,7 @@ function createStory() {
             body: JSON.stringify(newStory)
         }
 
-        fetch(`http://localhost:8080/api/stories`, request)
+        fetch(`http://3.138.142.117:8080/api/stories`, request)
             .then(res => {
                 console.log(res.status);
                 createView("/users")
@@ -623,7 +623,7 @@ export function EditListingsEvent(){
             body: JSON.stringify(editListing)
         }
         console.log(id);
-        fetch(`http://localhost:8080/api/listings/edit/${id}`, request)
+        fetch(`http://3.138.142.117:8080/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []

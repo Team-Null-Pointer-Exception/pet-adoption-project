@@ -161,7 +161,7 @@ function RegisterEventListener(){
         }
             console.log(request)
         // send request
-        fetch("http://localhost:8080/api/users/create", request)
+        fetch("http://3.138.142.117:8080/api/users/create", request)
             .then(response => {
                 console.log(response.status);
                 CreateView("/");

@@ -108,7 +108,7 @@ function CreateListingsEvent() {
             body: JSON.stringify(newListing)
         }
 
-        fetch("http://localhost:8080/api/listings", request)
+        fetch("http://3.138.142.117:8080/api/listings", request)
             .then(res => {
                 console.log(res.status);
                 imageArray = []
