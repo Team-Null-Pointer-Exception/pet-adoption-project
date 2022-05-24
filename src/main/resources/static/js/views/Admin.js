@@ -51,7 +51,7 @@ export default function AdminIndex(props){
                                 <div class="user-listings row gray-bg" id="admin-user-listings-${user.id}">
                                     <div class="listing-name col-6 col-md-4" data-id="${listing.id}">Pet: ${listing.name}</div>
                                     <div class="listing-id col-2" data-id="${listing.id}">ID: ${listing.id}</div>
-                                    <div class="listing-status col-3" data-id="${listing.id}">Status: ${listing.status}</div>
+                                    <div class="listing-status col-4" data-id="${listing.id}">Status: ${listing.status}</div>
                                 </div>
                             `).join('')}
                             </div>
