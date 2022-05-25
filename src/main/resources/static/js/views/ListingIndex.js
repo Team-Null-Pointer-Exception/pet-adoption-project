@@ -195,10 +195,10 @@ function filterSelections() {
         console.log("all distances")
     } else if (distance === "Within 50 Miles") {
         console.log("within 50 miles")
-        sortDistance(50)
+        sortDistance(50, filteredListings)
     } else if (distance === "Within 15 Miles") {
         console.log("within 15 miles")
-        sortDistance(15)
+        sortDistance(15, filteredListings)
     }
 
     filteredListings.sort();
@@ -209,11 +209,11 @@ function filterSelections() {
     changeStatus();
 }
 
-function sortDistance(selectedDistance) {
+function sortDistance(selectedDistance, listings) {
     filteredListings = []
     for (let i = 0; i < distances.length; i++) {
         if (distances[i] <= selectedDistance) {
-            filteredListings.push(activeListings[i])
+            filteredListings.push(listings[i]);
         }
     }
 }
@@ -342,7 +342,7 @@ function daysLeftWarning(listing) {
         //language=HTML
         return `
             <div class="d-flex justify-content-center small text-danger mb-2">
-                Only ${daysRemaining} days remaining!
+                Only ${daysRemaining} days left!
             </div>
         `
     } else {
