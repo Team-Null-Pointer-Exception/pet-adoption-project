@@ -420,9 +420,11 @@ export function populateOverlay(listing) {
                             <h3 class="overlay-text text-center">${listing.animal}</h3>
                             <a id="report-btn"
                                        class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                       data-toggle="tooltip" data-placement="bottom" title="Report this listing"
                                        style="width: 36px; height: 36px;"
                                        href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>        
+                                       target="_blank">
+                                       <i class="fas fa-flag"></i></a>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
