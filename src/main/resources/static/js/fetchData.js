@@ -4,8 +4,8 @@
  * @param request
  * @returns {Promise<{}>}
  */
-// export const baseUri = "http://3.138.142.117:8080";
-export const baseUri = "http://localhost:8080";
+export const baseUri = "http://3.138.142.117:8080";
+// export const baseUri = "http://localhost:8080";
 
 
 export default function fetchData(state, request) {
