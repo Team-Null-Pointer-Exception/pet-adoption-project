@@ -34,15 +34,17 @@ export default function AdminIndex(props){
                                 </select>
                             </div>
                         </div>
-                        <p class="admin-user-info-show" id="admin-user-info-show-${user.id}" data-id="${user.id}">Show More Info:</p>
-                        <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show Less Info:</p>
-                        <div class="admin-user-more-info" id="admin-user-more-info-${user.id}">
-                            <p><span>Username:</span> ${user.username}</p>
-                            <p><span>Address:</span> ${user.street}, ${user.city}, ${user.state} ${user.zip}</p>
-                            <p><span>Phone:</span> ${user.phone}</p>
-                            <p><span>Email:</span> ${user.email}</p>
-                            <p><span>Created:</span> ${user.createdAt}</p>
-                            <p><span>Organization:</span> ${user.organization}</p>
+                        <div>
+                            <p class="admin-user-info-show" id="admin-user-info-show-${user.id}" data-id="${user.id}">Show More Info:</p>
+                            <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show Less Info:</p>
+                            <div class="admin-user-more-info" id="admin-user-more-info-${user.id}">
+                                <p><span>Username:</span> ${user.username}</p>
+                                <p><span>Address:</span> ${user.street}, ${user.city}, ${user.state} ${user.zip}</p>
+                                <p><span>Phone:</span> ${user.phone}</p>
+                                <p><span>Email:</span> ${user.email}</p>
+                                <p><span>Created:</span> ${user.createdAt}</p>
+                                <p><span>Organization:</span> ${user.organization}</p>
+                            </div>
                         </div>
                         <div>
                             <p class="admin-user-listings-show" id="admin-user-listings-show-${user.id}" data-id="${user.id}">Show Listings:</p>
@@ -51,9 +53,29 @@ export default function AdminIndex(props){
                             ${user.listings.map(listing => `
                                 ${populateOverlay(listing)}
                                 <div class="user-listings row gray-bg" id="admin-user-listings-${user.id}">
-                                    <div class="listing-name col-6 col-md-4" data-id="${listing.id}">Pet: ${listing.name}</div>
-                                    <div class="listing-id col-2" data-id="${listing.id}">ID: ${listing.id}</div>
-                                    <div class="listing-status col-4" data-id="${listing.id}">Status: ${listing.status}</div>
+                                    <div class="admin-listing-name col-12 col-md-4" data-id="${listing.id}">Pet: ${listing.name} <i class="fas fa-eye"></i></div>
+                                    <div class="admin-listing-id col-3 offset-1 offset-md-0" data-id="${listing.id}">ID: ${listing.id}</div>
+                                    <div class="admin-listing-status col-5" data-id="${listing.id}">Status: ${listing.status}</div>
+                                </div>
+                            `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <p class="admin-user-stories-show" id="admin-user-stories-show-${user.id}" data-id="${user.id}">Show Stories:</p>
+                            <p class="admin-user-stories-hide" id="admin-user-stories-hide-${user.id}" data-id="${user.id}">Hide Stories:</p>
+                            <div class="admin-user-stories admin-user-stories-${user.id}">
+                            ${user.stories.map(story => `
+                                <div class="user-stories row gray-bg" id="admin-user-stories-${user.id}">
+                                    <div class="admin-story-id col-12 col-md-6" data-id="${story.id}">ID: ${story.id} <i class="fas fa-eye"></i></div>
+                                    <div class="col-9 offset-1 col-md-6 offset-md-0">
+                                        <label for="admin-update-story-status-${story.id}">Status: </label>
+                                        <select id="admin-update-story-status-${story.id}" class="admin-story-status" data-id="${story.id}">
+                                            <option selected hidden>${story.status}</option>
+                                            <option>ACTIVE</option>
+                                            <option>PENDING</option>
+                                            <option>REJECTED</option>                                            
+                                        </select>
+                                    </div>
                                 </div>
                             `).join('')}
                             </div>
@@ -76,6 +98,8 @@ export function AdminEvent() {
     updateUserStatus();
     populateListener();
     closeOverlay();
+    showUserStories();
+    hideUserStories();
 }
 
 function showMoreInfo(){
@@ -161,7 +185,7 @@ function updateUserStatus(){
 }
 
 function populateListener(){
-    $('.listing-name').click(function(){
+    $('.admin-listing-name').click(function(){
         console.log('pop listener')
         let id = $(this).data("id");
         $("#overlay-" + id).css({display: "block"})
@@ -172,5 +196,23 @@ function closeOverlay() {
     $(".close-btn").click(function (e) {
         let id = $(this).data("id");
         $("#overlay-" + id).css({display: "none"})
+    })
+}
+
+function showUserStories(){
+    $('.admin-user-stories-show').click(function(){
+        let id = this.getAttribute('data-id');
+        $(".admin-user-stories-" + id).css({display: "block"})
+        $("#admin-user-stories-hide-" + id).css({display: "block"})
+        $("#admin-user-stories-show-" + id).css({display: "none"})
+    })
+}
+
+function hideUserStories(){
+    $('.admin-user-stories-hide').click(function(){
+        let id = this.getAttribute('data-id');
+        $(".admin-user-stories-" + id).css({display: "none"})
+        $("#admin-user-stories-hide-" + id).css({display: "none"})
+        $("#admin-user-stories-show-" + id).css({display: "block"})
     })
 }

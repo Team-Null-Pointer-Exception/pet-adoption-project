@@ -937,11 +937,7 @@ ul {
 
 
 /*Admin View*/
-.admin-user-more-info {
-    display: none;
-}
-
-.admin-user-info-hide {
+.admin-user-more-info, .admin-user-info-hide, .admin-user-listings, .admin-user-listings-hide, .admin-user-stories, .admin-user-stories-hide {
     display: none;
 }
 
@@ -950,21 +946,22 @@ ul {
     padding: .5rem
 }
 
-.admin-user-more-info {
+.admin-user-more-info, .admin-user-listings, .admin-user-stories {
     margin-left: 1rem;
 }
 
-.admin-user-listings {
-    display: none;
-}
-
-.admin-user-listings-hide {
-    display: none;
-}
-
-.admin-user-listings>.user-listings {
+.admin-user-listings>.user-listings, .admin-user-stories>.user-stories {
+    padding: 0;
     margin-left: 0;
     margin-right: 0;
+}
+
+.user-stories {
+    margin-bottom: .5rem;
+}
+
+.user-stories>div {
+    padding: 0;
 }
 
 .admin-user-info label {
@@ -985,9 +982,14 @@ ul {
     }
 }
 
-.admin-user-info-show:hover, .admin-user-info-hide:hover, .admin-user-listings-show:hover, .admin-user-listings-hide:hover {
+.admin-user-info-show:hover, .admin-user-info-hide:hover, .admin-user-listings-show:hover, .admin-user-listings-hide:hover, .admin-user-stories-show:hover, .admin-user-stories-hide:hover {
     color: #ED6436;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.admin-listing-name:hover, .admin-story-id:hover {
+    color: #ED6436;
     cursor: pointer;
 }
 
