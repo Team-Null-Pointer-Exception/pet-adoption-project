@@ -930,9 +930,9 @@ ul {
     animation: rotate 600ms infinite linear;
 }
 
-#create-summary-label {
-    margin-top: 1em;
-}
+/*#create-summary-label {*/
+/*    margin-top: 1em;*/
+/*}*/
 
 
 
@@ -997,4 +997,8 @@ ul {
 
 .admin-user-listings .listing-id {
     padding-left: 8px;
+}
+
+.align-top {
+    margin-bottom: 16px;
 }
