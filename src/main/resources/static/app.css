@@ -163,7 +163,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn, #edit-listing-btn, #image_upload {
     margin-bottom: 1rem;
     border-radius: 5px;
-    width: 6rem;
+    width: 6.5rem;
     height: 2rem;
     background-color: #ED6436;
     border: none;
