@@ -337,7 +337,7 @@ function daysLeftWarning(listing) {
     daysRemaining /= oneDay;
     console.log(daysRemaining);
 
-    if (daysRemaining <= 20) {
+    if (daysRemaining <= 7) {
         console.log("This post is about to expire!");
         //language=HTML
         return `
