@@ -956,6 +956,10 @@ ul {
     margin-right: 0;
 }
 
+.admin-user-listings>.user-listings {
+    width: 100%;
+}
+
 .user-stories {
     margin-bottom: .5rem;
 }
@@ -975,7 +979,7 @@ ul {
 }
 @media (max-width: 767px) {
     .admin-user-info-name>div {
-        margin-left: .5rem;
+        margin-left: 1rem;
     }
     .admin-user-info-name>p {
         margin-bottom: .5rem;
