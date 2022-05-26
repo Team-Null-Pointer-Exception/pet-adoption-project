@@ -101,8 +101,8 @@ export default function Register(props) {
                     <br> 
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
-                    <br>  
-                    <input type="file" id="profile_upload" name="file" />                                                                        
+                    <br>   
+                    <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>                                                                        
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
                 </form>
@@ -113,44 +113,28 @@ export default function Register(props) {
 }
 
 export function RegisterEvent() {
-    RegisterEventListener()
     UploadEvent()
+    RegisterEventListener()
 }
 
 let apiKey = token().fileKey
 
-let imgURL = "https://petadoptions-npe.s3.us-east-2.amazonaws.com/"
+let imgURL = ""
 function UploadEvent() {
-    $('#profile_upload').change(function () {
-    //     const client = filestack.init(apiKey);
-    //     const options = {
-    //         onFileUploadFinished: callback => {
-    //             imgURL = callback.url
-    //         }
-    //     }
-    //     client.picker(options).open();
-        let file = $("#profile_upload").prop('files')[0]
-        console.log(file)
-        let request = {
-            method: "POST",
-            body: file
+    $('#profile_upload').click(function () {
+        const client = filestack.init(apiKey);
+        const options = {
+            onFileUploadFinished: callback => {
+                imgURL = callback.url
+            }
         }
-        console.log(request)
-        fetch(`${baseUri}/api/users/upload`, request)
-            .then(response => {
-                console.log(response.status);
-            }).catch(error => {
-            console.log(error);
-        });
+        client.picker(options).open();
     })
 }
 
 
-
-
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
-
         let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
         if(password === confirmPassword) {
@@ -171,18 +155,18 @@ function RegisterEventListener(){
                 stories: []
             }
 
-        let request = {
-            method: "POST",
-            headers: getHeaders(),
-            body: JSON.stringify(newUser)
-        }
+            let request = {
+                method: "POST",
+                headers: getHeaders(),
+                body: JSON.stringify(newUser)
+            }
             console.log(request)
-        // send request
-        fetch(`${baseUri}/api/users/create`, request)
-            .then(response => {
-                console.log(response.status);
-                CreateView("/");
-            }).catch(error => {
+            // send request
+            fetch(`${baseUri}/api/users/create`, request)
+                .then(response => {
+                    console.log(response.status);
+                    CreateView("/");
+                }).catch(error => {
                 console.log(error);
                 createView("/");
             });
