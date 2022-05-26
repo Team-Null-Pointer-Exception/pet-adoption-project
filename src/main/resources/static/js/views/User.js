@@ -243,46 +243,46 @@ export default function UserIndex(props) {
             <div class="card edit-listing-card">
             <a class="btn rounded-circle mt-2 ml-1 edit-close-button px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>  
             <div class="d-flex justify-content-center align-items-center">
-                <form id="edit-listing-form" name="edit-listing-form">
+                <form class="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" value=${listing.name} />
+                    <label for="name-${listing.id}">Name</label>
+                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" value=${listing.name} />
                     <br>
-                    <label for="animal">Animal</label>
-                    <input id="animal" name="animal" type="text" value=${listing.animal} />
+                    <label for="animal-${listing.id}">Animal</label>
+                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" value=${listing.animal} />
                     <br>
-                    <label for="breed">Breed</label>
-                    <input id="breed" name="breed" type="text" value=${listing.breed} />
+                    <label for="breed-${listing.id}">Breed</label>
+                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" value=${listing.breed} />
                     <br>
-                    <label for="color">Color</label>
-                    <input id="color" name="color" type="text" value=${listing.color} />
+                    <label for="color-${listing.id}">Color</label>
+                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" value=${listing.color} />
                     <br>
-                    <label for="age">Age</label>
-                    <input id="age" name="age" type="text" value=${listing.age} />
+                    <label for="age-${listing.id}">Age</label>
+                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" value=${listing.age} />
                     <br>
-                    <label for="sex">Sex</label>
-                    <select id="sex">
+                    <label for="sex-${listing.id}">Sex</label>
+                    <select id="sex-${listing.id}">
                       <option>Male</option>
                       <option>Female</option>
                     </select>
                     <br>
-                    <label for="health">Health</label>
-                    <input id="health" name="health" type="text" value=${listing.health} />
+                    <label for="health-${listing.id}">Health</label>
+                    <input id="health-${listing.id}" name="health-${listing.id}" type="text" value=${listing.health} />
                     <br>
-                    <label for="fixed">Fixed</label>
-                    <select id="fixed">
+                    <label for="fixed-${listing.id}">Fixed</label>
+                    <select id="fixed-${listing.id}">
                       <option>True</option>
                       <option>False</option>
                     </select>
                     <br>
-                    <label class="align-top" id="descrip-label" for="description">Description</label>
-                    <textarea id="description" name="description" rows="2" placeholder="Pet description">${listing.description}</textarea>
+                    <label class="align-top" id="descrip-label-${listing.id}" for="description-${listing.id}">Description</label>
+                    <textarea id="description-${listing.id}" name="description-${listing.id}" rows="2" placeholder="Pet description">${listing.description}</textarea>
                     <br>
-                    <label class="align-top" for="summary">Summary</label>
-                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information">${listing.summary}</textarea>
+                    <label class="align-top" for="summary-${listing.id}">Summary</label>
+                    <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="3" placeholder="Listing information">${listing.summary}</textarea>
                     <br>           
-                    <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
-                    <button id="edit-listing-btn" data-id="${listing.id}" type="button">Submit</button>
+                    <button type="button" class="image_upload text-white imageUploadToggle">Uploads</button>                                                                      
+                    <button class="edit-listing-btn btn-primary" data-id="${listing.id}" type="button">Submit</button>
                 </form>
                 </div>
             </div>
@@ -585,7 +585,7 @@ function fileStackSetUp() {
 
 
 function AddFileEvent(){
-    $('#image_upload').click(function (event) {
+    $('.image_upload').click(function (event) {
         event.preventDefault()
         const options = {
             onFileUploadFinished: callback => {
@@ -600,19 +600,19 @@ function AddFileEvent(){
 
 
 export function EditListingsEvent(){
-    $('#edit-listing-btn').click(function (e) {
+    $('.edit-listing-btn').click(function (e) {
         let id = e.target.getAttribute("data-id");
         let editListing = {
-            summary: $("#summary").val(),
-            name: $("#name").val(),
-            animal: $("#animal").val(),
-            breed: $("#breed").val(),
-            sex: $("#sex").val(),
-            age: $("#age").val(),
-            color: $("#color").val(),
-            description: $("#description").val(),
-            fixed: $("#fixed").val(),
-            health: $("#health").val(),
+            summary: $("#summary-" + id).val(),
+            name: $("#name-" + id).val(),
+            animal: $("#animal-" + id).val(),
+            breed: $("#breed-" + id).val(),
+            sex: $("#sex-" + id).val(),
+            age: $("#age-" + id).val(),
+            color: $("#color-" + id).val(),
+            description: $("#description-" + id).val(),
+            fixed: $("#fixed-" + id).val(),
+            health: $("#health-" + id).val(),
             images: imageArray
         }
         console.log(editListing)
