@@ -246,28 +246,29 @@ export default function UserIndex(props) {
                 <form class="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
                     <label for="name-${listing.id}">Name</label>
-                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" value=${listing.name} />
+                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="20" value=${listing.name}>
                     <br>
                     <label for="animal-${listing.id}">Animal</label>
-                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" value=${listing.animal} />
+                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="20" value=${listing.animal}>
                     <br>
                     <label for="breed-${listing.id}">Breed</label>
-                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" value=${listing.breed} />
+                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="20" value=${listing.breed}>
                     <br>
                     <label for="color-${listing.id}">Color</label>
-                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" value=${listing.color} />
+                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="20" value=${listing.color}>
                     <br>
                     <label for="age-${listing.id}">Age</label>
-                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" value=${listing.age} />
+                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="20" value=${listing.age}>
                     <br>
                     <label for="sex-${listing.id}">Sex</label>
                     <select id="sex-${listing.id}">
                       <option>Male</option>
                       <option>Female</option>
+                      <option>Unknown</option>
                     </select>
                     <br>
                     <label for="health-${listing.id}">Health</label>
-                    <input id="health-${listing.id}" name="health-${listing.id}" type="text" value=${listing.health} />
+                    <textarea id="health-${listing.id}" name="health-${listing.id}" type="text" maxlength="100">${listing.health}</textarea>
                     <br>
                     <label for="fixed-${listing.id}">Fixed</label>
                     <select id="fixed-${listing.id}">
@@ -276,10 +277,10 @@ export default function UserIndex(props) {
                     </select>
                     <br>
                     <label class="align-top" id="descrip-label-${listing.id}" for="description-${listing.id}">Description</label>
-                    <textarea id="description-${listing.id}" name="description-${listing.id}" rows="2" placeholder="Pet description">${listing.description}</textarea>
+                    <textarea id="description-${listing.id}" name="description-${listing.id}" rows="2" maxlength="255" placeholder="Pet description">${listing.description}</textarea>
                     <br>
                     <label class="align-top" for="summary-${listing.id}">Summary</label>
-                    <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="3" placeholder="Listing information">${listing.summary}</textarea>
+                    <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="2" maxlength="100" placeholder="Listing information">${listing.summary}</textarea>
                     <br>           
                     <button type="button" class="image_upload text-white imageUploadToggle">Uploads</button>                                                                      
                     <button class="edit-listing-btn btn-primary" data-id="${listing.id}" type="button">Submit</button>
