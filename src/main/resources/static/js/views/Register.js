@@ -101,8 +101,8 @@ export default function Register(props) {
                     <br> 
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
-                    <br>   
-                    <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>                                                                        
+                    <br>  
+                    <input type="file" id="profile_upload" name="file" />                                                                        
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
                 </form>
@@ -113,28 +113,44 @@ export default function Register(props) {
 }
 
 export function RegisterEvent() {
-    UploadEvent()
     RegisterEventListener()
+    UploadEvent()
 }
 
 let apiKey = token().fileKey
 
-let imgURL = ""
+let imgURL = "https://petadoptions-npe.s3.us-east-2.amazonaws.com/"
 function UploadEvent() {
-    $('#profile_upload').click(function () {
-        const client = filestack.init(apiKey);
-        const options = {
-            onFileUploadFinished: callback => {
-                imgURL = callback.url
-            }
+    $('#profile_upload').change(function () {
+    //     const client = filestack.init(apiKey);
+    //     const options = {
+    //         onFileUploadFinished: callback => {
+    //             imgURL = callback.url
+    //         }
+    //     }
+    //     client.picker(options).open();
+        let file = $("#profile_upload").prop('files')[0]
+        console.log(file)
+        let request = {
+            method: "POST",
+            body: file
         }
-        client.picker(options).open();
+        console.log(request)
+        fetch(`${baseUri}/api/users/upload`, request)
+            .then(response => {
+                console.log(response.status);
+            }).catch(error => {
+            console.log(error);
+        });
     })
 }
 
 
+
+
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
+
         let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
         if(password === confirmPassword) {

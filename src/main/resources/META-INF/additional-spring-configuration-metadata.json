@@ -14,5 +14,10 @@
       "name": "googleAPIKey",
       "type": "java.lang.String",
       "description": "Description for googleAPIKey."
+    },
+    {
+      "name": "aws.s3.region",
+      "type": "java.lang.String",
+      "description": "Description for aws.s3.region."
     }
   ] }
