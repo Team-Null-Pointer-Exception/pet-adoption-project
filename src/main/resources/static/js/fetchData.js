@@ -14,7 +14,6 @@ export default function fetchData(state, request) {
     const promises = [];
 
 
-
     console.log("got to fetch data");
     for (let pieceOfState of Object.keys(state)) {
         console.log(baseUri + state[pieceOfState]);
