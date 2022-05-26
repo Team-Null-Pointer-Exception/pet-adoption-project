@@ -195,10 +195,10 @@ function filterSelections() {
         console.log("all distances")
     } else if (distance === "Within 50 Miles") {
         console.log("within 50 miles")
-        sortDistance(50)
+        sortDistance(50, filteredListings)
     } else if (distance === "Within 15 Miles") {
         console.log("within 15 miles")
-        sortDistance(15)
+        sortDistance(15, filteredListings)
     }
 
     filteredListings.sort();
@@ -209,11 +209,11 @@ function filterSelections() {
     changeStatus();
 }
 
-function sortDistance(selectedDistance) {
+function sortDistance(selectedDistance, listings) {
     filteredListings = []
     for (let i = 0; i < distances.length; i++) {
         if (distances[i] <= selectedDistance) {
-            filteredListings.push(activeListings[i])
+            filteredListings.push(listings[i]);
         }
     }
 }
@@ -337,12 +337,12 @@ function daysLeftWarning(listing) {
     daysRemaining /= oneDay;
     console.log(daysRemaining);
 
-    if (daysRemaining <= 20) {
+    if (daysRemaining <= 7) {
         console.log("This post is about to expire!");
         //language=HTML
         return `
             <div class="d-flex justify-content-center small text-danger mb-2">
-                Only ${daysRemaining} days remaining!
+                Only ${daysRemaining} days left!
             </div>
         `
     } else {
@@ -420,9 +420,11 @@ export function populateOverlay(listing) {
                             <h3 class="overlay-text text-center">${listing.animal}</h3>
                             <a id="report-btn"
                                        class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                       data-toggle="tooltip" data-placement="bottom" title="Report this listing"
                                        style="width: 36px; height: 36px;"
                                        href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank"><i class="fas fa-flag"></i></a>        
+                                       target="_blank">
+                                       <i class="fas fa-flag"></i></a>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>

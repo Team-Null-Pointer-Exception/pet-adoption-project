@@ -47,6 +47,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .permitAll()
                 .antMatchers("/api/users/reset")
                 .permitAll()
+                .antMatchers("/api/users/upload")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()

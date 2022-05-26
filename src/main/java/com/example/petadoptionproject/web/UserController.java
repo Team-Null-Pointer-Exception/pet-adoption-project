@@ -3,16 +3,21 @@ package com.example.petadoptionproject.web;
 
 import com.example.petadoptionproject.data.*;
 import com.example.petadoptionproject.services.EmailService;
+import com.example.petadoptionproject.services.S3Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.utility.RandomString;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -38,6 +43,7 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private JavaMailSender mailSender;
     private EmailService emailService;
+    private S3Service service;
 
     @GetMapping
     public Collection<User> getUsers() {
@@ -71,9 +77,7 @@ public class UserController {
         user.setRole(User.Role.USER);
         user.setStatus(User.Status.ACTIVE);
         String unencryptedPassword = user.getPassword();
-        System.out.println(unencryptedPassword);
         String encryptedPassword = passwordEncoder.encode(unencryptedPassword);
-        System.out.println(encryptedPassword);
         user.setPassword(encryptedPassword);
         ArrayList<Story> stories = new ArrayList<>();
         user.setStories(stories);
@@ -165,6 +169,15 @@ public class UserController {
         usersRepository.save(updatedUser);
         System.out.println("Updating user status");
     }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> saveNewFile(@RequestBody MultipartFile file) {
+        String fileName = service.uploadFile(file);
+        return new ResponseEntity<>(fileName, HttpStatus.OK);
+    }
+
+
+
 }
 
 

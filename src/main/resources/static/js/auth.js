@@ -48,6 +48,7 @@ export function getHeaders() {
         : {'Content-Type': 'application/json'};
 }
 
+
 /**
  * Attempts to set the access and refresh tokens needs to authenticate and authorize the client and user
  * @param responseData
