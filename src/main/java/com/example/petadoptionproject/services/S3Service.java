@@ -52,7 +52,7 @@ public class S3Service {
     public String uploadFile(MultipartFile file) {
         File convertedFile = convertMultipartFileToFile(file);
         // generate a unique-ish s3 filename based on file's name + current time
-        String fileName = file.getOriginalFilename() + System.currentTimeMillis();
+        String fileName = file.getOriginalFilename();
         s3Client.putObject(bucket, fileName, convertedFile);
         convertedFile.delete();
         // return the file's s3 name since you may need to store it somewhere
@@ -60,7 +60,7 @@ public class S3Service {
     }
 
     private File convertMultipartFileToFile(MultipartFile file) {
-        File convertedFile = new File(Objects.requireNonNull(file.getOriginalFilename()));
+        File convertedFile = new File(file.getOriginalFilename());
         try(FileOutputStream fos = new FileOutputStream(convertedFile)) {
             fos.write(file.getBytes());
         } catch (IOException e) {

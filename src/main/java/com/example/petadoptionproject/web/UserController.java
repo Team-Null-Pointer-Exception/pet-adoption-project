@@ -171,9 +171,9 @@ public class UserController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<String> saveNewFile(@RequestBody MultipartFile file) {
+    public String saveNewFile(@RequestParam(value="file") MultipartFile file) {
         String fileName = service.uploadFile(file);
-        return new ResponseEntity<>(fileName, HttpStatus.OK);
+        return fileName;
     }
 
 
