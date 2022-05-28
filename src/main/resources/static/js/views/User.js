@@ -26,8 +26,6 @@ export default function UserIndex(props) {
                             <div class="col-lg-6">
                                 <div class="about-avatar">
                                     <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
-                                    <br>
-                                    <input type="file" id="edit_profile_upload" name="file" />  
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -85,6 +83,9 @@ export default function UserIndex(props) {
                                     <div class="media">
                                         <label for="edit-organization">Organization</label>
                                         <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
+                                    </div>
+                                    <div class="media">
+                                        <input type="file" id="edit_profile_upload" name="file" /> 
                                     </div>
                                 </div>
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-2">
@@ -439,14 +440,14 @@ function editPassword(){
 function showEditUser(){
     $('#edit-profile-btn').click(function(){
         $('#edit-profile-info').css({display: "inline-block"});
-        $('.about-avatar>#edit_profile_upload').css({display: "inline-block"});
+        $('#edit_profile_upload').css({display: "inline-block"});
     })
 }
 
 function hideEditUser(){
     $('#edit-profile-cancel-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
-        $('.about-avatar>#edit_profile_upload').css({display: "none"});
+        $('#edit_profile_upload').css({display: "none"});
     })
 }
 
