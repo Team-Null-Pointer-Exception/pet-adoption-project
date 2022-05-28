@@ -46,9 +46,7 @@ export default function ListingIndex(props) {
         <!-- Jumbotron -->
         <div
                 class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
-                style="background-image: url('../../images/pexels-cottonbro-6864010.jpg');"
-        >
-            <!--            <h1 id="listings-heading" class="mb-3 h2 jumbotron">Available Adoptions</h1>-->
+                style="background-image: url('https://petadoptions-npe.s3.us-east-2.amazonaws.com/pexels-cottonbro-6864010.jpg');">
             <h1 class="display-4 m-0 text-black jumbotron">Available <span class="text-primary">Adoptions</span></h1>
             <h2 class="jumbo-message">
                 Find your new best friend today
@@ -230,7 +228,7 @@ export function populateCards(filteredListings) {
                 ${addNewBadge(listing)}
                 ${addPendingStatus(listing)}
                 <!-- Pet image-->
-                <img id="image-${listing.id}" class="card-img-top" src=${listing.images[0]} alt="..."/>
+                <img id="image-${listing.id}" class="card-img-top" src=${listing.images} alt="..."/>
                 <!-- Pet details-->
                 <div class="card-body p-4 bg-light">
                     <div class="text-center">
@@ -331,12 +329,9 @@ function daysLeftWarning(listing) {
     let expirationDate = new Date();
     expirationDate.setDate(listingDate.getDate() + 30);
     let today = new Date();
-
     let oneDay = 1000 * 60 * 60 * 24;
     let daysRemaining = expirationDate - today;
     daysRemaining /= oneDay;
-    console.log(daysRemaining);
-
     if (daysRemaining <= 7) {
         console.log("This post is about to expire!");
         //language=HTML
@@ -377,7 +372,7 @@ export function populateOverlay(listing) {
                         <div class="col-xs-12 col-lg-6 listing-main">
                             <h3 class="overlay-text text-center">${listing.name}</h3>
                             <a class="btn rounded-circle text-center close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-                            <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+                            <img class="listing-image-large" src=${listing.images} alt="pet"/>
 
                             <!-- Contact info and map -->
                             <div id="under-pic" class="row mt-5">

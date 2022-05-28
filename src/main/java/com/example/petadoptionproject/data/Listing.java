@@ -29,7 +29,7 @@ public class Listing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column
     private String summary;
 
     @Column
@@ -57,21 +57,21 @@ public class Listing {
     @Column
     private String color;
 
-    @Column(length = 200)
+    @Column
     private String description;
 
     @Column
     private boolean fixed;
 
-    @Column(length = 100)
+    @Column
     private String health;
 
     @ManyToOne
     @JsonIgnoreProperties({"listings"})
     private User user;
 
-    @ElementCollection
-    private Collection<String> images;
+    @Column
+    private String images;
 
 
 }

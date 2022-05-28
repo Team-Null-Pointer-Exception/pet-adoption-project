@@ -12,10 +12,8 @@ public class ViewController {
 
     @Value("${googleAPIKey}")
     private String googleAPIKey;
-    @Value("${FileStackAPIKEY}")
-    private String FileStackAPIKEY;
 
-    @RequestMapping({"/", "/about", "/login", "/logout","/home", "/users", "/admin", "/loading", "/listings", "/create", "/edit", "/register", "/reset", "/admin", "/forgot"})
+    @RequestMapping({"/", "/about", "/login", "/logout","/home", "/users", "/admin", "/loading", "/listings", "/create", "/register", "/reset", "/admin", "/forgot"})
     public String showView(){
         return "forward:/index.html";
     }
@@ -25,7 +23,7 @@ public class ViewController {
     public String apikey() {
         // add more export functions and key args as you need them
         return String.format("export default function token() {\n" +
-                "    return {googleKey: `%s`, fileKey: `%s` };\n" +
-                "}", googleAPIKey, FileStackAPIKEY);
+                "    return {googleKey: `%s`};\n" +
+                "}", googleAPIKey);
     }
 }

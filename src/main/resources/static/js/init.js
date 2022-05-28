@@ -53,6 +53,9 @@ function addListenerToNavLinks() {
         if(e.target.id === 'profile_upload') {
             return
         }
+        if(e.target.type === 'file') {
+            return
+        }
         e.preventDefault();
         if (e.target.dataset['link'] !== undefined) {
             const URI = e.target.href.substring(location.origin.length);

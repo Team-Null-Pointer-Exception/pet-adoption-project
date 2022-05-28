@@ -9,7 +9,6 @@ import ListingIndex, {ListingsEvent} from "./views/ListingIndex.js";
 import UserIndex, {UsersEvent} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 import CreateListing, {CreateEvents} from "./views/CreateListing.js";
-import EditListing, {EditEvents} from "./views/EditListing.js";
 import AdminIndex, {AdminEvent} from "./views/Admin.js";
 import ResetPassword, {ResetEvent} from "./views/ResetPassword.js"
 import ForgotPassword, {ForgotEvent} from "./views/ForgotPassword.js";
@@ -98,13 +97,6 @@ export default function router(URI) {
             uri: '/create',
             title: 'Create New Listing',
             viewEvent: CreateEvents
-        },
-        '/edit': {
-            returnView: EditListing,
-            state: {},
-            uri: '/edit',
-            title: 'Edit Listing',
-            viewEvent: EditEvents
         },
         '/about': {
             returnView: About,

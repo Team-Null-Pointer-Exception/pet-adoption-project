@@ -26,11 +26,11 @@ body {
 #register-response {
     display: none
 }
-#register-form, #create-listing-form, #edit-listing-form {
+#register-form, #create-listing-form, .edit-listing-form {
     display: inline;
 }
 
-#register-form, #create-listing-form, #edit-listing-form, #reset-form {
+#register-form, #create-listing-form, .edit-listing-form, #reset-form {
     justify-content: center;
 }
 
@@ -95,7 +95,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, #edit-listing-form>label, #edit-listing-form>h1,
+#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form>label, .edit-listing-form>h1,
 #forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2 {
     text-align: center;
 }
@@ -109,13 +109,13 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-top: 6.25rem;
 }
 
-#register-form>input, #login-form>input, #create-listing-form>input, #edit-listing-form>input, #reset-form>input, #forgot-form>input {
+#register-form>input, #login-form>input, #create-listing-form>input, .edit-listing-form>input, #reset-form>input, #forgot-form>input {
     border: none!important;
     border-radius: 5px;
     margin-bottom: 1rem;
 }
 
-#edit-listing-form>select  {
+.edit-listing-form>select  {
     margin-bottom: 1rem;
 }
 
@@ -135,13 +135,11 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>textarea, #edit-listing-form>textarea {
+#create-listing-form>textarea, .edit-listing-form>textarea {
     resize: none;
 }
 
-#register-btn {
-    margin-left: 6.9rem;
-}
+
 #login-btn, #forgot-btn, #reset-btn {
     display: block;
     margin : 0 auto;
@@ -151,16 +149,8 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     display: none;
 }
 
-#create-listing-btn {
-    margin-left: 6.1rem;
-}
 
-#edit-listing-btn {
-    margin-left: 5.1rem;
-}
-
-
-#register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn, #edit-listing-btn, #image_upload {
+#register-btn, #login-btn, #create-listing-btn, input[type=file]::file-selector-button, #forgot-btn, #reset-btn, .edit-listing-btn {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6.5rem;
@@ -169,12 +159,9 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     border: none;
     color: white;
 }
-#profile_upload {
-    margin-left: 23px;
-}
 
-#image_upload {
-    margin-left: .75rem;
+#profile_upload, #image_upload, .image_upload {
+    width: 14rem;
 }
 
 
@@ -196,12 +183,12 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 9rem;
 }
 
-#edit-listing-form > label {
+.edit-listing-form > label {
     width: 6rem;
     color: white;
 }
 
-#edit-listing-form > p {
+.edit-listing-form > p {
     display:inline;
     width: 9rem;
 }
@@ -437,8 +424,16 @@ textarea, select {
     margin-left: .5rem;
 }
 
-#edit-listing-form>h1 {
+#create-listing-form>label {
+    text-align: start;
+}
+
+.edit-listing-form>h1 {
     text-align: center;
+}
+
+.edit-listing-form>label {
+    text-align: start;
 }
 
 .browse-btn {
@@ -525,13 +520,16 @@ textarea, select {
     #image_upload {
         margin-left: .3rem;
     }
+    .image_upload {
+        margin-left: .3rem;
+    }
 }
 @media (max-width: 376px) {
-    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, #edit-listing-form > input, #edit-listing-form > select, #edit-listing-form > textarea {
+    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, .edit-listing-form > input, .edit-listing-form > select, .edit-listing-form > textarea {
         margin-left: 3.5rem;
     }
     #create-listing-btn {
-        margin-left: 2.9rem;
+        margin-left: 2rem;
     }
     .view-overlay-container {
         width:90%;
@@ -540,7 +538,7 @@ textarea, select {
 }
 
 @media (max-width: 396px) {
-    #edit-listing-btn {
+    .edit-listing-btn {
         margin-left: 2.3rem;
     }
 
@@ -625,13 +623,7 @@ textarea, select {
     background-position: center;
     overflow:hidden
 }
-.about-avatar>#profile_upload {
-    width: 36px;
-    height: 36px;
-    font-size: 27px;
-    line-height: 22px;
-    margin-top: 195px;
-    margin-left: -60px;
+#edit_profile_upload {
     display: none;
 }
 #edit-profile-btns {

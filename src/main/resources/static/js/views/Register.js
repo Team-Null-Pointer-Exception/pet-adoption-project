@@ -1,7 +1,6 @@
 import CreateView from "../createView.js"
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
 
 export default function Register(props) {
@@ -102,7 +101,8 @@ export default function Register(props) {
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
                     <br>   
-                    <button id="profile_upload"  type="button" class="text-white imageUploadToggle">Set Picture</button>                                                                        
+ 
+                    <input type="file" id="profile_upload" name="file" />                                                                      
                     <button id="register-btn" type="button">Register</button>
                     <p id="register-response">Passwords do not match. Please try again.</p>  
                 </form>
@@ -112,31 +112,45 @@ export default function Register(props) {
 `;
 }
 
+
 export function RegisterEvent() {
     UploadEvent()
     RegisterEventListener()
 }
 
-let apiKey = token().fileKey
 
+
+let filename = ""
 let imgURL = ""
 function UploadEvent() {
-    $('#profile_upload').click(function () {
-        const client = filestack.init(apiKey);
-        const options = {
-            onFileUploadFinished: callback => {
-                imgURL = callback.url
-            }
+    $('#profile_upload').change(function () {
+        let file = $("#profile_upload").prop('files')[0]
+        filename = file.name
+        let formData = new FormData();
+        formData.append('file', file)
+        const request = {
+            method: 'POST',
+            body: formData
         }
-        client.picker(options).open();
+        fetch(`${baseUri}/api/users/upload`, request)
+            .then(response => {
+                console.log(response.status);
+                filename = file.name
+                imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                return imgURL
+            }).catch(error => {
+            console.log(error);
+        });
     })
 }
+
 
 
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
         let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
+        console.log(imgURL)
         if(password === confirmPassword) {
             console.log("confirmed")
             let newUser = {
@@ -155,18 +169,18 @@ function RegisterEventListener(){
                 stories: []
             }
 
-        let request = {
-            method: "POST",
-            headers: getHeaders(),
-            body: JSON.stringify(newUser)
-        }
+            let request = {
+                method: "POST",
+                headers: getHeaders(),
+                body: JSON.stringify(newUser)
+            }
             console.log(request)
-        // send request
-        fetch(`${baseUri}/api/users/create`, request)
-            .then(response => {
-                console.log(response.status);
-                CreateView("/");
-            }).catch(error => {
+            // send request
+            fetch(`${baseUri}/api/users/create`, request)
+                .then(response => {
+                    console.log(response.status);
+                    CreateView("/");
+                }).catch(error => {
                 console.log(error);
                 createView("/");
             });

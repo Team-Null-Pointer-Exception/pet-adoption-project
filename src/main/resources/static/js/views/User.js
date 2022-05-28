@@ -1,6 +1,5 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js"
 import CreateView from "../createView.js";
 import {baseUri} from "../fetchData.js";
 
@@ -11,13 +10,12 @@ export default function UserIndex(props) {
 
     if (props.user.organization !== ""){
         orgHTML = `
-            <div className="media">
+            <div class="media">
             <label>Organization</label>
             <p>${props.user.organization}</p>
             </div>
             `
     }
-
     return `
     <!DOCTYPE html>
         <main>
@@ -28,12 +26,13 @@ export default function UserIndex(props) {
                             <div class="col-lg-6">
                                 <div class="about-avatar">
                                     <img id="profile_img" src="${props.user.profileImg}" title="profile" alt="profile">
-                                    <a class="btn rounded-circle text-center view-close-btn px-0 imageUploadToggle" id="profile_upload" href="#">+</a>
+                                    <br>
+                                    <input type="file" id="edit_profile_upload" name="file" />  
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="about-text go-to">
-                                    <h3 class="dark-color">User Profile</h3>
+                                    <h3 class="dark-color">My Profile</h3>
                                     <div class="row about-list">
                                         <div class="col-md-6">
                                             <div class="media">
@@ -207,8 +206,8 @@ export default function UserIndex(props) {
     <div class="sharethis-sticky-share-buttons"></div>
     <div class="row">
         <div class="col-xs-12 col-lg-6 listing-main">
-             <h3 class="overlay-text text-center">Pet name: ${listing.name}</h3>
-             <img class="listing-image-large" src=${listing.images[0]} alt="pet"/>
+             <h3 class="overlay-text text-center">Name: ${listing.name}</h3>
+             <img class="listing-image-large" src=${listing.images} alt="pet"/>
              </div>
                    <div class="col-xs-12 col-lg-6 container container-overlay-details">
                         <h3 class="overlay-text text-center">${listing.animal}</h3>
@@ -243,46 +242,47 @@ export default function UserIndex(props) {
             <div class="card edit-listing-card">
             <a class="btn rounded-circle mt-2 ml-1 edit-close-button px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>  
             <div class="d-flex justify-content-center align-items-center">
-                <form id="edit-listing-form" name="edit-listing-form">
+                <form class="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" value=${listing.name} />
+                    <label for="name-${listing.id}">Name</label>
+                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="20" value=${listing.name}>
                     <br>
-                    <label for="animal">Animal</label>
-                    <input id="animal" name="animal" type="text" value=${listing.animal} />
+                    <label for="animal-${listing.id}">Animal</label>
+                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="20" value=${listing.animal}>
                     <br>
-                    <label for="breed">Breed</label>
-                    <input id="breed" name="breed" type="text" value=${listing.breed} />
+                    <label for="breed-${listing.id}">Breed</label>
+                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="20" value=${listing.breed}>
                     <br>
-                    <label for="color">Color</label>
-                    <input id="color" name="color" type="text" value=${listing.color} />
+                    <label for="color-${listing.id}">Color</label>
+                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="20" value=${listing.color}>
                     <br>
-                    <label for="age">Age</label>
-                    <input id="age" name="age" type="text" value=${listing.age} />
+                    <label for="age-${listing.id}">Age</label>
+                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="20" value=${listing.age}>
                     <br>
-                    <label for="sex">Sex</label>
-                    <select id="sex">
+                    <label for="sex-${listing.id}">Sex</label>
+                    <select id="sex-${listing.id}">
                       <option>Male</option>
                       <option>Female</option>
+                      <option>Unknown</option>
                     </select>
                     <br>
-                    <label for="health">Health</label>
-                    <input id="health" name="health" type="text" value=${listing.health} />
+                    <label for="health-${listing.id}">Health</label>
+                    <textarea id="health-${listing.id}" name="health-${listing.id}" type="text" maxlength="100">${listing.health}</textarea>
                     <br>
-                    <label for="fixed">Fixed</label>
-                    <select id="fixed">
+                    <label for="fixed-${listing.id}">Fixed</label>
+                    <select id="fixed-${listing.id}">
                       <option>True</option>
                       <option>False</option>
                     </select>
                     <br>
-                    <label class="align-top" id="descrip-label" for="description">Description</label>
-                    <textarea id="description" name="description" rows="2" placeholder="Pet description">${listing.description}</textarea>
+                    <label class="align-top" id="descrip-label-${listing.id}" for="description-${listing.id}">Description</label>
+                    <textarea id="description-${listing.id}" name="description-${listing.id}" rows="2" maxlength="255" placeholder="Pet description">${listing.description}</textarea>
                     <br>
-                    <label class="align-top" for="summary">Summary</label>
-                    <textarea id="summary" name="summary" rows="3" placeholder="Listing information">${listing.summary}</textarea>
-                    <br>           
-                    <button id="image_upload" type="button" class="text-white imageUploadToggle">Uploads</button>                                                                      
-                    <button id="edit-listing-btn" data-id="${listing.id}" type="button">Submit</button>
+                    <label class="align-top" for="summary-${listing.id}">Summary</label>
+                    <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="2" maxlength="100" placeholder="Listing information">${listing.summary}</textarea>
+                    <br>     
+                    <input type="file" class="image_upload" name="file" />                                                                            
+                    <button class="edit-listing-btn btn-primary" data-id="${listing.id}" type="button">Submit</button>
                 </form>
                 </div>
             </div>
@@ -378,14 +378,11 @@ function closeDeleteOverlay() {
 
 function deleteListing() {
     $('.delete-listing-submit-btn').click(function () {
-
         let id = this.getAttribute('data-id')
-
         let request = {
             method: "DELETE",
             headers: getHeaders()
         }
-
         fetch(`${baseUri}/api/listings/${id}`, request)
             .then(res => {
                 console.log(res.status);
@@ -394,7 +391,6 @@ function deleteListing() {
                 console.log(error);
                 createView("/users");
         });
-
     })
 }
 
@@ -415,19 +411,15 @@ function hideEditPassword(){
 
 function editPassword(){
     $('#edit-password-submit-btn').click(function(){
-
         let password = $("#edit-password").val()
         let confirmPassword = $("#edit-confirmPassword").val()
         let newPassword = ""
         if(password === confirmPassword) {
-
             newPassword = $('#edit-password').val();
-
             let request = {
                 method: "PUT",
                 headers: getHeaders()
             }
-
             fetch(`${baseUri}/api/users/me/updatePassword?newPassword=${newPassword}`, request)
                 .then(res => {
                     console.log(res.status);
@@ -447,33 +439,46 @@ function editPassword(){
 function showEditUser(){
     $('#edit-profile-btn').click(function(){
         $('#edit-profile-info').css({display: "inline-block"});
-        $('.about-avatar>#profile_upload').css({display: "inline-block"});
+        $('.about-avatar>#edit_profile_upload').css({display: "inline-block"});
     })
 }
 
 function hideEditUser(){
     $('#edit-profile-cancel-btn').click(function(){
         $('#edit-profile-info').css({display: "none"});
-        $('.about-avatar>#profile_upload').css({display: "none"});
+        $('.about-avatar>#edit_profile_upload').css({display: "none"});
     })
 }
 
+let filename = ""
 let imgURL = ""
 function uploadEvent() {
-    $('#profile_upload').click(function () {
-        const client = filestack.init(apiKey);
-        const options = {
-            onFileUploadFinished: callback => {
-                imgURL = callback.url
-            }
+    $('#edit_profile_upload').change(function (e) {
+        let file = $(this).prop('files')[0]
+        console.log(file)
+        filename = file.name;
+        console.log(filename)
+        let formData = new FormData();
+        formData.append('file', file)
+        const request = {
+            method: 'POST',
+            body: formData
         }
-        client.picker(options).open();
+        fetch(`${baseUri}/api/users/upload`, request)
+            .then(response => {
+                console.log(response.status);
+                filename = file.name
+                imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                return imgURL
+            }).catch(error => {
+            console.log(error);
+        });
     })
 }
 
 function editUser(){
     $('#edit-profile-submit-btn').click(function(){
-
+        console.log(imgURL)
         let username = $("#edit-username").val().trim();
         let email = $("#edit-email").val().trim();
         let firstName = $("#edit-firstName").val().trim();
@@ -490,7 +495,7 @@ function editUser(){
         } else {
             profileImg = imgURL;
         }
-
+        console.log(profileImg)
         if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
             city !== "" && state !== "" && zip !== "" && phone !== "") {
 
@@ -513,8 +518,8 @@ function editUser(){
                 headers: getHeaders(),
                 body: JSON.stringify(editUser)
             }
-
-            fetch("${baseUri}/api/users/me/updateUser", request)
+            console.log(request)
+            fetch(`${baseUri}/api/users/me/updateUser`, request)
                 .then(response => {
                     console.log(response.status);
                     CreateView("/users");
@@ -567,7 +572,6 @@ export function UsersEvent(){
     closeViewOverlay()
     EditListingsEvent()
     AddFileEvent()
-    fileStackSetUp()
     getUserRole()
     getUser()
     uploadEvent();
@@ -575,45 +579,63 @@ export function UsersEvent(){
     closeDeleteOverlay();
 }
 
-let apiKey = token().fileKey
-let imageArray = []
-let fileStackClient = null
-
-function fileStackSetUp() {
-    fileStackClient = filestack.init(apiKey);
-}
-
+let editImg = ""
+let editImgURL = ""
 
 function AddFileEvent(){
-    $('#image_upload').click(function (event) {
-        event.preventDefault()
-        const options = {
-            onFileUploadFinished: callback => {
-                const imgURL = callback.url
-                imageArray.push(imgURL)
-                console.log(imageArray)
-            }
+    $('.image_upload').change(function (e) {
+        let file = $(this).prop('files')[0]
+        editImg = file.name
+        let formData = new FormData();
+        formData.append('file', file)
+        const request = {
+            method: 'POST',
+            body: formData
         }
-        fileStackClient.picker(options).open();
+        fetch(`${baseUri}/api/users/upload`, request)
+            .then(response => {
+                console.log(response.status);
+                editImg = file.name
+                editImgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${editImg}`
+                return editImgURL
+            }).catch(error => {
+            console.log(error);
+        });
     })
 }
 
 
 export function EditListingsEvent(){
-    $('#edit-listing-btn').click(function (e) {
+    $('.edit-listing-btn').click(function (e) {
         let id = e.target.getAttribute("data-id");
-        let editListing = {
-            summary: $("#summary").val(),
-            name: $("#name").val(),
-            animal: $("#animal").val(),
-            breed: $("#breed").val(),
-            sex: $("#sex").val(),
-            age: $("#age").val(),
-            color: $("#color").val(),
-            description: $("#description").val(),
-            fixed: $("#fixed").val(),
-            health: $("#health").val(),
-            images: imageArray
+        let editListing = {}
+        if(editImgURL === "") {
+            editListing = {
+                summary: $("#summary-" + id).val(),
+                name: $("#name-" + id).val(),
+                animal: $("#animal-" + id).val(),
+                breed: $("#breed-" + id).val(),
+                sex: $("#sex-" + id).val(),
+                age: $("#age-" + id).val(),
+                color: $("#color-" + id).val(),
+                description: $("#description-" + id).val(),
+                fixed: $("#fixed-" + id).val(),
+                health: $("#health-" + id).val(),
+            }
+        } else {
+            editListing = {
+                summary: $("#summary-" + id).val(),
+                name: $("#name-" + id).val(),
+                animal: $("#animal-" + id).val(),
+                breed: $("#breed-" + id).val(),
+                sex: $("#sex-" + id).val(),
+                age: $("#age-" + id).val(),
+                color: $("#color-" + id).val(),
+                description: $("#description-" + id).val(),
+                fixed: $("#fixed-" + id).val(),
+                health: $("#health-" + id).val(),
+                images: editImgURL
+            }
         }
         console.log(editListing)
         let request = {
@@ -625,11 +647,9 @@ export function EditListingsEvent(){
         fetch(`${baseUri}/api/listings/edit/${id}`, request)
             .then(res => {
                 console.log(res.status);
-                imageArray = []
                 createView("/users")
             }).catch(error => {
             console.log(error);
-            imageArray = []
             createView("/users");
         });
     })
