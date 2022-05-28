@@ -70,8 +70,8 @@ public class Listing {
     @JsonIgnoreProperties({"listings"})
     private User user;
 
-    @ElementCollection
-    private Collection<String> images;
+    @Column
+    private String images;
 
 
 }

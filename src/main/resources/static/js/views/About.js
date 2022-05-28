@@ -16,7 +16,7 @@ export default function About(props) {
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="images/patrick.quilty.jpg" alt="">
+                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/patrick.quilty.jpg" alt="">
                     <div class="card-body text-center p-0">
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Patrick Quilty</h5>
@@ -33,7 +33,7 @@ export default function About(props) {
             
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="../../images/brice-img.png" alt="">
+                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/brice-img.png" alt="">
                     <div class="card-body text-center p-0">
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Brice Ernst</h5>
@@ -50,7 +50,7 @@ export default function About(props) {
 
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="../../images/emilio-img.png" alt="">
+                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/emilio-img.png" alt="">
                     <div class="card-body text-center p-0">
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Emilio Benavides</h5>
@@ -68,7 +68,7 @@ export default function About(props) {
 
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="../../images/justin-img.png" alt="">
+                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/justin-img.png" alt="">
                     <div class="card-body text-center p-0">
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Justin Sixsmith</h5>

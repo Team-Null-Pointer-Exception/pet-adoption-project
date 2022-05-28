@@ -139,9 +139,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     resize: none;
 }
 
-#register-btn {
-    margin-left: 6.9rem;
-}
+
 #login-btn, #forgot-btn, #reset-btn {
     display: block;
     margin : 0 auto;
@@ -151,16 +149,8 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     display: none;
 }
 
-#create-listing-btn {
-    margin-left: 6.1rem;
-}
 
-.edit-listing-btn {
-    margin-left: 5.1rem;
-}
-
-
-#register-btn, #login-btn, #create-listing-btn, #profile_upload, #forgot-btn, #reset-btn, .edit-listing-btn, #image_upload, .image_upload {
+#register-btn, #login-btn, #create-listing-btn, input[type=file]::file-selector-button, #forgot-btn, #reset-btn, .edit-listing-btn {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6.5rem;
@@ -169,16 +159,9 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     border: none;
     color: white;
 }
-#profile_upload {
-    margin-left: 23px;
-}
 
-#image_upload {
-    margin-left: .75rem;
-}
-
-.image_upload {
-    margin-left: .75rem;
+#profile_upload, #image_upload, .image_upload {
+    width: 14rem;
 }
 
 
@@ -640,13 +623,7 @@ textarea, select {
     background-position: center;
     overflow:hidden
 }
-.about-avatar>#profile_upload {
-    width: 36px;
-    height: 36px;
-    font-size: 27px;
-    line-height: 22px;
-    margin-top: 195px;
-    margin-left: -60px;
+#edit_profile_upload {
     display: none;
 }
 #edit-profile-btns {

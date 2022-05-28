@@ -1,7 +1,6 @@
 import CreateView from "../createView.js"
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
 
 export default function Register(props) {
@@ -138,14 +137,14 @@ function UploadEvent() {
                 console.log(response.status);
                 filename = file.name
                 imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                return imgURL
             }).catch(error => {
             console.log(error);
         });
-        return filename
     })
 }
 
-// let imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+
 
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener

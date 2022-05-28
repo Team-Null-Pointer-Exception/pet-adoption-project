@@ -124,7 +124,7 @@ public class UserController {
             throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
-        helper.setFrom("takemypig.com", "TakeMyPig Support");
+        helper.setFrom("petadoptions.com", "Pet Adoptions Support");
         helper.setTo(recipientEmail);
         String subject = "Here's the link to reset your password";
         String content = "<html><p>Hello,</p><p>You have requested to reset your password.</p><p>Click the link below to change your password:</p><br><a href=\"" + link + "\">Change my password</a><br><p>Ignore this email if you do remember your password, or you have not made the request.</p></html>";

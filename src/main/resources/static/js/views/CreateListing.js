@@ -48,7 +48,7 @@ export default function CreateListing(props) {
                                 <label for="summary" id="create-summary-label">Summary</label>
                                 <textarea id="summary" class="align-top mt-0" name="summary" rows="3" maxlength="100" placeholder="(max 100 chars)"></textarea>
                                 <br>              
-                                <button id="image_upload" type="button class="text-white imageUploadToggle">Uploads</button>                                                                      
+                                <input type="file" id="image_upload" name="file"/>                                                                         
                                 <button id="create-listing-btn" type="button">Submit</button>
                             </form>
                       </div>
@@ -59,31 +59,34 @@ export default function CreateListing(props) {
 
 export function CreateEvents() {
     CreateListing();
-    fileStackSetUp()
     AddFileEvent();
     CreateListingsEvent()
 }
 
-let apiKey = token().fileKey
-let imageArray = []
-let fileStackClient = null
 
-function fileStackSetUp() {
-    fileStackClient = filestack.init(apiKey);
-}
 
+let filename = ""
+let imgURL = ""
 
 function AddFileEvent() {
-    $('#image_upload').click(function (event) {
-        event.preventDefault()
-        const options = {
-            onFileUploadFinished: callback => {
-                const imgURL = callback.url
-                imageArray.push(imgURL)
-                console.log(imageArray)
-            }
+    $('#image_upload').change(function () {
+        let file = $("#image_upload").prop('files')[0]
+        filename = file.name
+        let formData = new FormData();
+        formData.append('file', file)
+        const request = {
+            method: 'POST',
+            body: formData
         }
-        fileStackClient.picker(options).open();
+        fetch(`${baseUri}/api/users/upload`, request)
+            .then(response => {
+                console.log(response.status);
+                filename = file.name
+                imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                return imgURL
+            }).catch(error => {
+            console.log(error);
+        });
     })
 }
 
@@ -101,7 +104,7 @@ function CreateListingsEvent() {
             description: $("#description").val(),
             fixed: $("#fixed").val(),
             health: $("#health").val(),
-            images: imageArray
+            images: imgURL
         }
         console.log(newListing)
         let request = {
@@ -109,15 +112,12 @@ function CreateListingsEvent() {
             headers: getHeaders(),
             body: JSON.stringify(newListing)
         }
-
         fetch(`${baseUri}/api/listings`, request)
             .then(res => {
                 console.log(res.status);
-                imageArray = []
                 createView("/users")
             }).catch(error => {
             console.log(error);
-            imageArray = []
             createView("/users");
         });
     })

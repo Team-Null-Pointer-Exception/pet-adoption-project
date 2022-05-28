@@ -14,7 +14,7 @@ export default function Home(props) {
     }
     return `
 <div class="container-fluid p-0">
-    <img class="d-block w-100 hero" src="images/IMG_0339.jpeg" alt="girl with horse">
+    <img class="d-block w-100 hero" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/IMG_0339.jpeg" alt="girl with horse">
     <h1 class="hero-text text-white">Find your new best friend today</h1>
     <div class="buttonRow"> 
          <a href="/listings" class="btn btn-lg btn-primary browse-btn" data-link>Browse Pets</a>
