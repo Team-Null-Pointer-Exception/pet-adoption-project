@@ -9,6 +9,7 @@ public class PetAdoptionProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PetAdoptionProjectApplication.class, args);
+
     }
 
 }

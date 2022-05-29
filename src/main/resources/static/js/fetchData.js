@@ -6,6 +6,8 @@
  */
 // export const baseUri = "https://team-npe.fulgentcorp.com:8080/";
 export const baseUri = "http://localhost:8080";
+let appID = `tHrV6yIW`
+let secret = `sk_test_qqweuai9ImHL5CmCEz2pDOr25oWIXLaP`
 
 
 export default function fetchData(state, request) {

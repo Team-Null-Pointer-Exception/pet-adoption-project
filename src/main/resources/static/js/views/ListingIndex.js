@@ -2,13 +2,18 @@ import createView from "../createView.js";
 import {getHeaders, getUserRole} from "../auth.js";
 import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
+import {isLoggedIn} from "../auth.js";
 
 let apiKey = token().googleKey
 
-let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings, zips;
+let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings, user;
 
 
 export default function ListingIndex(props) {
+    let loggedIn = isLoggedIn()
+    if(loggedIn) {
+        user = props.user
+    }
     let lat = sessionStorage.getItem('lat')
     let lng = sessionStorage.getItem('lng')
     let origin = [lat, lng]
@@ -39,7 +44,6 @@ export default function ListingIndex(props) {
         .catch(function (error) {
             console.log(error);
         });
-
 
     //language=HTML
     return `
@@ -92,6 +96,7 @@ export default function ListingIndex(props) {
                 </section>
             </div>
         </main>
+        <div id="talkjs-container"></div>
     `;
 }
 let distances = []
@@ -131,6 +136,7 @@ export function ListingsEvent() {
     closeOverlay();
     newSelections();
     changeStatus();
+    chatListener()
 }
 
 function grabSelections() {
@@ -205,6 +211,7 @@ function filterSelections() {
     detailsListener();
     closeOverlay();
     changeStatus();
+    chatListener();
 }
 
 function sortDistance(selectedDistance, listings) {
@@ -218,7 +225,7 @@ function sortDistance(selectedDistance, listings) {
 
 
 export function populateCards(filteredListings) {
-    //language=HTML
+    chatListener();
     return `
         ${filteredListings.map(listing =>
                 `
@@ -255,8 +262,6 @@ export function populateCards(filteredListings) {
 }
 
 function autoExpire() {
-    console.log("changing status");
-
     activeListings.forEach(listing => {
         let listingDate = listing.createdAt;
         let today = new Date();
@@ -309,7 +314,6 @@ function addNewBadge(listing) {
     if (listingDate < threeDaysAgo) {
         return '';
     } else {
-        //language=HTML
         return `
             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> New</div>`;
     }
@@ -382,22 +386,10 @@ export function populateOverlay(listing) {
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
-                                        <li>Contact Options:</li>
+                                        <li>Contact:</li>
                                     </ul>
                                     <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 ml-2 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="imessage://${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-sms"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="mailto:${listing.user.email}"
-                                           target="_blank"><i class="far fa-envelope"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 mr-2 px-0 allow"
-                                           style="width: 36px; height: 36px;"
-                                           href="facetime-audio:${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-phone"></i></a>
-                                        <a class="btn btn-outline-primary rounded-circle text-center mt-0 mb-3 px-0 allow"
-                                           style="width: 36px; height: 36px;" href="facetime:${listing.user.phone}"
-                                           target="_blank"><i class="fas fa-video"></i></a>
+                                        <button class="btn-getInTouch" data-id="${listing.user.id}" data-name="${listing.user.username}" data-email="${listing.user.email}" data-pic="${listing.user.profileImg}">Contact</button>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-lg-7" id="map">
@@ -530,9 +522,10 @@ function changeStatus() {
 }
 
 function detailsListener() {
-    $(".details-btn").click(function (e) {
+    $(".details-btn").click(function () {
         let id = $(this).data("id");
         $("#overlay-" + id).css({display: "block"})
+        chatListener(user);
     })
 }
 
@@ -544,6 +537,55 @@ function closeOverlay() {
     })
 }
 
+let popup;
+function chatListener(user) {
+    $('.btn-getInTouch').click(async function (e) {
+        let loggedIn = isLoggedIn();
+        let listerID = $(this).data("id");
+        let listerName = $(this).data("name")
+        let listerEmail = $(this).data("email")
+        let listerPic = $(this).data("pic")
+        console.log(listerName)
+        console.log(user.username)
+        if (loggedIn) {
+        await Talk.ready;
+            const me = new Talk.User({
+                id: user.id,
+                name: user.username,
+                email: user.email,
+                photoUrl: user.profileImg,
+                welcomeMessage: 'Hello, I would like to inquire about your pet listing',
+            });
+            const session = new Talk.Session({
+                appId: 'tHrV6yIW',
+                me: me,
+            });
+            const other = new Talk.User({
+                id: listerID,
+                name: listerName,
+                email: listerEmail,
+                photoUrl: listerPic,
+            });
+            const conversation = session.getOrCreateConversation(
+                Talk.oneOnOneId(me, other)
+            );
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            if (popup) {
+                 popup.show(); //in case popup is hidden
+                 popup.select(conversation);
+                    //select the conversation clicked on
+                } else {
+                    //if there is no existing popup, create one
+                    popup = session.createPopup();
+                    popup.select(conversation);
+                    popup.mount({show: true});
+                }
+        } else {
+            createView("/login")
+        }
+    })
+}
 
 
 

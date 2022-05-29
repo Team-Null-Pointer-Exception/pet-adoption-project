@@ -19,13 +19,18 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -174,6 +179,26 @@ public class UserController {
     public String saveNewFile(@RequestParam(value="file") MultipartFile file) {
         String fileName = service.uploadFile(file);
         return fileName;
+    }
+
+    public static String verifyUser() {
+        String verifification = "";
+        try {
+            String key = "sk_test_qqweuai9ImHL5CmCEz2pDOr25oWIXLaP";
+            String appID = "tHrV6yIW";
+            String userID = "12345";
+
+            Mac hasher = Mac.getInstance("HmacSHA256");
+            hasher.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
+
+            byte[] hash = hasher.doFinal(userID.getBytes());
+
+            // to HEX(Base16)
+            verifification = DatatypeConverter.printHexBinary(hash);
+        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
+            System.out.println(e);
+        }
+        return verifification;
     }
 
 
