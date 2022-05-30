@@ -17,7 +17,7 @@ export default function Register(props) {
                     <input id="email" name="email" type="email">
                     <br>
                     <label for="initialPassword">Password</label>
-                    <input id="initialPassword" name="password" type="password"/>
+                    <input id="initialPassword" name="password" type="password" pattern=“(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}” title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters” required/>
                     <br>
                     <label for="confirmPassword">Confirm Password</label>
                     <input id="confirmPassword" name="confirmPassword" type="password"/>
@@ -100,11 +100,9 @@ export default function Register(props) {
                     <br> 
                     <label for="phone">Phone Number</label>
                     <input id="phone" name="phone" type="text"/>
-                    <br>   
-           
+                    <br>             
                     <input type="file" id="profile_upload" name="file" />                                                                      
-                    <button id="register-btn" type="button">Register</button>
-                    <p id="register-response">Passwords do not match. Please try again.</p>  
+                    <button id="register-btn" type="button">Register</button>          
                 </form>
             </div>
         </div>
@@ -151,41 +149,54 @@ function RegisterEventListener(){
         let password = $("#initialPassword").val()
         let confirmPassword = $("#confirmPassword").val()
         console.log(imgURL)
-        if(password === confirmPassword) {
-            console.log("confirmed")
-            let newUser = {
-                username: $("#username").val(),
-                email: $("#email").val(),
-                password: password,
-                firstName: $("#firstName").val(),
-                lastName: $("#lastName").val(),
-                organization: $("#organization").val(),
-                street: $("#street").val(),
-                city: $("#city").val(),
-                state: $("#state").val(),
-                zip: $("#zip").val(),
-                phone: $("#phone").val(),
-                profileImg: imgURL,
-                stories: []
-            }
+        if(CheckPassword(password)) {
+            if (password === confirmPassword && CheckPassword(password)) {
+                console.log("confirmed")
+                let newUser = {
+                    username: $("#username").val(),
+                    email: $("#email").val(),
+                    password: password,
+                    firstName: $("#firstName").val(),
+                    lastName: $("#lastName").val(),
+                    organization: $("#organization").val(),
+                    street: $("#street").val(),
+                    city: $("#city").val(),
+                    state: $("#state").val(),
+                    zip: $("#zip").val(),
+                    phone: $("#phone").val(),
+                    profileImg: imgURL,
+                    stories: []
+                }
 
-            let request = {
-                method: "POST",
-                headers: getHeaders(),
-                body: JSON.stringify(newUser)
+                let request = {
+                    method: "POST",
+                    headers: getHeaders(),
+                    body: JSON.stringify(newUser)
+                }
+                console.log(request)
+                // send request
+                fetch(`${baseUri}/api/users/create`, request)
+                    .then(response => {
+                        console.log(response.status);
+                        CreateView("/");
+                    }).catch(error => {
+                    console.log(error);
+                    createView("/");
+                });
             }
-            console.log(request)
-            // send request
-            fetch(`${baseUri}/api/users/create`, request)
-                .then(response => {
-                    console.log(response.status);
-                    CreateView("/");
-                }).catch(error => {
-                console.log(error);
-                createView("/");
-            });
         } else {
-            $("#register-response").css({display: "block"});
+            alert('Password does not match')
         }
     })
+}
+
+function CheckPassword(inputtxt) {
+    let passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+    if(inputtxt.match(passw))
+    {
+        return true;
+    } else {
+        alert('Password must be 6 to 15 characters and contain at least one numeric digit, one uppercase and one lowercase letter')
+        return false;
+    }
 }
