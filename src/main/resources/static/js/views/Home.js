@@ -1,7 +1,17 @@
 import {isLoggedIn} from "../auth.js";
 import {populateCards} from "./ListingIndex.js";
+import {chatListener} from "./ListingIndex.js";
+import token from "../keys.js";
+
+let user, popup;
+let chatKey = token().talkJSKey;
+
 
 export default function Home(props) {
+    let loggedIn = isLoggedIn()
+    if(loggedIn) {
+        user = props.user
+    }
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
     if (recentListings.length >= 4) {
@@ -70,6 +80,7 @@ function detailsListener() {
     $(".details-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "block"})
+        chatListener(user);
     })
 }
 

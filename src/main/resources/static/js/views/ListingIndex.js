@@ -5,6 +5,7 @@ import {baseUri} from "../fetchData.js";
 import {isLoggedIn} from "../auth.js";
 
 let apiKey = token().googleKey
+let chatKey = token().talkJSKey
 
 let allListings, activeListings, listingStatus, animalType, gender, distance, filteredListings, user;
 
@@ -136,7 +137,6 @@ export function ListingsEvent() {
     closeOverlay();
     newSelections();
     changeStatus();
-    chatListener()
 }
 
 function grabSelections() {
@@ -211,7 +211,6 @@ function filterSelections() {
     detailsListener();
     closeOverlay();
     changeStatus();
-    chatListener();
 }
 
 function sortDistance(selectedDistance, listings) {
@@ -225,7 +224,6 @@ function sortDistance(selectedDistance, listings) {
 
 
 export function populateCards(filteredListings) {
-    chatListener();
     return `
         ${filteredListings.map(listing =>
                 `
@@ -538,15 +536,13 @@ function closeOverlay() {
 }
 
 let popup;
-function chatListener(user) {
+export function chatListener(user) {
     $('.btn-getInTouch').click(async function (e) {
         let loggedIn = isLoggedIn();
         let listerID = $(this).data("id");
         let listerName = $(this).data("name")
         let listerEmail = $(this).data("email")
         let listerPic = $(this).data("pic")
-        console.log(listerName)
-        console.log(user.username)
         if (loggedIn) {
         await Talk.ready;
             const me = new Talk.User({
@@ -557,7 +553,7 @@ function chatListener(user) {
                 welcomeMessage: 'Hello, I would like to inquire about your pet listing',
             });
             const session = new Talk.Session({
-                appId: 'tHrV6yIW',
+                appId: chatKey,
                 me: me,
             });
             const other = new Talk.User({

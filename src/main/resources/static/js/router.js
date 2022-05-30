@@ -37,7 +37,9 @@ export default function router(URI) {
             returnView: Home,
             state: {
                 listings: '/api/listings',
-                stories: '/api/stories'
+                stories: '/api/stories',
+                user: '/api/users/me',
+                users: '/api/users/'
             },
             uri: '/',
             title: 'Home',
