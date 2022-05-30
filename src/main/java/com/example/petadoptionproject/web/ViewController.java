@@ -13,6 +13,9 @@ public class ViewController {
     @Value("${googleAPIKey}")
     private String googleAPIKey;
 
+    @Value("${talkJSKey}")
+    private String talkJSKey;
+
     @RequestMapping({"/", "/about", "/login", "/logout","/home", "/users", "/admin", "/loading", "/listings", "/create", "/register", "/reset", "/admin", "/forgot"})
     public String showView(){
         return "forward:/index.html";
@@ -23,7 +26,7 @@ public class ViewController {
     public String apikey() {
         // add more export functions and key args as you need them
         return String.format("export default function token() {\n" +
-                "    return {googleKey: `%s`};\n" +
-                "}", googleAPIKey);
+                "    return {googleKey: `%s`, talkJSKey: `%s` };\n" +
+                "}", googleAPIKey, talkJSKey);
     }
 }

@@ -148,9 +148,12 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 #password-response {
     display: none;
 }
+.__talkjs_launcher {
+    background-color: #ED6436!important;
+}
 
 
-#register-btn, #login-btn, #create-listing-btn, input[type=file]::file-selector-button, #forgot-btn, #reset-btn, .edit-listing-btn {
+#register-btn, #login-btn, #create-listing-btn, input[type=file]::file-selector-button, #forgot-btn, #reset-btn, .edit-listing-btn, .btn-getInTouch {
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 6.5rem;
@@ -921,11 +924,6 @@ ul {
     border-radius: 50%;
     animation: rotate 600ms infinite linear;
 }
-
-/*#create-summary-label {*/
-/*    margin-top: 1em;*/
-/*}*/
-
 
 
 /*Admin View*/

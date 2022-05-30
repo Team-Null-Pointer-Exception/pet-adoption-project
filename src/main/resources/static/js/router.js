@@ -37,7 +37,9 @@ export default function router(URI) {
             returnView: Home,
             state: {
                 listings: '/api/listings',
-                stories: '/api/stories'
+                stories: '/api/stories',
+                user: '/api/users/me',
+                users: '/api/users/'
             },
             uri: '/',
             title: 'Home',
@@ -85,7 +87,9 @@ export default function router(URI) {
         '/listings': {
             returnView: ListingIndex,
             state: {
-                listings: '/api/listings'
+                listings: '/api/listings',
+                user: '/api/users/me',
+                users: '/api/users/'
             },
             uri: '/listings',
             title: 'All Listings',
