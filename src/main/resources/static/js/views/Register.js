@@ -102,7 +102,9 @@ export default function Register(props) {
                     <input id="phone" name="phone" type="text"/>
                     <br>             
                     <input type="file" id="profile_upload" name="file" />                                                                      
-                    <button id="register-btn" type="button">Register</button>          
+                    <button id="register-btn" type="button">Register</button>       
+                    <br>
+                    <a href="/login" id="login-link" data-link>Already have an account? Sign in</a>   
                 </form>
             </div>
         </div>

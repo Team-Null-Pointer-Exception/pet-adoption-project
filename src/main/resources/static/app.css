@@ -89,13 +89,20 @@ body {
 #forgot-link {
     margin-left: .5rem;
 }
+#register-link {
+    margin-left: 2.8rem;
+}
+#login-link {
+    color: white;
+    margin-left: 3.1rem;
+}
 
 
 label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #register-form>label, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form>label, .edit-listing-form>h1,
+#register-form>h1, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form>label, .edit-listing-form>h1,
 #forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2 {
     text-align: center;
 }
