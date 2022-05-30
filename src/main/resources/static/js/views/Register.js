@@ -190,7 +190,7 @@ function RegisterEventListener(){
     })
 }
 
-function CheckPassword(inputtxt) {
+export function CheckPassword(inputtxt) {
     let passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
     if(inputtxt.match(passw))
     {
