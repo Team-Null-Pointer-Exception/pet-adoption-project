@@ -16,6 +16,8 @@ export default function Login(props) {
                 <input id="login-btn" type="submit" class="mt-2" value="Log In"/>
                 <a href="/forgot"  id="forgot-link" data-link>  Forgot your password?</a>
                 <br>
+                <a href="/register" id="register-link" data-link>Register now</a>
+                <br>
                 <p id="login-response">Login failed. Please try again.</p>
             </form>
         </div>

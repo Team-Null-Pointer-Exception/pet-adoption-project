@@ -1,6 +1,7 @@
 import {getHeaders} from "../auth.js";
 import createView from "../createView.js";
 import {baseUri} from "../fetchData.js";
+import {CheckPassword} from "./Register.js";
 
 
 export default function ResetPassword(props) {
@@ -33,22 +34,24 @@ export function ResetEvent() {
         let password = $("#new-password").val()
         let confirmPassword = $("#confirm-new-password").val()
         let newPassword = ""
-        if(password === confirmPassword) {
-            newPassword = $('#new-password').val();
-            let request = {
-                method: "PUT",
-                headers: getHeaders()
+        if(CheckPassword(password)) {
+            if (password === confirmPassword) {
+                newPassword = $('#new-password').val();
+                let request = {
+                    method: "PUT",
+                    headers: getHeaders()
+                }
+                fetch(`${baseUri}/api/users/reset?password=${newPassword}&token=${token}`, request)
+                    .then(res => {
+                        console.log(res.status);
+                        sessionStorage.clear();
+                        createView("/home");
+                    }).catch(error => {
+                    console.log(error);
+                });
+            } else {
+                $("#password-response").css({display: "block"});
             }
-            fetch(`${baseUri}/api/users/reset?password=${newPassword}&token=${token}`, request)
-                .then(res => {
-                    console.log(res.status);
-                    sessionStorage.clear();
-                    createView("/home");
-                }).catch(error => {
-                console.log(error);
-            });
-        } else {
-            $("#password-response").css({display: "block"});
         }
     })
 }

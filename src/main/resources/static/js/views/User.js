@@ -2,6 +2,7 @@ import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import CreateView from "../createView.js";
 import {baseUri} from "../fetchData.js";
+import {CheckPassword} from "./Register.js";
 
 
 export default function UserIndex(props) {
@@ -267,7 +268,7 @@ export default function UserIndex(props) {
                       <option>Unknown</option>
                     </select>
                     <br>
-                    <label for="health-${listing.id}">Health</label>
+                    <label for="health-${listing.id}" class="align-top">Health Issues</label>
                     <textarea id="health-${listing.id}" name="health-${listing.id}" type="text" maxlength="100">${listing.health}</textarea>
                     <br>
                     <label for="fixed-${listing.id}">Fixed</label>
@@ -415,24 +416,26 @@ function editPassword(){
         let password = $("#edit-password").val()
         let confirmPassword = $("#edit-confirmPassword").val()
         let newPassword = ""
-        if(password === confirmPassword) {
-            newPassword = $('#edit-password').val();
-            let request = {
-                method: "PUT",
-                headers: getHeaders()
-            }
-            fetch(`${baseUri}/api/users/me/updatePassword?newPassword=${newPassword}`, request)
-                .then(res => {
-                    console.log(res.status);
-                    // $('#edit-password-info').css({display: "none"});
-                    createView("/users");
-                }).catch(error => {
+        if(CheckPassword(password)) {
+            if (password === confirmPassword) {
+                newPassword = $('#edit-password').val();
+                let request = {
+                    method: "PUT",
+                    headers: getHeaders()
+                }
+                fetch(`${baseUri}/api/users/me/updatePassword?newPassword=${newPassword}`, request)
+                    .then(res => {
+                        console.log(res.status);
+                        // $('#edit-password-info').css({display: "none"});
+                        createView("/users");
+                    }).catch(error => {
                     console.log(error);
                     // $('#edit-password-info').css({display: "none"});
                     createView("/users");
-            });
-        } else {
-            $("#register-response").css({display: "block"});
+                });
+            } else {
+                $("#register-response").css({display: "block"});
+            }
         }
     })
 }
