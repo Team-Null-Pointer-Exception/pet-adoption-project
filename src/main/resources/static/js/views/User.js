@@ -102,6 +102,10 @@ export default function UserIndex(props) {
                                         <label for="edit-organization">Organization</label>
                                         <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
                                     </div>
+                                    <div>
+                                    <hr>
+                                        <p>Update profile image</p>
+                                    </div>
                                     <div class="media">
                                         <input type="file" id="edit_profile_upload" name="file" /> 
                                     </div>
@@ -185,8 +189,9 @@ export default function UserIndex(props) {
                                     </div>
                                 </div>
                             </form>
+                            <hr>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Submit Changes</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-submit-btn">Save Changes</button>
                             <p id="edit-user-response">Form incomplete. Please try again.</p>  
                         </div>
                         <div id="edit-password-info">
@@ -263,19 +268,19 @@ export default function UserIndex(props) {
                 <form class="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
                     <label for="name-${listing.id}">Name</label>
-                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="20" value=${listing.name}>
+                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="30" value=${listing.name}>
                     <br>
                     <label for="animal-${listing.id}">Animal</label>
-                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="20" value=${listing.animal}>
+                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="30" value=${listing.animal}>
                     <br>
                     <label for="breed-${listing.id}">Breed</label>
-                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="20" value=${listing.breed}>
+                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="30" value=${listing.breed}>
                     <br>
                     <label for="color-${listing.id}">Color</label>
-                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="20" value=${listing.color}>
+                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="30" value=${listing.color}>
                     <br>
                     <label for="age-${listing.id}">Age</label>
-                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="20" value=${listing.age}>
+                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="30" value=${listing.age}>
                     <br>
                     <label for="sex-${listing.id}">Sex</label>
                     <select id="sex-${listing.id}">
@@ -299,7 +304,7 @@ export default function UserIndex(props) {
                     <label class="align-top" for="summary-${listing.id}">Summary</label>
                     <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="2" maxlength="100" placeholder="Listing information">${listing.summary}</textarea>
                     <br>     
-                    <input type="file" class="image_upload" name="file" />                                                                            
+                    <input type="file" class="image_upload" name="file" />
                     <button class="edit-listing-btn btn-primary" data-id="${listing.id}" type="button">Submit</button>
                 </form>
                 </div>
@@ -347,19 +352,20 @@ export default function UserIndex(props) {
     `;
 }
 
-function newListingBtn(){
-    $('#new-listing-btn').click(function(){
+function newListingBtn() {
+    $('#new-listing-btn').click(function () {
         createView("/create")
     })
 }
 
 
-function viewListing(){
-    $('.listing-view').click(function(){
+function viewListing() {
+    $('.listing-view').click(function () {
         let id = this.getAttribute('data-id');
         $("#overlay-" + id).css({display: "block"})
     })
 }
+
 function closeViewOverlay() {
     $(".view-close-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
@@ -368,12 +374,13 @@ function closeViewOverlay() {
 }
 
 
-function editListing(){
-    $('.listing-edit').click(function(){
+function editListing() {
+    $('.listing-edit').click(function () {
         let id = this.getAttribute('data-id');
         $("#edit-overlay-" + id).css({display: "block"})
     })
 }
+
 function closeEditOverlay() {
     $(".edit-close-button").click(function (e) {
         let id = e.target.getAttribute("data-id")
@@ -381,12 +388,13 @@ function closeEditOverlay() {
     })
 }
 
-function showDeleteListing(){
-    $('.listing-delete').click(function(){
+function showDeleteListing() {
+    $('.listing-delete').click(function () {
         let id = this.getAttribute('data-id');
         $("#delete-overlay-" + id).css({display: "block"})
     })
 }
+
 function closeDeleteOverlay() {
     $(".delete-listing-cancel-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
@@ -406,20 +414,20 @@ function deleteListing() {
                 console.log(res.status);
                 createView("/users")
             }).catch(error => {
-                console.log(error);
-                createView("/users");
+            console.log(error);
+            createView("/users");
         });
     })
 }
 
-function showEditPassword(){
-    $('#edit-password-btn').click(function(){
+function showEditPassword() {
+    $('#edit-password-btn').click(function () {
         $('#edit-password-info').css({display: "inline-block"});
     })
 }
 
-function hideEditPassword(){
-    $('#edit-password-cancel-btn').click(function(){
+function hideEditPassword() {
+    $('#edit-password-cancel-btn').click(function () {
         $('#edit-password-info').css({display: "none"});
         $("#register-response").css({display: "none"});
         $("#edit-password").val("");
@@ -427,12 +435,12 @@ function hideEditPassword(){
     })
 }
 
-function editPassword(){
-    $('#edit-password-submit-btn').click(function(){
+function editPassword() {
+    $('#edit-password-submit-btn').click(function () {
         let password = $("#edit-password").val()
         let confirmPassword = $("#edit-confirmPassword").val()
         let newPassword = ""
-        if(CheckPassword(password)) {
+        if (CheckPassword(password)) {
             if (password === confirmPassword) {
                 newPassword = $('#edit-password').val();
                 let request = {
@@ -456,15 +464,15 @@ function editPassword(){
     })
 }
 
-function showEditUser(){
-    $('#edit-profile-btn').click(function(){
+function showEditUser() {
+    $('#edit-profile-btn').click(function () {
         $('#edit-profile-info').css({display: "inline-block"});
         $('#edit_profile_upload').css({display: "inline-block"});
     })
 }
 
-function hideEditUser(){
-    $('#edit-profile-cancel-btn').click(function(){
+function hideEditUser() {
+    $('#edit-profile-cancel-btn').click(function () {
         $('#edit-profile-info').css({display: "none"});
         $('#edit_profile_upload').css({display: "none"});
     })
@@ -472,6 +480,7 @@ function hideEditUser(){
 
 let filename = ""
 let imgURL = ""
+
 function uploadEvent() {
     $('#edit_profile_upload').change(function (e) {
         let file = $(this).prop('files')[0]
@@ -496,8 +505,8 @@ function uploadEvent() {
     })
 }
 
-function editUser(){
-    $('#edit-profile-submit-btn').click(function(){
+function editUser() {
+    $('#edit-profile-submit-btn').click(function () {
         console.log(imgURL)
         let username = $("#edit-username").val().trim();
         let email = $("#edit-email").val().trim();
@@ -544,8 +553,8 @@ function editUser(){
                     console.log(response.status);
                     CreateView("/users");
                 }).catch(error => {
-                    console.log(error);
-                    createView("/users");
+                console.log(error);
+                createView("/users");
             });
         } else {
             $("#edit-user-response").css({display: "block"});
@@ -569,14 +578,14 @@ function createStory() {
                 console.log(res.status);
                 createView("/users")
             }).catch(error => {
-                console.log(error);
-                createView("/users");
+            console.log(error);
+            createView("/users");
         });
 
     })
 }
 
-export function UsersEvent(){
+export function UsersEvent() {
     newListingBtn();
     viewListing();
     editListing();
@@ -602,7 +611,7 @@ export function UsersEvent(){
 let editImg = ""
 let editImgURL = ""
 
-function AddFileEvent(){
+function AddFileEvent() {
     $('.image_upload').change(function (e) {
         let file = $(this).prop('files')[0]
         editImg = file.name
@@ -625,11 +634,11 @@ function AddFileEvent(){
 }
 
 
-export function EditListingsEvent(){
+export function EditListingsEvent() {
     $('.edit-listing-btn').click(function (e) {
         let id = e.target.getAttribute("data-id");
         let editListing = {}
-        if(editImgURL === "") {
+        if (editImgURL === "") {
             editListing = {
                 summary: $("#summary-" + id).val(),
                 name: $("#name-" + id).val(),
@@ -678,7 +687,7 @@ export function EditListingsEvent(){
 
 export function getUserRole() {
     const accessToken = localStorage.getItem("access_token");
-    if(!accessToken) {
+    if (!accessToken) {
         return false;
     }
     const parts = accessToken.split('.');
@@ -690,7 +699,7 @@ export function getUserRole() {
 
 export function getUser() {
     const accessToken = localStorage.getItem("access_token");
-    if(!accessToken) {
+    if (!accessToken) {
         return false;
     }
     const parts = accessToken.split('.');

@@ -14,19 +14,19 @@ export default function CreateListing(props) {
                            <form id="create-listing-form" name="create-listing-form">
                                 <h1 class="text-white">Create A Listing</h1>
                                 <label for="name">Name</label>
-                                <input id="name" name="name" type="text" maxlength="20"/>
+                                <input id="name" name="name" type="text" maxlength="30"/>
                                 <br>
                                 <label for="animal">Animal Type</label>
-                                <input id="animal" name="animal" type="text" maxlength="20"/>
+                                <input id="animal" name="animal" type="text" maxlength="30"/>
                                 <br>
                                 <label for="breed">Breed</label>
-                                <input id="breed" name="breed" type="text" maxlength="20"/>
+                                <input id="breed" name="breed" type="text" maxlength="30"/>
                                 <br>
                                 <label for="color">Color</label>
-                                <input id="color" name="color" type="text" maxlength="20"/>
+                                <input id="color" name="color" type="text" maxlength="30"/>
                                 <br>
                                 <label for="age">Age</label>
-                                <input id="age" name="age" type="text" maxlength="20"/>
+                                <input id="age" name="age" type="text" maxlength="30"/>
                                 <br>
                                 <label for="sex">Sex</label>
                                 <select id="sex">
