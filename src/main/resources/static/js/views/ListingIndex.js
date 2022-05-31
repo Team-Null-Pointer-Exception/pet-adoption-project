@@ -416,14 +416,13 @@ export function populateOverlay(listing) {
                                     <ul>
                                         <li><strong>Breed</strong>: ${listing.breed}</li>
                                         <li><strong>Sex</strong>: ${listing.sex}</li>
-                                        <li><strong>Age</strong>: ${listing.age}</li>
                                         ${changeStatusMenu(listing)}
                                     </ul>
                                 </div>
                                 <div class="col-6">
                                     <ul>
+                                        <li><strong>Age</strong>: ${listing.age}</li>
                                         <li><strong>Color</strong>: ${listing.color}</li>
-                                        <li><strong>Health Issues</strong>: ${listing.health}</li>
                                         <li><strong>Fixed</strong>: ${listing.fixed}</li>
                                     </ul>
                                 </div>
@@ -431,6 +430,7 @@ export function populateOverlay(listing) {
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
                                     <p><strong>About</strong>: ${listing.description}</p>
+                                    <p><strong>Health Issues</strong>: ${listing.health}</p>
                                 </div>
                             </div>
                         </div>
