@@ -102,7 +102,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     color: white;
 }
 
-#register-form>h1, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form>label, .edit-listing-form>h1,
+#register-form>h1, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form label, .edit-listing-form h1,
 #forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2 {
     text-align: center;
 }
@@ -116,21 +116,21 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-top: 6.25rem;
 }
 
-#register-form>input, #login-form>input, #create-listing-form>input, .edit-listing-form>input, #reset-form>input, #forgot-form>input {
+#register-form>input, #login-form>input, #create-listing-form>input, .edit-listing-form input, #reset-form>input, #forgot-form>input {
     border: none!important;
     border-radius: 5px;
     margin-bottom: 1rem;
 }
 
-.edit-listing-form>select  {
+.edit-listing-form select  {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>select {
+#create-listing-form select {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>#summary {
+#create-listing-form #summary {
     margin-top: 1rem;
 }
 
@@ -142,7 +142,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     margin-bottom: 1rem;
 }
 
-#create-listing-form>textarea, .edit-listing-form>textarea {
+#create-listing-form textarea, .edit-listing-form textarea {
     resize: none;
 }
 
@@ -194,12 +194,12 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
     width: 9rem;
 }
 
-.edit-listing-form > label {
-    width: 7rem;
+.edit-listing-form label {
+    width: 5rem;
     color: white;
 }
 
-.edit-listing-form > p {
+.edit-listing-form p {
     display:inline;
     width: 9rem;
 }
@@ -440,11 +440,11 @@ textarea, select {
     text-align: start;
 }
 
-.edit-listing-form>h1 {
+.edit-listing-form h1 {
     text-align: center;
 }
 
-.edit-listing-form>label {
+.edit-listing-form label {
     text-align: start;
 }
 
@@ -537,8 +537,8 @@ textarea, select {
     }
 }
 @media (max-width: 376px) {
-    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, .edit-listing-form > input, .edit-listing-form > select, .edit-listing-form > textarea {
-        margin-left: 3rem;
+    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, .edit-listing-form input, .edit-listing-form select, .edit-listing-form textarea {
+        margin-left: 2rem;
     }
     #create-listing-btn {
         margin-left: 3rem;
