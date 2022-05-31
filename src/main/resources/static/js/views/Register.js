@@ -169,22 +169,23 @@ function RegisterEventListener(){
                     profileImg: imgURL,
                     stories: []
                 }
-
-                let request = {
-                    method: "POST",
-                    headers: getHeaders(),
-                    body: JSON.stringify(newUser)
-                }
-                console.log(request)
-                // send request
-                fetch(`${baseUri}/api/users/create`, request)
-                    .then(response => {
-                        console.log(response.status);
+                if(validateUser(newUser)) {
+                    let request = {
+                        method: "POST",
+                        headers: getHeaders(),
+                        body: JSON.stringify(newUser)
+                    }
+                    console.log(request)
+                    // send request
+                    fetch(`${baseUri}/api/users/create`, request)
+                        .then(response => {
+                            console.log(response.status);
+                            CreateView("/");
+                        }).catch(error => {
+                        console.log(error);
                         CreateView("/");
-                    }).catch(error => {
-                    console.log(error);
-                    alert('Registration failed. Please try again.')
-                });
+                    });
+                }
             }
         } else {
             alert('Password does not match')
@@ -199,6 +200,16 @@ export function CheckPassword(inputtxt) {
         return true;
     } else {
         alert('Password must be 6 to 15 characters and contain at least one numeric digit, one uppercase and one lowercase letter')
+        return false;
+    }
+}
+
+function validateUser(user) {
+    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.phone !== "" || user.email !== "") {
+        return true;
+    } else {
+        alert('Registration failed. Please try again.')
+        CreateView("/register");
         return false;
     }
 }
