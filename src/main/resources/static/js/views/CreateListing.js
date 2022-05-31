@@ -2,9 +2,11 @@ import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
+import CreateView from "../createView";
 
 
 export default function CreateListing(props) {
+    $("#inbox-container").css({display: "none"})
     return `
             <div class="container-fluid">
                  <div class="row create-listing-row">
@@ -90,6 +92,16 @@ function AddFileEvent() {
     })
 }
 
+function validateListing(listing) {
+    if(listing.name !== "" || listing.animal !== "") {
+        return true;
+    } else {
+        alert('Create listing failed. Please try again, including name and type of animal.')
+        CreateView("/create");
+        return false;
+    }
+}
+
 
 function CreateListingsEvent() {
     $('#create-listing-btn').click(function () {
@@ -106,7 +118,7 @@ function CreateListingsEvent() {
             health: $("#health").val(),
             images: imgURL
         }
-        console.log(newListing)
+        if (validateListing(newListing)) {
         let request = {
             method: "POST",
             headers: getHeaders(),
@@ -119,6 +131,7 @@ function CreateListingsEvent() {
             }).catch(error => {
             console.log(error);
             createView("/users");
-        });
+            });
+       }
     })
 }

@@ -3,6 +3,7 @@ import {baseUri} from "../fetchData.js";
 
 
 export default function ForgotPassword() {
+    $("#inbox-container").css({display: "none"})
      return`      
          <div class="row forgot-row">
              <div class="card forgot-card"> 

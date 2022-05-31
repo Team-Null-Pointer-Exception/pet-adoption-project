@@ -5,6 +5,7 @@ import {baseUri} from "../fetchData.js";
 
 
 export default function AdminIndex(props){
+    $("#inbox-container").css({display: "none"})
     //language=HTML
     return `
 <main>

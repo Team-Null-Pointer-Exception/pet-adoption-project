@@ -8,6 +8,7 @@ let chatKey = token().talkJSKey;
 
 
 export default function Home(props) {
+    $("#inbox-container").css({display: "none"})
     let loggedIn = isLoggedIn()
     if(loggedIn) {
         user = props.user

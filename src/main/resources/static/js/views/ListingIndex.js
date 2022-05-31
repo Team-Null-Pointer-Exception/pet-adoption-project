@@ -11,6 +11,7 @@ let allListings, activeListings, listingStatus, animalType, gender, distance, fi
 
 
 export default function ListingIndex(props) {
+    $("#inbox-container").css({display: "none"})
     let loggedIn = isLoggedIn()
     if(loggedIn) {
         user = props.user
@@ -551,7 +552,6 @@ export function chatListener(user) {
                 email: user.email,
                 photoUrl: user.profileImg,
                 role: "user",
-                welcomeMessage: 'Hello, I would like to inquire about your pet listing',
             });
             const session = new Talk.Session({
                 appId: chatKey,

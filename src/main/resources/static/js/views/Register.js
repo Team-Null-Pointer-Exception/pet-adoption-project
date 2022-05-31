@@ -4,6 +4,7 @@ import {getHeaders} from "../auth.js";
 import {baseUri} from "../fetchData.js";
 
 export default function Register(props) {
+    $("#inbox-container").css({display: "none"})
     return `
     <div class="container-fluid">
         <div class="row set-up-row">

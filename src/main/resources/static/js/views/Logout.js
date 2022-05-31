@@ -1,6 +1,7 @@
 import createView from "../createView.js";
 
 export default function Logout(props) {
+    $("#inbox-container").css({display: "none"})
     console.log("Logging out")
     return ``;
 }
