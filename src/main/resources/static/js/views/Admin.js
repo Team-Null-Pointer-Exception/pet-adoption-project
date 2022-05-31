@@ -77,6 +77,21 @@ export default function AdminIndex(props){
                                         </select>
                                     </div>
                                 </div>
+                                
+                                <div id="admin-story-overlay-${story.id}" class="overlay">
+                                    <div class="container admin-story-overlay-container">       
+                                        <div class="row admin-story-row">
+                                            <div class="card admin-story-card">
+                                                <div class="d-flex justify-content-center align-items-center admin-story-content row">
+                                                    <p class="text-white col-12">${story.content}</p>
+                                                    <div class="col-12">
+                                                        <button type="button" class="btn btn-primary btn-sm admin-story-cancel-btn" data-id="${story.id}">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             `).join('')}
                             </div>
                         </div>
@@ -101,6 +116,8 @@ export function AdminEvent() {
     showUserStories();
     hideUserStories();
     updateStoryStatus();
+    showStory();
+    closeStoryOverlay();
 }
 
 function showMoreInfo(){
@@ -238,5 +255,18 @@ function updateStoryStatus(){
                 createView("/admin");
         });
 
+    })
+}
+
+function showStory(){
+    $('.admin-story-id').click(function(){
+        let id = this.getAttribute('data-id');
+        $("#admin-story-overlay-" + id).css({display: "block"})
+    })
+}
+function closeStoryOverlay() {
+    $(".admin-story-cancel-btn").click(function (e) {
+        let id = e.target.getAttribute("data-id")
+        $("#admin-story-overlay-" + id).css({display: "none"})
     })
 }
