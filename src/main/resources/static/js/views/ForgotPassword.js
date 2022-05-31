@@ -24,7 +24,7 @@ export default function ForgotPassword() {
 export function ForgotEvent(){
     console.log("forgot event called")
     $("#forgot-btn").click(function () {
-        let email = $("#email").val()
+        let email = $("#forgot-email").val()
         console.log(email)
         let request = {
             method: "PUT",
