@@ -148,44 +148,68 @@ function UploadEvent() {
 
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
-        let password = $("#initialPassword").val()
-        let confirmPassword = $("#confirmPassword").val()
+        let password = $("#initialPassword").val().trim()
+        let confirmPassword = $("#confirmPassword").val().trim()
         console.log(imgURL)
-        if(password === confirmPassword) {
-            console.log("confirmed")
-            let newUser = {
-                username: $("#username").val(),
-                email: $("#email").val(),
-                password: password,
-                firstName: $("#firstName").val(),
-                lastName: $("#lastName").val(),
-                organization: $("#organization").val(),
-                street: $("#street").val(),
-                city: $("#city").val(),
-                state: $("#state").val(),
-                zip: $("#zip").val(),
-                phone: $("#phone").val(),
-                profileImg: imgURL,
-                stories: []
+        if(CheckPassword(password)) {
+            if (password === confirmPassword && CheckPassword(password)) {
+                console.log("confirmed")
+                let newUser = {
+                    username: $("#username").val().trim(),
+                    email: $("#email").val().trim(),
+                    password: password,
+                    firstName: $("#firstName").val().trim(),
+                    lastName: $("#lastName").val().trim(),
+                    organization: $("#organization").val().trim(),
+                    street: $("#street").val().trim(),
+                    city: $("#city").val().trim(),
+                    state: $("#state").val().trim(),
+                    zip: $("#zip").val().trim(),
+                    phone: $("#phone").val().trim(),
+                    profileImg: imgURL,
+                    stories: []
+                }
+                if(validateUser(newUser)) {
+                    let request = {
+                        method: "POST",
+                        headers: getHeaders(),
+                        body: JSON.stringify(newUser)
+                    }
+                    console.log(request)
+                    // send request
+                    fetch(`${baseUri}/api/users/create`, request)
+                        .then(response => {
+                            console.log(response.status);
+                            CreateView("/");
+                        }).catch(error => {
+                        console.log(error);
+                        CreateView("/");
+                    });
+                }
             }
-
-            let request = {
-                method: "POST",
-                headers: getHeaders(),
-                body: JSON.stringify(newUser)
-            }
-            console.log(request)
-            // send request
-            fetch(`${baseUri}/api/users/create`, request)
-                .then(response => {
-                    console.log(response.status);
-                    CreateView("/");
-                }).catch(error => {
-                console.log(error);
-                createView("/");
-            });
         } else {
-            $("#register-response").css({display: "block"});
+            alert('Password does not match')
         }
     })
+}
+
+export function CheckPassword(inputtxt) {
+    let passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+    if(inputtxt.match(passw))
+    {
+        return true;
+    } else {
+        alert('Password must be 6 to 15 characters and contain at least one numeric digit, one uppercase and one lowercase letter')
+        return false;
+    }
+}
+
+function validateUser(user) {
+    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.phone !== "" || user.email !== "") {
+        return true;
+    } else {
+        alert('Registration failed. Please try again.')
+        CreateView("/register");
+        return false;
+    }
 }
