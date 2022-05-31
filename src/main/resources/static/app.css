@@ -543,6 +543,7 @@ textarea, select {
     #create-listing-btn {
         margin-left: 3rem;
     }
+
     .view-overlay-container {
         width:90%;
         right: 5%;
@@ -551,7 +552,7 @@ textarea, select {
 
 @media (max-width: 396px) {
     .edit-listing-btn {
-        margin-left: 3rem;
+        margin-left: 2rem;
     }
 
     .edit-listing-card {

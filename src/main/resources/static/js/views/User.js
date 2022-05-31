@@ -304,7 +304,7 @@ export default function UserIndex(props) {
                     <label class="align-top" for="summary-${listing.id}">Summary</label>
                     <textarea id="summary-${listing.id}" name="summary-${listing.id}" rows="2" maxlength="100" placeholder="Listing information">${listing.summary}</textarea>
                     <br>     
-                    <input type="file" class="image_upload" name="file" />                                                                            
+                    <input type="file" class="image_upload" name="file" />
                     <button class="edit-listing-btn btn-primary" data-id="${listing.id}" type="button">Submit</button>
                 </form>
                 </div>
