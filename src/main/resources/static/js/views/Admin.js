@@ -118,6 +118,7 @@ export function AdminEvent() {
     updateStoryStatus();
     showStory();
     closeStoryOverlay();
+    changeListingStatus();
 }
 
 function showMoreInfo(){
@@ -269,4 +270,26 @@ function closeStoryOverlay() {
         let id = e.target.getAttribute("data-id")
         $("#admin-story-overlay-" + id).css({display: "none"})
     })
+}
+
+function changeListingStatus() {
+    $(".status-dropdown").change(function () {
+        let listingId = $(this).data("id");
+        let newStatus = $(this).val().toUpperCase();
+        console.log(newStatus);
+
+        let request = {
+            method: "PUT",
+            headers: getHeaders()
+        }
+
+        fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
+            .then(res => {
+                console.log(res.status);
+                createView("/admin");
+            }).catch(error => {
+            console.log(error);
+            createView("/admin");
+        });
+    });
 }
