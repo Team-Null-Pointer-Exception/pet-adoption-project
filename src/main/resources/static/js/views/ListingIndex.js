@@ -550,6 +550,7 @@ export function chatListener(user) {
                 name: user.username,
                 email: user.email,
                 photoUrl: user.profileImg,
+                role: "user",
                 welcomeMessage: 'Hello, I would like to inquire about your pet listing',
             });
             const session = new Talk.Session({
@@ -561,6 +562,7 @@ export function chatListener(user) {
                 name: listerName,
                 email: listerEmail,
                 photoUrl: listerPic,
+                role: "user"
             });
             const conversation = session.getOrCreateConversation(
                 Talk.oneOnOneId(me, other)
