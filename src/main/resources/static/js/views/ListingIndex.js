@@ -21,11 +21,11 @@ export default function ListingIndex(props) {
     let origin = [lat, lng]
 
     allListings = props.listings;
-    allListings.forEach(listing => {
-        if (listing.breed === "") {
-            listing.breed = listing.animal;
-        }
-    })
+    // allListings.forEach(listing => {
+    //     if (listing.breed === "") {
+    //         listing.breed = listing.animal;
+    //     }
+    // })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
     autoExpire();
     activeListings.sort();
