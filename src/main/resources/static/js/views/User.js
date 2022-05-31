@@ -3,13 +3,30 @@ import {getHeaders} from "../auth.js";
 import CreateView from "../createView.js";
 import {baseUri} from "../fetchData.js";
 import {CheckPassword} from "./Register.js";
+import token from "../keys.js";
 
+let chatKey = token().talkJSKey
 
 export default function UserIndex(props) {
-
+    $("#inbox-container").css({display: "block"})
     let orgHTML = "";
+    let user = props.user;
+    Talk.ready;
+    const me = new Talk.User({
+        id: user.id,
+        name: user.username,
+        email: user.email,
+        photoUrl: user.profileImg,
+        role: "user",
+    });
+    const session = new Talk.Session({
+        appId: chatKey,
+        me: me,
+    });
+    const inbox = session.createInbox();
+    inbox.mount($('#inbox-container'));
 
-    if (props.user.organization !== ""){
+    if (props.user.organization !== "") {
         orgHTML = `
             <div class="media">
             <label>Organization</label>
@@ -194,7 +211,7 @@ export default function UserIndex(props) {
                 <section class="section listing-section" id="user-listing">
                     <div class="container">
                         <div>
-                            <h3 class="dark-color">Your Listings: </h3>
+                            <h3 class="dark-color">My Listings: </h3>
                             ${props.user.listings.map(listing => `
                                 <div class="user-listings row gray-bg">
                                     <div class="listing-name col-3" data-id="${listing.id}">${listing.name}</div>
@@ -205,7 +222,6 @@ export default function UserIndex(props) {
      <div id="overlay-${listing.id}" class="overlay">
     <div class="container view-overlay-container">
     <a class="btn rounded-circle text-center view-close-btn px-0" data-id="${listing.id}" style="width: 36px; height: 36px;" href="#">X</a>
-    <div class="sharethis-sticky-share-buttons"></div>
     <div class="row">
         <div class="col-xs-12 col-lg-6 listing-main">
              <h3 class="overlay-text text-center">Name: ${listing.name}</h3>

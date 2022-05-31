@@ -5,6 +5,7 @@ import {baseUri} from "../fetchData.js";
 
 
 export default function CreateListing(props) {
+    $("#inbox-container").css({display: "none"})
     return `
             <div class="container-fluid">
                  <div class="row create-listing-row">

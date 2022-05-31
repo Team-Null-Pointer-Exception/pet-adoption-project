@@ -1,4 +1,5 @@
 export default function About(props) {
+    $("#inbox-container").css({display: "none"})
     return `
 <div class="container mt-5 pb-3">
         <div class="d-flex flex-column text-center mb-5">

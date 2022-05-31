@@ -5,7 +5,7 @@ import {CheckPassword} from "./Register.js";
 
 
 export default function ResetPassword(props) {
-
+    $("#inbox-container").css({display: "none"})
         return`      
         <div class="row reset-row">
            <div class="card reset-card"> 

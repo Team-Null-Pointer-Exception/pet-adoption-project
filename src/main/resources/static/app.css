@@ -1002,3 +1002,8 @@ ul {
     margin-bottom: 16px;
 }
 
+#inbox-container {
+    height: 600px;
+    width: 100%;
+}
+
