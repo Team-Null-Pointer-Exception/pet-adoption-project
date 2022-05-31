@@ -2,7 +2,7 @@ import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
-import CreateView from "../createView";
+import CreateView from "../createView.js";
 
 
 export default function CreateListing(props) {
