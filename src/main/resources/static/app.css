@@ -900,6 +900,7 @@ ul {
 }
 
 .edit-close-button {
+    padding-bottom: 10px;
     z-index: 2;
     background-color: #ED6436;
     color: white;
@@ -907,7 +908,7 @@ ul {
 }
 .edit-listing-card > .edit-close-button {
     position: relative;
-    left:-46%
+    left:-47%
 }
 
 #input-required {

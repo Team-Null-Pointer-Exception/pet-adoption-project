@@ -181,27 +181,6 @@ public class UserController {
         return fileName;
     }
 
-    public static String verifyUser() {
-        String verifification = "";
-        try {
-            String key = "sk_test_qqweuai9ImHL5CmCEz2pDOr25oWIXLaP";
-            String appID = "tHrV6yIW";
-            String userID = "12345";
-
-            Mac hasher = Mac.getInstance("HmacSHA256");
-            hasher.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
-
-            byte[] hash = hasher.doFinal(userID.getBytes());
-
-            // to HEX(Base16)
-            verifification = DatatypeConverter.printHexBinary(hash);
-        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-            System.out.println(e);
-        }
-        return verifification;
-    }
-
-
 
 }
 

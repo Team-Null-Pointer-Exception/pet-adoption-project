@@ -268,7 +268,7 @@ export default function UserIndex(props) {
                       <option>Unknown</option>
                     </select>
                     <br>
-                    <label for="health-${listing.id}">Health</label>
+                    <label for="health-${listing.id}" class="align-top">Health Issues</label>
                     <textarea id="health-${listing.id}" name="health-${listing.id}" type="text" maxlength="100">${listing.health}</textarea>
                     <br>
                     <label for="fixed-${listing.id}">Fixed</label>

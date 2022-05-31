@@ -11,31 +11,31 @@ export default function Register(props) {
                 <form id="register-form">
                     <h1 class="text-white">Register</h1>
                     <label for="username">Username</label>
-                    <input id="username" name="username" type="text"/>
+                    <input id="username" name="username" type="text" required/>
                     <br>
                     <label for="email">Email</label>
-                    <input id="email" name="email" type="email">
+                    <input id="email" name="email" type="email" required>
                     <br>
                     <label for="initialPassword">Password</label>
                     <input id="initialPassword" name="password" type="password" pattern=“(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}” title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters” required/>
                     <br>
                     <label for="confirmPassword">Confirm Password</label>
-                    <input id="confirmPassword" name="confirmPassword" type="password"/>
+                    <input id="confirmPassword" name="confirmPassword" type="password" required/>
                     <br>
                     <label for="firstName">First Name</label>
-                    <input id="firstName" name="firstName" type="text"/>
+                    <input id="firstName" name="firstName" type="text" required/>
                     <br>
                     <label for="lastName">Last Name</label>
-                    <input id="lastName" name="lastName" type="text"/>
+                    <input id="lastName" name="lastName" type="text" required/>
                     <br>
                     <label for="organization">Organization</label>
                     <input id="organization" name="organization" type="text"/>
                     <br>
                     <label for="street">Street Address</label>
-                    <input id="street" name="street" type="text"/>
+                    <input id="street" name="street" type="text" required/>
                     <br>
                     <label for="city">City</label>
-                    <input id="city" name="city" type="text"/>
+                    <input id="city" name="city" type="text" required/>
                     <br>
                     <label for="state">State</label>
                     <select id="state">
@@ -96,10 +96,10 @@ export default function Register(props) {
                     </select>
                     <br>                      
                     <label for="zip">Zip Code</label>
-                    <input id="zip" name="zip" type="text"/> 
+                    <input id="zip" name="zip" type="text" required/> 
                     <br> 
                     <label for="phone">Phone Number</label>
-                    <input id="phone" name="phone" type="text"/>
+                    <input id="phone" name="phone" type="text" required/>
                     <br>             
                     <input type="file" id="profile_upload" name="file" />                                                                      
                     <button id="register-btn" type="button">Register</button>       
@@ -148,24 +148,24 @@ function UploadEvent() {
 
 function RegisterEventListener(){
     $("#register-btn").click(function(){ // event listener
-        let password = $("#initialPassword").val()
-        let confirmPassword = $("#confirmPassword").val()
+        let password = $("#initialPassword").val().trim()
+        let confirmPassword = $("#confirmPassword").val().trim()
         console.log(imgURL)
         if(CheckPassword(password)) {
             if (password === confirmPassword && CheckPassword(password)) {
                 console.log("confirmed")
                 let newUser = {
-                    username: $("#username").val(),
-                    email: $("#email").val(),
+                    username: $("#username").val().trim(),
+                    email: $("#email").val().trim(),
                     password: password,
-                    firstName: $("#firstName").val(),
-                    lastName: $("#lastName").val(),
-                    organization: $("#organization").val(),
-                    street: $("#street").val(),
-                    city: $("#city").val(),
-                    state: $("#state").val(),
-                    zip: $("#zip").val(),
-                    phone: $("#phone").val(),
+                    firstName: $("#firstName").val().trim(),
+                    lastName: $("#lastName").val().trim(),
+                    organization: $("#organization").val().trim(),
+                    street: $("#street").val().trim(),
+                    city: $("#city").val().trim(),
+                    state: $("#state").val().trim(),
+                    zip: $("#zip").val().trim(),
+                    phone: $("#phone").val().trim(),
                     profileImg: imgURL,
                     stories: []
                 }
@@ -183,7 +183,7 @@ function RegisterEventListener(){
                         CreateView("/");
                     }).catch(error => {
                     console.log(error);
-                    createView("/");
+                    alert('Registration failed. Please try again.')
                 });
             }
         } else {

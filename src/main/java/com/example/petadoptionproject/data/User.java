@@ -30,9 +30,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(nullable = false, length = 100)
     private String username;
 
+    @NotNull
     @Column(nullable = false, length = 100)
     private String firstName;
 
@@ -42,9 +44,11 @@ public class User {
     @Column
     private String organization;
 
+    @NotNull
     @Column(nullable = false)
     private String street;
 
+    @NotNull
     @Column(nullable = false, length = 100)
     private String city;
 
@@ -52,9 +56,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    @NotNull
     @Column(nullable = false, length = 20)
     private String zip;
 
+    @NotNull
     @Column(length = 20)
     private String phone;
 
