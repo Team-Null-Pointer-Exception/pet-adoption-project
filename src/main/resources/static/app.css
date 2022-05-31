@@ -172,6 +172,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 
 #profile_upload, #image_upload, .image_upload {
     width: 14rem;
+    margin-bottom: 0!important;
 }
 
 
@@ -194,7 +195,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a {
 }
 
 .edit-listing-form > label {
-    width: 6rem;
+    width: 7rem;
     color: white;
 }
 
@@ -525,7 +526,7 @@ textarea, select {
         margin-left: 3.5rem;
     }
     #register-btn {
-        margin-left: .5rem;
+        margin-left: 3.4rem;
     }
     #image_upload {
         margin-left: .3rem;
@@ -536,10 +537,10 @@ textarea, select {
 }
 @media (max-width: 376px) {
     #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, .edit-listing-form > input, .edit-listing-form > select, .edit-listing-form > textarea {
-        margin-left: 3.5rem;
+        margin-left: 3rem;
     }
     #create-listing-btn {
-        margin-left: 2rem;
+        margin-left: 3rem;
     }
     .view-overlay-container {
         width:90%;
@@ -549,7 +550,7 @@ textarea, select {
 
 @media (max-width: 396px) {
     .edit-listing-btn {
-        margin-left: 2.3rem;
+        margin-left: 3rem;
     }
 
     .edit-listing-card {
@@ -561,7 +562,7 @@ textarea, select {
 
 @media (max-width: 626px) {
     .create-listing-card {
-        max-width: 80%;
+        max-width: 90%;
     }
 }
 
