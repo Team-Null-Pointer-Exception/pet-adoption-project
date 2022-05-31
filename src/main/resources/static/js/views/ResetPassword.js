@@ -45,9 +45,10 @@ export function ResetEvent() {
                     .then(res => {
                         console.log(res.status);
                         sessionStorage.clear();
-                        createView("/home");
+                        createView("/login");
                     }).catch(error => {
                     console.log(error);
+                    createView("/login");
                 });
             } else {
                 $("#password-response").css({display: "block"});
