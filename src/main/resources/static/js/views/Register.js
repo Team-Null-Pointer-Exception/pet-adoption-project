@@ -137,7 +137,11 @@ function UploadEvent() {
             .then(response => {
                 console.log(response.status);
                 filename = file.name
-                imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                if (filename === "") {
+                    imgURL = 'https://petadoptions-npe.s3.us-east-2.amazonaws.com/default-profle-pic.png';
+                } else {
+                    imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
+                }
                 return imgURL
             }).catch(error => {
             console.log(error);
