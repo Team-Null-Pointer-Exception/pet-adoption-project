@@ -67,7 +67,7 @@ export function EditEvents() {
 }
 
 let apiKey = token().fileKey
-let imageArray = []
+let imageArray = [] //////////
 let fileStackClient = null
 
 function fileStackSetUp() {
@@ -119,7 +119,7 @@ export function EditListingsEvent(){
                 createView("/users")
             }).catch(error => {
             console.log(error);
-            imageArray = []
+            imageArray = []  ////////////////////////????????
             createView("/users");
         });
     })

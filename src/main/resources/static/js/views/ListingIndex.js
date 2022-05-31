@@ -475,7 +475,3 @@ function closeOverlay() {
         $("#overlay-" + id).css({display: "none"})
     })
 }
-
-
-
-

@@ -70,6 +70,7 @@ export function CreateEvents() {
 }
 
 let apiKey = token().fileKey
+//let imageArray = ['images/Default-animal-photo.png']
 let imageArray = []
 let fileStackClient = null
 

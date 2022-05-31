@@ -578,6 +578,7 @@ export function UsersEvent(){
 
 let apiKey = token().fileKey
 let imageArray = []
+// let imageArray = ['images/Default-animal-photo.png']
 let fileStackClient = null
 
 function fileStackSetUp() {
@@ -660,5 +661,3 @@ export function getUser() {
     const payloadObject = JSON.parse(decodedPayload);
     return payloadObject.user_name;
 }
-
-
