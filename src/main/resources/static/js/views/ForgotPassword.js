@@ -14,7 +14,7 @@ export default function ForgotPassword() {
                     <input id="forgot-email" name="email" type="text"/>
                     <br>
                     <input id="forgot-btn" class="allow mt-2" type="button" value="Send Reset"/>
-                    <p id="forgot-password-response">Please check your email for a password reset link.</p>  
+                    <p id="forgot-password-response">Please check your email for reset link.</p>  
                     <p id="error-response">Error. No account found.</p>  
                 </form>
              </div>
