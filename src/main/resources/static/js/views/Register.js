@@ -206,7 +206,7 @@ export function CheckPassword(inputtxt) {
 }
 
 function validateUser(user) {
-    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.phone !== "" || user.email !== "") {
+    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.phone !== "") {
         return true;
     } else {
         alert('Registration failed. Please try again.')

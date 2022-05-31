@@ -6,6 +6,7 @@ import com.example.petadoptionproject.data.Story;
 import com.example.petadoptionproject.data.User;
 import com.example.petadoptionproject.data.UsersRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,15 @@ public class StoryController {
             newStory.setStatus(Story.Status.ACTIVE);
         }
         storiesRepository.save(newStory);
+    }
+
+    @PutMapping("/{id}/updateStatus")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void updateStatus(@RequestParam String newStatus, @PathVariable long id) {
+        Story updatedStory = storiesRepository.findById(id);
+        updatedStory.setStatus(Story.Status.valueOf(newStatus));
+        storiesRepository.save(updatedStory);
+        System.out.println("Updating story status");
     }
 
 }
