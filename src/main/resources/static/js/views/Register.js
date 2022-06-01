@@ -68,7 +68,7 @@ function UploadEvent() {
             .then(response => {
                 console.log(response.status);
                 filename = file.name
-                if (filename === "") {
+                if (filename === "" || filename == null) {
                     imgURL = 'https://petadoptions-npe.s3.us-east-2.amazonaws.com/default-profle-pic.png';
                 } else {
                     imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
@@ -98,11 +98,11 @@ function RegisterEventListener(){
                     lastName: $("#lastName").val().trim(),
                     zip: $("#zip").val().trim(),
                     profileImg: imgURL,
-                    organization: "",
-                    street: "",
-                    city: "",
+                    organization: "N/A",
+                    street: "N/A",
+                    city: "N/A",
                     state: "NA",
-                    phone: "",
+                    phone: "N/A",
                     stories:[],
                 }
                 if(validateUser(newUser)) {
