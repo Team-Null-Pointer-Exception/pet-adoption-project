@@ -127,6 +127,7 @@ function CreateListingsEvent() {
         fetch(`${baseUri}/api/listings`, request)
             .then(res => {
                 console.log(res.status);
+                alert('Your listing is under review. Once approved, it will be posted shortly')
                 createView("/users")
             }).catch(error => {
             console.log(error);
