@@ -21,11 +21,6 @@ export default function ListingIndex(props) {
     let origin = [lat, lng]
 
     allListings = props.listings;
-    // allListings.forEach(listing => {
-    //     if (listing.breed === "") {
-    //         listing.breed = listing.animal;
-    //     }
-    // })
     activeListings = allListings.filter(listing => listing.status === "ACTIVE");
     autoExpire();
     activeListings.sort();
@@ -385,7 +380,6 @@ export function populateOverlay(listing) {
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
-                                        <li>Contact:</li>
                                     </ul>
                                     <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
                                         <button class="btn-getInTouch" data-id="${listing.user.id}" data-name="${listing.user.username}" data-email="${listing.user.email}" data-pic="${listing.user.profileImg}">Contact</button>
@@ -395,7 +389,7 @@ export function populateOverlay(listing) {
                                     <img class="location-map"
                                          src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
                                          alt="map"/>
-                                    <p class="text-center">(Approx. location)</p>
+                                    <p class="text-center">(Approx. location. Contact lister for specific details.)</p>
                                 </div>
                             </div>
                         </div>
