@@ -88,7 +88,7 @@ function RegisterEventListener(){
         let confirmPassword = $("#confirmPassword").val().trim()
         console.log(imgURL)
         if(CheckPassword(password)) {
-            if (password === confirmPassword && CheckPassword(password)) {
+            if (password === confirmPassword) {
                 console.log("confirmed")
                 let newUser = {
                     username: $("#username").val().trim(),
@@ -97,7 +97,13 @@ function RegisterEventListener(){
                     firstName: $("#firstName").val().trim(),
                     lastName: $("#lastName").val().trim(),
                     zip: $("#zip").val().trim(),
-                    profileImg: imgURL
+                    profileImg: imgURL,
+                    organization: "",
+                    street: "",
+                    city: "",
+                    state: "NA",
+                    phone: "",
+                    stories:[],
                 }
                 if(validateUser(newUser)) {
                     let request = {
