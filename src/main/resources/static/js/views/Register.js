@@ -68,7 +68,7 @@ function UploadEvent() {
             .then(response => {
                 console.log(response.status);
                 filename = file.name
-                if (filename === "") {
+                if (filename === "" || filename == null) {
                     imgURL = 'https://petadoptions-npe.s3.us-east-2.amazonaws.com/default-profle-pic.png';
                 } else {
                     imgURL = `https://petadoptions-npe.s3.us-east-2.amazonaws.com/${filename}`
@@ -88,7 +88,7 @@ function RegisterEventListener(){
         let confirmPassword = $("#confirmPassword").val().trim()
         console.log(imgURL)
         if(CheckPassword(password)) {
-            if (password === confirmPassword && CheckPassword(password)) {
+            if (password === confirmPassword) {
                 console.log("confirmed")
                 let newUser = {
                     username: $("#username").val().trim(),
@@ -97,7 +97,13 @@ function RegisterEventListener(){
                     firstName: $("#firstName").val().trim(),
                     lastName: $("#lastName").val().trim(),
                     zip: $("#zip").val().trim(),
-                    profileImg: imgURL
+                    profileImg: imgURL,
+                    organization: "N/A",
+                    street: "N/A",
+                    city: "N/A",
+                    state: "NA",
+                    phone: "N/A",
+                    stories:[],
                 }
                 if(validateUser(newUser)) {
                     let request = {
