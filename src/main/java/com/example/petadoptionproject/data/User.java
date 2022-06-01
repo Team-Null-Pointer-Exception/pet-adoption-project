@@ -44,23 +44,19 @@ public class User {
     @Column
     private String organization;
 
-    @NotNull
     @Column(nullable = false)
     private String street;
 
-    @NotNull
     @Column(nullable = false, length = 100)
     private String city;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private State state;
 
     @NotNull
     @Column(nullable = false, length = 20)
     private String zip;
-
-    @NotNull
+    
     @Column(length = 20)
     private String phone;
 

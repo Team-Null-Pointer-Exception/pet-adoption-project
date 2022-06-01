@@ -26,9 +26,6 @@ body {
 #register-response {
     display: none
 }
-#register-form, #create-listing-form, .edit-listing-form {
-    display: inline;
-}
 
 #register-form, #create-listing-form, .edit-listing-form, #reset-form {
     justify-content: center;
@@ -97,8 +94,12 @@ body {
     margin-left: 3.1rem;
 }
 
+#register-form>p {
+    margin-bottom: 0;
+}
 
-label, #login-form>a, #forgot-form>a, #reset-form>a {
+
+label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p {
     color: white;
 }
 

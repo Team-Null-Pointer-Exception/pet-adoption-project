@@ -28,80 +28,11 @@ export default function Register(props) {
                     <br>
                     <label for="lastName">Last Name</label>
                     <input id="lastName" name="lastName" type="text" required/>
-                    <br>
-                    <label for="organization">Organization</label>
-                    <input id="organization" name="organization" type="text"/>
-                    <br>
-                    <label for="street">Street Address</label>
-                    <input id="street" name="street" type="text" required/>
-                    <br>
-                    <label for="city">City</label>
-                    <input id="city" name="city" type="text" required/>
-                    <br>
-                    <label for="state">State</label>
-                    <select id="state">
-                      <option>AL</option>
-                      <option>AS</option>
-                      <option>AR</option>
-                      <option>AZ</option>
-                      <option>CA</option>
-                      <option>CO</option>
-                      <option>DE</option>
-                      <option>DC</option>
-                      <option>FL</option>
-                      <option>GA</option>
-                      <option>GU</option>
-                      <option>HI</option>
-                      <option>IA</option>
-                      <option>ID</option>
-                      <option>IL</option>
-                      <option>IN</option>
-                      <option>KS</option>
-                      <option>KY</option>
-                      <option>LA</option>
-                      <option>MA</option>
-                      <option>MD</option>
-                      <option>ME</option>
-                      <option>MI</option>
-                      <option>MN</option>
-                      <option>MO</option>
-                      <option>MP</option>
-                      <option>MS</option>
-                      <option>MT</option>
-                      <option>NC</option>
-                      <option>ND</option>
-                      <option>NE</option>
-                      <option>NH</option>
-                      <option>NJ</option>
-                      <option>NM</option>
-                      <option>NV</option>
-                      <option>NY</option>
-                      <option>OH</option>
-                      <option>OK</option>
-                      <option>OR</option>
-                      <option>PA</option>
-                      <option>PR</option>
-                      <option>RI</option>
-                      <option>SC</option>
-                      <option>SD</option>
-                      <option>TN</option>
-                      <option>TX</option>
-                      <option>UT</option>
-                      <option>VA</option>
-                      <option>VI</option>
-                      <option>VT</option>
-                      <option>WA</option>
-                      <option>WI</option>
-                      <option>WV</option>
-                      <option>WY</option>
-                    </select>
                     <br>                      
                     <label for="zip">Zip Code</label>
                     <input id="zip" name="zip" type="text" required/> 
                     <br> 
-                    <label for="phone">Phone Number</label>
-                    <input id="phone" name="phone" type="text" required/>
-                    <br>             
+                    <p>Upload a profile picture:</p>          
                     <input type="file" id="profile_upload" name="file" />                                                                      
                     <button id="register-btn" type="button">Register</button>       
                     <br>
@@ -165,14 +96,8 @@ function RegisterEventListener(){
                     password: password,
                     firstName: $("#firstName").val().trim(),
                     lastName: $("#lastName").val().trim(),
-                    organization: $("#organization").val().trim(),
-                    street: $("#street").val().trim(),
-                    city: $("#city").val().trim(),
-                    state: $("#state").val().trim(),
                     zip: $("#zip").val().trim(),
-                    phone: $("#phone").val().trim(),
-                    profileImg: imgURL,
-                    stories: []
+                    profileImg: imgURL
                 }
                 if(validateUser(newUser)) {
                     let request = {
@@ -210,7 +135,7 @@ export function CheckPassword(inputtxt) {
 }
 
 function validateUser(user) {
-    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.phone !== "") {
+    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.zip !== "") {
         return true;
     } else {
         alert('Registration failed. Please try again.')
