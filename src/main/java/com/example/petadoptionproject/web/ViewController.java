@@ -14,7 +14,7 @@ public class ViewController {
     @Value("${talkJSKey}")
     private String talkJSKey;
 
-    @RequestMapping({"/", "/about", "/login", "/logout","/home", "/users", "/admin", "/loading", "/listings", "/create", "/register", "/reset", "/admin", "/forgot"})
+    @RequestMapping({"/", "/about", "/login", "/logout", "/users", "/admin", "/loading", "/listings", "/create", "/register", "/reset", "/admin", "/forgot"})
     public String showView(){
         return "forward:/index.html";
     }

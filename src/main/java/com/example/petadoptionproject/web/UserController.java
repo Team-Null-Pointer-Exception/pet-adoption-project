@@ -1,11 +1,16 @@
 package com.example.petadoptionproject.web;
 
+
 import com.example.petadoptionproject.data.*;
 import com.example.petadoptionproject.services.EmailService;
 import com.example.petadoptionproject.services.S3Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.utility.RandomString;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,12 +18,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
+
 
 @Slf4j
 @AllArgsConstructor
@@ -130,6 +146,7 @@ public class UserController {
         sendEmail(email, resetPasswordLink);
     }
 
+
     @PutMapping("/reset")
     public void resetPasswordFromToken(@RequestParam String password, @RequestParam String token) {
         User user = emailService.getByResetPasswordToken(token);
@@ -166,3 +183,5 @@ public class UserController {
 
 
 }
+
+

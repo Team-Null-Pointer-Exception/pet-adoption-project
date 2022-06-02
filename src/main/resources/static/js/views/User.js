@@ -208,7 +208,7 @@ export default function UserIndex(props) {
                             <p id="register-response">Passwords do not match. Please try again.</p>  
                         </div>
                         <div id="edit-profile-btns">
-                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
                         </div>
                     </div>
@@ -332,7 +332,7 @@ export default function UserIndex(props) {
                             `).join('')}
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create A New Listing</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="new-listing-btn">Create Listing</button>
                         </div>
                     </div>
                 </section>

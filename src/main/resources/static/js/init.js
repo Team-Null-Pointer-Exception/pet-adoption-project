@@ -2,7 +2,7 @@ import createView from './createView.js';
 import token from './keys.js';
 
 
-
+// Get's geolation of website user for the filter by distance functionality
 function getLocation(){
     let googleAPIKey = token().googleKey
     let request = {
