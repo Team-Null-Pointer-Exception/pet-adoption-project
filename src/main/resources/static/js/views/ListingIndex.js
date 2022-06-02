@@ -324,22 +324,38 @@ function grayImages() {
 
 function daysLeftWarning(listing) {
     let listingDate = new Date(listing.createdAt);
-    let expirationDate = new Date();
-    expirationDate.setDate(listingDate.getDate() + 30);
-    let today = new Date();
     let oneDay = 1000 * 60 * 60 * 24;
+    let thirtyDays = oneDay * 30;
+    let expirationDate = new Date(listingDate);
+    expirationDate.setDate(expirationDate.getDate() + 30);
+    let today = new Date();
     let daysRemaining = expirationDate - today;
     daysRemaining /= oneDay;
-    if (daysRemaining <= 7) {
+
+    console.log(listingDate);
+    console.log(expirationDate);
+    console.log(today);
+    console.log(Math.floor(daysRemaining));
+
+    if (Math.floor(daysRemaining) <= 7 && Math.floor(daysRemaining) > 0) {
         console.log("This post is about to expire!");
         //language=HTML
         return `
-            <div class="d-flex justify-content-center small text-danger mb-2">
-                Only ${daysRemaining} days left!
+            <div class="d-flex justify-content-center small text-danger mb-2" style="z-index: 2;">
+                <strong>Only ${Math.floor(daysRemaining)} day(s) left!</strong>
             </div>
-        `
+        `;
+    } else if (Math.floor(daysRemaining) > 7){
+        //language=HTML
+        return `
+            <div class="d-flex justify-content-center small mb-2" style="z-index: 2;">
+                <em>${Math.floor(daysRemaining)} days remaining</em>
+            </div>
+        `;
     } else {
-        return ``;
+        return `
+        <div class="text-danger">This listing has expired</div>
+        `;
     }
 }
 
@@ -347,14 +363,15 @@ function addPendingStatus(listing) {
     if (listing.status !== "PENDING") {
         return '';
     } else {
+        console.log("Adding pending status banner");
         //language=HTML
         return `
-            <p class="mb-0 bg-light text-center fw-bold" style='font-size:27px;color:firebrick'>
+            <p class="mb-0 bg-light text-center fw-bold position-absolute" style='font-size:22px; z-index: 2; width:100%; opacity: 0.7; color:#ED6436'>
                 <i class="fas fa-exclamation-triangle"></i>
                 Pending approval
                 <i class="fas fa-exclamation-triangle"></i>
             </p>
-        `
+        `;
     }
 }
 
