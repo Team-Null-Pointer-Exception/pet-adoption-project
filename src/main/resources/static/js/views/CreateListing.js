@@ -52,6 +52,8 @@ export default function CreateListing(props) {
                                 <br>              
                                 <input type="file" id="image_upload" name="file"/>                                                                         
                                 <button id="create-listing-btn" type="button">Submit</button>
+                                <br>
+                                <a href="/" id="cancel-link" data-link>Not ready to list? Cancel here</a>   
                             </form>
                       </div>
                  </div>

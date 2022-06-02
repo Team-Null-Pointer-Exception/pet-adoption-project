@@ -11,9 +11,6 @@ export default function Register(props) {
             <div class="card set-up-card"> 
                 <form id="register-form">
                     <h1 class="text-white">Register</h1>
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" required/>
-                    <br>
                     <label for="email">Email</label>
                     <input id="email" name="email" type="email" required>
                     <br>
@@ -91,7 +88,7 @@ function RegisterEventListener(){
             if (password === confirmPassword) {
                 console.log("confirmed")
                 let newUser = {
-                    username: $("#username").val().trim(),
+                    username: "N/A",
                     email: $("#email").val().trim(),
                     password: password,
                     firstName: $("#firstName").val().trim(),
@@ -141,7 +138,7 @@ export function CheckPassword(inputtxt) {
 }
 
 function validateUser(user) {
-    if(user.username !== "" || user.email !== "" || user.firstName !== "" || user.zip !== "") {
+    if(user.email !== "" || user.firstName !== "" || user.zip !== "") {
         return true;
     } else {
         alert('Registration failed. Please try again.')

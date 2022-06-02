@@ -86,6 +86,11 @@ body {
 #forgot-link {
     margin-left: .5rem;
 }
+
+#cancel-link {
+    margin-left: 4rem;
+}
+
 #register-link {
     margin-left: 2.8rem;
 }
@@ -99,12 +104,12 @@ body {
 }
 
 
-label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p {
+label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p, #create-listing-form>a {
     color: white;
 }
 
 #register-form>h1, #login-form>h1, #login-form>a,  #create-listing-form>h1, #create-listing-form>label, .edit-listing-form label, .edit-listing-form h1,
-#forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2 {
+#forgot-form>h2, #forgot-form>input, #reset-form>label, #reset-form>h2, #create-listing-form>a {
     text-align: center;
 }
 
