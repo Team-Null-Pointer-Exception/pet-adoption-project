@@ -87,8 +87,8 @@ export default function UserIndex(props) {
                                         <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-username">Username <span id="input-required">*</span></label>
-                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
+                                        <label for="edit-lastName">Last Name</label>
+                                        <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-email">Email <span id="input-required">*</span></label>
@@ -102,18 +102,11 @@ export default function UserIndex(props) {
                                         <label for="edit-organization">Organization</label>
                                         <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
                                     </div>
-                                    <div>
-                                    <hr>
-                                        <p>Update profile image</p>
-                                    </div>
-                                    <div class="media">
-                                        <input type="file" id="edit_profile_upload" name="file" /> 
-                                    </div>
                                 </div>
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-2">
                                     <div class="media">
-                                        <label for="edit-lastName">Last Name</label>
-                                        <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
+                                        <label for="edit-username">Username <span id="input-required">*</span></label>
+                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-street">Street Address <span id="input-required">*</span></label>
@@ -188,6 +181,13 @@ export default function UserIndex(props) {
                                         <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>
                                 </div>
+                                <div>
+                                <hr>
+                                    <p>Update profile image</p>
+                                </div>
+                                <div class="media">
+                                    <input type="file" id="edit_profile_upload" name="file" /> 
+                                </div>
                             </form>
                             <hr>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-profile-cancel-btn">Cancel Changes</button>
@@ -208,7 +208,7 @@ export default function UserIndex(props) {
                             <p id="register-response">Passwords do not match. Please try again.</p>  
                         </div>
                         <div id="edit-profile-btns">
-                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile Information</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="edit-profile-btn">Edit Profile</button>
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-btn">Edit Password</button>
                         </div>
                     </div>
@@ -220,9 +220,19 @@ export default function UserIndex(props) {
                             ${props.user.listings.map(listing => `
                                 <div class="user-listings row gray-bg">
                                     <div class="listing-name col-3" data-id="${listing.id}">${listing.name}</div>
-                                    <div class="listing-view col-3" data-id="${listing.id}"><i class="fas fa-eye"> View</i></div>
-                                    <div class="listing-edit col-3" data-id="${listing.id}"><i class="fas fa-edit"> Edit</i></div>
-                                    <div class="listing-delete col-3" data-id="${listing.id}"><i class="fas fa-trash-alt"> Delete</i></div>
+                                    <div class="listing-status col-5" data-id="${listing.id}">STATUS: ${listing.status}</div>
+                                    <div class="listing-view col-1 offset-1" data-id="${listing.id}">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="tooltip">View Listing</span>
+                                    </div>
+                                    <div class="listing-edit col-1" data-id="${listing.id}">
+                                        <i class="fas fa-edit"></i>
+                                        <span class="tooltip">Edit Listing</span>
+                                    </div>
+                                    <div class="listing-delete col-1" data-id="${listing.id}">
+                                        <i class="fas fa-trash-alt"></i>
+                                        <span class="tooltip">Delete Listing</span>
+                                    </div>
                                 </div>
      <div id="overlay-${listing.id}" class="overlay">
     <div class="container view-overlay-container">
