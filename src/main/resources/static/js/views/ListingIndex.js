@@ -389,7 +389,7 @@ export function populateOverlay(listing) {
                                     <img class="location-map"
                                          src="https://maps.googleapis.com/maps/api/staticmap?center=${listing.user.zip}&zoom=11&size=550x450&markers=color:blue%7C${listing.user.zip}&key=${apiKey}"
                                          alt="map"/>
-                                    <p class="text-center">(Approx. location. Contact lister for specific details.)</p>
+                                    <p class="text-center">(Approx. location. Contact lister for details.)</p>
                                 </div>
                             </div>
                         </div>
