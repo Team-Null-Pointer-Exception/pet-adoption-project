@@ -1,8 +1,6 @@
 import {isLoggedIn} from "../../auth.js";
 import {getUserRole} from "../User.js";
 
-
-
 export default function Navbar(props) {
     const loggedIn = isLoggedIn();
     let html =  `

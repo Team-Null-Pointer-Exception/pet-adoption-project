@@ -2,15 +2,9 @@ package com.example.petadoptionproject.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.lang.reflect.Array;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
-
 
 @Getter
 @Setter
@@ -72,6 +66,4 @@ public class Listing {
 
     @Column
     private String images;
-
-
 }

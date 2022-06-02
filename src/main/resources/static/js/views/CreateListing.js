@@ -1,9 +1,7 @@
 import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
-import token from "../keys.js";
 import {baseUri} from "../fetchData.js";
 import CreateView from "../createView.js";
-
 
 export default function CreateListing(props) {
     $("#inbox-container").css({display: "none"})
@@ -66,9 +64,6 @@ export function CreateEvents() {
     AddFileEvent();
     CreateListingsEvent()
 }
-
-
-
 let filename = ""
 let imgURL = ""
 
@@ -103,7 +98,6 @@ function validateListing(listing) {
         return false;
     }
 }
-
 
 function CreateListingsEvent() {
     $('#create-listing-btn').click(function () {

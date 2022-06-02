@@ -17,7 +17,6 @@ public class GoogleMapsController {
     @Value("${googleAPIKey}")
     private String googleAPIKey;
 
-
     @ResponseBody //when you want raw data back you must use this annotation
     @GetMapping("/gogglemap/**")
     public String getMap(HttpServletRequest request) throws IOException {
@@ -51,5 +50,4 @@ public class GoogleMapsController {
             return ex.getMessage();
         }
     }
-
 }

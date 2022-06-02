@@ -28,7 +28,6 @@ public class Story {
     @Column
     private LocalDate createdAt;
 
-
     @ManyToOne
     @JsonIgnoreProperties({"stories"})
     private User user;

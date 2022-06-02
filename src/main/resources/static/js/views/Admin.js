@@ -3,10 +3,8 @@ import {getHeaders} from "../auth.js";
 import {populateOverlay} from "./ListingIndex.js";
 import {baseUri} from "../fetchData.js";
 
-
 export default function AdminIndex(props){
     $("#inbox-container").css({display: "none"})
-    //language=HTML
     return `
 <main>
     <div class="container-fluid">
@@ -163,12 +161,10 @@ function updateUserRole(){
 
         let id = this.getAttribute("data-id");
         let newRole = $('#admin-update-role-' + id).val();
-
         let request = {
             method: "PUT",
             headers: getHeaders()
         }
-
         fetch(`${baseUri}/api/users/${id}/updateRole?newRole=${newRole}`, request)
             .then(res => {
                 console.log(res.status);
@@ -177,7 +173,6 @@ function updateUserRole(){
                 console.log(error);
                 createView("/admin");
         });
-
     })
 }
 
@@ -186,12 +181,10 @@ function updateUserStatus(){
 
         let id = this.getAttribute("data-id");
         let newStatus = $('#admin-update-status-' + id).val();
-
         let request = {
             method: "PUT",
             headers: getHeaders()
         }
-
         fetch(`${baseUri}/api/users/${id}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
@@ -200,7 +193,6 @@ function updateUserStatus(){
                 console.log(error);
                 createView("/admin");
         });
-
     })
 }
 
@@ -242,12 +234,10 @@ function updateStoryStatus(){
 
         let id = this.getAttribute("data-id");
         let newStatus = $('#admin-update-story-status-' + id).val();
-
         let request = {
             method: "PUT",
             headers: getHeaders()
         }
-
         fetch(`${baseUri}/api/stories/${id}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);
@@ -256,7 +246,6 @@ function updateStoryStatus(){
                 console.log(error);
                 createView("/admin");
         });
-
     })
 }
 
@@ -266,6 +255,7 @@ function showStory(){
         $("#admin-story-overlay-" + id).css({display: "block"})
     })
 }
+
 function closeStoryOverlay() {
     $(".admin-story-cancel-btn").click(function (e) {
         let id = e.target.getAttribute("data-id")
@@ -278,12 +268,10 @@ function changeListingStatus() {
         let listingId = $(this).data("id");
         let newStatus = $(this).val().toUpperCase();
         console.log(newStatus);
-
         let request = {
             method: "PUT",
             headers: getHeaders()
         }
-
         fetch(`${baseUri}/api/listings/${listingId}/updateStatus?newStatus=${newStatus}`, request)
             .then(res => {
                 console.log(res.status);

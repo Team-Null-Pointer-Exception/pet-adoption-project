@@ -1,7 +1,6 @@
 import {getHeaders} from "../auth.js";
 import {baseUri} from "../fetchData.js";
 
-
 export default function ForgotPassword() {
     $("#inbox-container").css({display: "none"})
      return`      

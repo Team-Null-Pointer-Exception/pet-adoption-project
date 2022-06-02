@@ -7,7 +7,6 @@
 export const baseUri = "https://team-npe.fulgentcorp.com:8080";
 // export const baseUri = "http://localhost:8080";
 
-
 export default function fetchData(state, request) {
     const promises = [];
     console.log("got to fetch data");
