@@ -20,7 +20,7 @@ import ForgotPassword, {ForgotEvent} from "./views/ForgotPassword.js";
  */
 
 
-
+// splits token from URI for forgot password function
 export default function router(URI) {
     if(URI.includes('/reset')){
         let href = location.href

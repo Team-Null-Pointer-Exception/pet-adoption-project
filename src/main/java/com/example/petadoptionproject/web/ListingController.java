@@ -1,12 +1,10 @@
 package com.example.petadoptionproject.web;
 
-
 import com.example.petadoptionproject.data.*;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
