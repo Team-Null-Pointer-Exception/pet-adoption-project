@@ -67,7 +67,7 @@ export default function AdminIndex(props){
                             <div class="admin-user-stories admin-user-stories-${user.id}">
                             ${user.stories.map(story => `
                                 <div class="user-stories row gray-bg" id="admin-user-stories-${user.id}">
-                                    <div class="admin-story-id col-12 col-md-6" data-id="${story.id}">ID: ${story.id} <i class="fas fa-eye"></i></div>
+                                    <div class="admin-story-id col-12 col-md-6" data-id="${story.id}">Date: ${story.createdAt} <i class="fas fa-eye"></i></div>
                                     <div class="col-9 offset-1 col-md-6 offset-md-0">
                                         <label for="admin-update-story-status-${story.id}">Status: </label>
                                         <select id="admin-update-story-status-${story.id}" class="admin-story-status" data-id="${story.id}">
