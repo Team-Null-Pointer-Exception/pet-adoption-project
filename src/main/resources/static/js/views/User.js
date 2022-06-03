@@ -9,12 +9,15 @@ let chatKey = token().talkJSKey
 
 export default function UserIndex(props) {
     $("#inbox-container").css({display: "block"})
+    let usernameHTML = "";
     let orgHTML = "";
+    let phoneHTML = "";
+    let addressHTML = "";
     let user = props.user;
     Talk.ready;
     const me = new Talk.User({
         id: user.id,
-        name: user.username,
+        name: user.firstName,
         email: user.email,
         photoUrl: user.profileImg,
         role: "user",
@@ -26,6 +29,14 @@ export default function UserIndex(props) {
     const inbox = session.createInbox();
     inbox.mount($('#inbox-container'));
 
+    if (props.user.username !== "") {
+        usernameHTML = `
+            <div class="media">
+            <label>Username</label>
+            <p>${props.user.username}</p>
+            </div>
+            `
+    }
     if (props.user.organization !== "") {
         orgHTML = `
             <div class="media">
@@ -33,6 +44,21 @@ export default function UserIndex(props) {
             <p>${props.user.organization}</p>
             </div>
             `
+    }
+    if (props.user.phone !== "") {
+        phoneHTML = `
+            <div class="media">
+            <label>Phone</label>
+            <p>${props.user.phone}</p>
+            </div>
+            `
+    }
+    if (props.user.street !== "" && props.user.city !== "") {
+        addressHTML = `${props.user.street}, ${props.user.city},`
+    } else if (props.user.street !== "") {
+        addressHTML = `${props.user.street},`
+    } else if (props.user.city !== "") {
+        addressHTML = `${props.user.city},`
     }
     return `
     <!DOCTYPE html>
@@ -61,19 +87,13 @@ export default function UserIndex(props) {
                                             </div>
                                             <div class="media">
                                                 <label>Address</label>
-                                                <p>${props.user.street}, ${props.user.city}, ${props.user.state} ${props.user.zip}</p>
+                                                <p>${addressHTML} ${props.user.state} ${props.user.zip}</p>
                                             </div>
-                                            ${orgHTML}
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="media">
-                                                <label>Username</label>
-                                                <p>${props.user.username}</p>
-                                            </div>
-                                            <div class="media">
-                                                <label>Phone</label>
-                                                <p>${props.user.phone}</p>
-                                            </div>
+                                            ${usernameHTML}
+                                            ${orgHTML}                                            
+                                            ${phoneHTML}
                                         </div>
                                     </div>
                                 </div>
@@ -95,29 +115,33 @@ export default function UserIndex(props) {
                                         <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-phone">Phone Number <span id="input-required">*</span></label>
+                                        <label for="edit-phone">Phone Number</label>
                                         <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
+                                    </div>
+                                    <div class="media">
+                                        <label for="edit-zip">Zip Code <span id="input-required">*</span></label>
+                                        <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-6 edit-profile-col" id="edit-profile-2">
+                                    <div class="media">
+                                        <label for="edit-username">Username</label>
+                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
                                     </div>
                                     <div class="media">
                                         <label for="edit-organization">Organization</label>
                                         <input id="edit-organization" name="edit-organization" type="text" value="${props.user.organization}"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 edit-profile-col" id="edit-profile-2">
+                                    </div>                                    
                                     <div class="media">
-                                        <label for="edit-username">Username <span id="input-required">*</span></label>
-                                        <input id="edit-username" name="edit-username" type="text" value="${props.user.username}"/>
-                                    </div>
-                                    <div class="media">
-                                        <label for="edit-street">Street Address <span id="input-required">*</span></label>
+                                        <label for="edit-street">Street Address</label>
                                         <input id="edit-street" name="edit-street" type="text" value="${props.user.street}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-city">City <span id="input-required">*</span></label>
+                                        <label for="edit-city">City</label>
                                         <input id="edit-city" name="edit-city" type="text" value="${props.user.city}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-state">State <span id="input-required">*</span></label>
+                                        <label for="edit-state">State</label>
                                         <select id="edit-state">
                                           <option selected hidden>${props.user.state}</option>
                                           <option>AL</option>
@@ -175,10 +199,6 @@ export default function UserIndex(props) {
                                           <option>WV</option>
                                           <option>WY</option>
                                         </select>
-                                    </div>
-                                    <div class="media">
-                                        <label for="edit-zip">Zip Code <span id="input-required">*</span></label>
-                                        <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>
                                 </div>
                                 <div>
@@ -535,8 +555,9 @@ function editUser() {
             profileImg = imgURL;
         }
         console.log(profileImg)
-        if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
-            city !== "" && state !== "" && zip !== "" && phone !== "") {
+        // if (username !== "" && email !== "" && firstName !== "" && street !== "" &&
+            // city !== "" && state !== "" && zip !== "" && phone !== "") {
+        if (email !== "" && firstName !== "" && zip !== "") {
 
             let editUser = {
                 username: username,
