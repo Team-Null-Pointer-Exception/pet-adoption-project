@@ -63,7 +63,6 @@ export default function ListingIndex(props) {
                         <option>Other</option>
                     </select>
                 </div>
-
                 <div class="btn-group m-3">
                     <select id="gender" class="form-select-lg btn-primary" aria-label="Gender">
                         <option selected>Male or Female</option>
@@ -71,14 +70,7 @@ export default function ListingIndex(props) {
                         <option>Female</option>
                     </select>
                 </div>
-
-                <div class="btn-group m-3">
-                    <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
-                        <option selected>Any Distance</option>
-                        <option>Within 50 Miles</option>
-                        <option>Within 15 Miles</option>
-                    </select>
-                </div>
+                ${userMenu()}
             </div>
         </div>
         <main>
@@ -96,6 +88,7 @@ export default function ListingIndex(props) {
         <div id="talkjs-container"></div>
     `;
 }
+
 let distances = []
 
 function getListingDistances(val) {
@@ -127,6 +120,23 @@ function adminMenu() {
     }
 }
 
+function userMenu() {
+    if (getUserRole() === "ADMIN") {
+        return "";
+    } else {
+        //language=HTML
+        return `
+            <div class="btn-group m-3">
+                <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
+                    <option selected>Any Distance</option>
+                    <option>Within 50 Miles</option>
+                    <option>Within 15 Miles</option>
+                </select>
+            </div>
+        `;
+    }
+}
+
 export function ListingsEvent() {
     grabSelections();
     detailsListener();
@@ -141,7 +151,9 @@ function grabSelections() {
     }
     animalType = $("#animal-type").val();
     gender = $("#gender").val();
-    distance = $("#distance").val();
+    if (getUserRole() !== "ADMIN") {
+        distance = $("#distance").val();
+    }
 }
 
 
