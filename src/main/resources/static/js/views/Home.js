@@ -1,5 +1,5 @@
 import {isLoggedIn} from "../auth.js";
-import {populateCards} from "./ListingIndex.js";
+import {populateCards, reportListener} from "./ListingIndex.js";
 import {chatListener} from "./ListingIndex.js";
 import token from "../keys.js";
 
@@ -79,6 +79,7 @@ function detailsListener() {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "block"})
         chatListener(user);
+        reportListener(user)
     })
 }
 
