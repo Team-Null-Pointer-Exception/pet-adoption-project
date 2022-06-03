@@ -696,12 +696,52 @@ textarea, select {
     --bs-gutter-x: 0!important;
     width: 50%;
 }
-.listing-view, .listing-edit, .listing-delete {
-    text-decoration: underline;
-}
 .listing-view:hover, .listing-edit:hover, .listing-delete:hover {
     color: #ED6436;
     cursor: pointer;
+}
+.listing-view, .listing-edit, .listing-delete {
+    position: relative;
+    display: inline-block;
+}
+.tooltip {
+    visibility: hidden;
+    background-color: #181818;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    opacity: 1;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+}
+.listing-view .tooltip {
+    width: 100px;
+    margin-left: -41px;
+}
+.listing-edit .tooltip {
+    width: 100px;
+    margin-left: -43px;
+}
+.listing-delete .tooltip {
+    width: 120px;
+    margin-left: -53px;
+}
+.tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+.listing-view:hover .tooltip, .listing-edit:hover .tooltip, .listing-delete:hover .tooltip {
+    visibility: visible;
 }
 /*User Stories*/
 #new-story {
