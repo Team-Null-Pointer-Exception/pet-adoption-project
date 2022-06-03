@@ -173,6 +173,16 @@ function filterSelections() {
         filteredListings = activeListings;
     }
 
+    if (distance === "Any Distance") {
+        console.log("all distances")
+    } else if (distance === "Within 50 Miles") {
+        console.log("within 50 miles")
+        sortDistance(50, filteredListings)
+    } else if (distance === "Within 15 Miles") {
+        console.log("within 15 miles")
+        sortDistance(15, filteredListings)
+    }
+
     if (animalType === "Dogs") {
         filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "dog");
     } else if (animalType === "Cats") {
@@ -189,18 +199,6 @@ function filterSelections() {
     }
 
 
-    console.log(filteredListings)
-    console.log(distances)
-    if (distance === "Any Distance") {
-        console.log("all distances")
-    } else if (distance === "Within 50 Miles") {
-        console.log("within 50 miles")
-        sortDistance(50, filteredListings)
-    } else if (distance === "Within 15 Miles") {
-        console.log("within 15 miles")
-        sortDistance(15, filteredListings)
-    }
-
     filteredListings.sort();
     $("#listing-cards").html(populateCards(filteredListings));
     grayImages();
@@ -216,6 +214,7 @@ function sortDistance(selectedDistance, listings) {
             filteredListings.push(listings[i]);
         }
     }
+    console.log(filteredListings)
 }
 
 
@@ -559,7 +558,7 @@ export function chatListener(user) {
         await Talk.ready;
             const me = new Talk.User({
                 id: user.id,
-                name: user.username,
+                name: user.firstName,
                 email: user.email,
                 photoUrl: user.profileImg,
                 role: "user",
