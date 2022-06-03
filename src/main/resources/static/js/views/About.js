@@ -10,7 +10,6 @@ export default function About(props) {
             <p>Team Null Pointer Exception comprises four student programmers learning full stack web development in the Elixir cohort of Codeup. This website is our capstone project, which includes integrating chat, file hosting, and map APIs, writing our backend in Java, implementing Springboot, Spring Security, constructing our database,  design, and Agile methodology. Contact us below for more information and employment opportunities. We look forward to being the solution to your development needs.</p>   
             </div>
         </div>
-
         <div class="d-flex flex-column text-center mb-5">
             <h1 class="display-4 m-0 text-black meetUs">Meet Our <span class="text-primary">Team Members</span></h1>
         </div>
@@ -31,7 +30,6 @@ export default function About(props) {
                     </div>
                 </div>
             </div>
-            
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/brice-img.png" alt="">
@@ -48,7 +46,6 @@ export default function About(props) {
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/emilio-img.png" alt="">
@@ -65,8 +62,6 @@ export default function About(props) {
                     </div>
                 </div>
             </div>
-        
-
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
                     <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/justin-img.png" alt="">
@@ -83,10 +78,8 @@ export default function About(props) {
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
-        
     </div>
     `;
 }

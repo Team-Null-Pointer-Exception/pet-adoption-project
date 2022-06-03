@@ -1,22 +1,21 @@
 import {isLoggedIn} from "../auth.js";
-import {populateCards} from "./ListingIndex.js";
+import {populateCards, reportListener} from "./ListingIndex.js";
 import {chatListener} from "./ListingIndex.js";
 import token from "../keys.js";
 
 let user, popup;
 let chatKey = token().talkJSKey;
 
-
 export default function Home(props) {
     $("#inbox-container").css({display: "none"})
     let loggedIn = isLoggedIn()
-    if(loggedIn) {
+    if (loggedIn) {
         user = props.user
     }
     let activeListings = props.listings.filter(listing => listing.status === "ACTIVE");
     let recentListings = activeListings.reverse();
     if (recentListings.length >= 4) {
-        recentListings = [recentListings[0], recentListings[1], recentListings[2],recentListings[3], ]
+        recentListings = [recentListings[0], recentListings[1], recentListings[2], recentListings[3],]
     }
     let activeStories = props.stories.filter(story => story.status === "ACTIVE");
     let recentStories = activeStories.reverse();
@@ -46,8 +45,7 @@ export default function Home(props) {
                         <h1 class="display-5 text-primary stories-header"><span class="text-black">Testim</span>onials</h1>
                         <div id="stories" class="row">
                         ${populateStoryCards(recentStories)}
-                        </div>
-                        
+                        </div>                      
 </div>
 </section>
     `;
@@ -61,7 +59,6 @@ function changeHref() {
         return `href='/login'`;
     }
 }
-
 
 function populateStoryCards(stories) {
     return `
@@ -82,6 +79,7 @@ function detailsListener() {
         let id = e.target.getAttribute("data-id")
         $("#overlay-" + id).css({display: "block"})
         chatListener(user);
+        reportListener(user)
     })
 }
 

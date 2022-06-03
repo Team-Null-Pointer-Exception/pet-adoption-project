@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
-
 import static com.example.petadoptionproject.data.User.Role.ADMIN;
 import static com.example.petadoptionproject.data.User.Role.USER;
 
@@ -48,7 +47,6 @@ public class ListingController {
         listingRepository.save(listing);
     }
 
-
     @PutMapping("/edit/{id}")
     @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public void updateListing(@PathVariable long id, @RequestBody Listing newListing, OAuth2Authentication auth) {
@@ -81,7 +79,6 @@ public class ListingController {
         }
     }
 
-
     @PutMapping("{listingId}/updateStatus")
     public void updateStatus(@PathVariable Long listingId, @RequestParam String newStatus) {
         Listing listToUpdate = listingRepository.getById(listingId);
@@ -89,9 +86,4 @@ public class ListingController {
         listingRepository.save(listToUpdate);
         System.out.println("Updating post number: " + listingId + " with: " + newStatus);
     }
-
-
-
-
-
 }

@@ -22,10 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 
 @Slf4j
@@ -56,6 +64,7 @@ public class UserController {
     public User getByEmail(@RequestParam String email){
         return usersRepository.findByEmail(email);
     }
+
     @GetMapping("/username")
     public User getByUsername(@RequestParam String username) {
         return usersRepository.findByUsername(username);

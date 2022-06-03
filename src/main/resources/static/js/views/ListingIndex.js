@@ -63,7 +63,6 @@ export default function ListingIndex(props) {
                         <option>Other</option>
                     </select>
                 </div>
-
                 <div class="btn-group m-3">
                     <select id="gender" class="form-select-lg btn-primary" aria-label="Gender">
                         <option selected>Male or Female</option>
@@ -71,14 +70,7 @@ export default function ListingIndex(props) {
                         <option>Female</option>
                     </select>
                 </div>
-
-                <div class="btn-group m-3">
-                    <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
-                        <option selected>Any Distance</option>
-                        <option>Within 50 Miles</option>
-                        <option>Within 15 Miles</option>
-                    </select>
-                </div>
+                ${userMenu()}
             </div>
         </div>
         <main>
@@ -96,6 +88,7 @@ export default function ListingIndex(props) {
         <div id="talkjs-container"></div>
     `;
 }
+
 let distances = []
 
 function getListingDistances(val) {
@@ -127,6 +120,23 @@ function adminMenu() {
     }
 }
 
+function userMenu() {
+    if (getUserRole() === "ADMIN") {
+        return "";
+    } else {
+        //language=HTML
+        return `
+            <div class="btn-group m-3">
+                <select id="distance" class="form-select-lg btn-primary" aria-label="Distance">
+                    <option selected>Any Distance</option>
+                    <option>Within 50 Miles</option>
+                    <option>Within 15 Miles</option>
+                </select>
+            </div>
+        `;
+    }
+}
+
 export function ListingsEvent() {
     grabSelections();
     detailsListener();
@@ -141,7 +151,9 @@ function grabSelections() {
     }
     animalType = $("#animal-type").val();
     gender = $("#gender").val();
-    distance = $("#distance").val();
+    if (getUserRole() !== "ADMIN") {
+        distance = $("#distance").val();
+    }
 }
 
 
@@ -173,6 +185,16 @@ function filterSelections() {
         filteredListings = activeListings;
     }
 
+    if (distance === "Any Distance") {
+        console.log("all distances")
+    } else if (distance === "Within 50 Miles") {
+        console.log("within 50 miles")
+        sortDistance(50, filteredListings)
+    } else if (distance === "Within 15 Miles") {
+        console.log("within 15 miles")
+        sortDistance(15, filteredListings)
+    }
+
     if (animalType === "Dogs") {
         filteredListings = filteredListings.filter(listing => listing.animal.toLowerCase() === "dog");
     } else if (animalType === "Cats") {
@@ -189,18 +211,6 @@ function filterSelections() {
     }
 
 
-    console.log(filteredListings)
-    console.log(distances)
-    if (distance === "Any Distance") {
-        console.log("all distances")
-    } else if (distance === "Within 50 Miles") {
-        console.log("within 50 miles")
-        sortDistance(50, filteredListings)
-    } else if (distance === "Within 15 Miles") {
-        console.log("within 15 miles")
-        sortDistance(15, filteredListings)
-    }
-
     filteredListings.sort();
     $("#listing-cards").html(populateCards(filteredListings));
     grayImages();
@@ -216,6 +226,7 @@ function sortDistance(selectedDistance, listings) {
             filteredListings.push(listings[i]);
         }
     }
+    console.log(filteredListings)
 }
 
 
@@ -399,7 +410,7 @@ export function populateOverlay(listing) {
                                         <li>${listing.user.city}, ${listing.user.state}, ${listing.user.zip}</li>
                                     </ul>
                                     <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
-                                        <button class="btn-getInTouch" data-id="${listing.user.id}" data-name="${listing.user.username}" data-email="${listing.user.email}" data-pic="${listing.user.profileImg}">Contact</button>
+                                        <button class="btn-getInTouch" data-id="${listing.user.id}" data-name="${listing.user.firstName}" data-email="${listing.user.email}" data-pic="${listing.user.profileImg}">Contact</button>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-lg-7" id="map">
@@ -411,17 +422,14 @@ export function populateOverlay(listing) {
                             </div>
                         </div>
 
-
                         <!-- Right Side Details Column -->
                         <div class="col-xs-12 col-lg-6 container container-overlay-details">
                             <h3 class="overlay-text text-center">${listing.animal}</h3>
-                            <a id="report-btn"
-                                       class="btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                            <button class="report-btn btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
                                        data-toggle="tooltip" data-placement="bottom" title="Report this listing"
                                        style="width: 36px; height: 36px;"
-                                       href="mailto:admin@yoursite.com?subject=Suspiscious Listing: ${listing.id}&body=Please detail your concerns about a listing"
-                                       target="_blank">
-                                       <i class="fas fa-flag"></i></a>        
+                                       data-id="${listing.user.id}" data-name="${listing.user.firstName}" data-email="${listing.user.email}">
+                                       <i class="fas fa-flag"></i></button>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
@@ -536,6 +544,7 @@ function detailsListener() {
         let id = $(this).data("id");
         $("#overlay-" + id).css({display: "block"})
         chatListener(user);
+        reportListener(user)
     })
 }
 
@@ -559,7 +568,7 @@ export function chatListener(user) {
         await Talk.ready;
             const me = new Talk.User({
                 id: user.id,
-                name: user.username,
+                name: user.firstName,
                 email: user.email,
                 photoUrl: user.profileImg,
                 role: "user",
@@ -590,6 +599,71 @@ export function chatListener(user) {
                     popup.select(conversation);
                     popup.mount({show: true});
                 }
+        } else {
+            createView("/login")
+        }
+    })
+}
+
+export function reportListener(user) {
+    $('.report-btn').click(async function (e) {
+        let reportedListingID = $(this).data("id");
+        let reportedListingName = $(this).data("name");
+        let loggedIn = isLoggedIn();
+        if (loggedIn) {
+            await Talk.ready;
+            const me = new Talk.User({
+                id: user.id,
+                name: user.firstName,
+                email: user.email,
+                photoUrl: user.profileImg,
+                role: "user",
+                welcomeMessage: `I would like to report a concern about listing ${reportedListingID} from ${reportedListingName}`
+            });
+            const session = new Talk.Session({
+                appId: chatKey,
+                me: me,
+            });
+            const other = new Talk.User({
+                id: 1,
+                name: "Admin-Patrick",
+                email: "patrick.quilty21@gmail.com",
+                photoUrl: "https://petadoptions-npe.s3.us-east-2.amazonaws.com/patrick.quilty.jpg",
+                role: "user",
+                welcomeMessage: "Thank-you for reaching out. Please describe your concerns so I can look into it."
+            });
+            const other1 = new Talk.User({
+                id: 3,
+                name: "Admin-Brice",
+                email: "brice.ernst1@gmail.com",
+                photoUrl: "https://petadoptions-npe.s3.us-east-2.amazonaws.com/brice-img.png",
+                role: "user"
+            });
+
+            const other2 = new Talk.User({
+                id: 8,
+                name: "Admin-Justin",
+                email: "justinsixsmith@gmail.com",
+                photoUrl: "https://petadoptions-npe.s3.us-east-2.amazonaws.com/justin-img.png",
+                role: "user"
+            });
+            const conversation = session.getOrCreateConversation(
+                Talk.oneOnOneId(me, other, other1, other2)
+            );
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            conversation.setParticipant(other1);
+            conversation.setParticipant(other2);
+            if (popup) {
+                popup.show(); //in case popup is hidden
+                popup.select(conversation);
+                //select the conversation clicked on
+            } else {
+                //if there is no existing popup, create one
+                popup = session.createPopup();
+                popup.select(conversation);
+                popup.mount({show: true});
+            }
         } else {
             createView("/login")
         }
