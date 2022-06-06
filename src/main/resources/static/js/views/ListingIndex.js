@@ -391,6 +391,10 @@ export function populateOverlay(listing) {
     if (listing.user.city !== "") {
         cityHTML = `${listing.user.city},`
     }
+    let stateHTML = listing.user.state;
+    if (stateHTML === "NA") {
+        stateHTML = "N/A";
+    }
     return `
     <!-- Overlay -->
             <div id="overlay-${listing.id}" class="overlay">
@@ -411,7 +415,7 @@ export function populateOverlay(listing) {
                                     <img class="story-img mx-auto mt-0 mb-2" src="${listing.user.profileImg}">
                                     <ul>
                                         <li>${listing.user.firstName} ${listing.user.lastName}</li>
-                                        <li>${cityHTML} ${listing.user.state}, ${listing.user.zip}</li>
+                                        <li>${cityHTML} ${stateHTML}, ${listing.user.zip}</li>
                                     </ul>
                                     <div class="d-flex align-items-center justify-content-center user-contact-details ms-0">
                                         <button class="btn-getInTouch" data-id="${listing.user.id}" data-name="${listing.user.firstName}" data-email="${listing.user.email}" data-pic="${listing.user.profileImg}">Contact</button>

@@ -38,7 +38,7 @@ export default function AdminIndex(props){
                             <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show Less Info:</p>
                             <div class="admin-user-more-info" id="admin-user-more-info-${user.id}">
                                 <p><span>Username:</span> ${user.username}</p>
-                                <p><span>Address:</span> ${populateAddress(user)} ${user.state} ${user.zip}</p>
+                                <p><span>Address:</span> ${populateAddress(user)} ${populateState(user)} ${user.zip}</p>
                                 <p><span>Phone:</span> ${user.phone}</p>
                                 <p><span>Email:</span> ${user.email}</p>
                                 <p><span>Created:</span> ${user.createdAt}</p>
@@ -130,6 +130,14 @@ function populateAddress(user) {
         addressHTML = `${user.city},`
     }
     return addressHTML;
+}
+
+function populateState(user) {
+    let stateHTML = user.state;
+    if (stateHTML === "NA") {
+        stateHTML = "N/A";
+    }
+    return stateHTML;
 }
 
 function showMoreInfo(){

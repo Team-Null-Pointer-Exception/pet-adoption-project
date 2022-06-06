@@ -13,6 +13,10 @@ export default function UserIndex(props) {
     let orgHTML = "";
     let phoneHTML = "";
     let addressHTML = "";
+    let stateHTML = props.user.state;
+    if (stateHTML === "NA") {
+        stateHTML = "N/A";
+    }
     let user = props.user;
     Talk.ready;
     const me = new Talk.User({
@@ -87,7 +91,7 @@ export default function UserIndex(props) {
                                             </div>
                                             <div class="media">
                                                 <label>Address</label>
-                                                <p>${addressHTML} ${props.user.state} ${props.user.zip}</p>
+                                                <p>${addressHTML} ${stateHTML} ${props.user.zip}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
