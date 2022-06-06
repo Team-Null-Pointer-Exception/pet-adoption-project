@@ -38,7 +38,7 @@ export default function AdminIndex(props){
                             <p class="admin-user-info-hide" id="admin-user-info-hide-${user.id}" data-id="${user.id}">Show Less Info:</p>
                             <div class="admin-user-more-info" id="admin-user-more-info-${user.id}">
                                 <p><span>Username:</span> ${user.username}</p>
-                                <p><span>Address:</span> ${user.street}, ${user.city}, ${user.state} ${user.zip}</p>
+                                <p><span>Address:</span> ${populateAddress(user)} ${user.state} ${user.zip}</p>
                                 <p><span>Phone:</span> ${user.phone}</p>
                                 <p><span>Email:</span> ${user.email}</p>
                                 <p><span>Created:</span> ${user.createdAt}</p>
@@ -118,6 +118,18 @@ export function AdminEvent() {
     showStory();
     closeStoryOverlay();
     changeListingStatus();
+}
+
+function populateAddress(user) {
+    let addressHTML = "";
+    if (user.street !== "" && user.city !== "") {
+        addressHTML = `${user.street}, ${user.city},`
+    } else if (user.street !== "") {
+        addressHTML = `${user.street},`
+    } else if (user.city !== "") {
+        addressHTML = `${user.city},`
+    }
+    return addressHTML;
 }
 
 function showMoreInfo(){
