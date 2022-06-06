@@ -267,19 +267,12 @@ export function populateCards(filteredListings) {
 
 function autoExpire() {
     activeListings.forEach(listing => {
-        let listingDate = listing.createdAt;
+        let listingDate = new Date(listing.createdAt);
+        let expirationDate = new Date(listingDate);
+        expirationDate.setDate(expirationDate.getDate() + 30);
         let today = new Date();
-        let dateToBeChanged = new Date();
 
-        dateToBeChanged.setDate(today.getDate() - 30);
-        let thirtyDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
-
-        let listingDateArray = listingDate.split("-");
-        listingDate = listingDateArray.join("");
-        let thirtyDaysAgoArray = thirtyDaysAgo.split("-");
-        thirtyDaysAgo = thirtyDaysAgoArray.join("");
-
-        if (listingDate < thirtyDaysAgo) {
+        if (today > expirationDate) {
             let listingId = listing.id;
             console.log(listingId);
             let newStatus = "EXPIRED";
@@ -302,20 +295,28 @@ function autoExpire() {
 
 
 function addNewBadge(listing) {
-    let listingDate = listing.createdAt;
+    // let listingDate = listing.createdAt;
+    // let today = new Date();
+    // let dateToBeChanged = new Date();
+    //
+    // dateToBeChanged.setDate(today.getDate() - 3);
+    // let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
+    //
+    // let listingDateArray = listingDate.split("-");
+    // listingDate = listingDateArray.join("");
+    // let threeDaysAgoArray = threeDaysAgo.split("-");
+    // threeDaysAgo = threeDaysAgoArray.join("");
+
+    let listingDate = new Date(listing.createdAt);
+    let threeDaysAfterListing = new Date(listingDate);
+    threeDaysAfterListing.setDate(threeDaysAfterListing.getDate() + 3);
     let today = new Date();
-    let dateToBeChanged = new Date();
 
-    dateToBeChanged.setDate(today.getDate() - 3);
-    let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
+    console.log(listingDate);
+    console.log(threeDaysAfterListing);
+    console.log(today);
 
-    let listingDateArray = listingDate.split("-");
-    listingDate = listingDateArray.join("");
-    let threeDaysAgoArray = threeDaysAgo.split("-");
-    threeDaysAgo = threeDaysAgoArray.join("");
-
-
-    if (listingDate < threeDaysAgo) {
+    if (today > threeDaysAfterListing) {
         return '';
     } else {
         return `
@@ -333,18 +334,12 @@ function grayImages() {
 
 function daysLeftWarning(listing) {
     let listingDate = new Date(listing.createdAt);
-    let oneDay = 1000 * 60 * 60 * 24;
-    let thirtyDays = oneDay * 30;
     let expirationDate = new Date(listingDate);
     expirationDate.setDate(expirationDate.getDate() + 30);
     let today = new Date();
     let daysRemaining = expirationDate - today;
+    let oneDay = 1000 * 60 * 60 * 24;
     daysRemaining /= oneDay;
-
-    console.log(listingDate);
-    console.log(expirationDate);
-    console.log(today);
-    console.log(Math.floor(daysRemaining));
 
     if (Math.floor(daysRemaining) <= 7 && Math.floor(daysRemaining) > 0) {
         //language=HTML
@@ -362,7 +357,7 @@ function daysLeftWarning(listing) {
         `;
     } else {
         return `
-        <div class="text-danger">This listing is about to expire!</div>
+        <div class="text-danger"><strong>This listing is about to expire!</strong></div>
         `;
     }
 }
