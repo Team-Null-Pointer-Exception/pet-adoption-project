@@ -15,7 +15,7 @@ export default function ResetPassword(props) {
                         <br>
                         <input id="new-password" name="new-password" type="password"/>
                         <br>
-                        <label for="confirm-new-password">Enter new password</label>
+                        <label for="confirm-new-password">Confirm new password</label>
                         <br>
                         <input id="confirm-new-password" name="confirm-new-password" type="password"/>
                         <br>
