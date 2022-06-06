@@ -60,7 +60,7 @@ body {
     padding-bottom: 3rem;
 }
 .set-up-card {
-    max-width: 50%;
+    max-width: 40%;
     padding-top: 2rem;
     padding-bottom: 3rem;
 }
@@ -71,7 +71,7 @@ body {
 }
 
 .edit-listing-card  {
-    max-width: 60%;
+    max-width: 50%;
 }
 
 .delete-listing-card, .admin-story-card {
@@ -91,16 +91,12 @@ body {
     margin-left: 4rem;
 }
 
-#register-link {
-    margin-left: 2.8rem;
-}
 #login-link {
     color: white;
-    margin-left: 3.1rem;
 }
 
 #register-form>p {
-    margin-bottom: 0;
+    margin-bottom: .5rem;
 }
 
 
@@ -153,7 +149,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p, #create-l
 }
 
 
-#login-btn, #forgot-btn, #reset-btn {
+#login-btn, #forgot-btn, #reset-btn, #register-btn {
     display: block;
     margin : 0 auto;
 }
@@ -164,6 +160,11 @@ label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p, #create-l
 .__talkjs_launcher {
     background-color: #ED6436!important;
 }
+
+#register-form, #login-form {
+    text-align: center;
+}
+
 
 
 #register-btn, #login-btn, #create-listing-btn, input[type=file]::file-selector-button, #forgot-btn, #reset-btn, .edit-listing-btn, .btn-getInTouch {
@@ -488,9 +489,6 @@ textarea, select {
     .about-text h3, .listing-section h3, .story-section h3 {
         font-size: 35px;
     }
-    .set-up-card {
-        max-width: 90%;
-    }
 }
 .about-text p {
     font-size: 18px;
@@ -526,12 +524,6 @@ textarea, select {
 }
 
 @media (max-width: 365px) {
-    #register-form > label {
-        width: 18rem;
-    }
-    #register-form > input, #register-form > select {
-        margin-left: 3.5rem;
-    }
     #register-btn {
         margin-left: 3.4rem;
     }
@@ -549,7 +541,6 @@ textarea, select {
     #create-listing-btn {
         margin-left: 3rem;
     }
-
     .view-overlay-container {
         width:90%;
         right: 5%;
@@ -587,7 +578,7 @@ textarea, select {
 
 
 @media (max-width:576px) {
-    .log-in-card, .forgot-card, .reset-card {
+    .log-in-card, .forgot-card, .reset-card, .set-up-card {
         max-width: 80%;
     }
 }
@@ -597,7 +588,7 @@ textarea, select {
     }
 }
 @media (min-width: 577px) and (max-width: 992px){
-    .log-in-card, .forgot-card, .reset-card {
+    .log-in-card, .forgot-card, .reset-card, .set-up-card {
         max-width: 60%;
     }
 }
@@ -865,7 +856,7 @@ textarea, select {
     overflow: hidden;
 }
 
-.delete-overlay-container, admin-story-overlay-container {
+.delete-overlay-container, .admin-story-overlay-container {
     color: black;
     margin: auto;
 }
@@ -887,6 +878,8 @@ textarea, select {
 }
 
 .view-close-btn {
+    margin-top: -.25rem;
+    margin-left: -.25rem;
     z-index: 2;
     background-color: #ED6436;
     color: white;
