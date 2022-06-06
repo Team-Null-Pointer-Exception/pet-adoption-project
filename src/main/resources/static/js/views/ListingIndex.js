@@ -226,7 +226,6 @@ function sortDistance(selectedDistance, listings) {
             filteredListings.push(listings[i]);
         }
     }
-    console.log(filteredListings)
 }
 
 
@@ -326,7 +325,6 @@ function addNewBadge(listing) {
 
 function grayImages() {
     let listingToGray = allListings.filter(listing => listing.status !== "ACTIVE");
-    console.log(listingToGray);
     listingToGray.forEach(listing => {
         let imageId = "#image-" + listing.id;
         $(imageId).css({filter: "grayscale(100%)"});
@@ -349,7 +347,6 @@ function daysLeftWarning(listing) {
     console.log(Math.floor(daysRemaining));
 
     if (Math.floor(daysRemaining) <= 7 && Math.floor(daysRemaining) > 0) {
-        console.log("This post is about to expire!");
         //language=HTML
         return `
             <div class="d-flex justify-content-center small text-danger mb-2" style="z-index: 2;">
@@ -365,7 +362,7 @@ function daysLeftWarning(listing) {
         `;
     } else {
         return `
-        <div class="text-danger">This listing has expired</div>
+        <div class="text-danger">This listing is about to expire!</div>
         `;
     }
 }
