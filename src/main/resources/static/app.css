@@ -269,9 +269,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     outline: none;
 }
 
-/*.navbar-toggler {*/
-/*    margin-right: 2rem;*/
-/*}*/
+.navbar-toggler {
+    margin-right: 1rem;
+}
 
 nav .nav-link.active, .home, .nav-link:hover {
     color: #181818;
