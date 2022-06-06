@@ -312,10 +312,6 @@ function addNewBadge(listing) {
     threeDaysAfterListing.setDate(threeDaysAfterListing.getDate() + 3);
     let today = new Date();
 
-    console.log(listingDate);
-    console.log(threeDaysAfterListing);
-    console.log(today);
-
     if (today > threeDaysAfterListing) {
         return '';
     } else {
