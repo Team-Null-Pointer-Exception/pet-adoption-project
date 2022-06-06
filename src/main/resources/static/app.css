@@ -180,6 +180,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p, #create-l
 #profile_upload, #image_upload, .image_upload {
     width: 14rem;
     margin-bottom: 0!important;
+    color: white;
 }
 
 
@@ -202,7 +203,7 @@ label, #login-form>a, #forgot-form>a, #reset-form>a, #register-form>p, #create-l
 }
 
 .edit-listing-form label {
-    width: 5rem;
+    width: 5.5rem;
     color: white;
 }
 
@@ -530,26 +531,30 @@ textarea, select {
     #image_upload {
         margin-left: .3rem;
     }
-    .image_upload {
-        margin-left: .3rem;
-    }
 }
 @media (max-width: 376px) {
-    #create-listing-form > input, #create-listing-form > select, #create-listing-form > textarea, .edit-listing-form input, .edit-listing-form select, .edit-listing-form textarea {
+    #create-listing-form > input, #cancel-link, #create-listing-form > label, #create-listing-form > textarea {
         margin-left: 2rem;
     }
     #create-listing-btn {
-        margin-left: 3rem;
+        margin-left: 5rem;
     }
     .view-overlay-container {
         width:90%;
         right: 5%;
     }
+    #fixed-label {
+        width: 7.5rem!important;
+    }
+    #sex-label {
+        width: 5.5rem!important;
+    }
+
 }
 
 @media (max-width: 396px) {
     .edit-listing-btn {
-        margin-left: 2rem;
+        margin-left: 6rem;
     }
 
     .edit-listing-card {

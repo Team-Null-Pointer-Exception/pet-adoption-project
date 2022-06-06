@@ -26,7 +26,7 @@ export default function CreateListing(props) {
                                 <label for="age">Age</label>
                                 <input id="age" name="age" type="text" maxlength="30"/>
                                 <br>
-                                <label for="sex">Sex</label>
+                                <label for="sex" id="sex-label">Sex</label>
                                 <select id="sex">
                                   <option>Male</option>
                                   <option>Female</option>
@@ -36,7 +36,7 @@ export default function CreateListing(props) {
                                 <label for="health">Any health issues?</label>
                                 <textarea id="health" class="align-top" name="health" type="text" rows="3" maxlength="100" placeholder="(max 100 chars)"></textarea>
                                 <br>
-                                <label for="fixed">Fixed</label>
+                                <label for="fixed" id="fixed-label">Fixed</label>
                                 <select id="fixed">
                                   <option>True</option>
                                   <option>False</option>
@@ -48,7 +48,7 @@ export default function CreateListing(props) {
                                 <label for="summary" id="create-summary-label">Summary</label>
                                 <textarea id="summary" class="align-top mt-0" name="summary" rows="3" maxlength="100" placeholder="(max 100 chars)"></textarea>
                                 <br>              
-                                <input type="file" id="image_upload" name="file"/>                                                                         
+                                <input type="file" id="image_upload" class="text-white" name="file"/>                                                                         
                                 <button id="create-listing-btn" type="button">Submit</button>
                                 <br>
                                 <a href="/" id="cancel-link" data-link>Not ready to list? Cancel here</a>   
