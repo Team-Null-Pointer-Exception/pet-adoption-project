@@ -57,7 +57,7 @@ export function RegisterEvent() {
 
 
 let filename = ""
-let imgURL = ""
+let imgURL = 'https://petadoptions-npe.s3.us-east-2.amazonaws.com/default-profle-pic.png'
 function UploadEvent() {
     $('#profile_upload').change(function () {
         let file = $("#profile_upload").prop('files')[0]
