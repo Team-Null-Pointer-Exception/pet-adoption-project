@@ -534,7 +534,7 @@ textarea, select {
 }
 @media (max-width: 376px) {
     #create-listing-form > input, #cancel-link, #create-listing-form > label, #create-listing-form > textarea {
-        margin-left: 2rem;
+        margin-left: 3rem;
     }
     #create-listing-btn {
         margin-left: 5rem;
