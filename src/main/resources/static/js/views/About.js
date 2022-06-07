@@ -32,7 +32,7 @@ export default function About(props) {
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="team card position-relative overflow-hidden border-0 mb-4">
-                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/brice-img.png" alt="">
+                    <img class="card-img-top" src="https://petadoptions-npe.s3.us-east-2.amazonaws.com/Photo+on+6-7-22+at+9.00+AM.jpeg" alt="">
                     <div class="card-body text-center p-0">
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Brice Ernst</h5>
