@@ -128,9 +128,9 @@ function RegisterEventListener(){
                         CreateView("/");
                     });
                 }
+            } else {
+                alert('Password does not match')
             }
-        } else {
-            alert('Password does not match')
         }
     })
 }
