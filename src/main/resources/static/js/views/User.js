@@ -107,7 +107,7 @@ export default function UserIndex(props) {
                             <form class="row" id="edit-profile-form">
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
-                                        <label for="edit-firstName">First Name <span id="input-required">*</span></label>
+                                        <label for="edit-firstName">First Name <span class="input-required">*</span></label>
                                         <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
