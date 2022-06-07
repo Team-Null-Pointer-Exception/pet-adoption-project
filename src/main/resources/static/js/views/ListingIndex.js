@@ -326,11 +326,18 @@ function daysLeftWarning(listing) {
     let oneDay = 1000 * 60 * 60 * 24;
     daysRemaining /= oneDay;
 
-    if (Math.floor(daysRemaining) <= 7 && Math.floor(daysRemaining) > 0) {
+    if (Math.floor(daysRemaining) <= 7 && Math.floor(daysRemaining) > 1) {
         //language=HTML
         return `
             <div class="d-flex justify-content-center small text-danger mb-2" style="z-index: 2;">
-                <strong>Only ${Math.floor(daysRemaining)} day(s) left!</strong>
+                <strong>Only ${Math.floor(daysRemaining)} days left!</strong>
+            </div>
+        `;
+    } else if (Math.floor(daysRemaining) === 1) {
+        //language=HTML
+        return `
+            <div class="d-flex justify-content-center small text-danger mb-2" style="z-index: 2;">
+                <strong>Only ${Math.floor(daysRemaining)} day left!</strong>
             </div>
         `;
     } else if (Math.floor(daysRemaining) > 7){
@@ -340,9 +347,16 @@ function daysLeftWarning(listing) {
                 <em>${Math.floor(daysRemaining)} days remaining</em>
             </div>
         `;
+    } else if (Math.floor(daysRemaining) < 0) {
+        //language=HTML
+        return `
+            <div class="d-flex justify-content-center small text-danger mb-2" style="z-index: 2;">
+                <strong>This listing has expired</strong>
+            </div>
+        `;
     } else {
         return `
-        <div class="text-danger"><strong>This listing is about to expire!</strong></div>
+        <div class="text-danger"><strong>LAST DAY!</strong></div>
         `;
     }
 }
