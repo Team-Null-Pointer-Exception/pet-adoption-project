@@ -25,8 +25,8 @@ export default function AdminIndex(props){
     <div class="container-fluid">
         <section class="section admin-users-section">
             <div class="container">
-                <h4><i class="fas fa-bell"></i> You have ${pendingListings} pending listings to review</h4>
-                <h4><i class="fas fa-bell"></i> You have ${pendingStories} pending stories to review</h4>
+                <p><i class="fas fa-bell"></i> You have ${pendingListings} pending listings to review</p>
+                <p><i class="fas fa-bell"></i> You have ${pendingStories} pending stories to review</p>
                 <h3 class="dark-color">Users: </h3>
                 ${props.user.map(user => `
                     <div class="admin-user-info gray-bg">
