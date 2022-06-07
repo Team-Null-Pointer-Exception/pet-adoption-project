@@ -27,7 +27,7 @@ export default function Register(props) {
                     <br>
                     <input id="firstName" name="firstName" type="text" required/>
                     <br>
-                    <label for="lastName">Last Name <span class="input-required">*</span></label>
+                    <label for="lastName">Last Name</label>
                     <br>
                     <input id="lastName" name="lastName" type="text" required/>
                     <br>                      

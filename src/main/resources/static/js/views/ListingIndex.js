@@ -421,11 +421,12 @@ export function populateOverlay(listing) {
                         <!-- Right Side Details Column -->
                         <div class="col-xs-12 col-lg-6 container container-overlay-details">
                             <h3 class="overlay-text text-center">${listing.animal}</h3>
-                            <button class="report-btn btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
-                                       data-toggle="tooltip" data-placement="bottom" title="Report this listing"
-                                       style="width: 36px; height: 36px;"
-                                       data-id="${listing.user.id}" data-name="${listing.user.firstName}" data-email="${listing.user.email}">
-                                       <i class="fas fa-flag"></i></button>        
+                                <button class="report-btn btn btn-outline-primary rounded-circle text-center mb-3 ml-2 px-0 allow"
+                                    data-toggle="tooltip" data-placement="bottom" title="Report this listing"
+                                    style="width: 36px; height: 36px;"
+                                    data-id="${listing.user.id}" data-name="${listing.user.firstName}" data-email="${listing.user.email}">
+                                    <i class="fas fa-flag"></i>
+                                </button>        
                             <div class="row listing-details">
                                 <div class="col-6">
                                     <ul>
@@ -441,7 +442,6 @@ export function populateOverlay(listing) {
                                         <li><strong>Fixed</strong>: ${listing.fixed}</li>
                                     </ul>
                                 </div>
-                               
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
                                     <p><strong>About</strong>: ${listing.description}</p>

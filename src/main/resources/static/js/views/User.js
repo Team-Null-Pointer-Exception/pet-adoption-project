@@ -115,7 +115,7 @@ export default function UserIndex(props) {
                                         <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-email">Email <span id="input-required">*</span></label>
+                                        <label for="edit-email">Email <span class="input-required">*</span></label>
                                         <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
@@ -123,7 +123,7 @@ export default function UserIndex(props) {
                                         <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-zip">Zip Code <span id="input-required">*</span></label>
+                                        <label for="edit-zip">Zip Code <span class="input-required">*</span></label>
                                         <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>                                    
                                 </div>
@@ -207,7 +207,7 @@ export default function UserIndex(props) {
                                 </div>
                                 <div>
                                 <hr>
-                                    <p>Update profile image</p>
+                                    <p>Update profile image:</p>
                                 </div>
                                 <div class="media">
                                     <input type="file" id="edit_profile_upload" name="file" /> 
@@ -220,11 +220,11 @@ export default function UserIndex(props) {
                         </div>
                         <div id="edit-password-info">
                             <div class="media">
-                                <label for="edit-password">New Password <span id="input-required">*</span></label>
+                                <label for="edit-password">New Password <span class="input-required">*</span></label>
                                 <input id="edit-password" name="edit-password" type="password"/>
                             </div>
                             <div class="media">
-                                <label for="edit-confirmPassword">Confirm Password <span id="input-required">*</span></label>
+                                <label for="edit-confirmPassword">Confirm Password <span class="input-required">*</span></label>
                                 <input id="edit-confirmPassword" name="edit-confirmPassword" type="password"/>
                             </div>                        
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-cancel-btn">Cancel Changes</button>
