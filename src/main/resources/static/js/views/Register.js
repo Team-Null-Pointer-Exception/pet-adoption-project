@@ -35,7 +35,7 @@ export default function Register(props) {
                     <br>
                     <input id="zip" name="zip" type="text" required/> 
                     <br>
-                    <p><span class="input-required">*</span> required field</p>
+                    <p><span class="input-required">*</span> required fields</p>
                     <p>Upload a profile picture:</p>          
                     <input type="file" id="profile_upload" name="file" /> 
                     <br>                                                                     
