@@ -11,10 +11,10 @@ export default function CreateListing(props) {
                       <div class="card create-listing-card">
                            <form id="create-listing-form" name="create-listing-form">
                                 <h1 class="text-white">Create A Listing</h1>
-                                <label for="name">Name</label>
+                                <label for="name">Name <span class="input-required">*</span></label>
                                 <input id="name" name="name" type="text" maxlength="30"/>
                                 <br>
-                                <label for="animal">Animal Type</label>
+                                <label for="animal">Animal Type <span class="input-required">*</span></label>
                                 <input id="animal" name="animal" type="text" maxlength="30"/>
                                 <br>
                                 <label for="breed">Breed</label>
@@ -47,7 +47,9 @@ export default function CreateListing(props) {
                                 <br>
                                 <label for="summary" id="create-summary-label">Summary</label>
                                 <textarea id="summary" class="align-top mt-0" name="summary" rows="3" maxlength="100" placeholder="(max 100 chars)"></textarea>
-                                <br>              
+                                <br>
+                                <label for="image_upload" style="width: 100%;">Upload an image:</label>
+                                <br>                
                                 <input type="file" id="image_upload" class="text-white" name="file"/>                                                                         
                                 <button id="create-listing-btn" type="button">Submit</button>
                                 <br>

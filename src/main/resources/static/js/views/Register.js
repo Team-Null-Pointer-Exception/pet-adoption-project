@@ -8,7 +8,7 @@ export default function Register(props) {
     return `
     <div class="container-fluid">
         <div class="row set-up-row">
-            <div class="card set-up-card"> 
+            <div class="card set-up-card">
                 <form id="register-form">
                     <h1 class="text-white">Register</h1>
                     <label for="email">Email <span class="input-required">*</span></label>
@@ -36,9 +36,10 @@ export default function Register(props) {
                     <input id="zip" name="zip" type="text" required/> 
                     <br>
                     <p><span class="input-required">*</span> required fields</p>
+                    <hr>
                     <p>Upload a profile picture:</p>          
                     <input type="file" id="profile_upload" name="file" /> 
-                    <br>                                                                     
+                    <hr>                                                                     
                     <button id="register-btn" type="button">Register</button>
                     <p class="text-white">Already have an account?</p>
                     <a href="/login" id="login-link" data-link>Sign in</a>
