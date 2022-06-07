@@ -107,7 +107,7 @@ export default function UserIndex(props) {
                             <form class="row" id="edit-profile-form">
                                 <div class="col-md-6 edit-profile-col" id="edit-profile-1">
                                     <div class="media">
-                                        <label for="edit-firstName">First Name <span id="input-required">*</span></label>
+                                        <label for="edit-firstName">First Name <span class="input-required">*</span></label>
                                         <input id="edit-firstName" name="edit-firstName" type="text" value="${props.user.firstName}"/>
                                     </div>
                                     <div class="media">
@@ -115,7 +115,7 @@ export default function UserIndex(props) {
                                         <input id="edit-lastName" name="edit-lastName" type="text" value="${props.user.lastName}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-email">Email <span id="input-required">*</span></label>
+                                        <label for="edit-email">Email <span class="input-required">*</span></label>
                                         <input id="edit-email" name="edit-email" type="text" value="${props.user.email}"/>
                                     </div>
                                     <div class="media">
@@ -123,7 +123,7 @@ export default function UserIndex(props) {
                                         <input id="edit-phone" name="edit-phone" type="text" value="${props.user.phone}"/>
                                     </div>
                                     <div class="media">
-                                        <label for="edit-zip">Zip Code <span id="input-required">*</span></label>
+                                        <label for="edit-zip">Zip Code <span class="input-required">*</span></label>
                                         <input id="edit-zip" name="edit-zip" type="text" value="${props.user.zip}"/>
                                     </div>                                    
                                 </div>
@@ -207,7 +207,7 @@ export default function UserIndex(props) {
                                 </div>
                                 <div>
                                 <hr>
-                                    <p>Update profile image</p>
+                                    <p>Update profile image:</p>
                                 </div>
                                 <div class="media">
                                     <input type="file" id="edit_profile_upload" name="file" /> 
@@ -220,11 +220,11 @@ export default function UserIndex(props) {
                         </div>
                         <div id="edit-password-info">
                             <div class="media">
-                                <label for="edit-password">New Password <span id="input-required">*</span></label>
+                                <label for="edit-password">New Password <span class="input-required">*</span></label>
                                 <input id="edit-password" name="edit-password" type="password"/>
                             </div>
                             <div class="media">
-                                <label for="edit-confirmPassword">Confirm Password <span id="input-required">*</span></label>
+                                <label for="edit-confirmPassword">Confirm Password <span class="input-required">*</span></label>
                                 <input id="edit-confirmPassword" name="edit-confirmPassword" type="password"/>
                             </div>                        
                             <button type="button" class="btn btn-primary btn-sm" id="edit-password-cancel-btn">Cancel Changes</button>
@@ -302,19 +302,19 @@ export default function UserIndex(props) {
                 <form class="edit-listing-form" name="edit-listing-form">
                     <h1 class="text-white">Edit Listing</h1>
                     <label for="name-${listing.id}">Name</label>
-                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="30" value=${listing.name}>
+                    <input id="name-${listing.id}" name="name-${listing.id}" type="text" maxlength="50" value="${listing.name}">
                     <br>
                     <label for="animal-${listing.id}">Animal</label>
-                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="30" value=${listing.animal}>
+                    <input id="animal-${listing.id}" name="animal-${listing.id}" type="text" maxlength="50" value="${listing.animal}">
                     <br>
                     <label for="breed-${listing.id}">Breed</label>
-                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="30" value=${listing.breed}>
+                    <input id="breed-${listing.id}" name="breed-${listing.id}" type="text" maxlength="50" value="${listing.breed}">
                     <br>
                     <label for="color-${listing.id}">Color</label>
-                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="30" value=${listing.color}>
+                    <input id="color-${listing.id}" name="color-${listing.id}" type="text" maxlength="50" value="${listing.color}">
                     <br>
                     <label for="age-${listing.id}">Age</label>
-                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="30" value=${listing.age}>
+                    <input id="age-${listing.id}" name="age-${listing.id}" type="text" maxlength="50" value="${listing.age}">
                     <br>
                     <label for="sex-${listing.id}">Sex</label>
                     <select id="sex-${listing.id}">

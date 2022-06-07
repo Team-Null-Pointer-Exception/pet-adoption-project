@@ -8,22 +8,22 @@ export default function Register(props) {
     return `
     <div class="container-fluid">
         <div class="row set-up-row">
-            <div class="card set-up-card"> 
+            <div class="card set-up-card">
                 <form id="register-form">
                     <h1 class="text-white">Register</h1>
-                    <label for="email">Email</label>
+                    <label for="email">Email <span class="input-required">*</span></label>
                     <br>
                     <input id="email" name="email" type="email" required>
                     <br>
-                    <label for="initialPassword">Password</label>
+                    <label for="initialPassword">Password <span class="input-required">*</span></label>
                     <br>
                     <input id="initialPassword" name="password" type="password" pattern=“(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}” title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters” required/>
                     <br>
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label for="confirmPassword">Confirm Password <span class="input-required">*</span></label>
                     <br>
                     <input id="confirmPassword" name="confirmPassword" type="password" required/>
                     <br>
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">First Name <span class="input-required">*</span></label>
                     <br>
                     <input id="firstName" name="firstName" type="text" required/>
                     <br>
@@ -31,16 +31,18 @@ export default function Register(props) {
                     <br>
                     <input id="lastName" name="lastName" type="text" required/>
                     <br>                      
-                    <label for="zip">Zip Code</label>
+                    <label for="zip">Zip Code <span class="input-required">*</span></label>
                     <br>
                     <input id="zip" name="zip" type="text" required/> 
-                    <br> 
+                    <br>
+                    <p><span class="input-required">*</span> required fields</p>
+                    <hr>
                     <p>Upload a profile picture:</p>          
                     <input type="file" id="profile_upload" name="file" /> 
-                    <br>                                                                     
-                    <button id="register-btn" type="button">Register</button>       
+                    <hr>                                                                     
+                    <button id="register-btn" type="button">Register</button>
                     <p class="text-white">Already have an account?</p>
-                    <a href="/login" id="login-link" data-link>Sign in</a>   
+                    <a href="/login" id="login-link" data-link>Sign in</a>
                 </form>
             </div>
         </div>
