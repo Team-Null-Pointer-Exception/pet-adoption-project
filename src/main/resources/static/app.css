@@ -849,6 +849,9 @@ textarea, select {
     color: white;
     border-color: #ED6436;
 }
+.fa-bell {
+    color: #ED6436;
+}
 
 .report-btn {
     margin-top: -3.5rem;

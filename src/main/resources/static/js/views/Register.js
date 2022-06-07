@@ -1,5 +1,4 @@
 import CreateView from "../createView.js"
-import createView from "../createView.js";
 import {getHeaders} from "../auth.js";
 import {baseUri} from "../fetchData.js";
 

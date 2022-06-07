@@ -5,11 +5,28 @@ import {baseUri} from "../fetchData.js";
 
 export default function AdminIndex(props){
     $("#inbox-container").css({display: "none"})
+    let pendingStories = 0;
+    let pendingListings = 0;
+    let stories = props.stories;
+    let listings = props.listings;
+    for(let story of stories) {
+        if(story.status === "PENDING") {
+            pendingStories += 1
+        }
+    }
+    for(let listing of listings) {
+        if(listing.status === "PENDING") {
+            pendingListings += 1
+        }
+    }
+
     return `
 <main>
     <div class="container-fluid">
         <section class="section admin-users-section">
             <div class="container">
+                <h4><i class="fas fa-bell"></i> You have ${pendingListings} pending listings to review</h4>
+                <h4><i class="fas fa-bell"></i> You have ${pendingStories} pending stories to review</h4>
                 <h3 class="dark-color">Users: </h3>
                 ${props.user.map(user => `
                     <div class="admin-user-info gray-bg">

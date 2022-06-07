@@ -78,7 +78,9 @@ export default function router(URI) {
         '/admin': {
             returnView: AdminIndex,
             state: {
-                user: '/api/users/'
+                user: '/api/users/',
+                listings: '/api/listings',
+                stories: '/api/stories'
             },
             uri: '/admin',
             title: 'User Profile',
