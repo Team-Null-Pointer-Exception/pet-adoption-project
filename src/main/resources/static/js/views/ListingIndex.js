@@ -295,17 +295,6 @@ function autoExpire() {
 
 
 function addNewBadge(listing) {
-    // let listingDate = listing.createdAt;
-    // let today = new Date();
-    // let dateToBeChanged = new Date();
-    //
-    // dateToBeChanged.setDate(today.getDate() - 3);
-    // let threeDaysAgo = dateToBeChanged.toISOString().slice(0, 10);
-    //
-    // let listingDateArray = listingDate.split("-");
-    // listingDate = listingDateArray.join("");
-    // let threeDaysAgoArray = threeDaysAgo.split("-");
-    // threeDaysAgo = threeDaysAgoArray.join("");
 
     let listingDate = new Date(listing.createdAt);
     let threeDaysAfterListing = new Date(listingDate);
