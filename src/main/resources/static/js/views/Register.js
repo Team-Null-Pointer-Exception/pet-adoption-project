@@ -15,9 +15,9 @@ export default function Register(props) {
                     <br>
                     <input id="email" name="email" type="email" required>
                     <br>
-                    <label for="initialPassword">Password <span class="input-required">*</span></label>
+                    <label for="initialPassword">Password <span class="input-required">*</span> <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></i></label>
                     <br>
-                    <input id="initialPassword" name="password" type="password" pattern=“(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}” title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters” required/>
+                    <input id="initialPassword" name="password" type="password" pattern=“(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}” required/>
                     <br>
                     <label for="confirmPassword">Confirm Password <span class="input-required">*</span></label>
                     <br>

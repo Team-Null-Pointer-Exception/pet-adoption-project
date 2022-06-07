@@ -433,7 +433,7 @@ export function populateOverlay(listing) {
                                 </div>
                                 <div class="col-12 listing-details">
                                     <p><strong>Summary</strong>: ${listing.summary}</p>
-                                    <p><strong>About</strong>: ${listing.description}</p>
+                                    <p><strong>Description</strong>: ${listing.description}</p>
                                     <p><strong>Health Issues</strong>: ${listing.health}</p>
                                 </div>
                             </div>
