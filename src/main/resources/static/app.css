@@ -614,13 +614,15 @@ textarea, select {
         top: 222px;
         right: 45px;
     }
-    .overlay-container {
-        overflow: auto;
-    }
+
     .user-listings {
         width: 100%!important;
     }
 
+}
+
+.overlay-container {
+    overflow: auto;
 }
 
 @media (min-width: 992px) {
