@@ -69,8 +69,8 @@ export default function About(props) {
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Justin Sixsmith</h5>
                             <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.https://github.com/JustinSixsmith" target="_blank"><i class="fab fa-github"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.https://www.linkedin.com/in/justin-sixsmith/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://github.com/JustinSixsmith" target="_blank"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/justin-sixsmith/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:justinsixsmith@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
                             <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:13602412953" target="_blank"><i class="fas fa-phone"></i></a>
                         </div>
