@@ -4,7 +4,9 @@
  * @param request
  * @returns {Promise<{}>}
  */
-export const baseUri = "https://team-npe.fulgentcorp.com:8080";
+// export const baseUri = "https://team-npe.fulgentcorp.com:8080";
+
+export const baseUri = "https://localhost:8080";
 
 
 export default function fetchData(state, request) {
