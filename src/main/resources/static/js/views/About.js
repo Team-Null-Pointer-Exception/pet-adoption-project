@@ -37,10 +37,10 @@ export default function About(props) {
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Brice Ernst</h5>
                             <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://github.com/briceice" target="_blank"><i class="fab fa-github"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/brice-ernst09/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="mailto:brice.ernst1@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="facetime-audio:12107220367" target="_blank"><i class="fas fa-phone"></i></a>                            
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://github.com/briceice" target="_blank"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/brice-ernst09/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:brice.ernst1@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:12107220367" target="_blank"><i class="fas fa-phone"></i></a>                            
                         </div>
                         </div>
                     </div>
@@ -53,10 +53,10 @@ export default function About(props) {
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Emilio Benavides</h5>
                             <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>                            
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>                            
                         </div>
                         </div>
                     </div>
@@ -69,10 +69,10 @@ export default function About(props) {
                         <div class="d-flex flex-column justify-content-center bg-light">
                             <h5 class="aboutName text-black">Justin Sixsmith</h5>
                             <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.github.com/pquilty79?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="https://www.linkedin.com/in/patrick-quilty-b856a2178" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="mailto:patrick.quilty21@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mb-3 mr-2 px-0 allow" style="width: 36px; height: 36px;" href="facetime-audio:19089066710" target="_blank"><i class="fas fa-phone"></i></a>
                         </div>
                         </div>
                     </div>
