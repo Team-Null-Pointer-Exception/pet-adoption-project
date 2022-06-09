@@ -142,7 +142,7 @@ public class UserController {
     public void processForgotPassword(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
         String token = RandomString.make(30);
         emailService.updateResetPasswordToken(token, email);
-        String resetPasswordLink = "https://team-npe.fulgentcorp.com:8080/reset?token=" + token;
+        String resetPasswordLink = "https://petadoptions.co:8080/reset?token=" + token;
         sendEmail(email, resetPasswordLink);
     }
 
